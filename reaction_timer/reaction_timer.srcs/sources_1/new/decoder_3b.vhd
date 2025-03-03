@@ -29,8 +29,8 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity decoder_3b is
-    Port ( ENC_IN : in STD_LOGIC_VECTOR (2 downto 0);
-           ENC_OUT : out STD_LOGIC_VECTOR (7 downto 0));
+    Port ( DEC_IN : in STD_LOGIC_VECTOR (2 downto 0);
+           DEC_OUT : out STD_LOGIC_VECTOR (7 downto 0));
 end decoder_3b;
 
 architecture Behavioral of decoder_3b is
@@ -38,13 +38,13 @@ architecture Behavioral of decoder_3b is
 begin
     
 --  Mapping Inputs to Outputs
-    ENC_OUT(0) <= not ENC_IN(0) and not ENC_IN(1) and not ENC_IN(2);
-    ENC_OUT(1) <= ENC_IN(0) and not ENC_IN(1) and not ENC_IN(2);
-    ENC_OUT(2) <= ENC_IN(1) and not ENC_IN(0) and not ENC_IN(2);
-    ENC_OUT(3) <= ENC_IN(1) and ENC_IN(0) and not ENC_IN(2);
-    ENC_OUT(4) <= not ENC_IN(0) and not ENC_IN(1) and ENC_IN(2);
-    ENC_OUT(5) <=  ENC_IN(0) and not ENC_IN(1) and ENC_IN(2);
-    ENC_OUT(6) <= not ENC_IN(0) and ENC_IN(1) and ENC_IN(2);
-    ENC_OUT(7) <= ENC_IN(0) and ENC_IN(1) and ENC_IN(2);
+    DEC_OUT(0) <= not DEC_IN(0) and not DEC_IN(1) and not DEC_IN(2);
+    DEC_OUT(1) <= DEC_IN(0) and not DEC_IN(1) and not DEC_IN(2);
+    DEC_OUT(2) <= DEC_IN(1) and not DEC_IN(0) and not DEC_IN(2);
+    DEC_OUT(3) <= DEC_IN(1) and DEC_IN(0) and not DEC_IN(2);
+    DEC_OUT(4) <= not DEC_IN(0) and not DEC_IN(1) and DEC_IN(2);
+    DEC_OUT(5) <=  DEC_IN(0) and not DEC_IN(1) and DEC_IN(2);
+    DEC_OUT(6) <= not DEC_IN(0) and DEC_IN(1) and DEC_IN(2);
+    DEC_OUT(7) <= DEC_IN(0) and DEC_IN(1) and DEC_IN(2);
 
 end Behavioral;
