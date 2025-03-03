@@ -37,6 +37,13 @@ architecture Behavioral of decoder_3b is
 
 begin
     
-    
+ENC_OUT(0) <= not ENC_IN(0) and not ENC_IN(1) and not ENC_IN(2);
+ENC_OUT(1) <= ENC_IN(0) and not ENC_IN(1) and not ENC_IN(2);
+ENC_OUT(2) <= ENC_IN(1) and not ENC_IN(0) and not ENC_IN(2);
+ENC_OUT(3) <= ENC_IN(1) and ENC_IN(0) and not ENC_IN(2);
+ENC_OUT(4) <= not ENC_IN(0) and not ENC_IN(1) and ENC_IN(2);
+ENC_OUT(5) <=  ENC_IN(0) and not ENC_IN(1) and ENC_IN(2);
+ENC_OUT(6) <= not ENC_IN(0) and ENC_IN(1) and ENC_IN(2);
+ENC_OUT(7) <= ENC_IN(0) and ENC_IN(1) and ENC_IN(2);
 
 end Behavioral;
