@@ -3,6 +3,8 @@
 Oct 14 2022
 05:20:55
 D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sim_1/new/divider_counter_tb.vhd,1740969916,vhdl,,,,divider_counter_tb,,,,,,,,
+D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sim_1/new/seven_seg_decoder_tb.vhd,1740971290,vhdl,,,,seven_seg_decoder_tb,,,,,,,,
 D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd,1740967035,vhdl,D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sim_1/new/divider_counter_tb.vhd,,,clk_divider,,,,,,,,
 D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd,1740967035,vhdl,D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sim_1/new/divider_counter_tb.vhd,,,counter_3b,,,,,,,,
 D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd,1740968629,vhdl,D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sim_1/new/divider_counter_tb.vhd,,,decoder_3b,,,,,,,,
+D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd,1740971218,vhdl,D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sim_1/new/seven_seg_decoder_tb.vhd,,,seven_seg_decoder,,,,,,,,
