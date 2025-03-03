@@ -41,8 +41,10 @@ architecture Behavioral of main is
     signal slowclk : std_logic;
     signal encoded_segment : std_logic_vector (2 downto 0);
     signal decimal_point : std_logic := '0';
-    signal display_value : std_logic_vector (3 downto 0) := X"0";
+    signal display_value : std_logic_vector (3 downto 0) := X"5";
     signal cycle : std_logic := '0';
+    signal not_inverted_anode: std_logic_vector (7 downto 0) := X"FF";
+
     
 --  import component and define inputs and outputs
     component clk_divider is
@@ -83,16 +85,18 @@ begin
     ff1: counter_3b port map(CLK_IN => cycle,
                              COUNT_OUT => encoded_segment);
     ff2: decoder_3b port map(DEC_IN => encoded_segment,
-                             DEC_OUT => AN);
-    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point,
-                                     SEGMENT_LIGHT_OUT => SEVEN_SEG,
-                                     BCD_IN => display_value);
+                             DEC_OUT => not_inverted_anode);
+--    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point,
+--                                     SEGMENT_LIGHT_OUT => SEVEN_SEG,
+--                                     BCD_IN => "0010");
     ff4: counter_9i_plus port map (EN_IN => '1',
                                    RESET_IN => '0',
                                    INCREMENT_IN => slowclk,
                                    COUNT_OUT => display_value,
                                    TICK_OUT => cycle);
+    AN <= not not_inverted_anode;
     LED(3 downto 0) <= display_value;
     LED(4) <= slowclk;
+    SEVEN_SEG <= X"00";
 
 end Behavioral;

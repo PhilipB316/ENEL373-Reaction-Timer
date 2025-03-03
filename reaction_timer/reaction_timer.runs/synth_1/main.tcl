@@ -70,11 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 3
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -96,7 +92,6 @@ read_vhdl -library xil_defaultlib {
   {D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd}
   {D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd}
   {D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd}
-  {D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd}
   {D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd}
 }
 OPTRACE "Adding files" END { }
