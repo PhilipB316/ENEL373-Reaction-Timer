@@ -42,22 +42,26 @@ architecture Behavioral of counter_9i_plus is
 begin
     process (INCREMENT_IN)
     begin
+--      If clock is on a rising edge and enable is on
         if rising_edge (INCREMENT_IN) and EN_IN = '1' then
 --          Increment count on clock signal
             count <= std_logic_vector(unsigned(count) + 1);
             
+--          If count reaches max value reset to 0
             if count = X"9" then
                 count <= X"0";
                 tick <= not tick;
             end if;
         end if;
         
+--      If reset is true then set counter back to 0
         if rising_edge (INCREMENT_IN) and RESET_IN = '1' then
             count <= X"0";
         end if;
             
     end process;
 
+--  Move values to outputs
     TICK_OUT <= tick;
     COUNT_OUT <= count;
 
