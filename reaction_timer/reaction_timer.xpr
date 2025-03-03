@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="61" Path="C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/pain-and-sadness/reaction_timer/reaction_timer.xpr">
+<Project Version="7" Minor="61" Path="D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="1cf57ddb121f4a44abec733679a83970"/>
@@ -59,7 +59,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="nexys4_ddr"/>
-    <Option Name="WTXSimLaunchSim" Val="3"/>
+    <Option Name="WTXSimLaunchSim" Val="5"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -127,6 +127,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/seven_seg_decoder.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="main"/>
@@ -149,6 +156,19 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/new/seven_seg_decoder_tb.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sim_1/new/divider_counter_tb.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sim_1/new/clk_divider_tb.vhd">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../project_1/project_1.srcs/sim_1/new/clk_divider_tb.vhd"/>
@@ -159,6 +179,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
+        <Option Name="TopModule" Val="seven_seg_decoder_tb"/>
         <Option Name="TopModule" Val="clk_divider_tb"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
