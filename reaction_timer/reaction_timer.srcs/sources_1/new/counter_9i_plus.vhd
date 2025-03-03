@@ -45,14 +45,14 @@ begin
         if rising_edge (INCREMENT_IN) and EN_IN = '1' then
 --          Increment count on clock signal
             count <= std_logic_vector(unsigned(count) + 1);
+            
+            if count = X"9" then
+                count <= X"0";
+                tick <= not tick;
+            end if;
         end if;
         
-        if count = X"A" then
-            count <= X"0";
-            tick <= not tick;
-        end if;
-        
-        if RESET_IN = '1' then
+        if rising_edge (INCREMENT_IN) and RESET_IN = '1' then
             count <= X"0";
         end if;
             

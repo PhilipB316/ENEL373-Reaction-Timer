@@ -33,7 +33,7 @@ entity clk_divider_tb is
 end clk_divider_tb;
 
 architecture Behavioral of clk_divider_tb is
-    --  import component and define inputs and outputs
+--  import component and define inputs and outputs
     component clk_divider is
         port(CLK100MHZ_IN : in std_logic;
              UPPERBOUND_IN : in std_logic_vector;

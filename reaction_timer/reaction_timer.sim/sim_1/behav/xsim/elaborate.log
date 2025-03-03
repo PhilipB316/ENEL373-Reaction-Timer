@@ -1,6 +1,6 @@
 Vivado Simulator v2022.2
 Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot seven_seg_decoder_tb_behav xil_defaultlib.seven_seg_decoder_tb -log elaborate.log 
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot counter_9i_plus_tb_behav xil_defaultlib.counter_9i_plus_tb -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -11,6 +11,6 @@ Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
-Compiling architecture behavioral of entity xil_defaultlib.seven_seg_decoder [seven_seg_decoder_default]
-Compiling architecture behavioral of entity xil_defaultlib.seven_seg_decoder_tb
-Built simulation snapshot seven_seg_decoder_tb_behav
+Compiling architecture behavioral of entity xil_defaultlib.counter_9i_plus [counter_9i_plus_default]
+Compiling architecture behavioral of entity xil_defaultlib.counter_9i_plus_tb
+Built simulation snapshot counter_9i_plus_tb_behav
