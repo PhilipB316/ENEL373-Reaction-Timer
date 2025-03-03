@@ -30,7 +30,9 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity main is
     Port ( CLK100MHZ : in STD_LOGIC;
-           LED : out STD_LOGIC_VECTOR (7 downto 0));
+           LED : out STD_LOGIC_VECTOR (7 downto 0);
+           AN : out STD_LOGIC_VECTOR (7 downto 0);
+           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0));
 end main;
 
 architecture Behavioral of main is
@@ -38,6 +40,7 @@ architecture Behavioral of main is
     signal clk_cycles : std_logic_vector  (27 downto 0) := "0010000000000000000000000000";
     signal slowclk : std_logic;
     signal count : std_logic_vector (2 downto 0);
+    signal decimal_point : std_logic := '0';
     
 --  import component and define inputs and outputs
     component clk_divider is
@@ -55,7 +58,12 @@ architecture Behavioral of main is
         port(DEC_IN : in std_logic_vector;
              DEC_OUT : out std_logic_vector);
     end component decoder_3b;
-
+    
+    component seven_seg_decoder is
+        port(BCD_IN : in std_logic_vector;
+             DECIMAL_POINT_IN : in std_logic;
+             SEGMENT_LIGHT_OUT : out std_logic_vector);
+    end component seven_seg_decoder;
 begin
 --  Map IO to hardware
     ff0: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
@@ -64,6 +72,7 @@ begin
     ff1: counter_3b port map(CLK_IN => slowclk,
                              COUNT_OUT => count);
     ff2: decoder_3b port map(DEC_IN => count,
-                             DEC_OUT => LED); 
+                             DEC_OUT => LED);
+    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point, SEGMENT_LIGHT_OUT => SEVEN_SEG, 
 
 end Behavioral;
