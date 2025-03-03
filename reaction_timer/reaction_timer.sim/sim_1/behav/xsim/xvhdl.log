@@ -1,2 +1,8 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/project_1/project_1.srcs/sim_1/new/clk_divider_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'clk_divider_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'clk_divider'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'counter_3b'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'decoder_3b'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/UC Files/2025/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sim_1/new/divider_counter_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'divider_counter_tb'
