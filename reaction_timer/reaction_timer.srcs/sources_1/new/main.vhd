@@ -30,7 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity main is
     Port ( CLK100MHZ : in STD_LOGIC;
-           LED : out STD_LOGIC_VECTOR (4 downto 0) := X"00";
+           LED : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00");
 end main;
@@ -43,7 +43,9 @@ architecture Behavioral of main is
     signal decimal_point : std_logic := '0';
     signal display_value : std_logic_vector (3 downto 0) := X"5";
     signal cycle : std_logic := '0';
-    signal not_inverted_anode: std_logic_vector (7 downto 0) := X"FF";
+    signal not_inverted_anode : std_logic_vector (7 downto 0) := X"FF";
+    signal display_count_en : std_logic := '1';
+    signal display_count_reset : std_logic := '0';
 
     
 --  import component and define inputs and outputs
@@ -89,14 +91,19 @@ begin
 --    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point,
 --                                     SEGMENT_LIGHT_OUT => SEVEN_SEG,
 --                                     BCD_IN => "0010");
-    ff4: counter_9i_plus port map (EN_IN => '1',
-                                   RESET_IN => '0',
+    ff4: counter_9i_plus port map (EN_IN => display_count_en,
+                                   RESET_IN => display_count_reset,
                                    INCREMENT_IN => slowclk,
                                    COUNT_OUT => display_value,
                                    TICK_OUT => cycle);
+                              
+--  Assign variables to hardware
     AN <= not not_inverted_anode;
     LED(3 downto 0) <= display_value;
     LED(4) <= slowclk;
+    LED(5) <= display_count_en;
+    LED(6) <= not display_count_reset;
+    LED(7) <= cycle;
     SEVEN_SEG <= X"00";
 
 end Behavioral;
