@@ -30,17 +30,19 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity main is
     Port ( CLK100MHZ : in STD_LOGIC;
-           LED : out STD_LOGIC_VECTOR (7 downto 0);
-           AN : out STD_LOGIC_VECTOR (7 downto 0);
-           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0));
+           LED : out STD_LOGIC_VECTOR (4 downto 0) := X"00";
+           AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00");
 end main;
 
 architecture Behavioral of main is
 --  Define local variables
-    signal clk_cycles : std_logic_vector  (27 downto 0) := "0010000000000000000000000000";
+    signal clk_cycles : std_logic_vector  (27 downto 0) := "0101111101011110000100000000";
     signal slowclk : std_logic;
-    signal count : std_logic_vector (2 downto 0);
+    signal encoded_segment : std_logic_vector (2 downto 0);
     signal decimal_point : std_logic := '0';
+    signal display_value : std_logic_vector (3 downto 0) := X"0";
+    signal cycle : std_logic := '0';
     
 --  import component and define inputs and outputs
     component clk_divider is
@@ -64,15 +66,33 @@ architecture Behavioral of main is
              DECIMAL_POINT_IN : in std_logic;
              SEGMENT_LIGHT_OUT : out std_logic_vector);
     end component seven_seg_decoder;
+    
+    component counter_9i_plus is
+        port ( EN_IN : in std_logic;
+               RESET_IN : in std_logic;
+               INCREMENT_IN : in std_logic;
+               COUNT_OUT : out std_logic_vector;
+               TICK_OUT : out std_logic);
+    end component counter_9i_plus;
+    
 begin
 --  Map IO to hardware
     ff0: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                               SLOWCLK_OUT => slowclk,
                               UPPERBOUND_IN => clk_cycles);
-    ff1: counter_3b port map(CLK_IN => slowclk,
-                             COUNT_OUT => count);
-    ff2: decoder_3b port map(DEC_IN => count,
-                             DEC_OUT => LED);
-    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point, SEGMENT_LIGHT_OUT => SEVEN_SEG, 
+    ff1: counter_3b port map(CLK_IN => cycle,
+                             COUNT_OUT => encoded_segment);
+    ff2: decoder_3b port map(DEC_IN => encoded_segment,
+                             DEC_OUT => AN);
+    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point,
+                                     SEGMENT_LIGHT_OUT => SEVEN_SEG,
+                                     BCD_IN => display_value);
+    ff4: counter_9i_plus port map (EN_IN => '1',
+                                   RESET_IN => '0',
+                                   INCREMENT_IN => slowclk,
+                                   COUNT_OUT => display_value,
+                                   TICK_OUT => cycle);
+    LED(3 downto 0) <= display_value;
+    LED(4) <= slowclk;
 
 end Behavioral;
