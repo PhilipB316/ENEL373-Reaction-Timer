@@ -56,7 +56,7 @@ begin
                 tick <= not tick;
             end if;
             
-            -- if RESET then set count to 0
+--          if RESET then set count to 0
             if (RESET_IN = '1') then
                 count <= X"0";
             end if;

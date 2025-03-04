@@ -11,8 +11,7 @@ begin
     begin
         case (BCD_IN) is
         
-        -- DO NOT NOT NOT NOT NOT CHANGE THE VALUES ON THE RIGHT HAND SIDE UNLESS YOU HAVE A COPY OF THESE SOMEWHERE!!
-        
+--          DO NOT NOT NOT NOT NOT CHANGE THE VALUES ON THE RIGHT HAND SIDE UNLESS YOU HAVE A COPY OF THESE SOMEWHERE!!  
             when "0000" => SEGMENT_LIGHT_OUT(0 to 7) <= "11000000"; -- 0
             when "0001" => SEGMENT_LIGHT_OUT(0 to 7) <= "11111001"; -- 1
             when "0010" => SEGMENT_LIGHT_OUT(0 to 7) <= "10100100"; -- 2
@@ -27,8 +26,8 @@ begin
             when "1011" => SEGMENT_LIGHT_OUT(0 to 7) <= "10100000"; -- max
             when "1100" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000001"; -- average
             when "1101" => SEGMENT_LIGHT_OUT(0 to 7) <= "10010000"; -- min
-            --when "1110" => SEGMENT_LIGHT_OUT(0 to 6) <=
-            --when "1111" => SEGMENT_LIGHT_OUT(0 to 6) <=
+--          when "1110" => SEGMENT_LIGHT_OUT(0 to 6) <= 
+--          when "1111" => SEGMENT_LIGHT_OUT(0 to 6) <=
         when others => NULL;
     end case;
     end process;

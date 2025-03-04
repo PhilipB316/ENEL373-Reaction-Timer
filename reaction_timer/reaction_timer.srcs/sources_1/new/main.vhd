@@ -104,7 +104,6 @@ begin
                                    TICK_OUT => cycle);
                               
 --  Assign variables to hardware
-
     AN <= not not_inverted_anode;
     LED(3 downto 0) <= display_value;
     LED(4) <= slowclk;
