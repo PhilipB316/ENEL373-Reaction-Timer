@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 2
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -89,6 +91,7 @@ read_vhdl -library xil_defaultlib {
   /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd
   /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd
   /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd
+  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd
   /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd
 }
 OPTRACE "Adding files" END { }

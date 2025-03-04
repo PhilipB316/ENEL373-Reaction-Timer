@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
-| Date         : Tue Mar  4 21:25:47 2025
+| Date         : Tue Mar  4 22:36:53 2025
 | Host         : Laptopylces running 64-bit Ubuntu 24.04.2 LTS
 | Command      : report_methodology -file main_methodology_drc_routed.rpt -pb main_methodology_drc_routed.pb -rpx main_methodology_drc_routed.rpx
 | Design       : main
@@ -23,13 +23,15 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 16
-+-----------+------------------+-------------------------------+------------+
-| Rule      | Severity         | Description                   | Violations |
-+-----------+------------------+-------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 8          |
-| TIMING-18 | Warning          | Missing input or output delay | 8          |
-+-----------+------------------+-------------------------------+------------+
+             Violations found: 23
++-----------+------------------+--------------------------------+------------+
+| Rule      | Severity         | Description                    | Violations |
++-----------+------------------+--------------------------------+------------+
+| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 8          |
+| TIMING-18 | Warning          | Missing input or output delay  | 8          |
+| TIMING-20 | Warning          | Non-clocked latch              | 6          |
+| LATCH-1   | Advisory         | Existing latches in the design | 1          |
++-----------+------------------+--------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -111,6 +113,41 @@ Related violations: <none>
 TIMING-18#8 Warning
 Missing input or output delay  
 An output delay is missing on LED[7] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch ff3/SEGMENT_LIGHT_OUT_reg[1] cannot be properly analyzed as its control pin ff3/SEGMENT_LIGHT_OUT_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch ff3/SEGMENT_LIGHT_OUT_reg[2] cannot be properly analyzed as its control pin ff3/SEGMENT_LIGHT_OUT_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch ff3/SEGMENT_LIGHT_OUT_reg[3] cannot be properly analyzed as its control pin ff3/SEGMENT_LIGHT_OUT_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch ff3/SEGMENT_LIGHT_OUT_reg[4] cannot be properly analyzed as its control pin ff3/SEGMENT_LIGHT_OUT_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch ff3/SEGMENT_LIGHT_OUT_reg[5] cannot be properly analyzed as its control pin ff3/SEGMENT_LIGHT_OUT_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch ff3/SEGMENT_LIGHT_OUT_reg[6] cannot be properly analyzed as its control pin ff3/SEGMENT_LIGHT_OUT_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 6 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

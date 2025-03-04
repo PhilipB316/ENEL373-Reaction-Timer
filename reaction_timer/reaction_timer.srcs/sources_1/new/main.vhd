@@ -32,7 +32,8 @@ entity main is
     Port ( CLK100MHZ : in STD_LOGIC;
            LED : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00");
+           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+           SW : in STD_LOGIC_VECTOR (7 downto 0));
 end main;
 
 architecture Behavioral of main is
@@ -46,6 +47,7 @@ architecture Behavioral of main is
     signal not_inverted_anode : std_logic_vector (7 downto 0) := X"FF";
     signal display_count_en : std_logic := '1';
     signal display_count_reset : std_logic := '0';
+    signal temp : std_logic_vector (7 downto 0);
 
     
 --  import component and define inputs and outputs
@@ -84,13 +86,17 @@ begin
     ff0: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                               SLOWCLK_OUT => slowclk,
                               UPPERBOUND_IN => clk_cycles);
+                              
     ff1: counter_3b port map(CLK_IN => cycle,
                              COUNT_OUT => encoded_segment);
+                             
     ff2: decoder_3b port map(DEC_IN => encoded_segment,
                              DEC_OUT => not_inverted_anode);
---    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point,
---                                     SEGMENT_LIGHT_OUT => SEVEN_SEG,
---                                     BCD_IN => "0010");
+                             
+    ff3: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point,
+                                     SEGMENT_LIGHT_OUT => temp,
+                                     BCD_IN => display_value);
+                                     
     ff4: counter_9i_plus port map (EN_IN => display_count_en,
                                    RESET_IN => display_count_reset,
                                    INCREMENT_IN => slowclk,
@@ -98,12 +104,10 @@ begin
                                    TICK_OUT => cycle);
                               
 --  Assign variables to hardware
+
     AN <= not not_inverted_anode;
     LED(3 downto 0) <= display_value;
     LED(4) <= slowclk;
-    LED(5) <= display_count_en;
-    LED(6) <= not display_count_reset;
-    LED(7) <= cycle;
-    SEVEN_SEG <= X"00";
+    SEVEN_SEG <= temp;
 
 end Behavioral;
