@@ -1,13 +1,13 @@
 #-----------------------------------------------------------
 # Vivado v2022.2 (64-bit)
-# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Tue Mar  4 12:07:33 2025
-# Process ID: 3980
-# Current directory: C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/pain-and-sadness/reaction_timer/reaction_timer.runs/impl_1
-# Command line: vivado.exe -log counter_test.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source counter_test.tcl -notrace
-# Log file: C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/pain-and-sadness/reaction_timer/reaction_timer.runs/impl_1/counter_test.vdi
-# Journal file: C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/pain-and-sadness/reaction_timer/reaction_timer.runs/impl_1\vivado.jou
-# Running On: Boston_Laptop, OS: Windows, CPU Frequency: 2611 MHz, CPU Physical cores: 10, Host memory: 16876 MB
+# Start of session at: Tue Mar  4 21:25:08 2025
+# Process ID: 50326
+# Current directory: /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.runs/impl_1
+# Command line: vivado -log main.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source main.tcl -notrace
+# Log file: /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.runs/impl_1/main.vdi
+# Journal file: /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.runs/impl_1/vivado.jou
+# Running On: Laptopylces, OS: Linux, CPU Frequency: 3800.038 MHz, CPU Physical cores: 4, Host memory: 16396 MB
 #-----------------------------------------------------------
-source counter_test.tcl -notrace
+source main.tcl -notrace

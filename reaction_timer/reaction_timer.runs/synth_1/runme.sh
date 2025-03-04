@@ -6,14 +6,10 @@
 # Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 # 
 
-echo "This script was generated under a different operating system."
-echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executing this script"
-exit
-
 if [ -z "$PATH" ]; then
-  PATH=C:/Xilinx/Vivado/2022.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2022.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2022.2/bin
+  PATH=/opt/vivado/Vivado/2022.2/ids_lite/ISE/bin/lin64:/opt/vivado/Vivado/2022.2/bin
 else
-  PATH=C:/Xilinx/Vivado/2022.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2022.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2022.2/bin:$PATH
+  PATH=/opt/vivado/Vivado/2022.2/ids_lite/ISE/bin/lin64:/opt/vivado/Vivado/2022.2/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/pain-and-sadness/reaction_timer/reaction_timer.runs/synth_1'
+HD_PWD='/media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -40,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log counter_test.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source counter_test.tcl
+EAStep vivado -log main.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
