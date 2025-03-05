@@ -45,8 +45,9 @@ architecture Behavioral of milestone_1 is
     signal countdown_clk : STD_LOGIC := '0';
     signal countdown_divider : STD_LOGIC_VECTOR := X"5F5E100";
     signal timer_clk : STD_LOGIC := '0';
-    signal timer_divider : STD_LOGIC_VECTOR := X"00186A0";
-    signal countdown_led : natural := 2;
+    signal timer_divider : STD_LOGIC_VECTOR (27 downto 0) := X"00186A0";
+    signal segment_select : STD_LOGIC_VECTOR (7 downto 0) := X"00";
+    signal number_output : STD_LOGIC_VECTOR (3 downto 0) := X"0";
     
     component clk_divider is
         port(CLK100MHZ_IN : in std_logic;
@@ -66,6 +67,15 @@ architecture Behavioral of milestone_1 is
              SEGMENT_LIGHT_OUT : out std_logic_vector);
     end component seven_seg_decoder;
     
+    component millisecond_timer is
+        port(EN_TIMER_IN : in STD_LOGIC;
+             EN_OUTPUT_IN : in STD_LOGIC;
+             RESET_IN : STD_LOGIC;
+             SLOWCLK_IN : in STD_LOGIC;
+             AN_SELECT_IN : in STD_LOGIC_VECTOR (7 downto 0);
+             NUMBER_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+    end component millisecond_timer;
+    
 begin
     ff0: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                               SLOWCLK_OUT => countdown_clk,
@@ -79,6 +89,13 @@ begin
                                  LED_OUT => LED (0 to 2),
                                  SLOWCLK_IN => countdown_clk);
     
+    ff3: millisecond_timer port map(EN_TIMER_IN => current_state(2),
+                                    EN_OUTPUT_IN => current_state(3),
+                                    RESET_IN => current_state(1), -- MUST BE ENABLED TO RESET FIX THIS
+                                    SLOWCLK_IN => timer_clk,
+                                    AN_SELECT_IN => segment_select,
+                                    NUMBER_OUT => number_output);
+    
     process
     begin
 --    May have sync issues
@@ -87,4 +104,6 @@ begin
             current_state <= X"1";
         end if;
     end process;
+    
+    
 end Behavioral;

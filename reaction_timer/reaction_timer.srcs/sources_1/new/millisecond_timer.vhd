@@ -59,6 +59,7 @@ begin
             tick_over(0) <= SLOWCLK_IN;
         elsif (EN_OUTPUT_IN = '1') then
             enable_counters <= AN_SELECT_IN;
+            tick_over(0) <= '0';
         else
             enable_counters <= X"00";
         end if;
