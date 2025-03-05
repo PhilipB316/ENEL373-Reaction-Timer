@@ -41,7 +41,7 @@ architecture Behavioral of counter_decade is
     signal tick : std_logic := '0';
 begin
 
-    process (INCREMENT_IN)
+    process (INCREMENT_IN, RESET_IN)
     begin
     
 --      If clock is on a rising edge
@@ -57,12 +57,7 @@ begin
                     tick <= not tick;
                 end if;
             end if;
-            
---          if RESET then set count to 0
-            if (RESET_IN = '1') then
-                count <= X"0";
-            end if;
-            
+                
         end if;
         
 --      Put tick back to zero on the falling edge
@@ -71,7 +66,12 @@ begin
             if tick = '1' then
                 tick <= not tick;
             end if;
-     
+ 
+        end if;
+        
+--      if RESET then set count to 0
+        if (RESET_IN = '1') then
+            count <= X"0";
         end if;
 
     end process;
