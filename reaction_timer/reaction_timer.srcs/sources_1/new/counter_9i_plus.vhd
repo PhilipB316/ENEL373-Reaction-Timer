@@ -44,16 +44,18 @@ begin
     process (INCREMENT_IN)
     begin
     
---      If clock is on a rising edge and enable is on
-        if rising_edge (INCREMENT_IN) and EN_IN = '1' then
+--      If clock is on a rising edge
+        if rising_edge (INCREMENT_IN) then
         
---          Increment count on clock signal
-            count <= std_logic_vector(unsigned(count) + 1);
+            if EN_IN = '1' then
+--              Increment count on clock signal
+                count <= std_logic_vector(unsigned(count) + 1);
             
---          If count reaches max value reset to 0 AND toggle tick
-            if count = X"9" then
-                count <= X"0";
-                tick <= not tick;
+--              If count reaches max value reset to 0 AND toggle tick
+                if count = X"9" then
+                    count <= X"0";
+                    tick <= not tick;
+                end if;
             end if;
             
 --          if RESET then set count to 0
@@ -73,5 +75,6 @@ begin
         TICK_OUT <= tick;
     end if;
     end process;
+
 end Behavioral;
 
