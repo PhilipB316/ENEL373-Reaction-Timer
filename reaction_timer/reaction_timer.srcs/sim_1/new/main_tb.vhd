@@ -71,13 +71,13 @@ architecture Behavioral of main_tb is
              SEGMENT_LIGHT_OUT : out std_logic_vector);
     end component seven_seg_decoder;
     
-    component counter_9i_plus is
+    component counter_decade is
         port ( EN_IN : in std_logic;
                RESET_IN : in std_logic;
                INCREMENT_IN : in std_logic;
                COUNT_OUT : out std_logic_vector;
                TICK_OUT : out std_logic);
-    end component counter_9i_plus;
+    end component counter_decade;
     
 begin
 --  Map IO to hardware
@@ -91,7 +91,7 @@ begin
     uut4: seven_seg_decoder port map (DECIMAL_POINT_IN => decimal_point,
                                      SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                      BCD_IN => display_value);
-    uut5: counter_9i_plus port map (EN_IN => '1',
+    uut5: counter_decade port map (EN_IN => '1',
                                    RESET_IN => '0',
                                    INCREMENT_IN => slowclk,
                                    COUNT_OUT => display_value,

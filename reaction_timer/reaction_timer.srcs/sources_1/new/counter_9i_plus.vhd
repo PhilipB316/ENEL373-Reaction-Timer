@@ -28,15 +28,15 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity counter_9i_plus is
+entity counter_decade is
     Port ( EN_IN : in STD_LOGIC;
            RESET_IN : in STD_LOGIC;
            INCREMENT_IN : in STD_LOGIC;
            COUNT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
            TICK_OUT : out STD_LOGIC);
-end counter_9i_plus;
+end counter_decade;
 
-architecture Behavioral of counter_9i_plus is
+architecture Behavioral of counter_decade is
     signal count : std_logic_vector (3 downto 0) := (others => '0');
     signal tick : std_logic := '0';
 begin

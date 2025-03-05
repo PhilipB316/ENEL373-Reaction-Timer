@@ -28,19 +28,19 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity counter_9i_plus_tb is
+entity counter_decade_tb is
 --  Port ( );
-end counter_9i_plus_tb;
+end counter_decade_tb;
 
-architecture Behavioral of counter_9i_plus_tb is
+architecture Behavioral of counter_decade_tb is
 --  import component and define inputs and outputs
-    component counter_9i_plus is
+    component counter_decade is
         port ( EN_IN : in STD_LOGIC;
                RESET_IN : in STD_LOGIC;
                INCREMENT_IN : in STD_LOGIC;
                COUNT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
                TICK_OUT : out STD_LOGIC);
-    end component counter_9i_plus;
+    end component counter_decade;
     
     signal test_clk : std_logic := '0';
     signal test_reset: std_logic := '0';
@@ -50,7 +50,7 @@ architecture Behavioral of counter_9i_plus_tb is
     
 begin
     
-    uut: counter_9i_plus port map(INCREMENT_IN => test_clk,
+    uut: counter_decade port map(INCREMENT_IN => test_clk,
                                   RESET_IN => test_reset,
                                   EN_IN => test_enable,
                                   COUNT_OUT => test_count,

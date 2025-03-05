@@ -73,13 +73,13 @@ architecture Behavioral of main is
              SEGMENT_LIGHT_OUT : out std_logic_vector);
     end component seven_seg_decoder;
     
-    component counter_9i_plus is
+    component counter_decade is
         port ( EN_IN : in std_logic;
                RESET_IN : in std_logic;
                INCREMENT_IN : in std_logic;
                COUNT_OUT : out std_logic_vector;
                TICK_OUT : out std_logic);
-    end component counter_9i_plus;
+    end component counter_decade;
     
 begin
 --  Map IO to hardware
@@ -97,7 +97,7 @@ begin
                                      SEGMENT_LIGHT_OUT => temp,
                                      BCD_IN => display_value);
                                      
-    ff4: counter_9i_plus port map (EN_IN => display_count_en,
+    ff4: counter_decade port map (EN_IN => display_count_en,
                                    RESET_IN => display_count_reset,
                                    INCREMENT_IN => slowclk,
                                    COUNT_OUT => display_value,
