@@ -33,11 +33,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity millisecond_timer is
     Port ( EN_TIMER_IN : in STD_LOGIC;
-           EN_OUTPUT_IN : in STD_LOGIC;
            RESET_IN : STD_LOGIC;
            SLOWCLK_IN : in STD_LOGIC;
            AN_SELECT_IN : in STD_LOGIC_VECTOR (7 downto 0);
-           NUMBER_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+           NUMBER_ZERO_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           NUMBER_ONE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           NUMBER_TWO_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           NUMBER_THREE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           NUMBER_FOUR_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           NUMBER_FIVE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           NUMBER_SIX_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           NUMBER_SEVEN_OUT : out STD_LOGIC_VECTOR (3 downto 0));
 end millisecond_timer;
 
 architecture Behavioral of millisecond_timer is
@@ -57,60 +63,57 @@ begin
         if (EN_TIMER_IN = '1') then
             enable_counters <= X"FF";
             tick_over(0) <= SLOWCLK_IN;
-        elsif (EN_OUTPUT_IN = '1') then
-            enable_counters <= AN_SELECT_IN;
-            tick_over(0) <= '0';
         else
             enable_counters <= X"00";
         end if;
     end process;
 
-    ff0: counter_9i_plus port map (EN_IN => enable_counters(0),
+    ff0: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(0),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_ZERO_OUT,
                                    TICK_OUT => tick_over(1));
                                    
-    ff1: counter_9i_plus port map (EN_IN => enable_counters(1),
+    ff1: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(1),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_ONE_OUT,
                                    TICK_OUT => tick_over(2));
     
-    ff2: counter_9i_plus port map (EN_IN => enable_counters(2),
+    ff2: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(2),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_TWO_OUT,
                                    TICK_OUT => tick_over(3));
                                    
-    ff3: counter_9i_plus port map (EN_IN => enable_counters(3),
+    ff3: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(3),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_THREE_OUT,
                                    TICK_OUT => tick_over(4));
     
-    ff4: counter_9i_plus port map (EN_IN => enable_counters(4),
+    ff4: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(4),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_FOUR_OUT,
                                    TICK_OUT => tick_over(5));
                                    
-    ff5: counter_9i_plus port map (EN_IN => enable_counters(5),
+    ff5: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(5),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_FIVE_OUT,
                                    TICK_OUT => tick_over(6));
     
-    ff6: counter_9i_plus port map (EN_IN => enable_counters(6),
+    ff6: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(6),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_SIX_OUT,
                                    TICK_OUT => tick_over(7));
                                    
-    ff7: counter_9i_plus port map (EN_IN => enable_counters(7),
+    ff7: counter_9i_plus port map (EN_IN => EN_TIMER_IN,
                                    RESET_IN => RESET_IN,
                                    INCREMENT_IN => tick_over(7),
-                                   COUNT_OUT => NUMBER_OUT,
+                                   COUNT_OUT => NUMBER_SEVEN_OUT,
                                    TICK_OUT => tick_over(8));
 
 end Behavioral;
