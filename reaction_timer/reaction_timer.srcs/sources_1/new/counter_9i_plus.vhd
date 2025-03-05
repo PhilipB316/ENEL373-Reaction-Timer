@@ -64,17 +64,20 @@ begin
             end if;
             
         end if;
+        
+--      Put tick back to zero on the falling edge
+        if falling_edge (INCREMENT_IN) then
+        
+            if tick = '1' then
+                tick <= not tick;
+            end if;
+     
+        end if;
 
     end process;
 
---  Move values to outputs
-    process
-    begin
-    if (EN_IN = '1') then
-        COUNT_OUT <= count;
-        TICK_OUT <= tick;
-    end if;
-    end process;
+    COUNT_OUT <= count;
+    TICK_OUT <= tick;
 
 end Behavioral;
 

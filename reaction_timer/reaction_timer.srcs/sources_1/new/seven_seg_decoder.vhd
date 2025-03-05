@@ -28,8 +28,8 @@ begin
             when "1101" => SEGMENT_LIGHT_OUT(0 to 7) <= "10010000"; -- min
 --          when "1110" => SEGMENT_LIGHT_OUT(0 to 6) <= 
 --          when "1111" => SEGMENT_LIGHT_OUT(0 to 6) <=
-        when others => NULL;
-    end case;
+            when others => NULL;
+        end case;
     end process;
     SEGMENT_LIGHT_OUT(7) <= DECIMAL_POINT_IN;
 end Behavioral;
