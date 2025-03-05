@@ -31,20 +31,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity multiplexer_8_1_8ch is
-    Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (7 downto 0);
-           MUX_IN_1 : in STD_LOGIC_VECTOR (7 downto 0);
-           MUX_IN_2 : in STD_LOGIC_VECTOR (7 downto 0);
-           MUX_IN_3 : in STD_LOGIC_VECTOR (7 downto 0);
-           MUX_IN_4 : in STD_LOGIC_VECTOR (7 downto 0);
-           MUX_IN_5 : in STD_LOGIC_VECTOR (7 downto 0);
-           MUX_IN_6 : in STD_LOGIC_VECTOR (7 downto 0);
-           MUX_IN_7 : in STD_LOGIC_VECTOR (7 downto 0);
+entity multiplexer_8_1_3b is
+    Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (3 downto 0);
+           MUX_IN_1 : in STD_LOGIC_VECTOR (3 downto 0);
+           MUX_IN_2 : in STD_LOGIC_VECTOR (3 downto 0);
+           MUX_IN_3 : in STD_LOGIC_VECTOR (3 downto 0);
+           MUX_IN_4 : in STD_LOGIC_VECTOR (3 downto 0);
+           MUX_IN_5 : in STD_LOGIC_VECTOR (3 downto 0);
+           MUX_IN_6 : in STD_LOGIC_VECTOR (3 downto 0);
+           MUX_IN_7 : in STD_LOGIC_VECTOR (3 downto 0);
            SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-           MUX_OUT : out STD_LOGIC_VECTOR (7 downto 0));
-end multiplexer_8_1_8ch;
+           MUX_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+end multiplexer_8_1_3b;
 
-architecture Behavioral of multiplexer_8_1_8ch is
+architecture Behavioral of multiplexer_8_1_3b is
 
 begin
     process (SELECT_IN)
