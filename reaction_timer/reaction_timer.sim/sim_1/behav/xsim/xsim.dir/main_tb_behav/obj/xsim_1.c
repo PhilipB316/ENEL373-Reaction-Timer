@@ -71,20 +71,18 @@ IKI_DLLESPEC extern void execute_35(char*, char *);
 IKI_DLLESPEC extern void execute_37(char*, char *);
 IKI_DLLESPEC extern void execute_38(char*, char *);
 IKI_DLLESPEC extern void execute_40(char*, char *);
-IKI_DLLESPEC extern void execute_41(char*, char *);
-IKI_DLLESPEC extern void execute_42(char*, char *);
 IKI_DLLESPEC extern void transaction_0(char*, char*, unsigned, unsigned, unsigned);
 IKI_DLLESPEC extern void vhdl_transfunc_eventcallback(char*, char*, unsigned, unsigned, unsigned, char *);
 IKI_DLLESPEC extern void transaction_4(char*, char*, unsigned, unsigned, unsigned);
 IKI_DLLESPEC extern void transaction_8(char*, char*, unsigned, unsigned, unsigned);
-funcp funcTab[23] = {(funcp)execute_43, (funcp)execute_44, (funcp)execute_22, (funcp)execute_23, (funcp)execute_25, (funcp)execute_26, (funcp)execute_28, (funcp)execute_29, (funcp)execute_30, (funcp)execute_31, (funcp)execute_32, (funcp)execute_33, (funcp)execute_34, (funcp)execute_35, (funcp)execute_37, (funcp)execute_38, (funcp)execute_40, (funcp)execute_41, (funcp)execute_42, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback, (funcp)transaction_4, (funcp)transaction_8};
-const int NumRelocateId= 23;
+funcp funcTab[21] = {(funcp)execute_43, (funcp)execute_44, (funcp)execute_22, (funcp)execute_23, (funcp)execute_25, (funcp)execute_26, (funcp)execute_28, (funcp)execute_29, (funcp)execute_30, (funcp)execute_31, (funcp)execute_32, (funcp)execute_33, (funcp)execute_34, (funcp)execute_35, (funcp)execute_37, (funcp)execute_38, (funcp)execute_40, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback, (funcp)transaction_4, (funcp)transaction_8};
+const int NumRelocateId= 21;
 
 void relocate(char *dp)
 {
-	iki_relocate(dp, "xsim.dir/main_tb_behav/xsim.reloc",  (void **)funcTab, 23);
-	iki_vhdl_file_variable_register(dp + 5992);
-	iki_vhdl_file_variable_register(dp + 6048);
+	iki_relocate(dp, "xsim.dir/main_tb_behav/xsim.reloc",  (void **)funcTab, 21);
+	iki_vhdl_file_variable_register(dp + 6248);
+	iki_vhdl_file_variable_register(dp + 6304);
 
 
 	/*Populate the transaction function pointer field in the whole net structure */

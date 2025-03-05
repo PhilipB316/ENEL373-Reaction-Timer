@@ -66,8 +66,12 @@ begin
     end process;
 
 --  Move values to outputs
-    TICK_OUT <= tick;
-    COUNT_OUT <= count;
-
+    process
+    begin
+    if (EN_IN = '1') then
+        COUNT_OUT <= count;
+        TICK_OUT <= tick;
+    end if;
+    end process;
 end Behavioral;
 
