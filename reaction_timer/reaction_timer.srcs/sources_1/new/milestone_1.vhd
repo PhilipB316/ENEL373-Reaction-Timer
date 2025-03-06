@@ -21,15 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity milestone_1 is
     Port ( CLK100MHZ : in STD_LOGIC;
@@ -40,16 +32,25 @@ entity milestone_1 is
 end milestone_1;
 
 architecture Behavioral of milestone_1 is
-    signal current_state : STD_LOGIC_VECTOR (3 downto 0) := X"0";
-    signal timer_clk : STD_LOGIC := '0';
-    signal timer_divider : STD_LOGIC_VECTOR (27 downto 0) := X"00186A0";
-    signal segment_select : STD_LOGIC_VECTOR (2 downto 0) := "000";
-    signal number_output : STD_LOGIC_VECTOR (3 downto 0) := X"0";
+    signal current_state : std_logic_vector (3 downto 0) := X"0";
+    signal timer_clk : std_logic := '0';
+    signal timer_divider : std_logic_vector (27 downto 0) := X"00186A0";
+    signal segment_select : std_logic_vector (2 downto 0) := "000";
+    signal timer_out : std_logic_vector (3 downto 0) := X"0";
+    signal display_in : std_logic_vector (3 downto 0) := X"0";
+    signal disp_select : std_logic_vector (2 downto 0) := "000";
+    signal clear : std_logic_vector (3 downto 0) := X"0";
+    signal error : std_logic_vector (3 downto 0) := X"0";
+    signal average_time : std_logic_vector (3 downto 0) := X"0";
+    signal max_time : std_logic_vector (3 downto 0) := X"0";
+    signal min_time : std_logic_vector (3 downto 0) := X"0";
+    signal dots : std_logic_vector (3 downto 0) := X"0";
+    signal other : std_logic_vector (3 downto 0) := X"0";
     
     component clk_divider is
-        port(CLK100MHZ_IN : in std_logic;
-             UPPERBOUND_IN : in std_logic_vector;
-             SLOWCLK_OUT : out std_logic); 
+        port(CLK100MHZ_IN : in STD_LOGIC;
+             UPPERBOUND_IN : in STD_LOGIC_VECTOR;
+             SLOWCLK_OUT : out STD_LOGIC); 
     end component clk_divider;
     
     component timer_8_num_selectable is
@@ -59,6 +60,19 @@ architecture Behavioral of milestone_1 is
             SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
             INT_OUT : out STD_LOGIC_VECTOR (3 downto 0));
     end component;
+    
+    component multiplexer_8_1_4b is
+        Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN_1 : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN_2 : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN_3 : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN_4 : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN_5 : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN_6 : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN_7 : in STD_LOGIC_VECTOR (3 downto 0);
+               SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               MUX_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+    end component multiplexer_8_1_4b;
     
     component segment_display is
         Port(NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0); 
@@ -81,14 +95,26 @@ begin
                                          EN_IN => '1',
                                          RESET_IN => '0',
                                          SELECT_IN => segment_select,
-                                         INT_OUT => number_output);
+                                         INT_OUT => timer_out);
+                                        
+    ff2: multiplexer_8_1_4b port map (MUX_IN_0 => timer_out,
+                                      MUX_IN_1 => clear,
+                                      MUX_IN_2 => error,
+                                      MUX_IN_3 => average_time,
+                                      MUX_IN_4 => max_time,
+                                      MUX_IN_5 => min_time,
+                                      MUX_IN_6 => dots,
+                                      MUX_IN_7 => other,
+                                      SELECT_IN => disp_select,
+                                      MUX_OUT => display_in);
+                                      
+    ff3: counter_3b port map(CLK_IN => timer_clk,
+                             COUNT_OUT => segment_select);
                                          
-    ff2: segment_display port map(NUMBER_IN => number_output,
+    ff4: segment_display port map(NUMBER_IN => display_in,
                                   MUX_IN => segment_select,
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
                             
-    ff3: counter_3b port map(CLK_IN => timer_clk,
-                             COUNT_OUT => segment_select);
     
 end Behavioral;

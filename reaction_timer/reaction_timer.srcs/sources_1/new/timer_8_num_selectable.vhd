@@ -114,15 +114,15 @@ begin
                                   COUNT_OUT => mux_7,
                                   TICK_OUT => tick(7));
 
-    ff8: multiplexer_8_1_4b port map ( MUX_IN_0 => mux_0,
-                                       MUX_IN_1 => mux_1,
-                                       MUX_IN_2 => mux_2,
-                                       MUX_IN_3 => mux_3,
-                                       MUX_IN_4 => mux_4,
-                                       MUX_IN_5 => mux_5,
-                                       MUX_IN_6 => mux_6,
-                                       MUX_IN_7 => mux_7,
-                                       SELECT_IN => SELECT_IN,
-                                       MUX_OUT => INT_OUT);
+    ff8: multiplexer_8_1_4b port map (MUX_IN_0 => mux_0,
+                                      MUX_IN_1 => mux_1,
+                                      MUX_IN_2 => mux_2,
+                                      MUX_IN_3 => mux_3,
+                                      MUX_IN_4 => mux_4,
+                                      MUX_IN_5 => mux_5,
+                                      MUX_IN_6 => mux_6,
+                                      MUX_IN_7 => mux_7,
+                                      SELECT_IN => SELECT_IN,
+                                      MUX_OUT => INT_OUT);
     
 end Behavioral;
