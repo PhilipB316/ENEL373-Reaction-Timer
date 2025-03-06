@@ -66,6 +66,12 @@ architecture Behavioral of milestone_1 is
              SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
              ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
+    
+    component counter_3b is
+        Port(CLK_IN : in STD_LOGIC;
+             COUNT_OUT : out STD_LOGIC_VECTOR (2 downto 0));
+    end component;
+    
 begin    
     ff0: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                               SLOWCLK_OUT => timer_clk,
@@ -81,15 +87,8 @@ begin
                                   MUX_IN => segment_select,
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
+                            
+    ff3: counter_3b port map(CLK_IN => timer_clk,
+                             COUNT_OUT => segment_select);
     
-    process(timer_clk)
-    begin
-        if (timer_clk'event and timer_clk='1') then
-            if (segment_select = "111") then
-                segment_select <= "000";
-            else
-                segment_select <= std_logic_vector(unsigned(segment_select) + 1);
-            end if;
-        end if;
-    end process;
 end Behavioral;
