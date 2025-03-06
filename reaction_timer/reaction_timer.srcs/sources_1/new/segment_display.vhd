@@ -57,7 +57,7 @@ begin
                              DEC_OUT => anode);
     
     ff1: seven_seg_decoder port map(BCD_IN => NUMBER_IN,
-                                    DECIMAL_POINT_IN => '0',
+                                    DECIMAL_POINT_IN => '1',
                                     SEGMENT_LIGHT_OUT => SEGMENT_LIGHT_OUT);
     ANODE_OUT <= not anode;
 

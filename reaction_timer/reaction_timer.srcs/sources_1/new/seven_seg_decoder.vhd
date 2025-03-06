@@ -31,5 +31,5 @@ begin
             when others => NULL;
         end case;
     end process;
-    SEGMENT_LIGHT_OUT(7) <= DECIMAL_POINT_IN;
+    SEGMENT_LIGHT_OUT(0) <= DECIMAL_POINT_IN;
 end Behavioral;
