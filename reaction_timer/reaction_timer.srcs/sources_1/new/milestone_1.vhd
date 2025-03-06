@@ -32,10 +32,14 @@ entity milestone_1 is
 end milestone_1;
 
 architecture Behavioral of milestone_1 is
+    signal state : std_logic_vector (3 downto 0) := X"2";
+    signal triggers : std_logic_vector (1 downto 0);
     signal current_state : std_logic_vector (3 downto 0) := X"0";
     signal timer_clk : std_logic := '0';
     signal timer_divider : std_logic_vector (27 downto 0) := X"00186A0";
     signal segment_select : std_logic_vector (2 downto 0) := "000";
+    signal count_en : std_logic := '0';
+    signal count_rset : std_logic := '1';
     signal timer_out : std_logic_vector (3 downto 0) := X"0";
     signal display_in : std_logic_vector (3 downto 0) := X"0";
     signal disp_select : std_logic_vector (2 downto 0) := "000";
@@ -46,6 +50,11 @@ architecture Behavioral of milestone_1 is
     signal min_time : std_logic_vector (3 downto 0) := X"0";
     signal dots : std_logic_vector (3 downto 0) := X"0";
     signal other : std_logic_vector (3 downto 0) := X"0";
+    
+    component fsm is
+        port(STATE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+             TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0));
+    end component fsm;
     
     component clk_divider is
         port(CLK100MHZ_IN : in STD_LOGIC;
@@ -87,17 +96,21 @@ architecture Behavioral of milestone_1 is
     end component;
     
 begin    
-    ff0: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+    
+    ff0: fsm port map(STATE_OUT => state,
+                      TRIGGERS_IN => triggers);
+    
+    ff1: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                               SLOWCLK_OUT => timer_clk,
                               UPPERBOUND_IN => timer_divider);
     
-    ff1: timer_8_num_selectable port map(CLK1000HZ_IN => timer_clk,
-                                         EN_IN => '1',
-                                         RESET_IN => '0',
+    ff2: timer_8_num_selectable port map(CLK1000HZ_IN => timer_clk,
+                                         EN_IN => count_en,
+                                         RESET_IN => count_rset,
                                          SELECT_IN => segment_select,
                                          INT_OUT => timer_out);
                                         
-    ff2: multiplexer_8_1_4b port map (MUX_IN_0 => timer_out,
+    ff3: multiplexer_8_1_4b port map (MUX_IN_0 => timer_out,
                                       MUX_IN_1 => clear,
                                       MUX_IN_2 => error,
                                       MUX_IN_3 => average_time,
@@ -108,13 +121,37 @@ begin
                                       SELECT_IN => disp_select,
                                       MUX_OUT => display_in);
                                       
-    ff3: counter_3b port map(CLK_IN => timer_clk,
+    ff4: counter_3b port map(CLK_IN => timer_clk,
                              COUNT_OUT => segment_select);
                                          
-    ff4: segment_display port map(NUMBER_IN => display_in,
+    ff5: segment_display port map(NUMBER_IN => display_in,
                                   MUX_IN => segment_select,
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
-                            
+
+    process(state)
+    begin
+--      Counting
+        if state = X"0" then
+            count_en <= '1';
+            count_rset <= '0';
+            disp_select <= "000";
+        end if;
+       
+--      Display time 
+        if state = X"1" then
+            count_en <= '0';
+            count_rset <= '0';
+            disp_select <= "000";
+        end if;
+        
+--      Dots
+        if state = X"2" then
+            count_en <= '0';
+            count_rset <= '1';
+            disp_select <= "001";
+        end if;
+        
+    end process;                      
     
 end Behavioral;

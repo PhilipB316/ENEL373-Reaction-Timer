@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/milestone_1.tcl"
+  variable script "C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/milestone_1.tcl"
   variable category "vivado_impl"
 }
 
@@ -126,21 +126,22 @@ set rc [catch {
   create_msg_db init_design.pb
   set_param checkpoint.writeSynthRtdsInDcp 1
   set_param chipscope.maxJobs 3
+  set_param synth.incrementalSynthesisCache C:/Users/bbl37/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-5720-ECE-ELECTRO-18/incrSyn
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.cache/wt} [current_project]
-  set_property parent.project_path {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.xpr} [current_project]
-  set_property ip_output_repo {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.cache/ip}} [current_project]
+  set_property webtalk.parent_dir C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.cache/wt [current_project]
+  set_property parent.project_path C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.xpr [current_project]
+  set_property ip_output_repo C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.dcp}}
+  add_files -quiet C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc}}
+  read_xdc C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }
