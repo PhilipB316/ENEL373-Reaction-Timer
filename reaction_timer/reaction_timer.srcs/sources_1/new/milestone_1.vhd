@@ -41,12 +41,9 @@ end milestone_1;
 
 architecture Behavioral of milestone_1 is
     signal current_state : STD_LOGIC_VECTOR (3 downto 0) := X"0";
-    signal counter_enable : STD_LOGIC_VECTOR (7 downto 0) := X"FF";
-    signal countdown_clk : STD_LOGIC := '0';
-    signal countdown_divider : STD_LOGIC_VECTOR := X"5F5E100";
     signal timer_clk : STD_LOGIC := '0';
     signal timer_divider : STD_LOGIC_VECTOR (27 downto 0) := X"00186A0";
-    signal segment_select : STD_LOGIC_VECTOR (7 downto 0) := X"00";
+    signal segment_select : STD_LOGIC_VECTOR (2 downto 0) := "000";
     signal number_output : STD_LOGIC_VECTOR (3 downto 0) := X"0";
     
     component clk_divider is
@@ -55,55 +52,44 @@ architecture Behavioral of milestone_1 is
              SLOWCLK_OUT : out std_logic); 
     end component clk_divider;
     
-    component countdown_leds is
-        port( ENABLE_IN : in std_logic;
-              LED_OUT : out std_logic_vector (2 downto 0);
-              SLOWCLK_IN : in std_logic);
-    end component countdown_leds;
+    component timer_8_num_selectable is
+        port(CLK1000HZ_IN : in STD_LOGIC;
+            EN_IN : in STD_LOGIC;
+            RESET_IN : in STD_LOGIC;
+            SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+            INT_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+    end component;
     
-    component seven_seg_decoder is
-        port(BCD_IN : in std_logic_vector;
-             DECIMAL_POINT_IN : in std_logic;
-             SEGMENT_LIGHT_OUT : out std_logic_vector);
-    end component seven_seg_decoder;
-    
-    component millisecond_timer is
-        port(EN_TIMER_IN : in STD_LOGIC;
-             EN_OUTPUT_IN : in STD_LOGIC;
-             RESET_IN : STD_LOGIC;
-             SLOWCLK_IN : in STD_LOGIC;
-             AN_SELECT_IN : in STD_LOGIC_VECTOR (7 downto 0);
-             NUMBER_OUT : out STD_LOGIC_VECTOR (3 downto 0));
-    end component millisecond_timer;
-    
-begin
+    component segment_display is
+        Port(NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0); 
+             MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
+             SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
+             ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
+    end component;
+begin    
     ff0: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
-                              SLOWCLK_OUT => countdown_clk,
-                              UPPERBOUND_IN => countdown_divider);
-    
-    ff1: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                               SLOWCLK_OUT => timer_clk,
                               UPPERBOUND_IN => timer_divider);
     
-    ff2: countdown_leds port map(ENABLE_IN => current_state(1),
-                                 LED_OUT => LED (0 to 2),
-                                 SLOWCLK_IN => countdown_clk);
+    ff1: timer_8_num_selectable port map(CLK1000HZ_IN => timer_clk,
+                                         EN_IN => '1',
+                                         RESET_IN => '0',
+                                         SELECT_IN => segment_select,
+                                         INT_OUT => number_output);
+                                         
+    ff2: segment_display port map(NUMBER_IN => number_output,
+                                  MUX_IN => segment_select,
+                                  SEGMENT_LIGHT_OUT => SEVEN_SEG,
+                                  ANODE_OUT => AN);
     
-    ff3: millisecond_timer port map(EN_TIMER_IN => current_state(2),
-                                    EN_OUTPUT_IN => current_state(3),
-                                    RESET_IN => current_state(1), -- MUST BE ENABLED TO RESET FIX THIS
-                                    SLOWCLK_IN => timer_clk,
-                                    AN_SELECT_IN => segment_select,
-                                    NUMBER_OUT => number_output);
-    
-    process
+    process(timer_clk)
     begin
---    May have sync issues
-        if (current_state = X"0") then
-            LED(0 to 2) <= "111";
-            current_state <= X"1";
+        if (timer_clk'event and timer_clk='1') then
+            if (segment_select = "111") then
+                segment_select <= "000";
+            else
+                segment_select <= std_logic_vector(unsigned(segment_select) + 1);
+            end if;
         end if;
     end process;
-    
-    
 end Behavioral;

@@ -22,7 +22,7 @@ begin
             when "0111" => SEGMENT_LIGHT_OUT(0 to 7) <= "11111000"; -- 7
             when "1000" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000000"; -- 8
             when "1001" => SEGMENT_LIGHT_OUT(0 to 7) <= "10010000"; -- 9
-            when "1010" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000000"; -- blank
+            when "1010" => SEGMENT_LIGHT_OUT(0 to 7) <= "11111111"; -- blank
             when "1011" => SEGMENT_LIGHT_OUT(0 to 7) <= "10100000"; -- max
             when "1100" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000001"; -- average
             when "1101" => SEGMENT_LIGHT_OUT(0 to 7) <= "10010000"; -- min

@@ -1,80 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1741080899">
-  <File Type="ROUTE-PWR" Name="main_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="main.tcl"/>
-  <File Type="ROUTE-PWR-SUM" Name="main_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="main_reports.tcl"/>
-  <File Type="BITSTR-MSK" Name="main.msk"/>
-  <File Type="ROUTE-CLK" Name="main_clock_utilization_routed.rpt"/>
-  <File Type="RDI-RDI" Name="main.vdi"/>
-  <File Type="BG-BIT" Name="main.bit"/>
-  <File Type="BG-DRC" Name="main.drc"/>
-  <File Type="BG-BGN" Name="main.bgn"/>
-  <File Type="BG-BIN" Name="main.bin"/>
-  <File Type="BITSTR-RBT" Name="main.rbt"/>
-  <File Type="BITSTR-NKY" Name="main.nky"/>
-  <File Type="BITSTR-BMM" Name="main_bd.bmm"/>
-  <File Type="BITSTR-MMI" Name="main.mmi"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="main_methodology_drc_routed.rpt"/>
-  <File Type="BITSTR-SYSDEF" Name="main.sysdef"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="main_methodology_drc_routed.pb"/>
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1741221610">
+  <File Type="ROUTE-PWR" Name="milestone_1_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="milestone_1.tcl"/>
+  <File Type="BITSTR-MMI" Name="milestone_1.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="milestone_1_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="milestone_1_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="milestone_1_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="milestone_1_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="milestone_1_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="milestone_1_opt.dcp"/>
+  <File Type="OPT-DRC" Name="milestone_1_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="milestone_1.hwdef"/>
+  <File Type="PWROPT-DCP" Name="milestone_1_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="milestone_1_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="milestone_1_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="milestone_1_placed.dcp"/>
+  <File Type="PLACE-IO" Name="milestone_1_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="milestone_1_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="milestone_1_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="milestone_1_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="milestone_1_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="milestone_1_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="milestone_1_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="milestone_1.bin"/>
+  <File Type="PLACE-TIMING" Name="milestone_1_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="milestone_1_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="milestone_1.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="milestone_1_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="milestone_1_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="milestone_1_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="milestone_1.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="milestone_1_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="milestone_1_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="milestone_1_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="milestone_1_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="milestone_1_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="milestone_1_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="milestone_1_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="milestone_1_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="milestone_1_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="milestone_1_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="milestone_1_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="milestone_1_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="milestone_1_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="milestone_1_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="milestone_1_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="milestone_1_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="milestone_1_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="milestone_1_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="milestone_1_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="milestone_1_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="milestone_1_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="milestone_1_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="milestone_1_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="milestone_1_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="milestone_1_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="milestone_1_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="milestone_1_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="milestone_1.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="milestone_1_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="milestone_1_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="milestone_1.nky"/>
+  <File Type="BITSTR-BMM" Name="milestone_1_bd.bmm"/>
+  <File Type="PDI-FILE" Name="milestone_1.pdi"/>
+  <File Type="RCFI_FILE" Name="milestone_1.rcfi"/>
+  <File Type="CFI_FILE" Name="milestone_1.cfi"/>
+  <File Type="RNPI_FILE" Name="milestone_1.rnpi"/>
+  <File Type="NPI_FILE" Name="milestone_1.npi"/>
+  <File Type="RBD_FILE" Name="milestone_1.rbd"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="main.ltx"/>
+  <File Type="BITSTR-LTX" Name="milestone_1.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="milestone_1.sysdef"/>
+  <File Type="BG-BGN" Name="milestone_1.bgn"/>
+  <File Type="BG-DRC" Name="milestone_1.drc"/>
+  <File Type="RDI-RDI" Name="milestone_1.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="OPT-DRC" Name="main_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="main.hwdef"/>
-  <File Type="PLACE-IO" Name="main_io_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="main_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="main_utilization_placed.pb"/>
-  <File Type="ROUTE-RQS" Name="main_routed.rqs"/>
-  <File Type="PLACE-CTRL" Name="main_control_sets_placed.rpt"/>
+  <File Type="ROUTE-RQS" Name="milestone_1_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="milestone_1_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="main_incremental_reuse_pre_placed.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
-  <File Type="ROUTE-DRC" Name="main_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="main_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="main_power_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="main_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="main_route_status.pb"/>
-  <File Type="ROUTE-DCP" Name="main_routed.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="main_routed_error.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="main_routed_bb.dcp"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="main_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="main_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="main_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW" Name="main_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="main_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="main_bus_skew_routed.rpx"/>
-  <File Type="OPT-DCP" Name="main_opt.dcp"/>
-  <File Type="PLACE-DCP" Name="main_placed.dcp"/>
-  <File Type="PWROPT-DCP" Name="main_pwropt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="main_postplace_pwropt.dcp"/>
-  <File Type="PHYSOPT-DCP" Name="main_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="main_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="main_postroute_physopt_bb.dcp"/>
-  <File Type="ROUTE-DRC-RPX" Name="main_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="main_methodology_drc_routed.rpx"/>
-  <File Type="PDI-FILE" Name="main.pdi"/>
-  <File Type="RCFI_FILE" Name="main.rcfi"/>
-  <File Type="CFI_FILE" Name="main.cfi"/>
-  <File Type="RNPI_FILE" Name="main.rnpi"/>
-  <File Type="NPI_FILE" Name="main.npi"/>
-  <File Type="RBD_FILE" Name="main.rbd"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS" Name="main_postroute_physopted.rqs"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/clk_divider.vhd">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../project_1/project_1.srcs/sources_1/new/clk_divider.vhd"/>
         <Attr Name="ImportTime" Val="1740965667"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/counter_3b.vhd">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../project_1/project_1.srcs/sources_1/new/counter_3b.vhd"/>
-        <Attr Name="ImportTime" Val="1740966190"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -91,16 +101,48 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/multiplexer_8_1.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/segment_display.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/seven_seg_decoder.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/main.vhd">
+    <File Path="$PSRCDIR/sources_1/new/timer_8_num_selectable.vhd">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../project_1/project_1.srcs/sources_1/new/main.vhd"/>
-        <Attr Name="ImportTime" Val="1740965722"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/milestone_1.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/countdown_leds.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/counter_3b.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../project_1/project_1.srcs/sources_1/new/counter_3b.vhd"/>
+        <Attr Name="ImportTime" Val="1740966190"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -112,16 +154,9 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/broken_9i_counter.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="main"/>
+      <Option Name="TopModule" Val="milestone_1"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -163,6 +198,5 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
-    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

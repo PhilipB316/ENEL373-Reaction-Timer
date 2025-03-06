@@ -6,10 +6,14 @@
 # Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 # 
 
+echo "This script was generated under a different operating system."
+echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executing this script"
+exit
+
 if [ -z "$PATH" ]; then
-  PATH=/opt/vivado/Vivado/2022.2/ids_lite/ISE/bin/lin64:/opt/vivado/Vivado/2022.2/bin
+  PATH=C:/Xilinx/Vivado/2022.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2022.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2022.2/bin
 else
-  PATH=/opt/vivado/Vivado/2022.2/ids_lite/ISE/bin/lin64:/opt/vivado/Vivado/2022.2/bin:$PATH
+  PATH=C:/Xilinx/Vivado/2022.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2022.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2022.2/bin:$PATH
 fi
 export PATH
 
@@ -20,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/pain-and-sadness/reaction_timer/reaction_timer.runs/impl_1'
+HD_PWD='D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -38,6 +42,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .init_design.begin.rst
-EAStep vivado -log main.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source main.tcl -notrace
+EAStep vivado -log milestone_1.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source milestone_1.tcl -notrace
 
 
