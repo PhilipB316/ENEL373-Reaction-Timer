@@ -33,7 +33,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity countdown_leds is
     Port ( ENABLE_IN : in STD_LOGIC;
-           CLK_IN : in STD_LOGIC;
            ANODE_SELECT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
            SEGMENT_LIGHTS_OUT : out STD_LOGIC_VECTOR (7 downto 0);
            SLOWCLK_IN : in STD_LOGIC;
