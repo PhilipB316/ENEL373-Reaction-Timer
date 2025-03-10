@@ -44,9 +44,10 @@ begin
 --  X"2" <= Dots
     process (CLK_IN) is
     begin
-        if (CLK_IN = '1') then
+    if (CLK_IN = '1' and CLK_IN'event) then
+        if (last_triggers /= TRIGGERS_IN) then
 --          BTNC   
-            if (TRIGGERS_IN(0) = '1' and last_triggers /= TRIGGERS_IN) then        
+            if (TRIGGERS_IN(0) = '1') then        
 --              Counting state
                 if (state = X"0") then
                     state <= X"1";
@@ -63,11 +64,9 @@ begin
                     state <= X"0";
                 end if;
             end if;
-        end if;
-        
-        if (CLK_IN = '0') then
             last_triggers <= TRIGGERS_IN;
         end if;
+    end if;
     end process;
 
     STATE_OUT <= state;
