@@ -33,7 +33,7 @@ end dotiey;
 
 architecture Behavioral of dotiey is
 
-    signal count : std_logic_vector (1 downto 0) := "11";
+    signal count : std_logic_vector (3 downto 0) := "0010";
     signal dot: std_logic_vector (3 downto 0) := "1110";
     signal blank : std_logic_vector (3 downto 0) := "1010";
 
@@ -43,7 +43,7 @@ begin
     begin 
         if rising_edge(CLK_IN) then
             if EN_IN = '1' then
-                if count /= "00" then
+                if count /= "0000" then
                     count <= std_logic_vector(unsigned(count) - 1);
                 else
                     TIMER_FINISHED <= '1';
@@ -52,19 +52,18 @@ begin
         end if;
         
         if EN_IN = '0' then
-            count <= "11";
+            count <= "0010";
             TIMER_FINISHED <= '0';
         end if;
     end process;
     
     process (SELECT_IN)
     begin
-        DOT_OUT <= dot;
---        if (SELECT_IN <= count) then
---            DOT_OUT <= dot;
---        else
---            DOT_OUT <= blank;
---        end if;
-     end process;
+        if (unsigned(SELECT_IN) <= unsigned(count)) then
+            DOT_OUT <= dot;
+        else
+            DOT_OUT <= blank;
+        end if;
+    end process;
 
 end Behavioral;

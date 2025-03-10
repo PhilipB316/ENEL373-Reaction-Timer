@@ -25,7 +25,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity milestone_1 is
     Port ( CLK100MHZ : in STD_LOGIC;
-           LED : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+           LED : out STD_LOGIC_VECTOR (15 downto 0) := X"0000";
            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            SW : in STD_LOGIC_VECTOR (7 downto 0);
@@ -188,4 +188,6 @@ begin
     triggers(1) <= dots_finished;
     LED(3 downto 0) <= fsm_state;
     LED(4) <= dot_clk;
+    LED(7 downto 5) <= disp_select;
+    LED(10 downto 8) <= segment_select;
 end Behavioral;
