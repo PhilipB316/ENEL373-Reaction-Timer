@@ -55,6 +55,7 @@ architecture Behavioral of milestone_1 is
     signal dot_en : std_logic := '0';
     signal dots_finished : std_logic := '0';
     signal divider_1hz : std_logic_vector (27 downto 0) := X"5F5E100";
+    signal dot_clk_enable : std_logic := '0';
     
     component fsm is
         port(CLK_IN : in STD_LOGIC;
@@ -109,6 +110,12 @@ architecture Behavioral of milestone_1 is
              TIMER_FINISHED : out STD_LOGIC);
     end component  dotiey;
     
+    component text_segment_override is
+        Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               ENCODED_SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
+               ENCODED_SEG_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+               OVERRIDE_TEXT_IN : in STD_LOGIC_VECTOR (11 downto 0));
+    end component text_segment_override;
 begin    
     
     ff0: fsm port map(CLK_IN => timer_clk,
@@ -150,10 +157,15 @@ begin
                          DOT_OUT => dots,
                          TIMER_FINISHED => dots_finished);
                       
-    ff7: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+    ff7: clk_divider port map(CLK100MHZ_IN => dot_clk_enable,
                               SLOWCLK_OUT => dot_clk,
                               UPPERBOUND_IN => divider_1hz);
-
+    
+    ff8: text_segment_override port map(SELECT_IN => segment_select,
+                                        ENCODED_SEG_IN => timer_out,
+                                        ENCODED_SEG_OUT => other,
+                                        OVERRIDE_TEXT_IN => "101111001101");
+                                        
 --  Finite state machine
     process(fsm_state)
     begin
@@ -169,12 +181,13 @@ begin
         if fsm_state = X"1" then
             count_en <= '0';
             count_rset <= '0';
-            disp_select <= "000";
+            disp_select <= "111";
             dot_en <= '0';
         end if;
         
 --      Dots
         if fsm_state = X"2" then
+            dot_clk_enable <= CLK100MHZ;
             count_en <= '0';
             count_rset <= '1';
             disp_select <= "110";

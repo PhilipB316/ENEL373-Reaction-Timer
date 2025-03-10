@@ -23,9 +23,9 @@ begin
             when "1000" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000000"; -- 8
             when "1001" => SEGMENT_LIGHT_OUT(0 to 7) <= "10010000"; -- 9
             when "1010" => SEGMENT_LIGHT_OUT(0 to 7) <= "11111111"; -- blank
-            when "1011" => SEGMENT_LIGHT_OUT(0 to 7) <= "10100000"; -- max
-            when "1100" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000001"; -- average
-            when "1101" => SEGMENT_LIGHT_OUT(0 to 7) <= "10010000"; -- min
+            when "1011" => SEGMENT_LIGHT_OUT(0 to 7) <= "10100001"; -- "D"
+            when "1100" => SEGMENT_LIGHT_OUT(0 to 7) <= "11000111"; -- "L"
+            when "1101" => SEGMENT_LIGHT_OUT(0 to 7) <= "00010001"; -- "Y."
             when "1110" => SEGMENT_LIGHT_OUT(0 to 7) <= "01111111"; -- dot
 --          when "1111" => SEGMENT_LIGHT_OUT(0 to 7) <=
             when others => NULL;

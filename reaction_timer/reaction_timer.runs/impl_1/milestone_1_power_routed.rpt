@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Mon Mar 10 18:41:21 2025
+| Date             : Mon Mar 10 19:55:24 2025
 | Host             : clucktop running 64-bit major release  (build 9200)
 | Command          : report_power -file milestone_1_power_routed.rpt -pb milestone_1_power_summary_routed.pb -rpx milestone_1_power_routed.rpx
 | Design           : milestone_1
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 0.122        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.024        |
+| Dynamic (W)              | 0.025        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.4         |
@@ -53,12 +53,13 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      272 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       83 |     63400 |            0.13 |
-|   CARRY4       |    <0.001 |       12 |     15850 |            0.08 |
-|   Register     |    <0.001 |      116 |    126800 |            0.09 |
-|   Others       |     0.000 |       32 |       --- |             --- |
-| Signals        |    <0.001 |      174 |       --- |             --- |
+| Slice Logic    |    <0.001 |      280 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       84 |     63400 |            0.13 |
+|   CARRY4       |    <0.001 |       11 |     15850 |            0.07 |
+|   Register     |    <0.001 |      117 |    126800 |            0.09 |
+|   F7/F8 Muxes  |    <0.001 |        4 |     63400 |           <0.01 |
+|   Others       |     0.000 |       35 |       --- |             --- |
+| Signals        |    <0.001 |      169 |       --- |             --- |
 | I/O            |     0.023 |       34 |       210 |           16.19 |
 | Static Power   |     0.097 |          |           |                 |
 | Total          |     0.122 |          |           |                 |
@@ -140,7 +141,7 @@ Table of Contents
 +-------------+-----------+
 | Name        | Power (W) |
 +-------------+-----------+
-| milestone_1 |     0.024 |
+| milestone_1 |     0.025 |
 +-------------+-----------+
 
 

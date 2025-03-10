@@ -95,6 +95,7 @@ read_vhdl -library xil_defaultlib {
   {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd}
   {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd}
   {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd}
+  {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd}
   {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd}
   {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd}
 }

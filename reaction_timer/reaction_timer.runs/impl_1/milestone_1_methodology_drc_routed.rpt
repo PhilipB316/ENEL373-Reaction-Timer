@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Mon Mar 10 18:41:21 2025
+| Date         : Mon Mar 10 19:55:24 2025
 | Host         : clucktop running 64-bit major release  (build 9200)
 | Command      : report_methodology -file milestone_1_methodology_drc_routed.rpt -pb milestone_1_methodology_drc_routed.pb -rpx milestone_1_methodology_drc_routed.rpx
 | Design       : milestone_1
@@ -23,14 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 89
+             Violations found: 101
 +-----------+------------------+--------------------------------+------------+
 | Rule      | Severity         | Description                    | Violations |
 +-----------+------------------+--------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 59         |
-| LUTAR-1   | Warning          | LUT drives async reset alert   | 2          |
-| TIMING-18 | Warning          | Missing input or output delay  | 16         |
-| TIMING-20 | Warning          | Non-clocked latch              | 11         |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell    | 86         |
+| TIMING-20 | Warning          | Non-clocked latch              | 14         |
 | LATCH-1   | Advisory         | Existing latches in the design | 1          |
 +-----------+------------------+--------------------------------+------------+
 
@@ -331,94 +329,139 @@ Non-clocked sequential cell
 The clock pin ff6/count_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
-LUTAR-1#1 Warning
-LUT drives async reset alert  
-LUT cell ff0/count_en_reg_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) count_en_reg/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+TIMING-17#60 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
-LUTAR-1#2 Warning
-LUT drives async reset alert  
-LUT cell ff0/disp_select_reg[2]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) count_rset_reg/CLR, disp_select_reg[2]/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+TIMING-17#61 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#1 Warning
-Missing input or output delay  
-An output delay is missing on LED[0] relative to clock(s) sys_clk_pin
+TIMING-17#62 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#2 Warning
-Missing input or output delay  
-An output delay is missing on LED[10] relative to clock(s) sys_clk_pin
+TIMING-17#63 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[12]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#3 Warning
-Missing input or output delay  
-An output delay is missing on LED[11] relative to clock(s) sys_clk_pin
+TIMING-17#64 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[13]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#4 Warning
-Missing input or output delay  
-An output delay is missing on LED[12] relative to clock(s) sys_clk_pin
+TIMING-17#65 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[14]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#5 Warning
-Missing input or output delay  
-An output delay is missing on LED[13] relative to clock(s) sys_clk_pin
+TIMING-17#66 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[15]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#6 Warning
-Missing input or output delay  
-An output delay is missing on LED[14] relative to clock(s) sys_clk_pin
+TIMING-17#67 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[16]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#7 Warning
-Missing input or output delay  
-An output delay is missing on LED[15] relative to clock(s) sys_clk_pin
+TIMING-17#68 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[17]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#8 Warning
-Missing input or output delay  
-An output delay is missing on LED[1] relative to clock(s) sys_clk_pin
+TIMING-17#69 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[18]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#9 Warning
-Missing input or output delay  
-An output delay is missing on LED[2] relative to clock(s) sys_clk_pin
+TIMING-17#70 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[19]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#10 Warning
-Missing input or output delay  
-An output delay is missing on LED[3] relative to clock(s) sys_clk_pin
+TIMING-17#71 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#11 Warning
-Missing input or output delay  
-An output delay is missing on LED[4] relative to clock(s) sys_clk_pin
+TIMING-17#72 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[20]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#12 Warning
-Missing input or output delay  
-An output delay is missing on LED[5] relative to clock(s) sys_clk_pin
+TIMING-17#73 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[21]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#13 Warning
-Missing input or output delay  
-An output delay is missing on LED[6] relative to clock(s) sys_clk_pin
+TIMING-17#74 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[22]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#14 Warning
-Missing input or output delay  
-An output delay is missing on LED[7] relative to clock(s) sys_clk_pin
+TIMING-17#75 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[23]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#15 Warning
-Missing input or output delay  
-An output delay is missing on LED[8] relative to clock(s) sys_clk_pin
+TIMING-17#76 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[24]/C is not reached by a timing clock
 Related violations: <none>
 
-TIMING-18#16 Warning
-Missing input or output delay  
-An output delay is missing on LED[9] relative to clock(s) sys_clk_pin
+TIMING-17#77 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[25]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#78 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#79 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#80 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#81 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#82 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#83 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#84 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#85 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/count_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#86 Critical Warning
+Non-clocked sequential cell  
+The clock pin ff7/temp_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#1 Warning
@@ -433,52 +476,67 @@ Related violations: <none>
 
 TIMING-20#3 Warning
 Non-clocked latch  
-The latch disp_select_reg[2]/L7 (in disp_select_reg[2] macro) cannot be properly analyzed as its control pin disp_select_reg[2]/L7/G is not reached by a timing clock
+The latch disp_select_reg[0]/L7 (in disp_select_reg[0] macro) cannot be properly analyzed as its control pin disp_select_reg[0]/L7/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#4 Warning
 Non-clocked latch  
-The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[0] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[0]/G is not reached by a timing clock
+The latch disp_select_reg[2] cannot be properly analyzed as its control pin disp_select_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#5 Warning
 Non-clocked latch  
-The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[1] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[1]/G is not reached by a timing clock
+The latch dot_clk_enable_reg cannot be properly analyzed as its control pin dot_clk_enable_reg/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#6 Warning
 Non-clocked latch  
-The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[2] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[2]/G is not reached by a timing clock
+The latch dot_en_reg/L7 (in dot_en_reg macro) cannot be properly analyzed as its control pin dot_en_reg/L7/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#7 Warning
 Non-clocked latch  
-The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[3] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[3]/G is not reached by a timing clock
+The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[0] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#8 Warning
 Non-clocked latch  
-The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[4] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[4]/G is not reached by a timing clock
+The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[1] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#9 Warning
 Non-clocked latch  
-The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[5] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[5]/G is not reached by a timing clock
+The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[2] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#10 Warning
 Non-clocked latch  
-The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[6] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[6]/G is not reached by a timing clock
+The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[3] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[3]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#11 Warning
+Non-clocked latch  
+The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[4] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[5] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[6] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
 Non-clocked latch  
 The latch ff5/ff1/SEGMENT_LIGHT_OUT_reg[7] cannot be properly analyzed as its control pin ff5/ff1/SEGMENT_LIGHT_OUT_reg[7]/G is not reached by a timing clock
 Related violations: <none>
 
 LATCH-1#1 Advisory
 Existing latches in the design  
-There are 11 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
+There are 14 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 
