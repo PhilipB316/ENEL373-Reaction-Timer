@@ -1,23 +1,12 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Engineers: Boston Black, Philip Brand, Michael Brown
 -- 
--- Create Date: 05.03.2025 14:01:26
--- Design Name: 
+-- Last Modified Date: 10-03-2025
+-- Design Name: p AIn_aND-SaDNeSS
 -- Module Name: milestone_1 - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
+-- Project Name: just no
 -- 
 ----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -33,41 +22,48 @@ entity milestone_1 is
 end milestone_1;
 
 architecture Behavioral of milestone_1 is
+--  CLOCK SIGNALS AND DIVIDERS
+    signal clk_100_mhz_switchable : std_logic := '0';
+    signal clk_1000_hz : std_logic := '0';
+    signal clk_1000_hz_divider_bound : std_logic_vector (27 downto 0) := X"00186A0";
+    signal clk_1_hz_switchable : std_logic;
+    signal clk_1_hz_divider_bound : std_logic_vector (27 downto 0) := X"5F5E100";
+
+--  FINITE STATE MACHINE
     signal fsm_state : std_logic_vector (3 downto 0) := X"2";
-    signal triggers : std_logic_vector (1 downto 0);
-    signal current_state : std_logic_vector (3 downto 0) := X"0";
-    signal timer_clk : std_logic := '0';
-    signal timer_divider : std_logic_vector (27 downto 0) := X"00186A0";
-    signal segment_select : std_logic_vector (2 downto 0) := "000";
-    signal count_en : std_logic := '0';
-    signal count_rset : std_logic := '1';
-    signal timer_out : std_logic_vector (3 downto 0) := X"0";
-    signal display_in : std_logic_vector (3 downto 0) := X"0";
-    signal disp_select : std_logic_vector (2 downto 0) := "000";
-    signal clear : std_logic_vector (3 downto 0) := X"0";
-    signal error : std_logic_vector (3 downto 0) := X"0";
-    signal average_time : std_logic_vector (3 downto 0) := X"0";
-    signal max_time : std_logic_vector (3 downto 0) := X"0";
-    signal min_time : std_logic_vector (3 downto 0) := X"0";
-    signal dots : std_logic_vector (3 downto 0) := X"0";
-    signal other : std_logic_vector (3 downto 0) := X"0";
-    signal dot_clk : std_logic;
-    signal dot_en : std_logic := '0';
-    signal dots_finished : std_logic := '0';
-    signal divider_1hz : std_logic_vector (27 downto 0) := X"5F5E100";
-    signal dot_clk_enable : std_logic := '0';
+    signal fsm_state_change_triggers : std_logic_vector (1 downto 0);
+    signal fsm_state_dot_complete : std_logic := '0';
+    signal dotiey_countdown_en : std_logic := '0';
+    signal reaction_time_count_en : std_logic := '0';
+    signal reaction_time_count_rset : std_logic := '1';
+
+--  DISPLAY SELECTION
+    signal output_segment_select : std_logic_vector (2 downto 0) := "000";
     
+    signal encoded_display_input_select : std_logic_vector (2 downto 0) := "000";
+    
+    signal encoded_reaction_time_digit : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_segment_data : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_display_placeholder_1 : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_display_placeholder_2 : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_display_placeholder_3 : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_display_placeholder_4 : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_display_placeholder_5 : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_dots : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_display_dly_text_override : std_logic_vector (3 downto 0) := X"0";
+    
+--  COMPONENT INSTANTIATION
     component fsm is
         port(CLK_IN : in STD_LOGIC;
              STATE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
              TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0));
-    end component fsm;
+    end component;
     
     component clk_divider is
         port(CLK100MHZ_IN : in STD_LOGIC;
              UPPERBOUND_IN : in STD_LOGIC_VECTOR;
              SLOWCLK_OUT : out STD_LOGIC); 
-    end component clk_divider;
+    end component;
     
     component timer_8_num_selectable is
         port(CLK1000HZ_IN : in STD_LOGIC;
@@ -88,7 +84,7 @@ architecture Behavioral of milestone_1 is
                MUX_IN_7 : in STD_LOGIC_VECTOR (3 downto 0);
                SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
                MUX_OUT : out STD_LOGIC_VECTOR (3 downto 0));
-    end component multiplexer_8_1_4b;
+    end component;
     
     component segment_display is
         Port(NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0); 
@@ -108,99 +104,104 @@ architecture Behavioral of milestone_1 is
              EN_IN : in STD_LOGIC;
              DOT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
              TIMER_FINISHED : out STD_LOGIC);
-    end component  dotiey;
+    end component;
     
     component text_segment_override is
         Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
                ENCODED_SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
                ENCODED_SEG_OUT : out STD_LOGIC_VECTOR (3 downto 0);
                OVERRIDE_TEXT_IN : in STD_LOGIC_VECTOR (11 downto 0));
-    end component text_segment_override;
+    end component;
 begin    
     
-    ff0: fsm port map(CLK_IN => timer_clk,
+    -- Finite State Machine
+    ff0: fsm port map(CLK_IN => clk_1000_hz,
                       STATE_OUT => fsm_state,
-                      TRIGGERS_IN => triggers);
+                      TRIGGERS_IN => fsm_state_change_triggers);
     
+    -- 1000 HZ Clock Divider
     ff1: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
-                              SLOWCLK_OUT => timer_clk,
-                              UPPERBOUND_IN => timer_divider);
+                              SLOWCLK_OUT => clk_1000_hz,
+                              UPPERBOUND_IN => clk_1000_hz_divider_bound);
+
+    -- 1 HZ Clock Divider
+    ff2: clk_divider port map(CLK100MHZ_IN => clk_100_mhz_switchable,
+                              SLOWCLK_OUT => clk_1_hz_switchable,
+                              UPPERBOUND_IN => clk_1_hz_divider_bound);
     
-    ff2: timer_8_num_selectable port map(CLK1000HZ_IN => timer_clk,
-                                         EN_IN => count_en,
-                                         RESET_IN => count_rset,
-                                         SELECT_IN => segment_select,
-                                         INT_OUT => timer_out);
-                                        
-    ff3: multiplexer_8_1_4b port map (MUX_IN_0 => timer_out,
-                                      MUX_IN_1 => clear,
-                                      MUX_IN_2 => error,
-                                      MUX_IN_3 => average_time,
-                                      MUX_IN_4 => max_time,
-                                      MUX_IN_5 => min_time,
-                                      MUX_IN_6 => dots,
-                                      MUX_IN_7 => other,
-                                      SELECT_IN => disp_select,
-                                      MUX_OUT => display_in);
-                                      
-    ff4: counter_3b port map(CLK_IN => timer_clk,
-                             COUNT_OUT => segment_select);
-                                         
-    ff5: segment_display port map(NUMBER_IN => display_in,
-                                  MUX_IN => segment_select,
+    -- 8 digit counter with output digit selection
+    ff3: timer_8_num_selectable port map(CLK1000HZ_IN => clk_1000_hz,
+                                         EN_IN => reaction_time_count_en,
+                                         RESET_IN => reaction_time_count_rset,
+                                         SELECT_IN => output_segment_select,
+                                         INT_OUT => encoded_reaction_time_digit);
+
+    -- 8x4 to 4 encoded display data mux
+    ff4: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
+                                      MUX_IN_1 => encoded_display_placeholder_1,
+                                      MUX_IN_2 => encoded_display_placeholder_2,
+                                      MUX_IN_3 => encoded_display_placeholder_3,
+                                      MUX_IN_4 => encoded_display_placeholder_4,
+                                      MUX_IN_5 => encoded_display_placeholder_5,
+                                      MUX_IN_6 => encoded_dots,
+                                      MUX_IN_7 => encoded_display_dly_text_override,
+                                      SELECT_IN => encoded_display_input_select,
+                                      MUX_OUT => encoded_segment_data);
+
+    -- 3 bit counter for seven segment anode selection
+    ff5: counter_3b port map(CLK_IN => clk_1000_hz,
+                             COUNT_OUT => output_segment_select);
+
+    -- Seven segment display decoder
+    ff6: segment_display port map(NUMBER_IN => encoded_segment_data,
+                                  MUX_IN => output_segment_select,
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
-                                  
-    ff6: dotiey port map(SELECT_IN => segment_select,
-                         CLK_IN => dot_clk,
-                         EN_IN => dot_en,
-                         DOT_OUT => dots,
-                         TIMER_FINISHED => dots_finished);
-                      
-    ff7: clk_divider port map(CLK100MHZ_IN => dot_clk_enable,
-                              SLOWCLK_OUT => dot_clk,
-                              UPPERBOUND_IN => divider_1hz);
+
+    -- Dot countdown generator
+    ff7: dotiey port map(SELECT_IN => output_segment_select,
+                         CLK_IN => clk_1_hz_switchable,
+                         EN_IN => dotiey_countdown_en,
+                         DOT_OUT => encoded_dots,
+                         TIMER_FINISHED => fsm_state_dot_complete);
     
-    ff8: text_segment_override port map(SELECT_IN => segment_select,
-                                        ENCODED_SEG_IN => timer_out,
-                                        ENCODED_SEG_OUT => other,
+    -- DLY seven segment text override
+    ff8: text_segment_override port map(SELECT_IN => output_segment_select,
+                                        ENCODED_SEG_IN => encoded_reaction_time_digit,
+                                        ENCODED_SEG_OUT => encoded_display_dly_text_override,
                                         OVERRIDE_TEXT_IN => "101111001101");
                                         
---  Finite state machine
+--  Finite state machine state outputs
     process(fsm_state)
     begin
 --      Counting
         if fsm_state = X"0" then
-            count_en <= '1';
-            count_rset <= '0';
-            disp_select <= "000";
-            dot_en <= '0';
+            reaction_time_count_en <= '1';
+            reaction_time_count_rset <= '0';
+            encoded_display_input_select <= "000";
+            dotiey_countdown_en <= '0';
         end if;
        
 --      Display time 
         if fsm_state = X"1" then
-            count_en <= '0';
-            count_rset <= '0';
-            disp_select <= "111";
-            dot_en <= '0';
+            reaction_time_count_en <= '0';
+            reaction_time_count_rset <= '0';
+            encoded_display_input_select <= "111";
+            dotiey_countdown_en <= '0';
         end if;
         
 --      Dots
         if fsm_state = X"2" then
-            dot_clk_enable <= CLK100MHZ;
-            count_en <= '0';
-            count_rset <= '1';
-            disp_select <= "110";
-            dot_en <= '1';
+            clk_100_mhz_switchable <= CLK100MHZ;
+            reaction_time_count_en <= '0';
+            reaction_time_count_rset <= '1';
+            encoded_display_input_select <= "110";
+            dotiey_countdown_en <= '1';
         end if;
         
     end process;
     
---  Map FSM triggers
-    triggers(0) <= BTNC;
-    triggers(1) <= dots_finished;
-    LED(3 downto 0) <= fsm_state;
-    LED(4) <= dot_clk;
-    LED(7 downto 5) <= disp_select;
-    LED(10 downto 8) <= segment_select;
+--  Map FSM fsm_state_change_triggers
+    fsm_state_change_triggers(0) <= BTNC;
+    fsm_state_change_triggers(1) <= fsm_state_dot_complete;
 end Behavioral;

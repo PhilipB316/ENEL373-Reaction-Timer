@@ -249,3 +249,157 @@ launch_runs impl_1 -to_step write_bitstream -jobs 12
 Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/runme.log
 [Mon Mar 10 19:53:31 2025] Launched impl_1...
 Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/runme.log
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file D:/UC Files/2025/ENEL373/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp with file D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Mar 10 20:20:33 2025] Launched synth_1...
+Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/runme.log
+[Mon Mar 10 20:20:33 2025] Launched impl_1...
+Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/runme.log
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7a100tcsg324-1
+Top: milestone_1
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2484.559 ; gain = 240.629
+---------------------------------------------------------------------------------
+ERROR: [Synth 8-36] 'disp_select' is not declared [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:203]
+INFO: [Synth 8-11252] unit 'behavioral' is ignored due to previous errors [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:205]
+INFO: [Synth 8-10443] VHDL file 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd' is ignored due to errors
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2566.207 ; gain = 322.277
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+3 Infos, 0 Warnings, 0 Critical Warnings and 2 Errors encountered.
+synth_design failed
+ERROR: [Vivado_Tcl 4-5] Elaboration failed - please see the console for details
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7a100tcsg324-1
+Top: milestone_1
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 2575.680 ; gain = 9.473
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'milestone_1' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:35]
+INFO: [Synth 8-3491] module 'fsm' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:25' bound to instance 'ff0' of component 'fsm' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:120]
+INFO: [Synth 8-638] synthesizing module 'fsm' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:31]
+INFO: [Synth 8-256] done synthesizing module 'fsm' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:31]
+INFO: [Synth 8-3491] module 'clk_divider' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:31' bound to instance 'ff1' of component 'clk_divider' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:124]
+INFO: [Synth 8-638] synthesizing module 'clk_divider' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:38]
+INFO: [Synth 8-256] done synthesizing module 'clk_divider' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:38]
+INFO: [Synth 8-3491] module 'timer_8_num_selectable' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:25' bound to instance 'ff2' of component 'timer_8_num_selectable' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:128]
+INFO: [Synth 8-638] synthesizing module 'timer_8_num_selectable' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:33]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff0' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:69]
+INFO: [Synth 8-638] synthesizing module 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'counter_decade' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:39]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff1' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:75]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff2' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:81]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff3' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:87]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff4' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:93]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff5' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:99]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff6' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:105]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:31' bound to instance 'ff7' of component 'counter_decade' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:111]
+INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:34' bound to instance 'ff8' of component 'multiplexer_8_1_4b' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:117]
+INFO: [Synth 8-638] synthesizing module 'multiplexer_8_1_4b' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:47]
+WARNING: [Synth 8-614] signal 'MUX_IN_0' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+WARNING: [Synth 8-614] signal 'MUX_IN_1' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+WARNING: [Synth 8-614] signal 'MUX_IN_2' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+WARNING: [Synth 8-614] signal 'MUX_IN_3' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+WARNING: [Synth 8-614] signal 'MUX_IN_4' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+WARNING: [Synth 8-614] signal 'MUX_IN_5' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+WARNING: [Synth 8-614] signal 'MUX_IN_6' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+WARNING: [Synth 8-614] signal 'MUX_IN_7' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'multiplexer_8_1_4b' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'timer_8_num_selectable' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:33]
+INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd:34' bound to instance 'ff3' of component 'multiplexer_8_1_4b' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:134]
+INFO: [Synth 8-3491] module 'counter_3b' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:31' bound to instance 'ff4' of component 'counter_3b' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:145]
+INFO: [Synth 8-638] synthesizing module 'counter_3b' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'counter_3b' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:37]
+INFO: [Synth 8-3491] module 'segment_display' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:34' bound to instance 'ff5' of component 'segment_display' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:148]
+INFO: [Synth 8-638] synthesizing module 'segment_display' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:42]
+INFO: [Synth 8-3491] module 'decoder_3b' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:31' bound to instance 'ff0' of component 'decoder_3b' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:56]
+INFO: [Synth 8-638] synthesizing module 'decoder_3b' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:36]
+INFO: [Synth 8-256] done synthesizing module 'decoder_3b' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:36]
+INFO: [Synth 8-3491] module 'seven_seg_decoder' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:3' bound to instance 'ff1' of component 'seven_seg_decoder' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:59]
+INFO: [Synth 8-638] synthesizing module 'seven_seg_decoder' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'seven_seg_decoder' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'segment_display' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:42]
+INFO: [Synth 8-3491] module 'dotiey' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:26' bound to instance 'ff6' of component 'dotiey' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:153]
+INFO: [Synth 8-638] synthesizing module 'dotiey' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:34]
+WARNING: [Synth 8-614] signal 'count' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:60]
+WARNING: [Synth 8-614] signal 'dot' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:60]
+WARNING: [Synth 8-614] signal 'blank' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:60]
+INFO: [Synth 8-256] done synthesizing module 'dotiey' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:34]
+INFO: [Synth 8-3491] module 'clk_divider' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:31' bound to instance 'ff7' of component 'clk_divider' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:159]
+INFO: [Synth 8-3491] module 'text_segment_override' declared at 'D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd:34' bound to instance 'ff8' of component 'text_segment_override' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:163]
+INFO: [Synth 8-638] synthesizing module 'text_segment_override' [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd:41]
+WARNING: [Synth 8-614] signal 'OVERRIDE_TEXT_IN' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd:44]
+WARNING: [Synth 8-614] signal 'ENCODED_SEG_IN' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'text_segment_override' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd:41]
+WARNING: [Synth 8-614] signal 'CLK100MHZ' is read in the process but is not in the sensitivity list [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:169]
+INFO: [Synth 8-256] done synthesizing module 'milestone_1' (0#1) [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd:35]
+WARNING: [Synth 8-3917] design milestone_1 has port LED[15] driven by constant 0
+WARNING: [Synth 8-3917] design milestone_1 has port LED[14] driven by constant 0
+WARNING: [Synth 8-3917] design milestone_1 has port LED[13] driven by constant 0
+WARNING: [Synth 8-3917] design milestone_1 has port LED[12] driven by constant 0
+WARNING: [Synth 8-3917] design milestone_1 has port LED[11] driven by constant 0
+WARNING: [Synth 8-3917] design milestone_1 has port LED[7] driven by constant 0
+WARNING: [Synth 8-3917] design milestone_1 has port LED[6] driven by constant 0
+WARNING: [Synth 8-3917] design milestone_1 has port LED[5] driven by constant 0
+WARNING: [Synth 8-7129] Port DECIMAL_POINT_IN in module seven_seg_decoder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[7] in module milestone_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[6] in module milestone_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[5] in module milestone_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[4] in module milestone_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[3] in module milestone_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[2] in module milestone_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[1] in module milestone_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[0] in module milestone_1 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 2583.512 ; gain = 17.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 2607.410 ; gain = 41.203
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 2607.410 ; gain = 41.203
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2607.410 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
+Finished Parsing XDC File [D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2722.074 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:19 ; elapsed = 00:00:15 . Memory (MB): peak = 2728.664 ; gain = 162.457
+47 Infos, 31 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:15 . Memory (MB): peak = 2728.664 ; gain = 162.457
+close_design
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file D:/UC Files/2025/ENEL373/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp with file D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Mar 10 20:49:12 2025] Launched synth_1...
+Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/runme.log
+[Mon Mar 10 20:49:12 2025] Launched impl_1...
+Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/runme.log
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file D:/UC Files/2025/ENEL373/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp with file D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+[Mon Mar 10 21:08:11 2025] Launched synth_1...
+Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/runme.log
+[Mon Mar 10 21:08:11 2025] Launched impl_1...
+Run output will be captured here: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/runme.log

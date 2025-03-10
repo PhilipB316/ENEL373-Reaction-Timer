@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Mon Mar 10 19:54:53 2025
+| Date         : Mon Mar 10 21:10:28 2025
 | Host         : clucktop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file milestone_1_control_sets_placed.rpt
 | Design       : milestone_1
@@ -58,7 +58,7 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              35 |           25 |
+| No           | No                    | No                     |              35 |           24 |
 | No           | No                    | Yes                    |               1 |            1 |
 | No           | Yes                   | No                     |              44 |           12 |
 | Yes          | No                    | No                     |               1 |            1 |
@@ -70,44 +70,44 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+------------------------+------------------------------+----------------------------+------------------+----------------+--------------+
-|      Clock Signal      |         Enable Signal        |      Set/Reset Signal      | Slice Load Count | Bel Load Count | Bels / Slice |
-+------------------------+------------------------------+----------------------------+------------------+----------------+--------------+
-|  ff2/ff5/tick_5        |                              |                            |                1 |              1 |         1.00 |
-|  ff2/ff2/tick_2        |                              |                            |                1 |              1 |         1.00 |
-| ~ff2/ff5/tick_5        |                              |                            |                1 |              1 |         1.00 |
-| ~ff2/ff2/tick_2        |                              |                            |                1 |              1 |         1.00 |
-|  dot_clk_enable        |                              |                            |                1 |              1 |         1.00 |
-|  ff2/ff3/tick_3        |                              |                            |                1 |              1 |         1.00 |
-|  CLK100MHZ_IBUF_BUFG   |                              |                            |                1 |              1 |         1.00 |
-| ~ff2/ff3/tick_3        |                              |                            |                1 |              1 |         1.00 |
-|  ff2/ff4/tick_4        |                              |                            |                1 |              1 |         1.00 |
-| ~ff2/ff4/tick_4        |                              |                            |                1 |              1 |         1.00 |
-|  ff1/CLK               | ff0/last_triggers[0]_i_1_n_0 |                            |                1 |              1 |         1.00 |
-| ~ff1/CLK               |                              |                            |                1 |              1 |         1.00 |
-|  ff7/LED_OBUF[0]       |                              | ff6/TIMER_FINISHED_i_2_n_0 |                1 |              1 |         1.00 |
-|  disp_select_reg[0]/G0 |                              |                            |                1 |              1 |         1.00 |
-|  count_rset_reg/G0     |                              |                            |                1 |              1 |         1.00 |
-|  dot_en_reg/G0         |                              |                            |                1 |              1 |         1.00 |
-|  ff0/AR[0]             |                              |                            |                1 |              1 |         1.00 |
-|  ff2/ff1/tick_1        |                              |                            |                1 |              1 |         1.00 |
-| ~ff2/ff1/tick_1        |                              |                            |                1 |              1 |         1.00 |
-|  ff2/ff0/tick_0        |                              |                            |                1 |              1 |         1.00 |
-| ~ff2/ff0/tick_0        |                              |                            |                1 |              1 |         1.00 |
-|  ff0/dot_en__0         |                              | ff0/AS[1]                  |                1 |              2 |         2.00 |
-|  ff2/ff5/tick_5        | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff2/ff6/tick_reg__0_0 | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff1/CLK               | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff7/LED_OBUF[0]       | ff6/count                    | ff6/TIMER_FINISHED_i_2_n_0 |                1 |              4 |         4.00 |
-|  ff2/ff4/tick_4        | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff2/ff0/tick_0        | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff2/ff3/tick_3        | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff2/ff2/tick_2        | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff2/ff1/tick_1        | count_en                     | count_rset_reg/Q           |                1 |              4 |         4.00 |
-|  ff1/CLK               |                              |                            |                3 |              8 |         2.67 |
-|  ff4/E[0]              |                              |                            |                3 |              8 |         2.67 |
-|  CLK100MHZ_IBUF_BUFG   |                              | ff1/clear                  |                4 |             16 |         4.00 |
-|  dot_clk_enable        |                              | ff7/count[0]_i_1__1_n_0    |                7 |             26 |         3.71 |
-+------------------------+------------------------------+----------------------------+------------------+----------------+--------------+
++-----------------------------------------+------------------------------+--------------------------------+------------------+----------------+--------------+
+|               Clock Signal              |         Enable Signal        |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
++-----------------------------------------+------------------------------+--------------------------------+------------------+----------------+--------------+
+|  dotiey_countdown_en_reg/G0             |                              |                                |                1 |              1 |         1.00 |
+|  reaction_time_count_rset_reg/G0        |                              |                                |                1 |              1 |         1.00 |
+|  encoded_display_input_select_reg[0]/G0 |                              |                                |                1 |              1 |         1.00 |
+| ~ff3/ff3/tick_3                         |                              |                                |                1 |              1 |         1.00 |
+|  ff1/CLK                                | ff0/last_triggers[0]_i_1_n_0 |                                |                1 |              1 |         1.00 |
+|  ff3/ff4/tick_4                         |                              |                                |                1 |              1 |         1.00 |
+| ~ff1/CLK                                |                              |                                |                1 |              1 |         1.00 |
+|  ff2/temp                               |                              | ff7/TIMER_FINISHED_i_2_n_0     |                1 |              1 |         1.00 |
+| ~ff3/ff4/tick_4                         |                              |                                |                1 |              1 |         1.00 |
+|  ff3/ff5/tick_5                         |                              |                                |                1 |              1 |         1.00 |
+| ~ff3/ff5/tick_5                         |                              |                                |                1 |              1 |         1.00 |
+|  ff0/AR[0]                              |                              |                                |                1 |              1 |         1.00 |
+|  ff3/ff1/tick_1                         |                              |                                |                1 |              1 |         1.00 |
+|  CLK100MHZ_IBUF_BUFG                    |                              |                                |                1 |              1 |         1.00 |
+| ~ff3/ff1/tick_1                         |                              |                                |                1 |              1 |         1.00 |
+|  ff3/ff0/tick_0                         |                              |                                |                1 |              1 |         1.00 |
+|  clk_100_mhz_switchable                 |                              |                                |                1 |              1 |         1.00 |
+| ~ff3/ff0/tick_0                         |                              |                                |                1 |              1 |         1.00 |
+|  ff3/ff2/tick_2                         |                              |                                |                1 |              1 |         1.00 |
+| ~ff3/ff2/tick_2                         |                              |                                |                1 |              1 |         1.00 |
+|  ff3/ff3/tick_3                         |                              |                                |                1 |              1 |         1.00 |
+|  ff0/dotiey_countdown_en__0             |                              | ff0/AS[1]                      |                1 |              2 |         2.00 |
+|  ff1/CLK                                | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff2/temp                               | ff7/count                    | ff7/TIMER_FINISHED_i_2_n_0     |                1 |              4 |         4.00 |
+|  ff3/ff1/tick_1                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff3/ff0/tick_0                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff3/ff5/tick_5                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff3/ff4/tick_4                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff3/ff6/tick_reg__0_0                  | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff3/ff2/tick_2                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff3/ff3/tick_3                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff1/CLK                                |                              |                                |                2 |              8 |         4.00 |
+|  ff5/E[0]                               |                              |                                |                3 |              8 |         2.67 |
+|  CLK100MHZ_IBUF_BUFG                    |                              | ff1/clear                      |                4 |             16 |         4.00 |
+|  clk_100_mhz_switchable                 |                              | ff2/count[0]_i_1__1_n_0        |                7 |             26 |         3.71 |
++-----------------------------------------+------------------------------+--------------------------------+------------------+----------------+--------------+
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Mon Mar 10 19:55:23 2025
+| Date         : Mon Mar 10 21:10:58 2025
 | Host         : clucktop running 64-bit major release  (build 9200)
 | Command      : report_drc -file milestone_1_drc_routed.rpt -pb milestone_1_drc_routed.pb -rpx milestone_1_drc_routed.rpx
 | Design       : milestone_1
@@ -49,32 +49,32 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net count_rset_reg/G0 is a gated clock net sourced by a combinational pin count_rset_reg/L3_2/O, cell count_rset_reg/L3_2 (in count_rset_reg macro). This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net dotiey_countdown_en_reg/G0 is a gated clock net sourced by a combinational pin dotiey_countdown_en_reg/L3_2/O, cell dotiey_countdown_en_reg/L3_2 (in dotiey_countdown_en_reg macro). This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#2 Warning
 Gated clock check  
-Net disp_select_reg[0]/G0 is a gated clock net sourced by a combinational pin disp_select_reg[0]/L3_2/O, cell disp_select_reg[0]/L3_2 (in disp_select_reg[0] macro). This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net encoded_display_input_select_reg[0]/G0 is a gated clock net sourced by a combinational pin encoded_display_input_select_reg[0]/L3_2/O, cell encoded_display_input_select_reg[0]/L3_2 (in encoded_display_input_select_reg[0] macro). This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#3 Warning
 Gated clock check  
-Net dot_en_reg/G0 is a gated clock net sourced by a combinational pin dot_en_reg/L3_2/O, cell dot_en_reg/L3_2 (in dot_en_reg macro). This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net ff0/AR[0] is a gated clock net sourced by a combinational pin ff0/encoded_display_input_select_reg[0]_i_1/O, cell ff0/encoded_display_input_select_reg[0]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#4 Warning
 Gated clock check  
-Net ff0/AR[0] is a gated clock net sourced by a combinational pin ff0/disp_select_reg[0]_i_1/O, cell ff0/disp_select_reg[0]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net ff0/dotiey_countdown_en__0 is a gated clock net sourced by a combinational pin ff0/encoded_display_input_select_reg[1]_i_1/O, cell ff0/encoded_display_input_select_reg[1]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#5 Warning
 Gated clock check  
-Net ff0/dot_en__0 is a gated clock net sourced by a combinational pin ff0/disp_select_reg[2]_i_1/O, cell ff0/disp_select_reg[2]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net ff5/E[0] is a gated clock net sourced by a combinational pin ff5/SEGMENT_LIGHT_OUT_reg[0]_i_2/O, cell ff5/SEGMENT_LIGHT_OUT_reg[0]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#6 Warning
 Gated clock check  
-Net ff4/E[0] is a gated clock net sourced by a combinational pin ff4/SEGMENT_LIGHT_OUT_reg[0]_i_2/O, cell ff4/SEGMENT_LIGHT_OUT_reg[0]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net reaction_time_count_rset_reg/G0 is a gated clock net sourced by a combinational pin reaction_time_count_rset_reg/L3_2/O, cell reaction_time_count_rset_reg/L3_2 (in reaction_time_count_rset_reg macro). This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 
