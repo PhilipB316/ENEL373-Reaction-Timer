@@ -93,6 +93,7 @@ read_vhdl -library xil_defaultlib {
   C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd
   C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd
   C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd
   C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd
   C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd
   C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd

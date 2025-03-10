@@ -51,6 +51,10 @@ architecture Behavioral of milestone_1 is
     signal min_time : std_logic_vector (3 downto 0) := X"0";
     signal dots : std_logic_vector (3 downto 0) := X"0";
     signal other : std_logic_vector (3 downto 0) := X"0";
+    signal dot_clk : std_logic;
+    signal dot_en : std_logic := '0';
+    signal dots_finished : std_logic := '0';
+    signal divider_1hz : std_logic_vector (27 downto 0) := X"5F5E100";
     
     component fsm is
         port(CLK_IN : in STD_LOGIC;
@@ -97,6 +101,14 @@ architecture Behavioral of milestone_1 is
              COUNT_OUT : out STD_LOGIC_VECTOR (2 downto 0));
     end component;
     
+    component dotiey is
+        Port(SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+             CLK_IN : in STD_LOGIC;
+             EN_IN : in STD_LOGIC;
+             DOT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+             TIMER_FINISHED : out STD_LOGIC);
+    end component  dotiey;
+    
 begin    
     
     ff0: fsm port map(CLK_IN => timer_clk,
@@ -131,6 +143,16 @@ begin
                                   MUX_IN => segment_select,
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
+                                  
+    ff6: dotiey port map(SELECT_IN => segment_select,
+                         CLK_IN => dot_clk,
+                         EN_IN => dot_en,
+                         DOT_OUT => dots,
+                         TIMER_FINISHED => dots_finished);
+                      
+    ff7: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+                              SLOWCLK_OUT => dot_clk,
+                              UPPERBOUND_IN => divider_1hz);
 
 --  Finite state machine
     process(fsm_state)
@@ -140,6 +162,7 @@ begin
             count_en <= '1';
             count_rset <= '0';
             disp_select <= "000";
+            dot_en <= '0';
         end if;
        
 --      Display time 
@@ -147,19 +170,22 @@ begin
             count_en <= '0';
             count_rset <= '0';
             disp_select <= "000";
+            dot_en <= '0';
         end if;
         
 --      Dots
         if fsm_state = X"2" then
             count_en <= '0';
             count_rset <= '1';
-            disp_select <= "001";
+            disp_select <= "110";
+            dot_en <= '1';
         end if;
         
     end process;
     
 --  Map FSM triggers
-    triggers(0) <= SW(1);
-    triggers(1) <= SW(0);                      
-    
+    triggers(0) <= BTNC;
+    triggers(1) <= dots_finished;
+    LED(3 downto 0) <= fsm_state;
+    LED(4) <= dot_clk;
 end Behavioral;
