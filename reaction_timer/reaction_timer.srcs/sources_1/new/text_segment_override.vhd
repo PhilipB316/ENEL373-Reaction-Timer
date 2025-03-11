@@ -21,16 +21,9 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+-- Define module IO
 entity text_segment_override is
     Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
            ENCODED_SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
@@ -43,6 +36,7 @@ architecture Behavioral of text_segment_override is
 begin
     process (SELECT_IN)
     begin
+--      If current segment needs text on it then override it with the text
         if (unsigned(SELECT_IN) = 7) then
             ENCODED_SEG_OUT <= OVERRIDE_TEXT_IN(11 downto 8);
         elsif (unsigned(SELECT_IN) = 6) then

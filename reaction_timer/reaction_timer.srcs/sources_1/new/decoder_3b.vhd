@@ -23,11 +23,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+-- Define module IO
 entity decoder_3b is
     Port ( DEC_IN : in STD_LOGIC_VECTOR (2 downto 0);
            DEC_OUT : out STD_LOGIC_VECTOR (7 downto 0));

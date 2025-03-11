@@ -22,6 +22,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-- Define module IO
 entity fsm is
     Port ( CLK_IN : in STD_LOGIC;
            STATE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
@@ -30,6 +31,7 @@ end fsm;
 
 architecture Behavioral of fsm is
 
+--  Define local values
     signal state : std_logic_vector (3 downto 0);
     signal last_triggers : std_logic_vector (1 downto 0);
 
@@ -42,9 +44,11 @@ begin
 --  X"0" <= Counting
 --  X"1" <= Display Time
 --  X"2" <= Dots
+
     process (CLK_IN) is
     begin
     if (CLK_IN = '1' and CLK_IN'event) then
+--      If triggers have changed, check if state change needed then update last_triggers   
         if (last_triggers /= TRIGGERS_IN) then
 --          BTNC   
             if (TRIGGERS_IN(0) = '1') then        

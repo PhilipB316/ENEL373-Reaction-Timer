@@ -23,19 +23,16 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+--  Define module IO
 entity counter_3b is
---  Define module IO ports
     Port ( CLK_IN : in STD_LOGIC;
            COUNT_OUT : out STD_LOGIC_VECTOR (2 downto 0));
 end counter_3b;
 
 architecture Behavioral of counter_3b is
+--  Define local values
     signal count : std_logic_vector (2 downto 0) := (others => '0');
+
 begin
     process (CLK_IN)
     begin
@@ -45,7 +42,6 @@ begin
         end if;
     end process;
     
---  Move count to output
     COUNT_OUT <= count;
 
 end Behavioral;

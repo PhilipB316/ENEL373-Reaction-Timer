@@ -12,6 +12,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
+-- Define module IO
 entity milestone_1 is
     Port ( CLK100MHZ : in STD_LOGIC;
            LED : out STD_LOGIC_VECTOR (15 downto 0) := X"0000";
@@ -22,6 +23,7 @@ entity milestone_1 is
 end milestone_1;
 
 architecture Behavioral of milestone_1 is
+--  Define local values
 --  CLOCK SIGNALS AND DIVIDERS
     signal clk_100_mhz_switchable : std_logic := '0';
     signal clk_1000_hz : std_logic := '0';
@@ -114,29 +116,29 @@ architecture Behavioral of milestone_1 is
     end component;
 begin    
     
-    -- Finite State Machine
+--  Finite State Machine
     ff0: fsm port map(CLK_IN => clk_1000_hz,
                       STATE_OUT => fsm_state,
                       TRIGGERS_IN => fsm_state_change_triggers);
     
-    -- 1000 HZ Clock Divider
+--  1000 HZ Clock Divider
     ff1: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                               SLOWCLK_OUT => clk_1000_hz,
                               UPPERBOUND_IN => clk_1000_hz_divider_bound);
 
-    -- 1 HZ Clock Divider
+--  1 HZ Clock Divider
     ff2: clk_divider port map(CLK100MHZ_IN => clk_100_mhz_switchable,
                               SLOWCLK_OUT => clk_1_hz_switchable,
                               UPPERBOUND_IN => clk_1_hz_divider_bound);
     
-    -- 8 digit counter with output digit selection
+--  8 digit counter with output digit selection
     ff3: timer_8_num_selectable port map(CLK1000HZ_IN => clk_1000_hz,
                                          EN_IN => reaction_time_count_en,
                                          RESET_IN => reaction_time_count_rset,
                                          SELECT_IN => output_segment_select,
                                          INT_OUT => encoded_reaction_time_digit);
 
-    -- 8x4 to 4 encoded display data mux
+--  8x4 to 4 encoded display data mux
     ff4: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
                                       MUX_IN_1 => encoded_display_placeholder_1,
                                       MUX_IN_2 => encoded_display_placeholder_2,
@@ -148,24 +150,24 @@ begin
                                       SELECT_IN => encoded_display_input_select,
                                       MUX_OUT => encoded_segment_data);
 
-    -- 3 bit counter for seven segment anode selection
+--  3 bit counter for seven segment anode selection
     ff5: counter_3b port map(CLK_IN => clk_1000_hz,
                              COUNT_OUT => output_segment_select);
 
-    -- Seven segment display decoder
+--  Seven segment display decoder
     ff6: segment_display port map(NUMBER_IN => encoded_segment_data,
                                   MUX_IN => output_segment_select,
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
 
-    -- Dot countdown generator
+--  Dot countdown generator
     ff7: dotiey port map(SELECT_IN => output_segment_select,
                          CLK_IN => clk_1_hz_switchable,
                          EN_IN => dotiey_countdown_en,
                          DOT_OUT => encoded_dots,
                          TIMER_FINISHED => fsm_state_dot_complete);
     
-    -- DLY seven segment text override
+--  DLY seven segment text override
     ff8: text_segment_override port map(SELECT_IN => output_segment_select,
                                         ENCODED_SEG_IN => encoded_reaction_time_digit,
                                         ENCODED_SEG_OUT => encoded_display_dly_text_override,

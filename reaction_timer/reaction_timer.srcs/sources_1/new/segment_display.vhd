@@ -22,15 +22,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+-- Define module IO
 entity segment_display is
     Port ( NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0); 
            MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
@@ -40,6 +32,10 @@ entity segment_display is
 end segment_display;
 
 architecture Behavioral of segment_display is
+--  Define local values
+    signal anode : STD_LOGIC_VECTOR (0 to 7);
+    
+--  Component instantiation
     component decoder_3b is
         port(DEC_IN : in STD_LOGIC_VECTOR (2 downto 0);
              DEC_OUT : out STD_LOGIC_VECTOR (7 downto 0));
@@ -50,12 +46,13 @@ architecture Behavioral of segment_display is
              DECIMAL_POINT_IN : in STD_LOGIC;
              SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (0 to 7));
     end component;
-    signal anode : STD_LOGIC_VECTOR (0 to 7);
+    
 begin
 
+--  3 bit to 8 line display anode decoder
     ff0: decoder_3b port map(DEC_IN => MUX_IN,
                              DEC_OUT => anode);
-    
+--  4 bit to 8 line segment light decoder
     ff1: seven_seg_decoder port map(BCD_IN => NUMBER_IN,
                                     DECIMAL_POINT_IN => '1',
                                     SEGMENT_LIGHT_OUT => SEGMENT_LIGHT_OUT);

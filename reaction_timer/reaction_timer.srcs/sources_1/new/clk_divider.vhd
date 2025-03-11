@@ -23,20 +23,15 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity clk_divider is
---  Define module IO ports
+--  Define module IO
     Port ( CLK100MHZ_IN : in STD_LOGIC;
            UPPERBOUND_IN : in STD_LOGIC_VECTOR (27 downto 0);
            SLOWCLK_OUT : out STD_LOGIC);
 end clk_divider;
 
 architecture Behavioral of clk_divider is
---  Define local variables
+--  Define local values
     signal count: std_logic_vector (27 downto 0) := (others => '0');
     signal temp: std_logic := '1';
     signal upperbound_half : STD_LOGIC_VECTOR (27 downto 0);

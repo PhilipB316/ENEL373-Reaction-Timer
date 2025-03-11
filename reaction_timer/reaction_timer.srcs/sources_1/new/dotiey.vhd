@@ -23,6 +23,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
+-- Define module IO
 entity dotiey is
     Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
            CLK_IN : in STD_LOGIC;
@@ -32,7 +33,7 @@ entity dotiey is
 end dotiey;
 
 architecture Behavioral of dotiey is
-
+--  Define local values
     signal count : std_logic_vector (3 downto 0) := "0010";
     signal dot: std_logic_vector (3 downto 0) := "1110";
     signal blank : std_logic_vector (3 downto 0) := "1010";
@@ -41,6 +42,7 @@ begin
 
     process (CLK_IN, EN_IN)
     begin 
+--      On rising clock edge decrement count, if zero, set TIMER_FINISHED to true
         if rising_edge(CLK_IN) then
             if EN_IN = '1' then
                 if count /= "0000" then
@@ -51,6 +53,7 @@ begin
             end if;
         end if;
         
+--      If not enabled, reset counter and TIMER_FINISHED
         if EN_IN = '0' then
             count <= "0010";
             TIMER_FINISHED <= '0';
@@ -59,6 +62,7 @@ begin
     
     process (SELECT_IN)
     begin
+--      Output a dot if the display number is <= the count, else output blank
         if (unsigned(SELECT_IN) <= unsigned(count)) then
             DOT_OUT <= dot;
         else

@@ -1,10 +1,13 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+
+-- Define module IO
 entity seven_seg_decoder is
-port ( BCD_IN : in STD_LOGIC_VECTOR (3 downto 0);
-DECIMAL_POINT_IN : in STD_LOGIC;
-SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (0 to 7));
+    port ( BCD_IN : in STD_LOGIC_VECTOR (3 downto 0);
+           DECIMAL_POINT_IN : in STD_LOGIC;
+           SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (0 to 7));
 end seven_seg_decoder;
+
 architecture Behavioral of seven_seg_decoder is
 begin
     process (BCD_IN) is
@@ -27,9 +30,9 @@ begin
             when "1100" => SEGMENT_LIGHT_OUT(0 to 7) <= "11000111"; -- "L"
             when "1101" => SEGMENT_LIGHT_OUT(0 to 7) <= "00010001"; -- "Y."
             when "1110" => SEGMENT_LIGHT_OUT(0 to 7) <= "01111111"; -- dot
---          when "1111" => SEGMENT_LIGHT_OUT(0 to 7) <=
+--          when "1111" => SEGMENT_LIGHT_OUT(0 to 7) <= -- Not currently used
             when others => NULL;
         end case;
     end process;
---    SEGMENT_LIGHT_OUT(0) <= DECIMAL_POINT_IN;
+
 end Behavioral;

@@ -23,11 +23,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+-- Define module IO
 entity counter_decade is
     Port ( EN_IN : in STD_LOGIC;
            RESET_IN : in STD_LOGIC;
@@ -37,8 +33,10 @@ entity counter_decade is
 end counter_decade;
 
 architecture Behavioral of counter_decade is
+--  Define local values
     signal count : std_logic_vector (3 downto 0) := (others => '0');
     signal tick : std_logic := '0';
+
 begin
 
     process (INCREMENT_IN, RESET_IN)
