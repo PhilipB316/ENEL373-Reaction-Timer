@@ -32,7 +32,7 @@ end fsm;
 architecture Behavioral of fsm is
 
 --  Define local values
-    signal state : std_logic_vector (3 downto 0);
+    signal state : std_logic_vector (3 downto 0) := "0010";
     signal last_triggers : std_logic_vector (1 downto 0);
 
 begin

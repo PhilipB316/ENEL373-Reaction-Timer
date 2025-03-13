@@ -15,6 +15,6 @@ Compiling architecture behavioral of entity xil_defaultlib.clk_divider [clk_divi
 Compiling architecture behavioral of entity xil_defaultlib.counter_3b [counter_3b_default]
 Compiling architecture behavioral of entity xil_defaultlib.decoder_3b [decoder_3b_default]
 Compiling architecture behavioral of entity xil_defaultlib.seven_seg_decoder [seven_seg_decoder_default]
-Compiling architecture behavioral of entity xil_defaultlib.counter_9i_plus [counter_9i_plus_default]
+Compiling architecture behavioral of entity xil_defaultlib.counter_decade [counter_decade_default]
 Compiling architecture behavioral of entity xil_defaultlib.main_tb
 Built simulation snapshot main_tb_behav
