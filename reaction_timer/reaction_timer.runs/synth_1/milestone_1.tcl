@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.tcl"
+  variable script "H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,35 +70,33 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 3
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.cache/wt [current_project]
-set_property parent.project_path C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.xpr [current_project]
+set_property webtalk.parent_dir H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.cache/wt [current_project]
+set_property parent.project_path H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo c:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.cache/ip [current_project]
+set_property ip_output_repo h:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd
-  C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd
+  H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -109,12 +107,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc
-set_property used_in_implementation false [get_files C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
+read_xdc H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc
+set_property used_in_implementation false [get_files H:/Documents/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/bbl37/AppData/Local/Temp/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp
+read_checkpoint -auto_incremental -incremental H:/Documents/ENEL373/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
