@@ -32,6 +32,7 @@ architecture Behavioral of milestone_1 is
     signal clk_1_hz_switchable : std_logic;
     signal clk_1_hz_divider_bound : std_logic_vector (27 downto 0) := X"5F5E100";
     signal clk_var_hz : std_logic;
+    signal clk_var_hz_switchable : std_logic;
     signal clk_var_hz_divider_bound : std_logic_vector ( 27 downto 0) := X"5F5E100";
     
 --  FINITE STATE MACHINE
@@ -57,7 +58,6 @@ architecture Behavioral of milestone_1 is
     signal encoded_dots : std_logic_vector (3 downto 0) := X"0";
     signal encoded_display_dly_text_override : std_logic_vector (3 downto 0) := X"0";
     
---  TEMP VARIABLE FOR PRNG TESTING
     signal rand_num : std_logic_vector (7 downto 0);
     
 --  COMPONENT INSTANTIATION
@@ -138,7 +138,7 @@ begin
                               SLOWCLK_OUT => clk_1000_hz,
                               UPPERBOUND_IN => clk_1000_hz_divider_bound);
 
---  1 HZ Clock Divider
+--  1 HZ Switchable Clock Divider
     ff2: clk_divider port map(CLK100MHZ_IN => clk_100_mhz_switchable,
                               SLOWCLK_OUT => clk_1_hz_switchable,
                               UPPERBOUND_IN => clk_1_hz_divider_bound);
@@ -174,7 +174,7 @@ begin
 
 --  Dot countdown generator
     ff7: dotiey port map(SELECT_IN => output_segment_select,
-                         CLK_IN => clk_1_hz_switchable,
+                         CLK_IN => clk_var_hz_switchable,
                          EN_IN => dotiey_countdown_en,
                          DOT_OUT => encoded_dots,
                          TIMER_FINISHED => fsm_state_dot_complete);
@@ -219,7 +219,7 @@ begin
         
 --      Dots
         if fsm_state = X"2" then
-            clk_100_mhz_switchable <= CLK100MHZ;
+            clk_var_hz_switchable <= clk_var_hz;
             reaction_time_count_en <= '0';
             reaction_time_count_rset <= '1';
             encoded_display_input_select <= "110";
