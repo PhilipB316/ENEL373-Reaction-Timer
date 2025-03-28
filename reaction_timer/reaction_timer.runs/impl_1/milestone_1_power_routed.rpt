@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Thu Mar 20 16:31:52 2025
-| Host             : ECE-ELECTRO-18 running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
+| Date             : Sat Mar 29 09:45:41 2025
+| Host             : Laptopylces running 64-bit Ubuntu 24.04.2 LTS
 | Command          : report_power -file milestone_1_power_routed.rpt -pb milestone_1_power_summary_routed.pb -rpx milestone_1_power_routed.rpx
 | Design           : milestone_1
 | Device           : xc7a100tcsg324-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.111        |
+| Total On-Chip Power (W)  | 0.112        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.014        |
+| Dynamic (W)              | 0.015        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.5         |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      280 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       84 |     63400 |            0.13 |
-|   CARRY4       |    <0.001 |       11 |     15850 |            0.07 |
-|   Register     |    <0.001 |      117 |    126800 |            0.09 |
+| Slice Logic    |    <0.001 |      349 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       97 |     63400 |            0.15 |
+|   CARRY4       |    <0.001 |       21 |     15850 |            0.13 |
+|   Register     |    <0.001 |      159 |    126800 |            0.13 |
 |   F7/F8 Muxes  |    <0.001 |        4 |     63400 |           <0.01 |
-|   Others       |     0.000 |       35 |       --- |             --- |
-| Signals        |    <0.001 |      173 |       --- |             --- |
+|   Others       |     0.000 |       39 |       --- |             --- |
+| Signals        |    <0.001 |      225 |       --- |             --- |
 | I/O            |     0.013 |       34 |       210 |           16.19 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.111 |          |           |                 |
+| Total          |     0.112 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -141,7 +141,7 @@ Table of Contents
 +-------------+-----------+
 | Name        | Power (W) |
 +-------------+-----------+
-| milestone_1 |     0.014 |
+| milestone_1 |     0.015 |
 +-------------+-----------+
 
 
