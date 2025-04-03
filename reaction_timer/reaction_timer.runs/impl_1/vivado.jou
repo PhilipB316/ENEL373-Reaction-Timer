@@ -1,13 +1,13 @@
 #-----------------------------------------------------------
 # Vivado v2022.2 (64-bit)
-# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Thu Mar 13 15:12:44 2025
-# Process ID: 11780
-# Current directory: C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1
-# Command line: vivado.exe -log milestone_1.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source milestone_1.tcl -notrace
-# Log file: C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/milestone_1.vdi
-# Journal file: C:/Users/bbl37/AppData/Local/Temp/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1\vivado.jou
-# Running On: ECE-ELECTRO-18, OS: Windows, CPU Frequency: 3192 MHz, CPU Physical cores: 6, Host memory: 16943 MB
+# Start of session at: Sat Mar 29 10:17:47 2025
+# Process ID: 286065
+# Current directory: /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1
+# Command line: vivado -log milestone_1.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source milestone_1.tcl -notrace
+# Log file: /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/milestone_1.vdi
+# Journal file: /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1/vivado.jou
+# Running On: Laptopylces, OS: Linux, CPU Frequency: 3800.038 MHz, CPU Physical cores: 4, Host memory: 16396 MB
 #-----------------------------------------------------------
 source milestone_1.tcl -notrace
