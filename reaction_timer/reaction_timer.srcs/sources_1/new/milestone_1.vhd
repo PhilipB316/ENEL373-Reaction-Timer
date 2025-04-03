@@ -3,7 +3,7 @@
 -- 
 -- Last Modified Date: 10-03-2025
 -- Design Name: p AIn_aND-SaDNeSS
--- Module Name: milestone_1 - Behavioral
+-- Module Name: main - Behavioral
 -- Project Name: just no
 -- 
 ----------------------------------------------------------------------------------
@@ -13,16 +13,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 -- Define module IO
-entity milestone_1 is
+entity main is
     Port ( CLK100MHZ : in STD_LOGIC;
            LED : out STD_LOGIC_VECTOR (15 downto 0) := X"0000";
            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            SW : in STD_LOGIC_VECTOR (7 downto 0);
            BTNC : in STD_LOGIC);
-end milestone_1;
+end main;
 
-architecture Behavioral of milestone_1 is
+architecture Behavioral of main is
 --  Define local values
 --  CLOCK SIGNALS AND DIVIDERS
     signal clk_100_mhz_switchable : std_logic := '0';
