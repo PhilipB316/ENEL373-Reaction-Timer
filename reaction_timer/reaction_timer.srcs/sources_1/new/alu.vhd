@@ -57,7 +57,7 @@ begin
                "10" when BUFFER_SIZE_IN = "01" else
                "11";
                
-    avg <= std_logic_vector(unsigned(sum) / unsigned(divisor))
+    avg <= std_logic_vector(unsigned(sum) / unsigned(divisor));
     
     process (OPERATION_SELECT_IN) is
     begin
