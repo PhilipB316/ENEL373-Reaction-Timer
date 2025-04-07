@@ -41,7 +41,7 @@ architecture Behavioral of dotiey is
 begin
 
     process (CLK_IN, EN_IN)
-    begin 
+    begin
 --      On rising clock edge decrement count, if zero, set TIMER_FINISHED to true
         if rising_edge(CLK_IN) then
             if EN_IN = '1' then
@@ -52,14 +52,14 @@ begin
                 end if;
             end if;
         end if;
-        
+
 --      If not enabled, reset counter and TIMER_FINISHED
         if EN_IN = '0' then
             count <= "0010";
             TIMER_FINISHED <= '0';
         end if;
     end process;
-    
+
     process (SELECT_IN)
     begin
 --      Output a dot if the display number is <= the count, else output blank

@@ -41,7 +41,7 @@ begin
             count <= std_logic_vector(unsigned(count) + 1);
         end if;
     end process;
-    
+
     COUNT_OUT <= count;
 
 end Behavioral;

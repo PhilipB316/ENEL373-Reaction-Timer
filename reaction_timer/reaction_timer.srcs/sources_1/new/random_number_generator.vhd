@@ -39,11 +39,11 @@ end random_number_generator;
 architecture Behavioral of random_number_generator is
 
     signal current_rand : std_logic_vector (7 downto 0) := "11111111";
-    
+
     begin
-    
+
     -- here we make a random number generator
-    
+
     process (CLK_IN)
     begin
         if rising_edge(CLK_IN) then

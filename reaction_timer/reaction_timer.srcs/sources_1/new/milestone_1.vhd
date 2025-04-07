@@ -34,7 +34,7 @@ architecture Behavioral of milestone_1 is
     signal clk_var_hz : std_logic;
     signal clk_var_hz_switchable : std_logic;
     signal clk_var_hz_divider_bound : std_logic_vector ( 27 downto 0) := X"5F5E100";
-    
+
 --  FINITE STATE MACHINE
     signal fsm_state : std_logic_vector (3 downto 0) := X"2";
     signal fsm_state_change_triggers : std_logic_vector (1 downto 0);
@@ -52,30 +52,30 @@ architecture Behavioral of milestone_1 is
     signal encoded_display_placeholder : std_logic_vector (3 downto 0) := X"0";
     signal encoded_dots : std_logic_vector (3 downto 0) := X"0";
     signal encoded_display_dly_text_override : std_logic_vector (3 downto 0) := X"0";
-    
+
     signal rand_num : std_logic_vector (7 downto 0);
-    
+
 --  COMPONENT INSTANTIATION
     component fsm is
-        port(CLK_IN : in STD_LOGIC;
-             STATE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
-             TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0));
+        Port ( CLK_IN : in STD_LOGIC;
+               STATE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+               TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0));
     end component;
-    
+
     component clk_divider is
-        port(CLK100MHZ_IN : in STD_LOGIC;
-             UPPERBOUND_IN : in STD_LOGIC_VECTOR;
-             SLOWCLK_OUT : out STD_LOGIC); 
+        Port ( CLK100MHZ_IN : in STD_LOGIC;
+               UPPERBOUND_IN : in STD_LOGIC_VECTOR;
+               SLOWCLK_OUT : out STD_LOGIC);
     end component;
-    
+
     component timer_8_num_selectable is
-        port(CLK1000HZ_IN : in STD_LOGIC;
-            EN_IN : in STD_LOGIC;
-            RESET_IN : in STD_LOGIC;
-            SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-            INT_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+        Port ( CLK1000HZ_IN : in STD_LOGIC;
+               EN_IN : in STD_LOGIC;
+               RESET_IN : in STD_LOGIC;
+               SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               INT_OUT : out STD_LOGIC_VECTOR (3 downto 0));
     end component;
-    
+
     component multiplexer_8_1_4b is
         Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (3 downto 0);
                MUX_IN_1 : in STD_LOGIC_VECTOR (3 downto 0);
@@ -88,25 +88,25 @@ architecture Behavioral of milestone_1 is
                SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
                MUX_OUT : out STD_LOGIC_VECTOR (3 downto 0));
     end component;
-    
+
     component segment_display is
-        Port(NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0); 
-             MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
-             SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
-             ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
+        Port ( NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0);
+               MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
+               SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
+               ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
-    
+
     component counter_3b is
-        Port(CLK_IN : in STD_LOGIC;
-             COUNT_OUT : out STD_LOGIC_VECTOR (2 downto 0));
+        Port ( CLK_IN : in STD_LOGIC;
+               COUNT_OUT : out STD_LOGIC_VECTOR (2 downto 0));
     end component;
-    
+
     component dotiey is
-        Port(SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-             CLK_IN : in STD_LOGIC;
-             EN_IN : in STD_LOGIC;
-             DOT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
-             TIMER_FINISHED : out STD_LOGIC);
+        Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               CLK_IN : in STD_LOGIC;
+               EN_IN : in STD_LOGIC;
+               DOT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+               TIMER_FINISHED : out STD_LOGIC);
     end component;
     
     component selectable_override is
@@ -115,23 +115,23 @@ architecture Behavioral of milestone_1 is
                SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
                SEG_OUT : out STD_LOGIC_VECTOR (3 downto 0));
     end component;
-    
+
     component random_number_generator is
-        PORT(CLK_IN : in STD_LOGIC;
-             RAND_OUT : out STD_LOGIC_VECTOR (7 downto 0));
+        Port ( CLK_IN : in STD_LOGIC;
+               RAND_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
-    
-begin    
-    
+
+begin
+
 --  Finite State Machine
-    ff0: fsm port map(CLK_IN => clk_1000_hz,
+    ff0: fsm port map ( CLK_IN => clk_1000_hz,
                       STATE_OUT => fsm_state,
                       TRIGGERS_IN => fsm_state_change_triggers);
-    
+
 --  1000 HZ Clock Divider
-    ff1: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
-                              SLOWCLK_OUT => clk_1000_hz,
-                              UPPERBOUND_IN => clk_1000_hz_divider_bound);
+    ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
+                                SLOWCLK_OUT => clk_1000_hz,
+                                UPPERBOUND_IN => clk_1000_hz_divider_bound);
 
 --  1 HZ Switchable Clock Divider
     ff2: clk_divider port map(CLK100MHZ_IN => clk_100_mhz_switchable,
@@ -186,7 +186,7 @@ begin
     
 -- Set the upperbound for the variable clk based on the random number  
     clk_var_hz_divider_bound(27 downto 20) <= rand_num;
-                              
+
 -- Generate another clk square wave to trigger a new random number
     ff10: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                                 SLOWCLK_OUT => clk_var_hz,
@@ -203,15 +203,15 @@ begin
             encoded_display_input_select <= "000";
             dotiey_countdown_en <= '0';
         end if;
-       
---      Display time 
+
+--      Display time
         if fsm_state = X"1" then
             reaction_time_count_en <= '0';
             reaction_time_count_rset <= '0';
             encoded_display_input_select <= "000";
             dotiey_countdown_en <= '0';
         end if;
-        
+
 --      Dots
         if fsm_state = X"2" then
             clk_var_hz_switchable <= clk_var_hz;
@@ -220,13 +220,13 @@ begin
             encoded_display_input_select <= "111";
             dotiey_countdown_en <= '1';
         end if;
-        
+
     end process;
-    
+
 --  Map FSM fsm_state_change_triggers
     fsm_state_change_triggers(0) <= BTNC;
     fsm_state_change_triggers(1) <= fsm_state_dot_complete;
-    
+
     LED(7 downto 0) <= rand_num;
-    
+
 end Behavioral;

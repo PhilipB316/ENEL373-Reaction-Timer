@@ -24,29 +24,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Define module IO
 entity segment_display is
-    Port ( NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0); 
+    Port ( NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0);
            MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
            SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
            ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
-           
+
 end segment_display;
 
 architecture Behavioral of segment_display is
 --  Define local values
     signal anode : STD_LOGIC_VECTOR (0 to 7);
-    
+
 --  Component instantiation
     component decoder_3b is
         port(DEC_IN : in STD_LOGIC_VECTOR (2 downto 0);
              DEC_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
-    
+
     component seven_seg_decoder is
         port(BCD_IN : in STD_LOGIC_VECTOR (3 downto 0);
              DECIMAL_POINT_IN : in STD_LOGIC;
              SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (0 to 7));
     end component;
-    
+
 begin
 
 --  3 bit to 8 line display anode decoder

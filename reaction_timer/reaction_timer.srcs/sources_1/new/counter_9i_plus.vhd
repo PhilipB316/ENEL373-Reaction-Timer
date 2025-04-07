@@ -41,32 +41,32 @@ begin
 
     process (INCREMENT_IN, RESET_IN)
     begin
-    
+
 --      If clock is on a rising edge
         if rising_edge (INCREMENT_IN) then
-        
+
             if EN_IN = '1' then
 --              Increment count on clock signal
                 count <= std_logic_vector(unsigned(count) + 1);
-            
+
 --              If count reaches max value reset to 0 AND toggle tick
                 if count = X"9" then
                     count <= X"0";
                     tick <= not tick;
                 end if;
             end if;
-                
+
         end if;
-        
+
 --      Put tick back to zero on the falling edge
         if falling_edge (INCREMENT_IN) then
-        
+
             if tick = '1' then
                 tick <= not tick;
             end if;
- 
+
         end if;
-        
+
 --      if RESET then set count to 0
         if (RESET_IN = '1') then
             count <= X"0";

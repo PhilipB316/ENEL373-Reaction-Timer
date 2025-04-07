@@ -48,21 +48,21 @@ begin
     process (CLK_IN) is
     begin
     if (CLK_IN = '1' and CLK_IN'event) then
---      If triggers have changed, check if state change needed then update last_triggers   
+--      If triggers have changed, check if state change needed then update last_triggers
         if (last_triggers /= TRIGGERS_IN) then
---          BTNC   
-            if (TRIGGERS_IN(0) = '1') then        
+--          BTNC
+            if (TRIGGERS_IN(0) = '1') then
 --              Counting state
                 if (state = X"0") then
                     state <= X"1";
-                
+
 --              Display Time state
                 elsif (state = X"1") then
                     state <= X"2";
                 end if;
-            
+
 --          Dot timer
-            elsif (TRIGGERS_IN(1) = '1') then        
+            elsif (TRIGGERS_IN(1) = '1') then
 --              Dot state
                 if (state = X"2") then
                     state <= X"0";
