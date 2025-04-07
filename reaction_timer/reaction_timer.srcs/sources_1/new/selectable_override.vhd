@@ -39,14 +39,15 @@ architecture Behavioral of selectable_override is
     
 --  Override text signals
 --  These are only signals for the sake of code readability
+    signal blank_text : std_logic_vector (7 downto 0) := "10101010";
     signal delay_text : std_logic_vector (7 downto 0) := "10111100";
 
 begin
     process (TEXT_SELECT_IN)
     begin
-        case(TEXT_SELECT_IN) is 
+        case(TEXT_SELECT_IN) is
             when "000" => override_text <= delay_text;
-            when others => NULL;
+            when others => override_text <= blank_text;
         end case;
     end process;
     
