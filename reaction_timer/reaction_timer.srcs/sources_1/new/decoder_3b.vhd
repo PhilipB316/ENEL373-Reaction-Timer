@@ -32,7 +32,7 @@ end decoder_3b;
 architecture Behavioral of decoder_3b is
 
 begin
-    
+
 --  Mapping Inputs to Outputs
     DEC_OUT(0) <= not DEC_IN(0) and not DEC_IN(1) and not DEC_IN(2);
     DEC_OUT(1) <= DEC_IN(0) and not DEC_IN(1) and not DEC_IN(2);

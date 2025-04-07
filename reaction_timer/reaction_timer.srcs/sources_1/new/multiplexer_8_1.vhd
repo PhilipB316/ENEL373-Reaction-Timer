@@ -41,7 +41,7 @@ architecture Behavioral of multiplexer_8_1_4b is
 begin
     process (SELECT_IN)
     begin
-        case(SELECT_IN) is 
+        case(SELECT_IN) is
             when "000" => MUX_OUT <= MUX_IN_0;
             when "001" => MUX_OUT <= MUX_IN_1;
             when "010" => MUX_OUT <= MUX_IN_2;

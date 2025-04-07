@@ -47,7 +47,7 @@ begin
             NUMBER_1_OUT <= "000000000";
             NUMBER_2_OUT <= "000000000";
             NUMBER_3_OUT <= "000000000";
-        end if;        
+        end if;
     end process;
     
     process (WRITE_TRIGGER_IN)
