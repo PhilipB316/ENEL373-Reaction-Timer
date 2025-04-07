@@ -45,16 +45,11 @@ architecture Behavioral of milestone_1 is
 
 --  DISPLAY SELECTION
     signal output_segment_select : std_logic_vector (2 downto 0) := "000";
-    
     signal encoded_display_input_select : std_logic_vector (2 downto 0) := "000";
-    
     signal encoded_reaction_time_digit : std_logic_vector (3 downto 0) := X"0";
     signal encoded_segment_data : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_display_placeholder_1 : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_display_placeholder_2 : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_display_placeholder_3 : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_display_placeholder_4 : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_display_placeholder_5 : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_segment_data_overridden : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_display_placeholder : std_logic_vector (3 downto 0) := X"0";
     signal encoded_dots : std_logic_vector (3 downto 0) := X"0";
     signal encoded_display_dly_text_override : std_logic_vector (3 downto 0) := X"0";
     
@@ -114,11 +109,11 @@ architecture Behavioral of milestone_1 is
              TIMER_FINISHED : out STD_LOGIC);
     end component;
     
-    component text_segment_override is
-        Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-               ENCODED_SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
-               ENCODED_SEG_OUT : out STD_LOGIC_VECTOR (3 downto 0);
-               OVERRIDE_TEXT_IN : in STD_LOGIC_VECTOR (11 downto 0));
+    component selectable_override is
+        Port ( SEG_SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               TEXT_SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
+               SEG_OUT : out STD_LOGIC_VECTOR (3 downto 0));
     end component;
     
     component random_number_generator is
@@ -142,50 +137,50 @@ begin
     ff2: clk_divider port map(CLK100MHZ_IN => clk_100_mhz_switchable,
                               SLOWCLK_OUT => clk_1_hz_switchable,
                               UPPERBOUND_IN => clk_1_hz_divider_bound);
+                              
+--  3 bit counter for seven segment anode selection
+    ff3: counter_3b port map(CLK_IN => clk_1000_hz,
+                             COUNT_OUT => output_segment_select);                             
     
 --  8 digit counter with output digit selection
-    ff3: timer_8_num_selectable port map(CLK1000HZ_IN => clk_1000_hz,
+    ff4: timer_8_num_selectable port map(CLK1000HZ_IN => clk_1000_hz,
                                          EN_IN => reaction_time_count_en,
                                          RESET_IN => reaction_time_count_rset,
                                          SELECT_IN => output_segment_select,
                                          INT_OUT => encoded_reaction_time_digit);
 
---  8x4 to 4 encoded display data mux
-    ff4: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
-                                      MUX_IN_1 => encoded_display_placeholder_1,
-                                      MUX_IN_2 => encoded_display_placeholder_2,
-                                      MUX_IN_3 => encoded_display_placeholder_3,
-                                      MUX_IN_4 => encoded_display_placeholder_4,
-                                      MUX_IN_5 => encoded_display_placeholder_5,
-                                      MUX_IN_6 => encoded_dots,
-                                      MUX_IN_7 => encoded_display_dly_text_override,
-                                      SELECT_IN => encoded_display_input_select,
-                                      MUX_OUT => encoded_segment_data);
-
---  3 bit counter for seven segment anode selection
-    ff5: counter_3b port map(CLK_IN => clk_1000_hz,
-                             COUNT_OUT => output_segment_select);
-
---  Seven segment display decoder
-    ff6: segment_display port map(NUMBER_IN => encoded_segment_data,
-                                  MUX_IN => output_segment_select,
-                                  SEGMENT_LIGHT_OUT => SEVEN_SEG,
-                                  ANODE_OUT => AN);
-
 --  Dot countdown generator
-    ff7: dotiey port map(SELECT_IN => output_segment_select,
+    ff5: dotiey port map(SELECT_IN => output_segment_select,
                          CLK_IN => clk_var_hz_switchable,
                          EN_IN => dotiey_countdown_en,
                          DOT_OUT => encoded_dots,
                          TIMER_FINISHED => fsm_state_dot_complete);
-    
---  DLY seven segment text override
-    ff8: text_segment_override port map(SELECT_IN => output_segment_select,
-                                        ENCODED_SEG_IN => encoded_reaction_time_digit,
-                                        ENCODED_SEG_OUT => encoded_display_dly_text_override,
-                                        OVERRIDE_TEXT_IN => "101111001101");
-                                        
--- Generate next "random" number from the LFSR in random_number_generator
+                         
+--  8x4 to 4 encoded display data mux
+    ff6: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
+                                      MUX_IN_1 => encoded_display_placeholder,
+                                      MUX_IN_2 => encoded_display_placeholder,
+                                      MUX_IN_3 => encoded_display_placeholder,
+                                      MUX_IN_4 => encoded_display_placeholder,
+                                      MUX_IN_5 => encoded_display_placeholder,
+                                      MUX_IN_6 => encoded_display_placeholder,
+                                      MUX_IN_7 => encoded_dots,
+                                      SELECT_IN => encoded_display_input_select,
+                                      MUX_OUT => encoded_segment_data);
+                                      
+--  Display text override
+    ff7: selectable_override port map (SEG_SELECT_IN => output_segment_select,
+                                       TEXT_SELECT_IN => encoded_display_input_select,
+                                       SEG_IN => encoded_segment_data,
+                                       SEG_OUT => encoded_segment_data_overridden);
+
+--  Seven segment display decoder
+    ff8: segment_display port map(NUMBER_IN => encoded_segment_data_overridden,
+                                  MUX_IN => output_segment_select,
+                                  SEGMENT_LIGHT_OUT => SEVEN_SEG,
+                                  ANODE_OUT => AN);
+             
+--  Generate next "random" number from the LFSR in random_number_generator
     ff9: random_number_generator port map (CLK_IN => clk_var_hz,
                                            RAND_OUT => rand_num);
     
@@ -193,7 +188,7 @@ begin
     clk_var_hz_divider_bound(27 downto 20) <= rand_num;
                               
 -- Generate another clk square wave to trigger a new random number
-    ff2_2: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+    ff10: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                                 SLOWCLK_OUT => clk_var_hz,
                                 UPPERBOUND_IN => clk_var_hz_divider_bound);
                                         
@@ -213,7 +208,7 @@ begin
         if fsm_state = X"1" then
             reaction_time_count_en <= '0';
             reaction_time_count_rset <= '0';
-            encoded_display_input_select <= "111";
+            encoded_display_input_select <= "000";
             dotiey_countdown_en <= '0';
         end if;
         
@@ -222,7 +217,7 @@ begin
             clk_var_hz_switchable <= clk_var_hz;
             reaction_time_count_en <= '0';
             reaction_time_count_rset <= '1';
-            encoded_display_input_select <= "110";
+            encoded_display_input_select <= "111";
             dotiey_countdown_en <= '1';
         end if;
         

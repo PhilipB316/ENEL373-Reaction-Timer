@@ -28,7 +28,7 @@ entity text_segment_override is
     Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
            ENCODED_SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
            ENCODED_SEG_OUT : out STD_LOGIC_VECTOR (3 downto 0);
-           OVERRIDE_TEXT_IN : in STD_LOGIC_VECTOR (11 downto 0));
+           OVERRIDE_TEXT_IN : in STD_LOGIC_VECTOR (7 downto 0));
 end text_segment_override;
 
 architecture Behavioral of text_segment_override is
@@ -38,10 +38,8 @@ begin
     begin
 --      If current segment needs text on it then override it with the text
         if (unsigned(SELECT_IN) = 7) then
-            ENCODED_SEG_OUT <= OVERRIDE_TEXT_IN(11 downto 8);
-        elsif (unsigned(SELECT_IN) = 6) then
             ENCODED_SEG_OUT <= OVERRIDE_TEXT_IN(7 downto 4);
-        elsif (unsigned(SELECT_IN) = 5) then
+        elsif (unsigned(SELECT_IN) = 6) then
             ENCODED_SEG_OUT <= OVERRIDE_TEXT_IN(3 downto 0);
         else
             ENCODED_SEG_OUT <= ENCODED_SEG_IN;

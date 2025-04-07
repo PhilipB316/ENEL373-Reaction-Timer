@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
-| Tool Version              : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
-| Date                      : Sat Mar 29 10:18:06 2025
-| Host                      : Laptopylces running 64-bit Ubuntu 24.04.2 LTS
+| Tool Version              : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date                      : Mon Apr  7 12:53:50 2025
+| Host                      : Boston_Laptop running 64-bit major release  (build 9200)
 | Command                   : report_io -file milestone_1_io_placed.rpt
 | Design                    : milestone_1
 | Device                    : xc7a100t

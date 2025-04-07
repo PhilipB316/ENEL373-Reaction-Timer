@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
-| Date         : Sat Mar 29 10:18:07 2025
-| Host         : Laptopylces running 64-bit Ubuntu 24.04.2 LTS
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Mon Apr  7 12:53:50 2025
+| Host         : Boston_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file milestone_1_control_sets_placed.rpt
 | Design       : milestone_1
 | Device       : xc7a100t
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    35 |
-|    Minimum number of control sets                        |    35 |
+| Total control sets                                       |    34 |
+|    Minimum number of control sets                        |    34 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   188 |
+| Unused register locations in slices containing registers |   182 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,8 +39,8 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    35 |
-| >= 0 to < 4        |    21 |
+| Total control sets |    34 |
+| >= 0 to < 4        |    20 |
 | >= 4 to < 6        |     9 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     2 |
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              48 |           30 |
+| No           | No                    | No                     |              47 |           31 |
 | No           | No                    | Yes                    |               1 |            1 |
-| No           | Yes                   | No                     |              46 |           12 |
+| No           | Yes                   | No                     |              45 |           12 |
 | Yes          | No                    | No                     |               1 |            1 |
-| Yes          | No                    | Yes                    |              36 |            9 |
+| Yes          | No                    | Yes                    |              36 |           10 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,41 +73,40 @@ Table of Contents
 +-----------------------------------------+------------------------------+--------------------------------+------------------+----------------+--------------+
 |               Clock Signal              |         Enable Signal        |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
 +-----------------------------------------+------------------------------+--------------------------------+------------------+----------------+--------------+
-|  ff3/ff1/tick_1                         |                              |                                |                1 |              1 |         1.00 |
-| ~ff3/ff2/tick_2                         |                              |                                |                1 |              1 |         1.00 |
-|  ff3/ff2/tick_2                         |                              |                                |                1 |              1 |         1.00 |
-| ~ff3/ff0/tick_0                         |                              |                                |                1 |              1 |         1.00 |
-|  ff3/ff4/tick_4                         |                              |                                |                1 |              1 |         1.00 |
-|  ff3/ff0/tick_0                         |                              |                                |                1 |              1 |         1.00 |
-|  ff0/AR[0]                              |                              |                                |                1 |              1 |         1.00 |
-| ~ff3/ff4/tick_4                         |                              |                                |                1 |              1 |         1.00 |
-| ~ff3/ff1/tick_1                         |                              |                                |                1 |              1 |         1.00 |
-|  ff3/ff5/tick_5                         |                              |                                |                1 |              1 |         1.00 |
-| ~ff3/ff3/tick_3                         |                              |                                |                1 |              1 |         1.00 |
-|  ff3/ff3/tick_3                         |                              |                                |                1 |              1 |         1.00 |
-| ~ff3/ff5/tick_5                         |                              |                                |                1 |              1 |         1.00 |
-| ~ff1/CLK                                |                              |                                |                1 |              1 |         1.00 |
-|  ff1/CLK                                | ff0/last_triggers[0]_i_1_n_0 |                                |                1 |              1 |         1.00 |
-|  clk_var_hz_switchable                  |                              | ff7/TIMER_FINISHED_i_2_n_0     |                1 |              1 |         1.00 |
+|  ff4/ff4/tick_4                         |                              |                                |                1 |              1 |         1.00 |
+|  ff0/dotiey_countdown_en__0             |                              | ff0/FSM_onehot_state_reg[2]_1  |                1 |              1 |         1.00 |
+| ~ff4/ff4/tick_4                         |                              |                                |                1 |              1 |         1.00 |
+|  ff4/ff3/tick_3                         |                              |                                |                1 |              1 |         1.00 |
+|  ff0/clk_var_hz_switchable__0           |                              |                                |                1 |              1 |         1.00 |
+| ~ff4/ff3/tick_3                         |                              |                                |                1 |              1 |         1.00 |
+|  ff4/ff0/tick_0                         |                              |                                |                1 |              1 |         1.00 |
+|  ff4/ff5/tick_5                         |                              |                                |                1 |              1 |         1.00 |
+| ~ff4/ff0/tick_0                         |                              |                                |                1 |              1 |         1.00 |
+| ~ff4/ff5/tick_5                         |                              |                                |                1 |              1 |         1.00 |
+|  clk_var_hz_switchable                  |                              | ff5/TIMER_FINISHED_i_2_n_0     |                1 |              1 |         1.00 |
+|  ff4/ff1/tick_1                         |                              |                                |                1 |              1 |         1.00 |
+| ~ff4/ff1/tick_1                         |                              |                                |                1 |              1 |         1.00 |
+|  ff4/ff2/tick_2                         |                              |                                |                1 |              1 |         1.00 |
+| ~ff4/ff2/tick_2                         |                              |                                |                1 |              1 |         1.00 |
 |  encoded_display_input_select_reg[0]/G0 |                              |                                |                1 |              1 |         1.00 |
 |  reaction_time_count_rset_reg/G0        |                              |                                |                1 |              1 |         1.00 |
-|  dotiey_countdown_en_reg/G0             |                              |                                |                1 |              1 |         1.00 |
+|  ff1/CLK                                | ff0/last_triggers[0]_i_1_n_0 |                                |                1 |              1 |         1.00 |
+| ~ff1/CLK                                |                              |                                |                1 |              1 |         1.00 |
 |  CLK100MHZ_IBUF_BUFG                    |                              |                                |                2 |              2 |         1.00 |
-|  ff0/dotiey_countdown_en__0             |                              | ff0/AS[1]                      |                1 |              2 |         2.00 |
-|  ff3/ff5/tick_5                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
-|  clk_var_hz_switchable                  | ff7/count                    | ff7/TIMER_FINISHED_i_2_n_0     |                1 |              4 |         4.00 |
-|  ff3/ff6/tick_reg__0_0                  | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
-|  ff3/ff4/tick_4                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
-|  ff3/ff2/tick_2                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
-|  ff3/ff0/tick_0                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
-|  ff3/ff1/tick_1                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
-|  ff3/ff3/tick_3                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff4/ff4/tick_4                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff4/ff3/tick_3                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff4/ff6/tick_reg__0_0                  | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff4/ff5/tick_5                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  clk_var_hz_switchable                  | ff5/count                    | ff5/TIMER_FINISHED_i_2_n_0     |                2 |              4 |         2.00 |
 |  ff1/CLK                                | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
-|  ff5/E[0]                               |                              |                                |                4 |              8 |         2.00 |
-|  ff1/CLK                                |                              |                                |                3 |              8 |         2.67 |
-|  ff2_2/CLK                              |                              |                                |                4 |             13 |         3.25 |
+|  ff4/ff2/tick_2                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff4/ff1/tick_1                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff4/ff0/tick_0                         | reaction_time_count_en       | reaction_time_count_rset_reg/Q |                1 |              4 |         4.00 |
+|  ff1/CLK                                |                              |                                |                4 |              8 |         2.00 |
+|  ff3/E[0]                               |                              |                                |                3 |              8 |         2.67 |
+|  ff10/CLK                               |                              |                                |                6 |             13 |         2.17 |
 |  CLK100MHZ_IBUF_BUFG                    |                              | ff1/clear                      |                4 |             16 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG                    |                              | ff2_2/count0_carry__1_n_2      |                7 |             28 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG                    |                              | ff10/count0_carry__1_n_2       |                7 |             28 |         4.00 |
 +-----------------------------------------+------------------------------+--------------------------------+------------------+----------------+--------------+
 
 
