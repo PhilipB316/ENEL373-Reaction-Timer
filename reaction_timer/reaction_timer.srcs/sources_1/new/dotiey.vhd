@@ -28,15 +28,15 @@ entity dotiey is
     Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
            CLK_IN : in STD_LOGIC;
            EN_IN : in STD_LOGIC;
-           DOT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           DOT_OUT : out STD_LOGIC_VECTOR (4 downto 0);
            TIMER_FINISHED : out STD_LOGIC);
 end dotiey;
 
 architecture Behavioral of dotiey is
 --  Define local values
     signal count : std_logic_vector (3 downto 0) := "0010";
-    signal dot: std_logic_vector (3 downto 0) := "1110";
-    signal blank : std_logic_vector (3 downto 0) := "1010";
+    signal dot: std_logic_vector (4 downto 0) := "01110";
+    signal blank : std_logic_vector (4 downto 0) := "01010";
 
 begin
 

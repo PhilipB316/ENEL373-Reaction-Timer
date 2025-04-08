@@ -28,13 +28,13 @@ entity counter_decade is
     Port ( EN_IN : in STD_LOGIC;
            RESET_IN : in STD_LOGIC;
            INCREMENT_IN : in STD_LOGIC;
-           COUNT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+           COUNT_OUT : out STD_LOGIC_VECTOR (4 downto 0);
            TICK_OUT : out STD_LOGIC);
 end counter_decade;
 
 architecture Behavioral of counter_decade is
 --  Define local values
-    signal count : std_logic_vector (3 downto 0) := (others => '0');
+    signal count : std_logic_vector (4 downto 0) := (others => '0');
     signal tick : std_logic := '0';
 
 begin
@@ -50,8 +50,8 @@ begin
                 count <= std_logic_vector(unsigned(count) + 1);
 
 --              If count reaches max value reset to 0 AND toggle tick
-                if count = X"9" then
-                    count <= X"0";
+                if count = "01001" then
+                    count <= "00000";
                     tick <= not tick;
                 end if;
             end if;
@@ -69,7 +69,7 @@ begin
 
 --      if RESET then set count to 0
         if (RESET_IN = '1') then
-            count <= X"0";
+            count <= "00000";
         end if;
 
     end process;

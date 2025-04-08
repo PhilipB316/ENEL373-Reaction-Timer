@@ -28,21 +28,21 @@ entity timer_8_num_selectable is
            EN_IN : in STD_LOGIC;
            RESET_IN : in STD_LOGIC;
            SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-           INT_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+           INT_OUT : out STD_LOGIC_VECTOR (4 downto 0));
 end timer_8_num_selectable;
 
 architecture Behavioral of timer_8_num_selectable is
 
 --  Define local values
     signal tick : std_logic_vector(7 downto 0) := X"00";
-    signal mux_0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal mux_1 : STD_LOGIC_VECTOR (3 downto 0);
-    signal mux_2 : STD_LOGIC_VECTOR (3 downto 0);
-    signal mux_3 : STD_LOGIC_VECTOR (3 downto 0);
-    signal mux_4 : STD_LOGIC_VECTOR (3 downto 0);
-    signal mux_5 : STD_LOGIC_VECTOR (3 downto 0);
-    signal mux_6 : STD_LOGIC_VECTOR (3 downto 0);
-    signal mux_7 : STD_LOGIC_VECTOR (3 downto 0);
+    signal mux_0 : STD_LOGIC_VECTOR (4 downto 0);
+    signal mux_1 : STD_LOGIC_VECTOR (4 downto 0);
+    signal mux_2 : STD_LOGIC_VECTOR (4 downto 0);
+    signal mux_3 : STD_LOGIC_VECTOR (4 downto 0);
+    signal mux_4 : STD_LOGIC_VECTOR (4 downto 0);
+    signal mux_5 : STD_LOGIC_VECTOR (4 downto 0);
+    signal mux_6 : STD_LOGIC_VECTOR (4 downto 0);
+    signal mux_7 : STD_LOGIC_VECTOR (4 downto 0);
 
 --  Import components
     component counter_decade is
@@ -54,16 +54,16 @@ architecture Behavioral of timer_8_num_selectable is
     end component counter_decade;
 
     component multiplexer_8_1_4b is
-        Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_1 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_2 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_3 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_4 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_5 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_6 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_7 : in STD_LOGIC_VECTOR (3 downto 0);
+        Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_1 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_2 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_3 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_4 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_5 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_6 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_7 : in STD_LOGIC_VECTOR (4 downto 0);
                SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-               MUX_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+               MUX_OUT : out STD_LOGIC_VECTOR (4 downto 0));
     end component multiplexer_8_1_4b;
 
 begin

@@ -46,12 +46,12 @@ architecture Behavioral of main is
 --  DISPLAY SELECTION
     signal output_segment_select : std_logic_vector (2 downto 0) := "000";
     signal encoded_display_input_select : std_logic_vector (2 downto 0) := "000";
-    signal encoded_reaction_time_digit : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_segment_data : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_segment_data_overridden : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_display_placeholder : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_dots : std_logic_vector (3 downto 0) := X"0";
-    signal encoded_display_dly_text_override : std_logic_vector (3 downto 0) := X"0";
+    signal encoded_reaction_time_digit : std_logic_vector (4 downto 0) := "00000";
+    signal encoded_segment_data : std_logic_vector (4 downto 0) := "00000";
+    signal encoded_segment_data_overridden : std_logic_vector (4 downto 0) := "00000";
+    signal encoded_display_placeholder : std_logic_vector (4 downto 0) := "00000";
+    signal encoded_dots : std_logic_vector (4 downto 0) := "00000";
+    signal encoded_display_dly_text_override : std_logic_vector (4 downto 0) := "00000";
 
     signal rand_num : std_logic_vector (7 downto 0);
 
@@ -73,24 +73,24 @@ architecture Behavioral of main is
                EN_IN : in STD_LOGIC;
                RESET_IN : in STD_LOGIC;
                SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-               INT_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+               INT_OUT : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
 
     component multiplexer_8_1_4b is
-        Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_1 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_2 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_3 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_4 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_5 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_6 : in STD_LOGIC_VECTOR (3 downto 0);
-               MUX_IN_7 : in STD_LOGIC_VECTOR (3 downto 0);
+        Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_1 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_2 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_3 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_4 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_5 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_6 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_7 : in STD_LOGIC_VECTOR (4 downto 0);
                SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-               MUX_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+               MUX_OUT : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
 
     component segment_display is
-        Port ( NUMBER_IN : in STD_LOGIC_VECTOR (3 downto 0);
+        Port ( NUMBER_IN : in STD_LOGIC_VECTOR (4 downto 0);
                MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
                SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
                ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
@@ -105,15 +105,15 @@ architecture Behavioral of main is
         Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
                CLK_IN : in STD_LOGIC;
                EN_IN : in STD_LOGIC;
-               DOT_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+               DOT_OUT : out STD_LOGIC_VECTOR (4 downto 0);
                TIMER_FINISHED : out STD_LOGIC);
     end component;
     
     component selectable_override is
         Port ( SEG_SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
                TEXT_SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
-               SEG_IN : in STD_LOGIC_VECTOR (3 downto 0);
-               SEG_OUT : out STD_LOGIC_VECTOR (3 downto 0));
+               SEG_IN : in STD_LOGIC_VECTOR (4 downto 0);
+               SEG_OUT : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
 
     component random_number_generator is
