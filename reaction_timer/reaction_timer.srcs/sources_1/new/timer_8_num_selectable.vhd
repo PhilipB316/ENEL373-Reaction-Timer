@@ -32,8 +32,8 @@ entity timer_8_num_selectable is
 end timer_8_num_selectable;
 
 architecture Behavioral of timer_8_num_selectable is
-   
---  Define local values 
+
+--  Define local values
     signal tick : std_logic_vector(7 downto 0) := X"00";
     signal mux_0 : STD_LOGIC_VECTOR (3 downto 0);
     signal mux_1 : STD_LOGIC_VECTOR (3 downto 0);
@@ -46,13 +46,13 @@ architecture Behavioral of timer_8_num_selectable is
 
 --  Import components
     component counter_decade is
-        port ( EN_IN : in std_logic;
+        Port ( EN_IN : in std_logic;
                RESET_IN : in std_logic;
                INCREMENT_IN : in std_logic;
                COUNT_OUT : out std_logic_vector;
                TICK_OUT : out std_logic);
     end component counter_decade;
-    
+
     component multiplexer_8_1_4b is
         Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (3 downto 0);
                MUX_IN_1 : in STD_LOGIC_VECTOR (3 downto 0);
@@ -68,13 +68,13 @@ architecture Behavioral of timer_8_num_selectable is
 
 begin
 
---  1's digit timer    
+--  1's digit timer
     ff0: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => CLK1000HZ_IN,
                                   COUNT_OUT => mux_0,
                                   TICK_OUT => tick(0));
---  10's digit timer    
+--  10's digit timer
     ff1: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(0),
@@ -92,18 +92,18 @@ begin
                                   INCREMENT_IN => tick(2),
                                   COUNT_OUT => mux_3,
                                   TICK_OUT => tick(3));
---  10,000's digit timer   
+--  10,000's digit timer
     ff4: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(3),
                                   COUNT_OUT => mux_4,
                                   TICK_OUT => tick(4));
---  100,000's digit timer    
+--  100,000's digit timer
     ff5: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(4),
                                   COUNT_OUT => mux_5,
-                                  TICK_OUT => tick(5));                                 
+                                  TICK_OUT => tick(5));
 --  1,000,000's digit timer
     ff6: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
@@ -127,5 +127,5 @@ begin
                                       MUX_IN_7 => mux_7,
                                       SELECT_IN => SELECT_IN,
                                       MUX_OUT => INT_OUT);
-                                      
+
 end Behavioral;

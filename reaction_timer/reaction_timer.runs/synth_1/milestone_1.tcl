@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.tcl"
+  variable script "C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/milestone_1.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,35 +70,35 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
+set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.cache/wt [current_project]
-set_property parent.project_path /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.cache/wt [current_project]
+set_property parent.project_path C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.cache/ip [current_project]
+set_property ip_output_repo c:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/text_segment_override.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd
-  /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd
+  C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/milestone_1.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -109,12 +109,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc
-set_property used_in_implementation false [get_files /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
+read_xdc C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc
+set_property used_in_implementation false [get_files C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental /media/windows/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

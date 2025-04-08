@@ -13,8 +13,8 @@ begin
     process (BCD_IN) is
     begin
         case (BCD_IN) is
-        
---          DO NOT NOT NOT NOT NOT CHANGE THE VALUES ON THE RIGHT HAND SIDE UNLESS YOU HAVE A COPY OF THESE SOMEWHERE!!  
+
+--          DO NOT NOT NOT NOT NOT CHANGE THE VALUES ON THE RIGHT HAND SIDE UNLESS YOU HAVE A COPY OF THESE SOMEWHERE!!
             when "0000" => SEGMENT_LIGHT_OUT(0 to 7) <= "11000000"; -- 0
             when "0001" => SEGMENT_LIGHT_OUT(0 to 7) <= "11111001"; -- 1
             when "0010" => SEGMENT_LIGHT_OUT(0 to 7) <= "10100100"; -- 2
