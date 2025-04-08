@@ -33,7 +33,7 @@ architecture Behavioral of milestone_1 is
     signal clk_1_hz_divider_bound : std_logic_vector (27 downto 0) := X"5F5E100";
     signal clk_var_hz : std_logic;
     signal clk_var_hz_switchable : std_logic;
-    signal clk_var_hz_divider_bound : std_logic_vector ( 27 downto 0) := X"5F5E100";
+    signal clk_var_hz_divider_bound : std_logic_vector ( 27 downto 0) := X"5FFFFFF";
 
 --  FINITE STATE MACHINE
     signal fsm_state : std_logic_vector (3 downto 0) := X"2";
@@ -185,7 +185,7 @@ begin
                                            RAND_OUT => rand_num);
     
 -- Set the upperbound for the variable clk based on the random number  
-    clk_var_hz_divider_bound(27 downto 20) <= rand_num;
+    clk_var_hz_divider_bound(27 downto 24) <= rand_num(6 downto 3);
 
 -- Generate another clk square wave to trigger a new random number
     ff10: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,

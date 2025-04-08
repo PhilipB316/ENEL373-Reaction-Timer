@@ -26,6 +26,10 @@
 \widowpenalty10000
 \clubpenalty10000
 \setcounter{secnumdepth}{0}
+\usepackage[newfloat]{minted}
+\usepackage{caption}
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Code Listing}
 
 
 \begin{document}
@@ -56,12 +60,12 @@
 
 \pagenumbering{roman}
 
-\addcontentsline{toc}{section}{Abstract}
-\section*{Abstract}
+% \addcontentsline{toc}{section}{Abstract}
+% \section*{Abstract}
 
-Not sure if we need an abstract
+% Not sure if we need an abstract
 
-\newpage
+% \newpage
 
 \renewcommand{\baselinestretch}{1.3}\normalsize
 \setlength{\cftbeforesecskip}{0.3em}
@@ -76,24 +80,60 @@ Not sure if we need an abstract
 \section{Introduction}
 % Outline (in your own words) the project requirements and what you achieved
 
-Here is how we include a figure in the report. Figure \ref{fig:example} shows an example of a figure. A figure.
+Human reaction time is the interval between the a stimulus and the response to that stimulus. There are two main types of reaction time; simple, and choice. Simple reaction involves reacting to a singular stimulus, while choice reaction involves choosing the correct response from multiple stimuli. This project aims to implement a simple reaction time recorder on an FPGA in VHDL.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{example.png}
-  \caption{This is an example of a figure.}
-  \label{fig:example}
-\end{figure}
-
-\newpage
+The reaction stimulus is three LEDs that turn off sequentially, with a random delay between each LED turning off. Once the last LED turns off, the user must press a button, and the delay is displayed in milliseconds on 8 7-segment displays. The FPGA stores the reaction delays from the last three trials, and can display the fastest, slowest, and average reaction times. These values can be reset by the user.
 
 \section{Design Summary}
 % Summarise your design.
 
+
 \newpage
 
 \section{Design Details}
-% (~2 pages): Describe the methods your group used to implement your FPGA design. Justify your final design. Support your descriptions and justifications with specific, explicit references to your VHDL source code in the appendix. VHDL descriptions could, for example, include an RTL description.
+% (~2 pages): Describe the methods your group used to implement your FPGA design. Justify your final design. Support your descriptions and justifications with specific, explicit references to your VHDL source code in the appendix. VHDL descriptions could, for example, include an RTL description. 
+
+% PHILIP says - is it worth including a state diagram for the FSM?
+
+\subsection{Finite State Machine}
+
+The reaction timer was managed by a finite state machine with the following states: (change these to match the ones in the code)
+\begin{itemize}
+    \item \textbf{Idle}: The system is waiting for the user to press the start button. The LEDs are on, and the 7-segment displays are blank.
+    \item \textbf{Countdown}: The system is counting down from a random number between 1 and 5 seconds. The LEDs are off, and the 7-segment displays are blank.
+    \item \textbf{Reaction}: The system is waiting for the user to press the button after the last LED turns off. The LEDs are off, and the 7-segment displays are blank.
+    \item \textbf{Display}: The system is displaying the reaction time on the 7-segment displays. The LEDs are off, and the 7-segment displays show the reaction time in milliseconds.
+    \item \textbf{Store}: The system is storing the reaction time in the memory. The LEDs are off, and the 7-segment displays are blank.
+    \item \textbf{Reset}: The system is resetting the memory. The LEDs are off, and the 7-segment displays are blank.
+\end{itemize}
+
+The reaction delays were stored in a three-element circular buffer.
+
+\subsection{Pseudo-Random Number Generation}
+
+The pseudo-random delay between the sequential deactivation of the LEDs was generated using a linear feedback shift register (LFSR) and a clock divider. An eight-bit LFSR was used to generate pseudo-random numbers, and those eight bits were assigned to the most significant eight bits of the upper bound for the clock divider. The next pseudo-random number was generated on a rising clock edge from that clock divider, as seen in Listing \ref{code:random_number_generation}.
+
+\begin{code}
+\begin{minted}{vhdl}
+
+--  Generate next "random" number from the LFSR in random_number_generator
+  ff9: random_number_generator port map (CLK_IN => clk_var_hz,
+                                         RAND_OUT => rand_num);
+  
+-- Set the upperbound for the variable clk based on the random number  
+  clk_var_hz_divider_bound(27 downto 20) <= rand_num;
+
+-- Generate another clk square wave to trigger a new random number
+  ff10: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+                              SLOWCLK_OUT => clk_var_hz,
+                              UPPERBOUND_IN => clk_var_hz_divider_bound);
+\end{minted}
+\captionsetup{belowskip=0pt}
+\captionof{listing}{Behavioural VHDL implementation of pseudo-random number generation.}
+\label{code:random_number_generation}
+\end{code}
+
+The LFSR was assigned to eight bits, which ensured the minimum delay between LEDs was 100MHz / 2 ** 21 - 1
 
 \newpage
 
@@ -113,6 +153,15 @@ Here is how we include a figure in the report. Figure \ref{fig:example} shows an
 \printbibliography
 
 \appendix
+
+Here is how we include a figure in the report. Figure \ref{fig:example} shows an example of a figure. A figure.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{example.png}
+  \caption{This is an example of a figure.}
+  \label{fig:example}
+\end{figure}
 
 
 \end{document}

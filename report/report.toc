@@ -1,7 +1,8 @@
-\contentsline {section}{Abstract}{i}{figure.caption.1}%
-\contentsline {section}{Contents}{ii}{section*.2}%
-\contentsline {section}{Introduction}{1}{section*.3}%
-\contentsline {section}{Design Summary}{2}{section*.5}%
-\contentsline {section}{Design Details}{3}{section*.6}%
-\contentsline {section}{Module Testing}{4}{section*.7}%
-\contentsline {section}{Conclusions}{5}{section*.8}%
+\contentsline {section}{Contents}{i}{figure.caption.1}%
+\contentsline {section}{Introduction}{1}{section*.2}%
+\contentsline {section}{Design Summary}{1}{section*.3}%
+\contentsline {section}{Design Details}{2}{section*.4}%
+\contentsline {subsection}{Finite State Machine}{2}{section*.5}%
+\contentsline {subsection}{Pseudo-Random Number Generation}{2}{section*.6}%
+\contentsline {section}{Module Testing}{4}{section*.8}%
+\contentsline {section}{Conclusions}{5}{section*.9}%
