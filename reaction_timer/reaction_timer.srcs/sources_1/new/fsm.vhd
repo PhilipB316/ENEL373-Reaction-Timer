@@ -25,8 +25,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- Define module IO
 entity fsm is
     Port ( CLK_IN : in STD_LOGIC;
-           STATE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
-           TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0));
+           TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0);
+           CLK_VAR_HZ_IN: in STD_LOGIC;
+           CLK_VAR_HZ_SWITCHABLE_OUT: out STD_LOGIC;
+           REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
+           REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
+           DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
+           ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0));
 end fsm;
 
 architecture Behavioral of fsm is
@@ -71,8 +76,37 @@ begin
             last_triggers <= TRIGGERS_IN;
         end if;
     end if;
+    end process;    
+    
+    --  Finite state machine state outputs
+    process(state, CLK_VAR_HZ_IN)
+    begin
+--      Counting
+        if state = X"0" then
+            REACTION_TIME_COUNT_EN_OUT <= '1';
+            REACTION_TIME_COUNT_RSET_OUT <= '0';
+            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
+            DOTIEY_COUNTDOWN_EN_OUT <= '0';
+        end if;
+
+--      Display time
+        if state = X"1" then
+            REACTION_TIME_COUNT_EN_OUT <= '0';
+            REACTION_TIME_COUNT_RSET_OUT <= '0';
+            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
+            DOTIEY_COUNTDOWN_EN_OUT <= '0';
+        end if;
+
+--      Dots
+        if state = X"2" then
+            CLK_VAR_HZ_SWITCHABLE_OUT <= CLK_VAR_HZ_IN;
+            REACTION_TIME_COUNT_EN_OUT <= '0';
+            REACTION_TIME_COUNT_RSET_OUT <= '1';
+            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "111";
+            DOTIEY_COUNTDOWN_EN_OUT <= '1';
+        end if;
+
     end process;
 
-    STATE_OUT <= state;
 
 end Behavioral;

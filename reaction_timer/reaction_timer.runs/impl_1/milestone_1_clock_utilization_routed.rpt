@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Wed Apr  9 08:25:37 2025
+| Date         : Wed Apr  9 22:58:42 2025
 | Host         : Laptoptycles running 64-bit major release  (build 9200)
 | Command      : report_clock_utilization -file milestone_1_clock_utilization_routed.rpt
 | Design       : milestone_1
@@ -66,20 +66,22 @@ Table of Contents
 4. Local Clock Details
 ----------------------
 
-+----------+-----------------+------------+-----------------+--------------+-------------+-----------------+--------------+-------+-----------------------------+-----------------------+
-| Local Id | Driver Type/Pin | Constraint | Site/BEL        | Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock | Driver Pin                  | Net                   |
-+----------+-----------------+------------+-----------------+--------------+-------------+-----------------+--------------+-------+-----------------------------+-----------------------+
-| 0        | FDRE/Q          | None       | SLICE_X2Y90/AFF | X0Y1         |          14 |               1 |              |       | ff1/temp_reg/Q              | ff1/CLK               |
-| 1        | FDRE/Q          | None       | SLICE_X2Y88/AFF | X0Y1         |          13 |               2 |              |       | ff10/temp_reg/Q             | ff10/CLK              |
-| 2        | FDRE/Q          | None       | SLICE_X7Y93/AFF | X0Y1         |           6 |               2 |              |       | ff4/ff0/tick_reg__0/Q       | ff4/ff0/tick_0        |
-| 3        | FDRE/Q          | None       | SLICE_X6Y90/AFF | X0Y1         |           6 |               2 |              |       | ff4/ff1/tick_reg__0/Q       | ff4/ff1/tick_1        |
-| 4        | FDRE/Q          | None       | SLICE_X2Y93/BFF | X0Y1         |           6 |               2 |              |       | ff4/ff2/tick_reg__0/Q       | ff4/ff2/tick_2        |
-| 5        | FDRE/Q          | None       | SLICE_X7Y94/AFF | X0Y1         |           6 |               2 |              |       | ff4/ff3/tick_reg__0/Q       | ff4/ff3/tick_3        |
-| 6        | FDRE/Q          | None       | SLICE_X6Y94/AFF | X0Y1         |           6 |               2 |              |       | ff4/ff4/tick_reg__0/Q       | ff4/ff4/tick_4        |
-| 7        | FDRE/Q          | None       | SLICE_X3Y96/AFF | X0Y1         |           6 |               2 |              |       | ff4/ff5/tick_reg__0/Q       | ff4/ff5/tick_5        |
-| 8        | LDCE/Q          | None       | SLICE_X5Y91/AFF | X0Y1         |           5 |               0 |              |       | clk_var_hz_switchable_reg/Q | clk_var_hz_switchable |
-| 9        | FDRE/Q          | None       | SLICE_X2Y96/AFF | X0Y1         |           4 |               2 |              |       | ff4/ff6/tick_reg__0/Q       | ff4/ff6/tick_reg__0_0 |
-+----------+-----------------+------------+-----------------+--------------+-------------+-----------------+--------------+-------+-----------------------------+-----------------------+
++----------+-----------------+------------+------------------+--------------+-------------+-----------------+--------------+-------+-------------------------------------+----------------------------------+
+| Local Id | Driver Type/Pin | Constraint | Site/BEL         | Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock | Driver Pin                          | Net                              |
++----------+-----------------+------------+------------------+--------------+-------------+-----------------+--------------+-------+-------------------------------------+----------------------------------+
+| 0        | FDRE/Q          | None       | SLICE_X5Y91/AFF  | X0Y1         |          14 |               1 |              |       | ff1/temp_reg/Q                      | ff1/CLK                          |
+| 1        | FDRE/Q          | None       | SLICE_X1Y89/AFF  | X0Y1         |          13 |               2 |              |       | ff10/temp_reg/Q                     | ff10/CLK                         |
+| 2        | FDRE/Q          | None       | SLICE_X1Y93/AFF  | X0Y1         |           6 |               2 |              |       | ff4/ff0/tick_reg__0/Q               | ff4/ff0/tick_0                   |
+| 3        | FDRE/Q          | None       | SLICE_X7Y96/AFF  | X0Y1         |           6 |               2 |              |       | ff4/ff1/tick_reg__0/Q               | ff4/ff1/tick_1                   |
+| 4        | FDRE/Q          | None       | SLICE_X5Y94/AFF  | X0Y1         |           6 |               2 |              |       | ff4/ff2/tick_reg__0/Q               | ff4/ff2/tick_2                   |
+| 5        | FDRE/Q          | None       | SLICE_X3Y95/AFF  | X0Y1         |           6 |               2 |              |       | ff4/ff3/tick_reg__0/Q               | ff4/ff3/tick_3                   |
+| 6        | FDRE/Q          | None       | SLICE_X3Y92/AFF  | X0Y1         |           6 |               2 |              |       | ff4/ff4/tick_reg__0/Q               | ff4/ff4/tick_4                   |
+| 7        | FDRE/Q          | None       | SLICE_X2Y94/AFF  | X0Y1         |           6 |               2 |              |       | ff4/ff5/tick_reg__0/Q               | ff4/ff5/tick_5                   |
+| 8        | LDCE/Q          | None       | SLICE_X0Y97/AFF  | X0Y1         |           5 |               0 |              |       | ff0/CLK_VAR_HZ_SWITCHABLE_OUT_reg/Q | ff0/CLK                          |
+| 9        | FDRE/Q          | None       | SLICE_X3Y96/AFF  | X0Y1         |           4 |               2 |              |       | ff4/ff6/tick_reg__0/Q               | ff4/ff6/tick_reg__0_0            |
+| 10       | FDRE/Q          | None       | SLICE_X2Y103/CFF | X0Y2         |           2 |               3 |              |       | ff0/FSM_onehot_state_reg[1]/Q       | ff0/FSM_onehot_state_reg_n_0_[1] |
+| 11       | FDRE/Q          | None       | SLICE_X2Y103/BFF | X0Y2         |           1 |               6 |              |       | ff0/FSM_onehot_state_reg[0]/Q       | ff0/FSM_onehot_state_reg_n_0_[0] |
++----------+-----------------+------------+------------------+--------------+-------------+-----------------+--------------+-------+-------------------------------------+----------------------------------+
 * Local Clocks in this context represents only clocks driven by non-global buffers
 ** Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 *** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -95,9 +97,9 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | X0Y0              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  2600 |    0 |   600 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y0              |    0 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     4 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |  1500 |    0 |   550 |    0 |    40 |    0 |    20 |    0 |    40 |
-| X0Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  118 |  2000 |   28 |   600 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X0Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  113 |  2000 |   43 |   600 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y1              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  1900 |    0 |   650 |    0 |    60 |    0 |    30 |    0 |    40 |
-| X0Y2              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  2000 |    0 |   600 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X0Y2              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    5 |  2000 |    7 |   600 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y2              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  1900 |    0 |   650 |    0 |    60 |    0 |    30 |    0 |    40 |
 | X0Y3              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  2600 |    0 |   600 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y3              |    0 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     4 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |  1350 |    0 |   500 |    0 |    30 |    0 |    15 |    0 |    40 |
