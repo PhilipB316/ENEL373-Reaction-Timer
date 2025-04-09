@@ -15,10 +15,9 @@ use IEEE.NUMERIC_STD.ALL;
 -- Define module IO
 entity main is
     Port ( CLK100MHZ : in STD_LOGIC;
-           LED : out STD_LOGIC_VECTOR (15 downto 0) := X"0000";
+           LED : out STD_LOGIC_VECTOR (7 downto 0) := X"0000";
            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-           SW : in STD_LOGIC_VECTOR (7 downto 0);
            BTNC : in STD_LOGIC);
 end main;
 
@@ -69,8 +68,13 @@ architecture Behavioral of main is
 --  COMPONENT INSTANTIATION
     component fsm is
         Port ( CLK_IN : in STD_LOGIC;
-               STATE_OUT : out STD_LOGIC_VECTOR (3 downto 0);
-               TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0));
+               TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0);
+               CLK_VAR_HZ_IN: in STD_LOGIC;
+               CLK_VAR_HZ_SWITCHABLE_OUT: out STD_LOGIC;
+               REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
+               REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
+               DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
+               ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0));
     end component;
 
     component clk_divider is
@@ -160,8 +164,13 @@ begin
 
 --  Finite State Machine
     ff0: fsm port map ( CLK_IN => clk_1000_hz,
-                      STATE_OUT => fsm_state,
-                      TRIGGERS_IN => fsm_state_change_triggers);
+                      TRIGGERS_IN => fsm_state_change_triggers,
+                      CLK_VAR_HZ_IN => clk_var_hz,
+                      CLK_VAR_HZ_SWITCHABLE_OUT => clk_var_hz_switchable,
+                      REACTION_TIME_COUNT_EN_OUT => reaction_time_count_en,
+                      REACTION_TIME_COUNT_RSET_OUT => reaction_time_count_rset,
+                      DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
+                      ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select);
 
 --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
@@ -254,35 +263,6 @@ begin
                                 UPPERBOUND_IN => clk_var_hz_divider_bound);
                                         
                                         
---  Finite state machine state outputs
-    process(fsm_state)
-    begin
---      Counting
-        if fsm_state = X"0" then
-            reaction_time_count_en <= '1';
-            reaction_time_count_rset <= '0';
-            encoded_display_input_select <= "000";
-            dotiey_countdown_en <= '0';
-        end if;
-
---      Display time
-        if fsm_state = X"1" then
-            reaction_time_count_en <= '0';
-            reaction_time_count_rset <= '0';
-            encoded_display_input_select <= "000";
-            dotiey_countdown_en <= '0';
-        end if;
-
---      Dots
-        if fsm_state = X"2" then
-            clk_var_hz_switchable <= clk_var_hz;
-            reaction_time_count_en <= '0';
-            reaction_time_count_rset <= '1';
-            encoded_display_input_select <= "111";
-            dotiey_countdown_en <= '1';
-        end if;
-
-    end process;
 
 --  Map FSM fsm_state_change_triggers
     fsm_state_change_triggers(0) <= BTNC;

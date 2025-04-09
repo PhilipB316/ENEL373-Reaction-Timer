@@ -40,7 +40,7 @@ architecture Behavioral of dotiey is
 
 begin
 
-    process (CLK_IN, EN_IN)
+    process (CLK_IN, EN_IN, count)
     begin
 --      On rising clock edge decrement count, if zero, set TIMER_FINISHED to true
         if rising_edge(CLK_IN) then
@@ -60,7 +60,7 @@ begin
         end if;
     end process;
 
-    process (SELECT_IN)
+    process (SELECT_IN, dot, blank, count)
     begin
 --      Output a dot if the display number is <= the count, else output blank
         if (unsigned(SELECT_IN) <= unsigned(count)) then

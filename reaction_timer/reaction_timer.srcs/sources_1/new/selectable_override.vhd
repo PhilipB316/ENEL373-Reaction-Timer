@@ -47,7 +47,7 @@ architecture Behavioral of selectable_override is
     
 
 begin
-    process (TEXT_SELECT_IN)
+    process (TEXT_SELECT_IN, delay_text, blank_text)
     begin
         case(TEXT_SELECT_IN) is
             when "000" => override_text <= delay_text;
@@ -58,7 +58,7 @@ begin
         end case;
     end process;
     
-    process (SEG_SELECT_IN)
+    process (SEG_SELECT_IN, override_text, SEG_IN)
     begin
         case(SEG_SELECT_IN) is 
             when "111" => SEG_OUT <= override_text(9 downto 5); -- display 7
