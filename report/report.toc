@@ -4,5 +4,5 @@
 \contentsline {section}{Design Details}{2}{section*.4}%
 \contentsline {subsection}{Finite State Machine}{2}{section*.5}%
 \contentsline {subsection}{Pseudo-Random Number Generation}{2}{section*.6}%
-\contentsline {section}{Module Testing}{4}{section*.8}%
-\contentsline {section}{Conclusions}{5}{section*.9}%
+\contentsline {section}{Module Testing}{4}{section*.9}%
+\contentsline {section}{Conclusions}{5}{section*.10}%

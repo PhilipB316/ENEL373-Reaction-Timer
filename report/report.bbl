@@ -1,0 +1,57 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{lfsr_taps}{report}{}
+      \name{author}{1}{}{%
+        {{hash=5cee5ee47004da0a55115b313f1f23d9}{%
+           family={Department\bibnamedelimb of\bibnamedelima Physics},
+           familyi={D\bibinitperiod\bibinitdelim o\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={University\bibnamedelimb of\bibnamedelima Otago},
+           giveni={U\bibinitperiod\bibinitdelim o\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Otago}%
+      }
+      \strng{namehash}{5cee5ee47004da0a55115b313f1f23d9}
+      \strng{fullhash}{5cee5ee47004da0a55115b313f1f23d9}
+      \strng{bibnamehash}{5cee5ee47004da0a55115b313f1f23d9}
+      \strng{authorbibnamehash}{5cee5ee47004da0a55115b313f1f23d9}
+      \strng{authornamehash}{5cee5ee47004da0a55115b313f1f23d9}
+      \strng{authorfullhash}{5cee5ee47004da0a55115b313f1f23d9}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2023-10-04}
+      \field{title}{Electronics Technical Report 2012-1}
+      \field{type}{techreport}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://www.physics.otago.ac.nz/reports/electronics/ETR2012-1.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.physics.otago.ac.nz/reports/electronics/ETR2012-1.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
