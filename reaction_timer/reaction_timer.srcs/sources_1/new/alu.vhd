@@ -25,8 +25,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity alu is
     Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (9 downto 0);
-           BUFFER_SIZE_IN : in STD_LOGIC_VECTOR (1 downto 0);
-           OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
+           BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
            OUTPUT_OUT : out STD_LOGIC_VECTOR (9 downto 0));
 end alu;
 
