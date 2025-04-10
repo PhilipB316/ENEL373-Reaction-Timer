@@ -28,6 +28,7 @@ entity timer_8_num_selectable is
            EN_IN : in STD_LOGIC;
            RESET_IN : in STD_LOGIC;
            SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+           BCD_BUS_OUT : out STD_LOGIC_VECTOR (39 downto 0);
            INT_OUT : out STD_LOGIC_VECTOR (4 downto 0));
 end timer_8_num_selectable;
 
@@ -127,5 +128,7 @@ begin
                                       MUX_IN_7 => mux_7,
                                       SELECT_IN => SELECT_IN,
                                       MUX_OUT => INT_OUT);
+                                      
+    BCD_BUS_OUT <= mux_7 & mux_6 & mux_5 & mux_4 & mux_3 & mux_2 & mux_1 & mux_0;
 
 end Behavioral;

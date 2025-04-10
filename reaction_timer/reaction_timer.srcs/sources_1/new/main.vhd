@@ -54,6 +54,9 @@ architecture Behavioral of main is
     signal encoded_display_dly_text_override : std_logic_vector (4 downto 0) := "00000";
 
     signal rand_num : std_logic_vector (7 downto 0);
+    
+--  ALU
+    signal timer_bcd_bus : std_logic_vector (39 downto 0) := x"0000000000";
 
 --  COMPONENT INSTANTIATION
     component fsm is
@@ -73,6 +76,7 @@ architecture Behavioral of main is
                EN_IN : in STD_LOGIC;
                RESET_IN : in STD_LOGIC;
                SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               BCD_BUS_OUT : out STD_LOGIC_VECTOR (39 downto 0);
                INT_OUT : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
 
@@ -147,6 +151,7 @@ begin
                                          EN_IN => reaction_time_count_en,
                                          RESET_IN => reaction_time_count_rset,
                                          SELECT_IN => output_segment_select,
+                                         BCD_BUS_OUT => timer_bcd_bus,
                                          INT_OUT => encoded_reaction_time_digit);
 
 --  Dot countdown generator
