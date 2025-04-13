@@ -6,8 +6,8 @@
 \pagestyle{fancy}
 \setlength{\parindent}{0cm}
 \setlength{\headheight}{14pt}
-\usepackage{parskip}
 \usepackage{tocloft}
+\usepackage{parskip}
 \usepackage[export]{adjustbox}
 \usepackage{float}
 \usepackage{subfig}
@@ -20,7 +20,6 @@
 \usepackage[backend=biber, style=ieee]{biblatex}
 \addbibresource{references.bib}
 % \bibliographystyle{ieee} % or another style like IEEE, APA, etc.
-\bibliography{references} % Replace 'references' with the name of your .bib file (without the extension)
 % \nocite{*}
 \usepackage{url}
 \setcounter{biburllcpenalty}{7000}
@@ -153,7 +152,7 @@ which was acceptable. The maximum delay remained unchanged, at
 \text{Maximum Delay} = \frac{2^{28} - 1}{100 \text{ MHz}} = 2.68 \text{ s}.
 \]
 
-The location of the taps in the LFSR were chosen to ensure a maximum period of $2^8 - 1 = 255$ cycles. These locations were 8, 6, 5, and 4 \cite{lfsr_taps}, as seen in Lisiting \ref{code:lfsr}.
+The location of the taps in the LFSR were chosen to ensure a maximum period of $2^8 - 1 = 255$ cycles. These locations were 8, 6, 5, and 4 \cite{lfsr_taps}, as seen in Listing \ref{code:lfsr}.
 
 \begin{code}
 \begin{minted}{vhdl}
@@ -173,6 +172,16 @@ The location of the taps in the LFSR were chosen to ensure a maximum period of $
 \captionof{listing}{Dataflow VHDL implementation of LFSR.}
 \label{code:lfsr}
 \end{code}
+
+\subsection{8-1 mux}
+
+
+\subsection{ALU \& Circular Buffer}
+
+
+\subsection{Text Override}
+
+
 
 \newpage
 
