@@ -10,6 +10,7 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
+                "-undump=pdflatex",
                 "%DOC%"
             ]
         },
@@ -23,8 +24,9 @@
     ],
     "latex-workshop.latex.recipes": [
         {
-            "name": "biber -> pdflatex",
+            "name": "pdflatex -> biber -> pdflatex",
             "tools": [
+                "pdflatex",
                 "biber",
                 "pdflatex"
             ]
