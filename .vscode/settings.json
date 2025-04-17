@@ -12,12 +12,20 @@
                 "-file-line-error",
                 "%DOC%"
             ]
-        }
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        },
     ],
     "latex-workshop.latex.recipes": [
         {
-            "name": "pdflatex",
+            "name": "biber -> pdflatex",
             "tools": [
+                "biber",
                 "pdflatex"
             ]
         }
