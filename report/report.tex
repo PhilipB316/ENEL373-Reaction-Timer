@@ -48,6 +48,7 @@
       {\Huge\bfseries This is an Awesome Title \\[0.3cm] for Our First Report} \\
       \vspace*{2cm}
       {\Huge Philip Brand \textit{\Large(15776928)}\\\par}
+      {\Huge Michael Brown \textit{\Large(48571923)}\\\par}
       % ADD YOUR NAME AND STUDENT ID HERE
       \vspace*{3cm}
       {\LARGE \today}
@@ -83,11 +84,21 @@
 
 Human reaction time is the interval between the a stimulus and the response to that stimulus. There are two main types of reaction time; simple, and choice. Simple reaction involves reacting to a singular stimulus, while choice reaction involves choosing the correct response from multiple stimuli. This project aims to implement a simple reaction time recorder on an FPGA in VHDL.
 
-The reaction stimulus is three LEDs that turn off sequentially, with a random delay between each LED turning off. Once the last LED turns off, the user must press a button, and the delay is displayed in milliseconds on 8 7-segment displays. The FPGA stores the reaction delays from the last three trials, and can display the fastest, slowest, and average reaction times. These values can be reset by the user.
+The reaction stimulus test starts with three LEDs that turn off sequentially, with a random delay between each LED turning off. Once the last LED turns off, the user must press a button, and the delay is displayed in milliseconds on 8 7-segment displays. The FPGA stores the reaction delays from the last three trials, and can display the fastest, slowest, and average reaction times. These values can be reset by the user.
 
 \section{Design Summary}
 % Summarise your design.
 
+The FPGA reaction stimulus test depends on four major components, those being the 8-digit counter, the ALU, the reaction countdown, and the output select and override. These components are shown in Figure \ref{project_structure}. Each of these components are enabled and disabled via a finite state machine.
+
+An 8-digit counter is used to track the reaction time of each new stimulus test. This is directly connected to a circular buffer and ALU system which stores the last three reaction times and calculates the minimum, maximum, and average. Both components, in addition to the random delay countdown component, are tied to a 8x5-to-1 mux that is synchronised to the anode select, allowing each system to output the actively displayed digit. These outputs are then tied to an additional 8x5-to-5 mux that selects which component to display, with any additional text being added before being output to hardware.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{../figures/project_overall_structure.png}
+    \caption{Overview of VHDL reaction timer structure}
+    \label{project_structure}
+\end{figure}
 
 \newpage
 
@@ -173,7 +184,10 @@ The location of the taps in the LFSR were chosen to ensure a maximum period of $
 \label{code:lfsr}
 \end{code}
 
-\subsection{8-1 mux}
+\subsection{8x5-to-5 Multiplexer}
+The 8x5-to-5 multiplexer is a generalised multiplexer component used specifically to select from a range of 5-bit BCD inputs. 5-bit BCD values are used instead of the standard 4-bits to allow for encoding of specific letters and symbols at values of $10+$ in each BCD digit. 
+
+The generalised multiplexer design is implemented with two different uses in the FPGA reaction stimulus test design. The first use is to take an input of 8 different BCD digits to be shown on the 8 different seven-segment displays, then displaying one at a time. This compensates for the hardware design limitation of only being able to have one active anode at a time on the seven segment display if the displays aren't identical. The second use is to take a range of BCD digits to be displayed, then selecting one to pass to the text override and seven segment decoders before showing on hardware.
 
 
 \subsection{ALU \& Circular Buffer}
