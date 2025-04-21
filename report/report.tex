@@ -92,7 +92,15 @@ The FPGA reaction stimulus test depends on four major components, those being th
   \label{project_structure}
 \end{figure}
 
-An 8-digit counter is used to track the reaction time of each new stimulus test. This is directly connected to a circular buffer and ALU system which stores the last three reaction times and calculates the minimum, maximum, and average. Both components, in addition to the random delay countdown component, are tied to a 8x5-to-1 mux that is synchronised to the anode select, allowing each system to output the actively displayed digit. These outputs are then tied to an additional 8x5-to-5 mux that selects which component to display, with any additional text being added before being output to hardware.
+An 8-digit 5-bit-BCD counter is the primary mechanism used to track the reaction time from each stimulus test to the nearest millisecond. Each BCD digit is passed into an 8x5-to-5 mux. The purpose of this mux is to sync the selected output digit with the currently active seven segment display anode, outputting each digit onto its associated display.
+
+All the BCD digits from the 8-digit counter are passed directly to ALU module. This module converts the BCD numbers into a 10-bit binary number, then stores the last three reaction times in a circular buffer. This buffer is read by the ALU which calculates the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD, and another 8x5-to-5 mux is used to select which digit is output.
+
+A linear shift register is used to provide some randomisation for the countdown sequence at the start of every reaction stimulus test. This time randomisation acts as the trigger for the countdown state, Dotiey, and also has an 8x5-to-5 mux for digit selection.
+
+All three 8x5-to-5 muxes from the three components described above are piped into an 8x5-to-5 mux used for output selection. This mux selects which module to take output from depending on what state is active. The mux output is piped into a text override, which overwrites some of the digits with letters based on state. This is finally piped into a 7 segment decoder, which takes a 5-bit BCD digit and converts it to a 8-bit seven segment display light combination which is piped to hardware.
+
+
 
 \section{Expanded Design Summary}
 % (~2 pages): Describe the methods your group used to implement your FPGA design. Justify your final design. Support your descriptions and justifications with specific, explicit references to your VHDL source code in the appendix. VHDL descriptions could, for example, include an RTL description. 
