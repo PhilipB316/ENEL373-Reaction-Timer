@@ -68,6 +68,7 @@ architecture Behavioral of main is
     signal circ_buff_size : std_logic_vector (1 downto 0) := "00";
     signal circ_buff_rset : std_logic := '0';
     signal circ_buff_write : std_logic := '0';
+    signal double_dabble_reset : std_logic := '0';
     signal reset_data : std_logic := '0';
 
 --  COMPONENT INSTANTIATION
@@ -80,6 +81,7 @@ architecture Behavioral of main is
                REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
                DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
                ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
+               DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;
                RESET_OUT: out STD_LOGIC);
     end component;
 
@@ -172,6 +174,7 @@ begin
                       REACTION_TIME_COUNT_RSET_OUT => reaction_time_count_rset,
                       DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
                       ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
+                      DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
                       RESET_OUT => reset_data);
 
 --  1000 HZ Clock Divider

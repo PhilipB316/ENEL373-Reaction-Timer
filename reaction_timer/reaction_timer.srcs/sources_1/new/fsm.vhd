@@ -25,14 +25,17 @@ use IEEE.NUMERIC_STD.ALL;
 
 -- Define module IO
 entity fsm is
-    Port ( CLK_IN : in STD_LOGIC;
+    Port ( -- INPUTS
+           CLK_IN : in STD_LOGIC;
            TRIGGERS_IN : in STD_LOGIC_VECTOR (5 downto 0);
            CLK_VAR_HZ_IN: in STD_LOGIC;
+        --  OUTPUTS
            CLK_VAR_HZ_SWITCHABLE_OUT: out STD_LOGIC;
            REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
            REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
            DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
            ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
+           DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;  
            RESET_OUT: out STD_LOGIC);
 end fsm;
 
@@ -134,6 +137,7 @@ begin
             REACTION_TIME_COUNT_RSET_OUT <= '0';
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
+            DOUBLE_DABBLE_RESET_OUT <= '1';
         end if;
 
 --      Dots
@@ -149,24 +153,27 @@ begin
         if state = X"3" then
             REACTION_TIME_COUNT_EN_OUT <= '0';
             REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "001"; -- change to correct value
+            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "011";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
+            DOUBLE_DABBLE_RESET_OUT <= '0';
         end if;
 
 --      Max time
         if state = X"4" then
             REACTION_TIME_COUNT_EN_OUT <= '0';
             REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "010"; -- change to correct value
+            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "001";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
+            DOUBLE_DABBLE_RESET_OUT <= '0';
         end if;
 
 --      Min time
         if state = X"5" then
             REACTION_TIME_COUNT_EN_OUT <= '0';
             REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "011"; -- change to correct value
+            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "010";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
+            DOUBLE_DABBLE_RESET_OUT <= '0';
         end if;
 
 --      Reset
@@ -186,7 +193,7 @@ begin
         if state = X"7" then
             REACTION_TIME_COUNT_EN_OUT <= '0';
             REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "100"; -- change to correct value
+            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "100";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
         end if;
 
