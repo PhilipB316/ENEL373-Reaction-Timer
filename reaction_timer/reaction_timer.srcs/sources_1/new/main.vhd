@@ -14,11 +14,15 @@ use IEEE.NUMERIC_STD.ALL;
 
 -- Define module IO
 entity main is
-    Port ( CLK100MHZ : in STD_LOGIC;
-           LED : out STD_LOGIC_VECTOR (7 downto 0) := X"0000";
-           AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-           BTNC : in STD_LOGIC);
+    Port (  CLK100MHZ : in STD_LOGIC;
+            LED : out STD_LOGIC_VECTOR (7 downto 0) := X"0000";
+            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+            BTNC : in STD_LOGIC;
+            BTNR : in STD_LOGIC;
+            BTNL : in STD_LOGIC;
+            BTNU : in STD_LOGIC;
+            BTND : in STD_LOGIC);  
 end main;
 
 architecture Behavioral of main is
@@ -36,7 +40,7 @@ architecture Behavioral of main is
 
 --  FINITE STATE MACHINE
     signal fsm_state : std_logic_vector (3 downto 0) := X"2";
-    signal fsm_state_change_triggers : std_logic_vector (1 downto 0);
+    signal fsm_state_change_triggers : std_logic_vector (5 downto 0);
     signal fsm_state_dot_complete : std_logic := '0';
     signal dotiey_countdown_en : std_logic := '0';
     signal reaction_time_count_en : std_logic := '0';
@@ -54,7 +58,7 @@ architecture Behavioral of main is
 
     signal rand_num : std_logic_vector (7 downto 0);
     
---  ALU
+--  ALU & CIRCULAR BUFFER
     signal timer_bcd_bus : std_logic_vector (39 downto 0) := x"0000000000";
     signal timer_binary : std_logic_vector (9 downto 0) := "0000000000";
     signal alu_binary : std_logic_vector (9 downto 0) := "0000000000";
@@ -64,17 +68,19 @@ architecture Behavioral of main is
     signal circ_buff_size : std_logic_vector (1 downto 0) := "00";
     signal circ_buff_rset : std_logic := '0';
     signal circ_buff_write : std_logic := '0';
+    signal reset_data : std_logic := '0';
 
 --  COMPONENT INSTANTIATION
     component fsm is
         Port ( CLK_IN : in STD_LOGIC;
-               TRIGGERS_IN : in STD_LOGIC_VECTOR (1 downto 0);
+               TRIGGERS_IN : in STD_LOGIC_VECTOR (5 downto 0);
                CLK_VAR_HZ_IN: in STD_LOGIC;
                CLK_VAR_HZ_SWITCHABLE_OUT: out STD_LOGIC;
                REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
                REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
                DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
-               ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0));
+               ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
+               RESET_OUT: out STD_LOGIC);
     end component;
 
     component clk_divider is
@@ -165,7 +171,8 @@ begin
                       REACTION_TIME_COUNT_EN_OUT => reaction_time_count_en,
                       REACTION_TIME_COUNT_RSET_OUT => reaction_time_count_rset,
                       DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
-                      ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select);
+                      ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
+                      RESET_OUT => reset_data);
 
 --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
@@ -256,8 +263,13 @@ begin
                                         
 
 --  Map FSM fsm_state_change_triggers
+
     fsm_state_change_triggers(0) <= BTNC;
     fsm_state_change_triggers(1) <= fsm_state_dot_complete;
+    fsm_state_change_triggers(2) <= BTNR;
+    fsm_state_change_triggers(3) <= BTNL;
+    fsm_state_change_triggers(4) <= BTNU;
+    fsm_state_change_triggers(5) <= BTND;
 
     LED(7 downto 0) <= rand_num;
 
