@@ -1,32 +1,17 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 03/20/2025 04:18:41 PM
--- Design Name: 
--- Module Name: circular_buffer - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- Engineers: Philip Brand, Michael Brown, Boston Black
 
+-- Create Date: 03/20/2025 04:18:41 PM
+-- Module Name: circular_buffer - Behavioral
+-- Project Name: Reaction Timer
+
+-- Description: 
+-- 3 element circular buffer for storing reaction times
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity circular_buffer is
     Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0);
@@ -36,10 +21,8 @@ entity circular_buffer is
 end circular_buffer;
 
 architecture Behavioral of circular_buffer is
-
     signal write_index : std_logic_vector (1 downto 0);
     signal buffer_size : std_logic_vector (1 downto 0);
-    
 begin
     process (RESET_IN)
     begin
@@ -62,7 +45,7 @@ begin
                 when others => NULL;
             end case;
             
---          increment the write index untill max then set to 0
+--          Increment the write index until max then set to 0
             if (write_index >= "10") then
                 write_index <= "00";
             else
@@ -75,7 +58,5 @@ begin
             end if;
         end if;
     end process;
-    
     BUFFER_SIZE_OUT <= buffer_size;
-    
 end Behavioral;

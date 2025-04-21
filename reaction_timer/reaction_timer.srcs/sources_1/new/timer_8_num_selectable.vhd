@@ -1,28 +1,17 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 06.03.2025 10:12:19
--- Design Name: 
--- Module Name: timer_8_num_selectable - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- Engineers: Philip Brand, Michael Brown, Boston Black 
 
+-- Create Date: 06.03.2025 10:12:19
+-- Module Name: timer_8_num_selectable - Behavioral
+-- Project Name: Reaction Timer
+
+-- Description: 
+-- 8 BCD counters tied together with selectable digit output select
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Define module IO
 entity timer_8_num_selectable is
     Port ( CLK1000HZ_IN : in STD_LOGIC;
            EN_IN : in STD_LOGIC;
@@ -33,8 +22,6 @@ entity timer_8_num_selectable is
 end timer_8_num_selectable;
 
 architecture Behavioral of timer_8_num_selectable is
-
---  Define local values
     signal tick : std_logic_vector(7 downto 0) := X"00";
     signal mux_0 : STD_LOGIC_VECTOR (4 downto 0);
     signal mux_1 : STD_LOGIC_VECTOR (4 downto 0);
@@ -45,7 +32,6 @@ architecture Behavioral of timer_8_num_selectable is
     signal mux_6 : STD_LOGIC_VECTOR (4 downto 0);
     signal mux_7 : STD_LOGIC_VECTOR (4 downto 0);
 
---  Import components
     component counter_decade is
         Port ( EN_IN : in std_logic;
                RESET_IN : in std_logic;

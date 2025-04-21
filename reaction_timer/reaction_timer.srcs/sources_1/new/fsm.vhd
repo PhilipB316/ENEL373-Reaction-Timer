@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
--- Engineers: Boston Black, Philip Brand,Michael Brown
+-- Engineers: Boston Black, Philip Brand, Michael Brown
 
 -- Create Date: 03/06/2025 04:07:27 PM
 -- Module Name: fsm - Behavioral
@@ -10,12 +10,10 @@
 --  Takes state change triggers and outputs appropriate signals to system
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Define module IO
 entity fsm is
     Port ( -- INPUTS
            CLK_IN : in STD_LOGIC;

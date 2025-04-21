@@ -12,7 +12,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Define module IO
 entity multiplexer_8_1_4b is
     Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (4 downto 0);
            MUX_IN_1 : in STD_LOGIC_VECTOR (4 downto 0);

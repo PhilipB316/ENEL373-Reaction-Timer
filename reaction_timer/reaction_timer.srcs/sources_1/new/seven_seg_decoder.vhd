@@ -12,7 +12,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Define module IO
 entity seven_seg_decoder is
     port ( BCD_IN : in STD_LOGIC_VECTOR (4 downto 0);
            DECIMAL_POINT_IN : in STD_LOGIC;
@@ -24,8 +23,8 @@ begin
     process (BCD_IN) is
     begin
         case (BCD_IN) is
-
---          DO NOT NOT NOT NOT NOT CHANGE THE VALUES ON THE RIGHT HAND SIDE UNLESS YOU HAVE A COPY OF THESE SOMEWHERE!!
+--          DO NOT NOT NOT NOT NOT CHANGE THE VALUES ON THE RIGHT HAND SIDE 
+--          UNLESS YOU HAVE A COPY OF THESE SOMEWHERE!!
             when "00000" => SEGMENT_LIGHT_OUT(0 to 7) <= "11000000"; -- 0
             when "00001" => SEGMENT_LIGHT_OUT(0 to 7) <= "11111001"; -- 1
             when "00010" => SEGMENT_LIGHT_OUT(0 to 7) <= "10100100"; -- 2
@@ -48,5 +47,4 @@ begin
             when others => NULL;
         end case;
     end process;
-
 end Behavioral;

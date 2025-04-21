@@ -1,3 +1,13 @@
+----------------------------------------------------------------------------------
+-- Engineers: Boston Black, Philip Brand, Michael Brown
+
+-- Module Name: binary_to_bcd_8 - Behavioral 
+-- Project Name: Reaction Timer
+
+-- Description: 
+-- Binary to BCD converter
+----------------------------------------------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
@@ -30,7 +40,6 @@ architecture behaviour of binary_to_bcd_8 is
     -- need to keep track of shifts
     signal shift_counter, shift_counter_next: natural range 0 to N;
 begin
- 
     process(CLK_IN, RESET_IN)
     begin
         if RESET_IN = '1' then

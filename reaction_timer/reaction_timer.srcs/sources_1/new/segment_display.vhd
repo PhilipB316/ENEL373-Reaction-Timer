@@ -9,11 +9,9 @@
 -- decodes BCD input and ties to hardware
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Define module IO
 entity segment_display is
     Port ( NUMBER_IN : in STD_LOGIC_VECTOR (4 downto 0);
            MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
@@ -23,10 +21,8 @@ entity segment_display is
 end segment_display;
 
 architecture Behavioral of segment_display is
---  Define local values
     signal anode : STD_LOGIC_VECTOR (0 to 7);
 
---  Component instantiation
     component decoder_3b is
         port(DEC_IN : in STD_LOGIC_VECTOR (2 downto 0);
              DEC_OUT : out STD_LOGIC_VECTOR (7 downto 0));
@@ -48,5 +44,4 @@ begin
                                     DECIMAL_POINT_IN => '1',
                                     SEGMENT_LIGHT_OUT => SEGMENT_LIGHT_OUT);
     ANODE_OUT <= not anode;
-
 end Behavioral;

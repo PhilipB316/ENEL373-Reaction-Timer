@@ -14,7 +14,6 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Define module IO
 entity dotiey is
     Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
            CLK_IN : in STD_LOGIC;
@@ -24,11 +23,9 @@ entity dotiey is
 end dotiey;
 
 architecture Behavioral of dotiey is
---  Define local values
     signal count : std_logic_vector (3 downto 0) := "0010";
     signal dot: std_logic_vector (4 downto 0) := "01110";
     signal blank : std_logic_vector (4 downto 0) := "01010";
-
 begin
     process (CLK_IN, EN_IN, count)
     begin

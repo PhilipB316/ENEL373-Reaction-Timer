@@ -1,3 +1,13 @@
+----------------------------------------------------------------------------------
+-- Engineers: Philip Brand, Michael Brown, Boston Black
+
+-- Module Name: bcd_8_to_binary - Behavioral
+-- Project Name: Reaction Timer
+
+-- Description:
+-- BCD to binary converter
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
