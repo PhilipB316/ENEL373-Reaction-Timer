@@ -1,8 +1,9 @@
 ----------------------------------------------------------------------------------
--- Engineers: Boston Black, Philip Brand,Michael Brown
+-- Engineers: Boston Black, Philip Brand, Michael Brown
 
 -- Create Date: 07.04.2025 11:03:20
 -- Module Name: selectable_override - Behavioral
+-- Project Name: Reaction Timer
 
 -- Description:
 -- text override module for the reaction timer

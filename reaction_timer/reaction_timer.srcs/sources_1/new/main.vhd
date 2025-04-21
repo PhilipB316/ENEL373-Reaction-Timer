@@ -68,7 +68,6 @@ architecture Behavioral of main is
     signal circ_buff_size : std_logic_vector (1 downto 0) := "00";
     signal circ_buff_rset : std_logic := '0';
     signal circ_buff_write : std_logic := '0';
-    signal double_dabble_reset : std_logic := '0';
     signal reset_data : std_logic := '0';
 
 --  COMPONENT INSTANTIATION
@@ -81,7 +80,6 @@ architecture Behavioral of main is
                REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
                DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
                ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
-               DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;
                RESET_OUT: out STD_LOGIC);
     end component;
 
@@ -140,7 +138,7 @@ architecture Behavioral of main is
                SEG_OUT : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
 
-    component random_number_generator is
+    component lfsr is
         Port ( CLK_IN : in STD_LOGIC;
                RAND_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
@@ -174,7 +172,6 @@ begin
                       REACTION_TIME_COUNT_RSET_OUT => reaction_time_count_rset,
                       DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
                       ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
-                      DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
                       RESET_OUT => reset_data);
 
 --  1000 HZ Clock Divider
@@ -251,8 +248,8 @@ begin
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
              
---  Generate next "random" number from the LFSR in random_number_generator
-    ff13: random_number_generator port map (CLK_IN => clk_var_hz,
+--  Generate next "random" number from the LFSR in lfsr
+    ff13: lfsr port map (CLK_IN => clk_var_hz,
                                            RAND_OUT => rand_num);
     
 -- Set the upperbound for the variable clk based on the random number  
