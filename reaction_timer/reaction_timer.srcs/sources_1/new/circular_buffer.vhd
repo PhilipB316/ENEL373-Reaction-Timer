@@ -43,10 +43,10 @@ begin
     process (RESET_IN)
     begin
         if (RESET_IN = '1') then
-            write_index <= "0";
-            NUMBER_1_OUT <= "000000000";
-            NUMBER_2_OUT <= "000000000";
-            NUMBER_3_OUT <= "000000000";
+            write_index <= "00";
+            NUMBER_1_OUT <= "0000000000";
+            NUMBER_2_OUT <= "0000000000";
+            NUMBER_3_OUT <= "0000000000";
         end if;
     end process;
     
@@ -57,6 +57,7 @@ begin
                 when "00" => NUMBER_1_OUT <= NUMBER_IN;
                 when "01" => NUMBER_1_OUT <= NUMBER_IN;
                 when "10" => NUMBER_1_OUT <= NUMBER_IN;
+                when others => NULL;
             end case;
             write_index <= std_logic_vector(unsigned(write_index) + 1);
         end if;
