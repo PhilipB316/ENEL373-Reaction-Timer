@@ -1,0 +1,9 @@
+/reaction_timer/reaction_timer.hw
+/reaction_timer/reaction_timer.runs
+/reaction_timer/reaction_timer.ip_user_files
+/reaction_timer/reaction_timer.sim
+/reaction_timer/reaction_timer.cache
+/reaction_timer/*.jou
+/reaction_timer/*.log
+/reaction_timer/*.str
+/reaction_timer/.Xil
