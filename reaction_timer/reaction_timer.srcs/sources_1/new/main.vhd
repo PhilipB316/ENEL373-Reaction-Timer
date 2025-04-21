@@ -141,12 +141,7 @@ architecture Behavioral of main is
         Port ( BCD_BUS_IN : in STD_LOGIC_VECTOR (39 downto 0);
                BINARY_OUT : out STD_LOGIC_VECTOR (9 downto 0));
     end component bcd_8_to_binary;
-    
-    component binary_to_bcd_8 is
-        Port ( BINARY_IN : in STD_LOGIC_VECTOR (9 downto 0);
-               BCD_BUS_OUT : out STD_LOGIC_VECTOR (39 downto 0));
-    end component binary_to_bcd_8;
-    
+        
     component circular_buffer is
         Port ( NUMBER_IN : in STD_LOGIC_VECTOR (9 downto 0);
                NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (9 downto 0);
@@ -215,10 +210,6 @@ begin
                       OPERATION_SELECT_IN => alu_operation_select,
                       OUTPUT_OUT => alu_binary);
                       
---  binary to BCD bus converter
-    ff8: binary_to_bcd_8 port map(BINARY_IN => alu_binary,
-                                  BCD_BUS_OUT => alu_bcd_bus);
-
 --  Dot countdown generator
     ff9: dotiey port map(SELECT_IN => output_segment_select,
                          CLK_IN => clk_var_hz_switchable,
