@@ -73,6 +73,8 @@ architecture Behavioral of main is
     signal min_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
     signal avg_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
     signal selected_alu_bcd_digit : std_logic_vector (4 downto 0) := "00000";
+    signal double_dabble_reset : std_logic;
+    
 
 --  COMPONENT INSTANTIATION
     component fsm is
@@ -84,7 +86,9 @@ architecture Behavioral of main is
                REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
                DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
                ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
-               RESET_OUT: out STD_LOGIC);
+               DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;
+               RESET_OUT: out STD_LOGIC;
+               TEMP_OUT : out STD_LOGIC);
     end component;
 
     component clk_divider is
@@ -190,7 +194,8 @@ begin
                         DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
                         ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
                         DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
-                        RESET_OUT => reset_data);
+                        RESET_OUT => reset_data,
+                        TEMP_OUT => LED(7));
 
 --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
@@ -310,6 +315,6 @@ begin
     fsm_state_change_triggers(4) <= BTNU;
     fsm_state_change_triggers(5) <= BTND;
 
-    LED(7 downto 0) <= rand_num;
+    LED(5 downto 0) <= fsm_state_change_triggers;
 
 end Behavioral;

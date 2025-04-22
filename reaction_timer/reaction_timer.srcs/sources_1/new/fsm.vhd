@@ -28,15 +28,17 @@ entity fsm is
            DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
            ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
            DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;  
-           RESET_OUT: out STD_LOGIC);
+           RESET_OUT: out STD_LOGIC;
+           TEMP_OUT : out STD_LOGIC);
 end fsm;
 
 architecture Behavioral of fsm is
 
 --  Define local values
-    signal state : std_logic_vector (3 downto 0) := "0010";
-    signal last_triggers : std_logic_vector (5 downto 0);
+    signal state : std_logic_vector (3 downto 0) := "0000";
+    signal last_triggers : std_logic_vector (5 downto 0) := (others => '0');
     signal clk_cycle_count : unsigned (1 downto 0) := (others => '0');
+    signal temp : std_logic := '0';
 
 begin
 
@@ -67,13 +69,15 @@ begin
             REACTION_TIME_COUNT_RSET_OUT <= '0';
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
-            
             if (TRIGGERS_IN /= last_triggers) then
+                last_triggers <= TRIGGERS_IN;
+                temp <= '1';
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"1"; -- if counting then show display time
+                    
                 end if;
             end if;
-
+ 
         end if;
 
 --      Display time
@@ -85,6 +89,7 @@ begin
             DOUBLE_DABBLE_RESET_OUT <= '1';
 
             if (TRIGGERS_IN /= last_triggers) then
+                last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"2"; -- if display time then start counting 
                 elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
@@ -109,6 +114,7 @@ begin
             DOTIEY_COUNTDOWN_EN_OUT <= '1';
 
             if (TRIGGERS_IN /= last_triggers) then
+                last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"7"; -- if dotiey then show error 
                 elsif (TRIGGERS_IN(1) = '1') then -- if dotiey completion
@@ -127,6 +133,7 @@ begin
             DOUBLE_DABBLE_RESET_OUT <= '0';
 
             if (TRIGGERS_IN /= last_triggers) then
+                last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"1"; -- if display time then start counting 
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
@@ -150,6 +157,7 @@ begin
             DOUBLE_DABBLE_RESET_OUT <= '0';
         
             if (TRIGGERS_IN /= last_triggers) then
+                last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"1"; -- if display time then start counting 
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
@@ -173,6 +181,7 @@ begin
             DOUBLE_DABBLE_RESET_OUT <= '0';
 
             if (TRIGGERS_IN /= last_triggers) then
+                last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"1"; -- if display time then start counting 
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
@@ -208,13 +217,14 @@ begin
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
 
             if (TRIGGERS_IN /= last_triggers) then
+                last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"2"; -- if error then dotiey again
                 end if;
             end if;
 
         end if;
-
     end process;
+    TEMP_OUT <= temp;
 
 end Behavioral;
