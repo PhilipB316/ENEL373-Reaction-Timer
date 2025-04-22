@@ -1,35 +1,16 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 05.03.2025 16:27:40
--- Design Name: 
--- Module Name: one_to_eight_demux - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- Engineers: Boston Black, Philip Brand, Michael Brown
 
+-- Create Date: 05.03.2025 16:27:40
+-- Module Name: one_to_eight_demux - Behavioral
+-- Project Name: Reaction Timer
+
+-- Description: 
+-- 1 to 8 demultiplexer
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity one_to_eight_demux is
     Port ( SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);

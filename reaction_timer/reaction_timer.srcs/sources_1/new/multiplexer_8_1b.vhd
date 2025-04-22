@@ -1,23 +1,13 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 05.03.2025 16:03:56
--- Design Name: 
--- Module Name: multiplexer_8_1 - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- Engineer: Philip Brand, Michael Brown, Boston Black
 
+-- Create Date: 05.03.2025 16:03:56
+-- Module Name: multiplexer_8_1 - Behavioral
+-- Project Name: Reaction Timer
+
+-- Description: 
+-- 8 to 1 multiplexer for 4 bit inputs
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -37,7 +27,6 @@ entity multiplexer_8_1_4b is
 end multiplexer_8_1_4b;
 
 architecture Behavioral of multiplexer_8_1_4b is
-
 begin
     process (SELECT_IN, MUX_IN_0, MUX_IN_1, MUX_IN_2, MUX_IN_3, MUX_IN_4, MUX_IN_5, MUX_IN_6, MUX_IN_7)
     begin

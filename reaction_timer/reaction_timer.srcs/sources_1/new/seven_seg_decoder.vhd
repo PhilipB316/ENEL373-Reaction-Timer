@@ -1,3 +1,14 @@
+----------------------------------------------------------------------------------
+-- Engineers: Boston Black, Philip Brand, Michael Brown
+
+-- Module Name: seven_seg_decoder - Behavioral 
+-- Project Name: Reaction Timer
+
+-- Description:
+-- maps BCD input to 7-segment display output
+-- 0-9, blank, d, L, g., dot, A, H, I., O.
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

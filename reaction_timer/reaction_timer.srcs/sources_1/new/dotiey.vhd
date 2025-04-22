@@ -1,23 +1,14 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 10.03.2025 15:23:20
--- Design Name: 
--- Module Name: dotiey - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- Engineer: Philip Brand, Michael Brown, Boston Black
 
+-- Create Date: 10.03.2025 15:23:20
+-- Module Name: dotiey - Behavioral
+-- Project Name: Reaction Timer
+
+-- Description: 
+-- generates deceasing number of dot patterns for display
+-- triggered on CLK_IN rising edge
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -39,7 +30,6 @@ architecture Behavioral of dotiey is
     signal blank : std_logic_vector (4 downto 0) := "01010";
 
 begin
-
     process (CLK_IN, EN_IN, count)
     begin
 --      On rising clock edge decrement count, if zero, set TIMER_FINISHED to true
@@ -69,5 +59,4 @@ begin
             DOT_OUT <= blank;
         end if;
     end process;
-
 end Behavioral;

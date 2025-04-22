@@ -1,21 +1,12 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
+-- Engineers: Boston Black, Philip Brand, Michael Brown
+
 -- Create Date: 06.03.2025 11:07:21
--- Design Name: 
 -- Module Name: segment_display - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
+-- Project Name: Reaction Timer
+
 -- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
+-- decodes BCD input and ties to hardware
 ----------------------------------------------------------------------------------
 
 
