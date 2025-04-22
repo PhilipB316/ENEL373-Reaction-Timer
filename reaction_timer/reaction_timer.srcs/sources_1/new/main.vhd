@@ -15,7 +15,7 @@ use IEEE.NUMERIC_STD.ALL;
 -- Define module IO
 entity main is
     Port (  CLK100MHZ : in STD_LOGIC;
-            LED : out STD_LOGIC_VECTOR (7 downto 0) := X"0000";
+            LED : out STD_LOGIC_VECTOR (15 downto 0) := X"0000";
             AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
             SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
             BTNC : in STD_LOGIC;
@@ -88,7 +88,7 @@ architecture Behavioral of main is
                ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
                DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;
                RESET_OUT: out STD_LOGIC;
-               TEMP_OUT : out STD_LOGIC);
+               TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
 
     component clk_divider is
@@ -195,7 +195,7 @@ begin
                         ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
                         DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
                         RESET_OUT => reset_data,
-                        TEMP_OUT => LED(7));
+                        TEMP_OUT => LED(11 downto 7));
 
 --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
@@ -310,11 +310,12 @@ begin
 
     fsm_state_change_triggers(0) <= BTNC;
     fsm_state_change_triggers(1) <= fsm_state_dot_complete;
-    fsm_state_change_triggers(2) <= BTNR;
-    fsm_state_change_triggers(3) <= BTNL;
-    fsm_state_change_triggers(4) <= BTNU;
-    fsm_state_change_triggers(5) <= BTND;
+    fsm_state_change_triggers(2) <= '0'; --BTNR;
+    fsm_state_change_triggers(3) <= '0'; --BTNL;
+    fsm_state_change_triggers(4) <= '0'; --BTNU;
+    fsm_state_change_triggers(5) <= '0'; --BTND;
 
     LED(5 downto 0) <= fsm_state_change_triggers;
+
 
 end Behavioral;

@@ -53,7 +53,7 @@ begin
         case OPERATION_SELECT_IN is 
             when "01" => OUTPUT_OUT(27 downto 0) <= output_max;
             when "10" => OUTPUT_OUT(27 downto 0) <= output_min;
-            when "11" => OUTPUT_OUT(27 downto 0) <= avg;
+            when "11" => OUTPUT_OUT(27 downto 0) <= output_avg;
             when others => OUTPUT_OUT(27 downto 0) <= X"0000000"; -- Handle unexpected cases
         end case;
     end process;

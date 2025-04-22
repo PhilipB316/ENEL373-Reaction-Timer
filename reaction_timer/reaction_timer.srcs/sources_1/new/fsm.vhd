@@ -27,7 +27,7 @@ entity fsm is
            ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
            DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;  
            RESET_OUT: out STD_LOGIC;
-           TEMP_OUT : out STD_LOGIC);
+           TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0) := (others => '0'));
 end fsm;
 
 architecture Behavioral of fsm is
@@ -36,8 +36,6 @@ architecture Behavioral of fsm is
     signal state : std_logic_vector (3 downto 0) := "0000";
     signal last_triggers : std_logic_vector (5 downto 0) := (others => '0');
     signal clk_cycle_count : unsigned (1 downto 0) := (others => '0');
-    signal temp : std_logic := '0';
-
 begin
 
 --  Triggers
@@ -47,6 +45,7 @@ begin
 --  TRIGGERS_IN(3) <= BTNL
 --  TRIGGERS_IN(4) <= BTNU
 --  TRIGGERS_IN(5) <= BTND
+
 
 --  States
 --  X"0" <= Counting
@@ -59,27 +58,24 @@ begin
 --  X"7" <= Error
 
     --  Finite state machine state outputs
-    process(CLK_VAR_HZ_IN, TRIGGERS_IN) is
+    process(TRIGGERS_IN, CLK_VAR_HZ_IN) is
     begin
 --      Counting
-        if state = X"0" then
+        if (state = X"0") then
             REACTION_TIME_COUNT_EN_OUT <= '1';
             REACTION_TIME_COUNT_RSET_OUT <= '0';
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
-                temp <= '1';
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"1"; -- if counting then show display time
                     
                 end if;
             end if;
- 
-        end if;
-
+        
 --      Display time
-        if state = X"1" then
+        elsif (state = X"1") then
             REACTION_TIME_COUNT_EN_OUT <= '0';
             REACTION_TIME_COUNT_RSET_OUT <= '0';
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
@@ -91,138 +87,131 @@ begin
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     state <= X"2"; -- if display time then start counting 
                 elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    state <= X"3"; -- if display time then show average time
+--                    state <= X"3"; -- if display time then show average time
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    state <= X"6"; -- if display time then reset
+--                    state <= X"6"; -- if display time then reset
                     clk_cycle_count <= (others => '0');
                 elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    state <= X"4"; -- if display time then show max time
+--                    state <= X"4"; -- if display time then show max time
                 elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    state <= X"5"; -- if display time then show min time
+--                    state <= X"5"; -- if display time then show min time
+                else
+                    NULL;
                 end if;
             end if;
-        end if;
 
 --      Dots
-        if state = X"2" then
+        elsif (state = X"2") then
             CLK_VAR_HZ_SWITCHABLE_OUT <= CLK_VAR_HZ_IN;
             REACTION_TIME_COUNT_EN_OUT <= '0';
             REACTION_TIME_COUNT_RSET_OUT <= '1';
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "111";
             DOTIEY_COUNTDOWN_EN_OUT <= '1';
-
+            
+            TEMP_OUT(4) <= '1';
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    state <= X"7"; -- if dotiey then show error 
+--                    state <= X"7"; -- if dotiey then show error 
                 elsif (TRIGGERS_IN(1) = '1') then -- if dotiey completion
                     state <= X"0"; -- if dotiey completion start counting
                 end if;
             end if;
 
-        end if;
-
 --      Average time
-        if state = X"3" then
-            REACTION_TIME_COUNT_EN_OUT <= '0';
-            REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "011";
-            DOTIEY_COUNTDOWN_EN_OUT <= '0';
-            DOUBLE_DABBLE_RESET_OUT <= '0';
+--        elsif (state = X"3") then
+--            REACTION_TIME_COUNT_EN_OUT <= '0';
+--            REACTION_TIME_COUNT_RSET_OUT <= '0';
+--            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "011";
+--            DOTIEY_COUNTDOWN_EN_OUT <= '0';
+--            DOUBLE_DABBLE_RESET_OUT <= '0';
 
-            if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    state <= X"1"; -- if display time then start counting 
-                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    state <= X"6"; -- if display time then reset
-                    clk_cycle_count <= (others => '0');
-                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    state <= X"4"; -- if display time then show max time
-                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    state <= X"5"; -- if display time then show min time
-                end if;
-            end if;
+----            if (TRIGGERS_IN /= last_triggers) then
+----                last_triggers <= TRIGGERS_IN;
+----                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+----                    state <= X"1"; -- if display time then start counting 
+----                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
+----                    state <= X"6"; -- if display time then reset
+----                    clk_cycle_count <= (others => '0');
+----                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
+----                    state <= X"4"; -- if display time then show max time
+----                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
+----                    state <= X"5"; -- if display time then show min time
+----                end if;
+----            end if;
 
-        end if;
-
---      Max time
-        if state = X"4" then
-            REACTION_TIME_COUNT_EN_OUT <= '0';
-            REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "001";
-            DOTIEY_COUNTDOWN_EN_OUT <= '0';
-            DOUBLE_DABBLE_RESET_OUT <= '0';
+----      Max time
+--        elsif (state = X"4") then
+--            REACTION_TIME_COUNT_EN_OUT <= '0';
+--            REACTION_TIME_COUNT_RSET_OUT <= '0';
+--            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "001";
+--            DOTIEY_COUNTDOWN_EN_OUT <= '0';
+--            DOUBLE_DABBLE_RESET_OUT <= '0';
         
-            if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    state <= X"1"; -- if display time then start counting 
-                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    state <= X"6"; -- if display time then reset
-                    clk_cycle_count <= (others => '0');
-                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    state <= X"3"; -- if display time then show average time
-                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    state <= X"5"; -- if display time then show min time
-                end if;
-            end if;
+----            if (TRIGGERS_IN /= last_triggers) then
+----                last_triggers <= TRIGGERS_IN;
+----                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+----                    state <= X"1"; -- if display time then start counting 
+----                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
+----                    state <= X"6"; -- if display time then reset
+----                    clk_cycle_count <= (others => '0');
+----                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
+----                    state <= X"3"; -- if display time then show average time
+----                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
+----                    state <= X"5"; -- if display time then show min time
+----                end if;
+----            end if;
+            
+----      Min -time
+--        elsif (state = X"5") then
+--            REACTION_TIME_COUNT_EN_OUT <= '0';
+--            REACTION_TIME_COUNT_RSET_OUT <= '0';
+--            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "010";
+--            DOTIEY_COUNTDOWN_EN_OUT <= '0';
+--            DOUBLE_DABBLE_RESET_OUT <= '0';
 
-        end if;
+----            if (TRIGGERS_IN /= last_triggers) then
+----                last_triggers <= TRIGGERS_IN;
+----                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+----                    state <= X"1"; -- if display time then start counting 
+----                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
+----                    state <= X"6"; -- if display time then reset
+----                    clk_cycle_count <= (others => '0');
+----                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
+----                    state <= X"3"; -- if display time then show average time
+----                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
+----                    state <= X"4"; -- if display time then show max time
+----                end if;
+----            end if;
 
---      Min -time
-        if state = X"5" then
-            REACTION_TIME_COUNT_EN_OUT <= '0';
-            REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "010";
-            DOTIEY_COUNTDOWN_EN_OUT <= '0';
-            DOUBLE_DABBLE_RESET_OUT <= '0';
+----      Reset
+--        elsif (state = X"6") then
+--            REACTION_TIME_COUNT_EN_OUT <= '0';
+--            REACTION_TIME_COUNT_RSET_OUT <= '1';
+--            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
+--            DOTIEY_COUNTDOWN_EN_OUT <= '0';
+--            clk_cycle_count <= clk_cycle_count + 1;
+--            if (clk_cycle_count = 3) then
+--                clk_cycle_count <= "00";
+----                state <= X"1";
+--            end if;
 
-            if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    state <= X"1"; -- if display time then start counting 
-                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    state <= X"6"; -- if display time then reset
-                    clk_cycle_count <= (others => '0');
-                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    state <= X"3"; -- if display time then show average time
-                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    state <= X"4"; -- if display time then show max time
-                end if;
-            end if;
+----      Error
+--        elsif (state = X"7") then
+--            REACTION_TIME_COUNT_EN_OUT <= '0';
+--            REACTION_TIME_COUNT_RSET_OUT <= '0';
+--            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "100";
+--            DOTIEY_COUNTDOWN_EN_OUT <= '0';
 
-        end if;
-
---      Reset
-        if state = X"6" then
-            REACTION_TIME_COUNT_EN_OUT <= '0';
-            REACTION_TIME_COUNT_RSET_OUT <= '1';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
-            DOTIEY_COUNTDOWN_EN_OUT <= '0';
-            clk_cycle_count <= clk_cycle_count + 1;
-            if (clk_cycle_count = 3) then
-                clk_cycle_count <= "00";
-                state <= X"1";
-            end if;
-        end if;
-
---      Error
-        if state = X"7" then
-            REACTION_TIME_COUNT_EN_OUT <= '0';
-            REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "100";
-            DOTIEY_COUNTDOWN_EN_OUT <= '0';
-
-            if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    state <= X"2"; -- if error then dotiey again
-                end if;
-            end if;
+----            if (TRIGGERS_IN /= last_triggers) then
+----                last_triggers <= TRIGGERS_IN;
+----                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+----                    state <= X"2"; -- if error then dotiey again
+----                end if;
+----            end if;
 
         end if;
     end process;
-    TEMP_OUT <= temp;
+    TEMP_OUT(3 downto 0) <= state;
 
 end Behavioral;

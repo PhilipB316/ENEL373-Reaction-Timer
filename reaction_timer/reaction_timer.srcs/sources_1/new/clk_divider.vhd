@@ -28,6 +28,7 @@ begin
     SLOWCLK_OUT <= temp;
     upperbound_half <= std_logic_vector(unsigned(UPPERBOUND_IN) / 2);
 
+    process (CLK100MHZ_IN)
     begin
         if rising_edge (CLK100MHZ_IN) then
 --          If UPPERBOUND is reached, reset count and toggle temporary clock
