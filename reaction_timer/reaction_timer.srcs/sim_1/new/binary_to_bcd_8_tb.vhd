@@ -9,19 +9,17 @@ ARCHITECTURE behavior OF binary_to_bcd_8_tb IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT binary_to_bcd_8
-    PORT(
-         clk : IN  std_logic;
-         reset : IN  std_logic;
-         binary_in : IN  std_logic_vector(27 downto 0);
-         bcd0 : OUT  std_logic_vector(3 downto 0);
-         bcd1 : OUT  std_logic_vector(3 downto 0);
-         bcd2 : OUT  std_logic_vector(3 downto 0);
-         bcd3 : OUT  std_logic_vector(3 downto 0);
-         bcd4 : OUT  std_logic_vector(3 downto 0);
-         bcd5 : OUT  std_logic_vector(3 downto 0);
-         bcd6 : OUT  std_logic_vector(3 downto 0);
-         bcd7 : OUT  std_logic_vector(3 downto 0)
-        );
+    Port ( CLK_IN : IN  std_logic;
+           RESET_IN : IN  std_logic;
+           BINARY_IN : IN  std_logic_vector(27 downto 0);
+           BCD0_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD1_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD2_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD3_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD4_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD5_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD6_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD7_OUT : OUT  std_logic_vector(3 downto 0));
     END COMPONENT;
  
    --Inputs

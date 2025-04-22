@@ -4,16 +4,16 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity bcd_8_to_binary is
     Port ( BCD_BUS_IN : in STD_LOGIC_VECTOR (39 downto 0);
-           BINARY_OUT : out STD_LOGIC_VECTOR (9 downto 0));
+           BINARY_OUT : out STD_LOGIC_VECTOR (27 downto 0));
 end bcd_8_to_binary;
 
 architecture Behavioral of bcd_8_to_binary is
     
 begin
     process (BCD_BUS_IN)
-        variable bcd_sum : unsigned (9 downto 0);
+        variable bcd_sum : unsigned (27 downto 0);
     begin
-        bcd_sum := "0000000000";
+        bcd_sum := X"0000000";
         bcd_sum := bcd_sum + unsigned(BCD_BUS_IN(39 downto 35)) * (10 ** 7);
         bcd_sum := bcd_sum + unsigned(BCD_BUS_IN(34 downto 30)) * (10 ** 6);
         bcd_sum := bcd_sum + unsigned(BCD_BUS_IN(29 downto 25)) * (10 ** 5);

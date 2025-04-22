@@ -1,14 +1,22 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
+
+--https://allaboutfpga.com/vhdl-code-for-binary-to-bcd-converter/
  
 entity binary_to_bcd_8 is
     generic(N: positive := 28);
-    port(
-        clk, reset: in std_logic;
-        binary_in: in std_logic_vector(N-1 downto 0);
-        bcd0, bcd1, bcd2, bcd3, bcd4, bcd5, bcd6, bcd7: out std_logic_vector(3 downto 0)
-    );
+    Port ( CLK_IN : IN  std_logic;
+           RESET_IN : IN  std_logic;
+           BINARY_IN : IN  std_logic_vector(N-1 downto 0);
+           BCD0_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD1_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD2_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD3_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD4_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD5_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD6_OUT : OUT  std_logic_vector(3 downto 0);
+           BCD7_OUT : OUT  std_logic_vector(3 downto 0));
 end binary_to_bcd_8 ;
  
 architecture behaviour of binary_to_bcd_8 is
@@ -23,15 +31,15 @@ architecture behaviour of binary_to_bcd_8 is
     signal shift_counter, shift_counter_next: natural range 0 to N;
 begin
  
-    process(clk, reset)
+    process(CLK_IN, RESET_IN)
     begin
-        if reset = '1' then
+        if RESET_IN = '1' then
             binary <= (others => '0');
             bcds <= (others => '0');
             state <= start;
             bcds_out_reg <= (others => '0');
             shift_counter <= 0;
-        elsif falling_edge(clk) then
+        elsif falling_edge(CLK_IN) then
             binary <= binary_next;
             bcds <= bcds_next;
             state <= state_next;
@@ -87,13 +95,13 @@ begin
     bcds_out_reg_next <= bcds when state = done else
                          bcds_out_reg;
     
-    bcd7 <= bcds_out_reg(31 downto 28);
-    bcd6 <= bcds_out_reg(27 downto 24);
-    bcd5 <= bcds_out_reg(23 downto 20);
-    bcd4 <= bcds_out_reg(19 downto 16);
-    bcd3 <= bcds_out_reg(15 downto 12);
-    bcd2 <= bcds_out_reg(11 downto 8);
-    bcd1 <= bcds_out_reg(7 downto 4);
-    bcd0 <= bcds_out_reg(3 downto 0);
+    BCD7_OUT <= bcds_out_reg(31 downto 28);
+    BCD6_OUT <= bcds_out_reg(27 downto 24);
+    BCD5_OUT <= bcds_out_reg(23 downto 20);
+    BCD4_OUT <= bcds_out_reg(19 downto 16);
+    BCD3_OUT <= bcds_out_reg(15 downto 12);
+    BCD2_OUT <= bcds_out_reg(11 downto 8);
+    BCD1_OUT <= bcds_out_reg(7 downto 4);
+    BCD0_OUT <= bcds_out_reg(3 downto 0);
  
 end behaviour;

@@ -29,8 +29,8 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity circular_buffer is
-    Port ( NUMBER_IN : in STD_LOGIC_VECTOR (9 downto 0);
-           NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (9 downto 0);
+    Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0);
+           NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0);
            BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
            RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
 end circular_buffer;
@@ -46,9 +46,9 @@ begin
         if (RESET_IN = '1') then
             write_index <= "00";
             buffer_size <= "00";
-            NUMBER_1_OUT <= "0000000000";
-            NUMBER_2_OUT <= "0000000000";
-            NUMBER_3_OUT <= "0000000000";
+            NUMBER_1_OUT <= X"0000000";
+            NUMBER_2_OUT <= X"0000000";
+            NUMBER_3_OUT <= X"0000000";
         end if;
     end process;
     

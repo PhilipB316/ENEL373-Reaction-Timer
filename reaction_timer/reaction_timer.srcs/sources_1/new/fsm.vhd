@@ -167,7 +167,7 @@ begin
             DOUBLE_DABBLE_RESET_OUT <= '0';
         end if;
 
---      Min time
+--      Min -time
         if state = X"5" then
             REACTION_TIME_COUNT_EN_OUT <= '0';
             REACTION_TIME_COUNT_RSET_OUT <= '0';

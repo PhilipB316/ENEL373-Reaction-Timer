@@ -59,17 +59,21 @@ architecture Behavioral of main is
     signal rand_num : std_logic_vector (7 downto 0);
     
 --  ALU & CIRCULAR BUFFER
-    signal timer_bcd_bus : std_logic_vector (39 downto 0) := x"0000000000";
-    signal timer_binary : std_logic_vector (9 downto 0) := "0000000000";
-    signal alu_binary : std_logic_vector (9 downto 0) := "0000000000";
-    signal alu_bcd_bus : std_logic_vector (39 downto 0) := x"0000000000";
+    signal timer_bcd_bus : std_logic_vector (39 downto 0) := X"0000000000";
+    signal timer_binary : std_logic_vector (27 downto 0) := X"0000000";
+    signal alu_binary : std_logic_vector (27 downto 0) := X"0000000";
+    signal alu_bcd_bus : std_logic_vector (39 downto 0) := X"0000000000";
     signal alu_operation_select : std_logic_vector (1 downto 0) := "00";
-    signal alu_num_1, alu_num_2, alu_num_3 : std_logic_vector (9 downto 0) := "0000000000";
+    signal alu_num_1, alu_num_2, alu_num_3 : std_logic_vector (27 downto 0) := X"0000000";
     signal circ_buff_size : std_logic_vector (1 downto 0) := "00";
     signal circ_buff_rset : std_logic := '0';
     signal circ_buff_write : std_logic := '0';
     signal double_dabble_reset : std_logic := '0';
     signal reset_data : std_logic := '0';
+    signal max_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
+    signal min_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
+    signal avg_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
+    signal selected_alu_bcd_digit : std_logic_vector (4 downto 0) := "00000";
 
 --  COMPONENT INSTANTIATION
     component fsm is
@@ -147,35 +151,48 @@ architecture Behavioral of main is
     
     component bcd_8_to_binary is
         Port ( BCD_BUS_IN : in STD_LOGIC_VECTOR (39 downto 0);
-               BINARY_OUT : out STD_LOGIC_VECTOR (9 downto 0));
+               BINARY_OUT : out STD_LOGIC_VECTOR (27 downto 0));
     end component bcd_8_to_binary;
         
     component circular_buffer is
-        Port ( NUMBER_IN : in STD_LOGIC_VECTOR (9 downto 0);
-               NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (9 downto 0);
+        Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0);
+               NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0);
                BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
                RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
     end component circular_buffer;
     
     component alu is
-        Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (9 downto 0);
+        Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0);
                BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
-               OUTPUT_OUT : out STD_LOGIC_VECTOR (9 downto 0));
+               OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
     end component alu;
-
+    
+    component binary_to_bcd_8 is
+        Port ( CLK_IN : IN  std_logic;
+               RESET_IN : IN  std_logic;
+               BINARY_IN : IN  std_logic_vector(27 downto 0);
+               BCD0_OUT : OUT  std_logic_vector(3 downto 0);
+               BCD1_OUT : OUT  std_logic_vector(3 downto 0);
+               BCD2_OUT : OUT  std_logic_vector(3 downto 0);
+               BCD3_OUT : OUT  std_logic_vector(3 downto 0);
+               BCD4_OUT : OUT  std_logic_vector(3 downto 0);
+               BCD5_OUT : OUT  std_logic_vector(3 downto 0);
+               BCD6_OUT : OUT  std_logic_vector(3 downto 0);
+               BCD7_OUT : OUT  std_logic_vector(3 downto 0));
+    end component binary_to_bcd_8;
 begin
 
 --  Finite State Machine
     ff0: fsm port map ( CLK_IN => clk_1000_hz,
-                      TRIGGERS_IN => fsm_state_change_triggers,
-                      CLK_VAR_HZ_IN => clk_var_hz,
-                      CLK_VAR_HZ_SWITCHABLE_OUT => clk_var_hz_switchable,
-                      REACTION_TIME_COUNT_EN_OUT => reaction_time_count_en,
-                      REACTION_TIME_COUNT_RSET_OUT => reaction_time_count_rset,
-                      DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
-                      ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
-                      DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
-                      RESET_OUT => reset_data);
+                        TRIGGERS_IN => fsm_state_change_triggers,
+                        CLK_VAR_HZ_IN => clk_var_hz,
+                        CLK_VAR_HZ_SWITCHABLE_OUT => clk_var_hz_switchable,
+                        REACTION_TIME_COUNT_EN_OUT => reaction_time_count_en,
+                        REACTION_TIME_COUNT_RSET_OUT => reaction_time_count_rset,
+                        DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
+                        ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
+                        DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
+                        RESET_OUT => reset_data);
 
 --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
@@ -229,9 +246,9 @@ begin
                          
 --  8x4 to 4 encoded display data mux
     ff10: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
-                                      MUX_IN_1 => alu_bcd_bus,
-                                      MUX_IN_2 => alu_bcd_bus,
-                                      MUX_IN_3 => alu_bcd_bus,
+                                      MUX_IN_1 => selected_alu_bcd_digit,
+                                      MUX_IN_2 => selected_alu_bcd_digit,
+                                      MUX_IN_3 => selected_alu_bcd_digit,
                                       MUX_IN_4 => encoded_display_placeholder,
                                       MUX_IN_5 => encoded_display_placeholder,
                                       MUX_IN_6 => encoded_display_placeholder,
@@ -263,7 +280,28 @@ begin
                                 SLOWCLK_OUT => clk_var_hz,
                                 UPPERBOUND_IN => clk_var_hz_divider_bound);
                                         
-                                        
+    ff15: binary_to_bcd_8 port map ( CLK_IN => CLK100MHZ,
+                                    RESET_IN => double_dabble_reset,
+                                    BINARY_IN => alu_binary,
+                                    BCD0_OUT => alu_bcd_bus(3 downto 0),
+                                    BCD1_OUT => alu_bcd_bus(8 downto 5),
+                                    BCD2_OUT => alu_bcd_bus(13 downto 10),
+                                    BCD3_OUT => alu_bcd_bus(18 downto 15),
+                                    BCD4_OUT => alu_bcd_bus(23 downto 20),
+                                    BCD5_OUT => alu_bcd_bus(28 downto 25),
+                                    BCD6_OUT => alu_bcd_bus(33 downto 30),
+                                    BCD7_OUT => alu_bcd_bus(38 downto 35));
+    
+    ff16: multiplexer_8_1_4b port map (MUX_IN_0 => alu_bcd_bus(4 downto 0),
+                                       MUX_IN_1 => alu_bcd_bus(9 downto 5),
+                                       MUX_IN_2 => alu_bcd_bus(14 downto 10),
+                                       MUX_IN_3 => alu_bcd_bus(19 downto 15),
+                                       MUX_IN_4 => alu_bcd_bus(24 downto 20),
+                                       MUX_IN_5 => alu_bcd_bus(29 downto 25),
+                                       MUX_IN_6 => alu_bcd_bus(34 downto 30),
+                                       MUX_IN_7 => alu_bcd_bus(39 downto 35),
+                                       SELECT_IN => output_segment_select,
+                                       MUX_OUT => selected_alu_bcd_digit);
 
 --  Map FSM fsm_state_change_triggers
 

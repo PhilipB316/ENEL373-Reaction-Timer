@@ -24,20 +24,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity alu is
-    Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (9 downto 0);
+    Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0);
            BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
-           OUTPUT_OUT : out STD_LOGIC_VECTOR (9 downto 0));
+           OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
 end alu;
 
 architecture Behavioral of alu is
 
-    signal max : std_logic_vector (9 downto 0) := "0000000000";
-    signal min : std_logic_vector (9 downto 0) := "0000000000";
-    signal avg : std_logic_vector (9 downto 0) := "0000000000";
-    signal temp_max : std_logic_vector (9 downto 0) := "0000000000";
-    signal temp_min : std_logic_vector (9 downto 0) := "0000000000";
-    signal temp_avg : std_logic_vector (9 downto 0) := "0000000000";
-    signal sum : std_logic_vector (9 downto 0) := "0000000000";
+    signal max : std_logic_vector (27 downto 0) := X"0000000";
+    signal min : std_logic_vector (27 downto 0) := X"0000000";
+    signal avg : std_logic_vector (27 downto 0) := X"0000000";
+    signal temp_max : std_logic_vector (27 downto 0) := X"0000000";
+    signal temp_min : std_logic_vector (27 downto 0) := X"0000000";
+    signal temp_avg : std_logic_vector (27 downto 0) := X"0000000";
+    signal sum : std_logic_vector (27 downto 0) := X"0000000";
     signal divisor : std_logic_vector (1 downto 0) := "01";
     
 begin
@@ -61,10 +61,10 @@ begin
     process (OPERATION_SELECT_IN) is
     begin
         case OPERATION_SELECT_IN is 
-            when "01" => OUTPUT_OUT(9 downto 0) <= max;
-            when "10" => OUTPUT_OUT(9 downto 0) <= min;
-            when "11" => OUTPUT_OUT(9 downto 0) <= avg;
-            when others => OUTPUT_OUT(9 downto 0) <= "0000000000"; -- Handle unexpected cases
+            when "01" => OUTPUT_OUT(27 downto 0) <= max;
+            when "10" => OUTPUT_OUT(27 downto 0) <= min;
+            when "11" => OUTPUT_OUT(27 downto 0) <= avg;
+            when others => OUTPUT_OUT(27 downto 0) <= X"0000000"; -- Handle unexpected cases
         end case;
     end process;
 
