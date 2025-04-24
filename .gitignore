@@ -7,3 +7,4 @@
 /reaction_timer/*.log
 /reaction_timer/*.str
 /reaction_timer/.Xil
+/*.xdc
