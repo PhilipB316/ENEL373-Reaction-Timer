@@ -1,0 +1,83 @@
+
+The pseudo-random delay between the sequential deactivation of the LEDs was generated using a linear feedback shift register (LFSR) and a clock divider. An eight-bit LFSR was used to generate pseudo-random numbers, and a selection of those bits were assigned to the most significant eight bits of the upper bound for the clock divider. The next pseudo-random number was generated on a rising clock edge from that clock divider, as seen in Listing \ref{code:random_number_generation}.
+
+\begin{code}
+\begin{minted}{vhdl}
+
+--  Generate next "random" number from the LFSR in random_number_generator
+  ff9: random_number_generator port map (CLK_IN => clk_var_hz,
+                                         RAND_OUT => rand_num);
+  
+-- Set the upperbound for the variable clk based on the random number  
+  clk_var_hz_divider_bound(27 downto 20) <= rand_num;
+
+-- Generate another clk square wave to trigger a new random number
+  ff10: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+                              SLOWCLK_OUT => clk_var_hz,
+                              UPPERBOUND_IN => clk_var_hz_divider_bound);
+\end{minted}
+\captionsetup{belowskip=0pt}
+\captionof{listing}{Behavioural VHDL implementation of pseudo-random number generation.}
+\label{code:random_number_generation}
+\end{code}
+
+If all eight bits of the LFSR set the most significant bits of the upper bound, the minimum delay between LEDs turning off would be,
+
+\[
+\text{Minimum Delay} = \frac{2^{20} - 1}{100 \text{ MHz}} = 11 \text{ ms}.
+\]
+
+It was decided this would be too short a delay. Instead of reducing the number of bits in the LFSR, the four most significant bits of the upper bound were set by the middle four bits of the LFSR. This increased the minimum delay to,
+
+\[
+\text{New Minimum Delay} = \frac{2^{24} - 1}{100 \text{ MHz}} = 167\text{ ms},
+\]
+
+which was acceptable. The maximum delay remained unchanged, at
+
+\[
+\text{Maximum Delay} = \frac{2^{28} - 1}{100 \text{ MHz}} = 2.68 \text{ s}.
+\]
+
+The location of the taps in the LFSR were chosen to ensure a maximum period of $2^8 - 1 = 255$ cycles. These locations were 8, 6, 5, and 4 \cite{lfsr_taps}, as seen in Listing \ref{code:lfsr}.
+
+\begin{code}
+\begin{minted}{vhdl}
+
+  process (CLK_IN)
+  begin
+      if rising_edge(CLK_IN) then
+          current_rand(7 downto 1) <= current_rand(6 downto 0);
+          current_rand(0) <= current_rand(7) XOR current_rand(5) ...
+          ... XOR current_rand(4) XOR current_rand(3);
+      end if;
+  end process;
+
+  RAND_OUT <= current_rand;
+\end{minted}
+\captionsetup{belowskip=0pt}
+\captionof{listing}{Dataflow VHDL implementation of LFSR.}
+\label{code:lfsr}
+\end{code}
+
+\subsection{8x5-to-5 Multiplexer}
+The 8x5-to-5 multiplexer is a generalised multiplexer component used specifically to select from a range of 5-bit BCD inputs. 5-bit BCD values are used instead of the standard 4-bits to allow for encoding of specific letters and symbols at values of $10+$ in each BCD digit. 
+
+The generalised multiplexer design is implemented with two different uses in the FPGA reaction stimulus test design. The first use is to take an input of 8 different BCD digits to be shown on the 8 different seven-segment displays, then displaying one at a time. This compensates for the hardware design limitation of only being able to have one active anode at a time on the seven segment display if the displays aren't identical. The second use is to take a range of BCD digits to be displayed, then selecting one to pass to the text override and seven segment decoders before showing on hardware.
+
+
+% PHILIP says - is it worth including a state diagram for the FSM?
+
+\subsection{Finite State Machine}
+
+The reaction timer was managed by a finite state machine with the following states: (change these to match the ones in the code)
+\begin{itemize}
+    \item \textbf{Idle}: The system is waiting for the user to press the start button. The LEDs are on, and the 7-segment displays are blank.
+    \item \textbf{Countdown}: The system is counting down from a random number between 1 and 5 seconds. The LEDs are off, and the 7-segment displays are blank.
+    \item \textbf{Reaction}: The system is waiting for the user to press the button after the last LED turns off. The LEDs are off, and the 7-segment displays are blank.
+    \item \textbf{Display}: The system is displaying the reaction time on the 7-segment displays. The LEDs are off, and the 7-segment displays show the reaction time in milliseconds.
+    \item \textbf{Store}: The system is storing the reaction time in the memory. The LEDs are off, and the 7-segment displays are blank.
+    \item \textbf{Reset}: The system is resetting the memory. The LEDs are off, and the 7-segment displays are blank.
+\end{itemize}
+
+The reaction delays were stored in a three-element circular buffer.
