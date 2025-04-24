@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config  -id {Project 1-865}  -string {{WARNING: [Project 1-865] Could not find the file C:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/reaction-repo/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp}}  -suppress 
 set_msg_config  -id {Project 1-311}  -string {{CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/reaction-repo/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp', nor could it be found using path 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/project_1/project_1.srcs/utils_1/imports/synth_1/milestone_1.dcp'.}}  -suppress 
 OPTRACE "Creating in-memory project" START { }

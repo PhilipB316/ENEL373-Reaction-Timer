@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Fri Apr 25 15:36:33 2025
+| Date         : Fri Apr 25 04:22:22 2025
 | Host         : Laptoptycles running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
@@ -62,8 +62,8 @@ Table of Contents
 | No           | No                    | Yes                    |               1 |            1 |
 | No           | Yes                   | No                     |             216 |           54 |
 | Yes          | No                    | No                     |               6 |            2 |
-| Yes          | No                    | Yes                    |              34 |           12 |
-| Yes          | Yes                   | No                     |               5 |            2 |
+| Yes          | No                    | Yes                    |              34 |           10 |
+| Yes          | Yes                   | No                     |               5 |            1 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,29 +74,29 @@ Table of Contents
 |        Clock Signal        |               Enable Signal              |             Set/Reset Signal             | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------------+------------------------------------------+------------------------------------------+------------------+----------------+--------------+
 |  ff0/clk_var_hz_switchable |                                          | ff9/TIMER_FINISHED_i_2_n_0               |                1 |              1 |         1.00 |
-|  ff4/ff0/tick_0            |                                          |                                          |                1 |              1 |         1.00 |
-| ~ff4/ff0/tick_0            |                                          |                                          |                1 |              1 |         1.00 |
 |  ff4/ff1/tick_1            |                                          |                                          |                1 |              1 |         1.00 |
 | ~ff4/ff1/tick_1            |                                          |                                          |                1 |              1 |         1.00 |
+|  ff4/ff0/tick_0            |                                          |                                          |                1 |              1 |         1.00 |
+| ~ff4/ff0/tick_0            |                                          |                                          |                1 |              1 |         1.00 |
 |  ff4/ff2/tick_2            |                                          |                                          |                1 |              1 |         1.00 |
 | ~ff4/ff2/tick_2            |                                          |                                          |                1 |              1 |         1.00 |
 |  ff4/ff3/tick_3            |                                          |                                          |                1 |              1 |         1.00 |
 | ~ff4/ff3/tick_3            |                                          |                                          |                1 |              1 |         1.00 |
 | ~ff1/CLK                   |                                          |                                          |                1 |              1 |         1.00 |
-|  ff0/clk_var_hz_switchable | ff9/count                                | ff9/TIMER_FINISHED_i_2_n_0               |                2 |              4 |         2.00 |
-|  ff1/CLK                   |                                          |                                          |                3 |              4 |         1.33 |
-|  ff4/ff0/tick_0            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
+|  ff0/clk_var_hz_switchable | ff9/count                                | ff9/TIMER_FINISHED_i_2_n_0               |                1 |              4 |         4.00 |
+|  ff1/CLK                   |                                          |                                          |                4 |              4 |         1.00 |
 |  ff4/ff1/tick_1            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
-|  ff4/ff2/tick_2            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                1 |              5 |         5.00 |
+|  ff4/ff0/tick_0            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                1 |              5 |         5.00 |
+|  ff4/ff2/tick_2            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
 |  ff4/ff3/tick_3            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                1 |              5 |         5.00 |
 |  ff4/ff4/CLK               | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
-| ~CLK100MHZ_IBUF_BUFG       | ff0/REACTION_TIME_COUNT_RSET_OUT_i_2_n_0 | ff0/REACTION_TIME_COUNT_RSET_OUT_i_1_n_0 |                2 |              5 |         2.50 |
-|  ff1/CLK                   | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
+| ~CLK100MHZ_IBUF_BUFG       | ff0/REACTION_TIME_COUNT_RSET_OUT_i_2_n_0 | ff0/REACTION_TIME_COUNT_RSET_OUT_i_1_n_0 |                1 |              5 |         5.00 |
+|  ff1/CLK                   | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                1 |              5 |         5.00 |
 | ~CLK100MHZ_IBUF_BUFG       | ff0/last_triggers                        |                                          |                2 |              6 |         3.00 |
-|  CLK100MHZ_IBUF_BUFG       |                                          |                                          |                6 |              7 |         1.17 |
+|  CLK100MHZ_IBUF_BUFG       |                                          |                                          |                5 |              7 |         1.40 |
 | ~CLK100MHZ_IBUF_BUFG       |                                          |                                          |                4 |              7 |         1.75 |
-|  ff0/E[0]                  |                                          |                                          |                2 |              8 |         4.00 |
-|  ff14/CLK                  |                                          |                                          |                4 |              8 |         2.00 |
+|  ff0/E[0]                  |                                          |                                          |                3 |              8 |         2.67 |
+|  ff14/CLK                  |                                          |                                          |                3 |              8 |         2.67 |
 |  CLK100MHZ_IBUF_BUFG       |                                          | ff1/clear                                |                7 |             28 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG       |                                          | ff14/clear                               |                7 |             28 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG       |                                          | ff21/debounce_counter[0]_i_1__3_n_0      |                8 |             32 |         4.00 |
