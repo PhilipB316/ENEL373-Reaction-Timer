@@ -19,14 +19,7 @@ entity binary_to_bcd_8 is
     Port ( CLK_IN : IN  std_logic;
            RESET_IN : IN  std_logic;
            BINARY_IN : IN  std_logic_vector(N-1 downto 0);
-           BCD0_OUT : OUT  std_logic_vector(3 downto 0);
-           BCD1_OUT : OUT  std_logic_vector(3 downto 0);
-           BCD2_OUT : OUT  std_logic_vector(3 downto 0);
-           BCD3_OUT : OUT  std_logic_vector(3 downto 0);
-           BCD4_OUT : OUT  std_logic_vector(3 downto 0);
-           BCD5_OUT : OUT  std_logic_vector(3 downto 0);
-           BCD6_OUT : OUT  std_logic_vector(3 downto 0);
-           BCD7_OUT : OUT  std_logic_vector(3 downto 0));
+           BCD_8_DIGIT_OUT : OUT std_logic_vector (39 downto 0) := (others => '0'));
 end binary_to_bcd_8 ;
  
 architecture behaviour of binary_to_bcd_8 is
@@ -104,13 +97,13 @@ begin
     bcds_out_reg_next <= bcds when state = done else
                          bcds_out_reg;
     
-    BCD7_OUT <= bcds_out_reg(31 downto 28);
-    BCD6_OUT <= bcds_out_reg(27 downto 24);
-    BCD5_OUT <= bcds_out_reg(23 downto 20);
-    BCD4_OUT <= bcds_out_reg(19 downto 16);
-    BCD3_OUT <= bcds_out_reg(15 downto 12);
-    BCD2_OUT <= bcds_out_reg(11 downto 8);
-    BCD1_OUT <= bcds_out_reg(7 downto 4);
-    BCD0_OUT <= bcds_out_reg(3 downto 0);
+    BCD_8_DIGIT_OUT(38 downto 35) <= bcds_out_reg(31 downto 28);
+    BCD_8_DIGIT_OUT(33 downto 30) <= bcds_out_reg(27 downto 24);
+    BCD_8_DIGIT_OUT(28 downto 25) <= bcds_out_reg(23 downto 20);
+    BCD_8_DIGIT_OUT(23 downto 20) <= bcds_out_reg(19 downto 16);
+    BCD_8_DIGIT_OUT(18 downto 15) <= bcds_out_reg(15 downto 12);
+    BCD_8_DIGIT_OUT(13 downto 10) <= bcds_out_reg(11 downto 8);
+    BCD_8_DIGIT_OUT(8 downto 5) <= bcds_out_reg(7 downto 4);
+    BCD_8_DIGIT_OUT(3 downto 0) <= bcds_out_reg(3 downto 0);
  
 end behaviour;

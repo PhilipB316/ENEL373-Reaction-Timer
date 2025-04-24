@@ -177,17 +177,10 @@ architecture Behavioral of main is
     end component alu;
     
     component binary_to_bcd_8 is
-        Port ( CLK_IN : IN  std_logic;
-               RESET_IN : IN  std_logic;
-               BINARY_IN : IN  std_logic_vector(27 downto 0);
-               BCD0_OUT : OUT  std_logic_vector(3 downto 0);
-               BCD1_OUT : OUT  std_logic_vector(3 downto 0);
-               BCD2_OUT : OUT  std_logic_vector(3 downto 0);
-               BCD3_OUT : OUT  std_logic_vector(3 downto 0);
-               BCD4_OUT : OUT  std_logic_vector(3 downto 0);
-               BCD5_OUT : OUT  std_logic_vector(3 downto 0);
-               BCD6_OUT : OUT  std_logic_vector(3 downto 0);
-               BCD7_OUT : OUT  std_logic_vector(3 downto 0));
+        Port ( CLK_IN : IN  STD_LOGIC;
+               RESET_IN : IN  STD_LOGIC;
+               BINARY_IN : IN  STD_LOGIC_VECTOR (27 downto 0);
+               BCD_8_DIGIT_OUT : OUT STD_LOGIC_VECTOR (39 downto 0));
     end component binary_to_bcd_8;
 
     component debouncer is
@@ -300,15 +293,8 @@ begin
     ff15: binary_to_bcd_8 port map ( CLK_IN => CLK100MHZ,
                                     RESET_IN => double_dabble_reset,
                                     BINARY_IN => alu_binary,
-                                    BCD0_OUT => alu_bcd_bus(3 downto 0),
-                                    BCD1_OUT => alu_bcd_bus(8 downto 5),
-                                    BCD2_OUT => alu_bcd_bus(13 downto 10),
-                                    BCD3_OUT => alu_bcd_bus(18 downto 15),
-                                    BCD4_OUT => alu_bcd_bus(23 downto 20),
-                                    BCD5_OUT => alu_bcd_bus(28 downto 25),
-                                    BCD6_OUT => alu_bcd_bus(33 downto 30),
-                                    BCD7_OUT => alu_bcd_bus(38 downto 35));
-    
+                                    BCD_8_DIGIT_OUT => alu_bcd_bus);
+
     ff16: multiplexer_8_1_4b port map (MUX_IN_0 => alu_bcd_bus(4 downto 0),
                                        MUX_IN_1 => alu_bcd_bus(9 downto 5),
                                        MUX_IN_2 => alu_bcd_bus(14 downto 10),

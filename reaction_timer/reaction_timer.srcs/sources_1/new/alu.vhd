@@ -16,17 +16,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity alu is
-    Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0);
+    Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0) := (others => '0');
            BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
            OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
 end alu;
 
 architecture Behavioral of alu is
     signal output_max : std_logic_vector (27 downto 0) := X"0000000";
-    signal output_min : std_logic_vector (27 downto 0) := X"0000000";
     signal output_avg : std_logic_vector (27 downto 0) := X"0000000";
     signal temp_max : std_logic_vector (27 downto 0) := X"0000000";
-    signal temp_min : std_logic_vector (27 downto 0) := X"0000000";
+    signal temp_first_min : std_logic_vector (27 downto 0) := X"0000000";
+    signal temp_second_min : std_logic_vector (27 downto 0) := X"0000000";
     signal temp_avg : std_logic_vector (27 downto 0) := X"0000000";
     signal sum : std_logic_vector (27 downto 0) := X"0000000";
     signal divisor : std_logic_vector (1 downto 0) := "01";
@@ -37,19 +37,29 @@ begin
     output_max <= temp_max when temp_max > NUM_3_IN else NUM_3_IN;
    
 --  Calculate minimum 
-    temp_min <= NUM_1_IN when NUM_1_IN < NUM_2_IN else NUM_2_IN;
-    output_min <= temp_min when temp_max < NUM_3_IN else NUM_3_IN;
+    temp_first_min <= NUM_1_IN when NUM_1_IN < NUM_2_IN else NUM_2_IN;
+    temp_second_min <= temp_first_min when temp_first_min < NUM_3_IN else NUM_3_IN;
+    
     
 --  Calculate average
     sum <= std_logic_vector(unsigned(NUM_1_IN) + unsigned(NUM_2_IN) + unsigned(NUM_3_IN));   
-    divisor <= "01" when BUFFER_SIZE_IN = "00" else 
-               "10" when BUFFER_SIZE_IN = "01" else
-               "11";
+    divisor <= "01" when BUFFER_SIZE_IN = "01" else 
+               "10" when BUFFER_SIZE_IN = "10" else
+               "11" when BUFFER_SIZE_IN = "11";
                
     output_avg <= std_logic_vector(unsigned(sum) / unsigned(divisor));
+
+
     
     process (OPERATION_SELECT_IN) is
+        variable output_min : std_logic_vector (27 downto 0) := X"0000000";
     begin
+        case (BUFFER_SIZE_IN) is
+            when "01" => output_min := NUM_1_IN;
+            when "10" => output_min := temp_first_min; 
+            when "11" => output_min := temp_second_min;
+            when others => NULL;
+        end case;
         case OPERATION_SELECT_IN is 
             when "01" => OUTPUT_OUT(27 downto 0) <= output_max;
             when "10" => OUTPUT_OUT(27 downto 0) <= output_min;

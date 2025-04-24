@@ -14,17 +14,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity circular_buffer is
-    Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0);
-           NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0);
+    Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0) := (others => '0');
+           NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0) := (others => '0');
            BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
            RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
 end circular_buffer;
 
 architecture Behavioral of circular_buffer is
-    signal write_index : std_logic_vector (1 downto 0);
-    signal buffer_size : std_logic_vector (1 downto 0);
+    signal write_index : std_logic_vector (1 downto 0) := "00";
+    signal buffer_size : std_logic_vector (1 downto 0) := "00";
 begin
-    process (RESET_IN)
+    process (RESET_IN, WRITE_TRIGGER_IN)
     begin
         if (RESET_IN = '1') then
             write_index <= "00";
@@ -33,10 +33,7 @@ begin
             NUMBER_2_OUT <= X"0000000";
             NUMBER_3_OUT <= X"0000000";
         end if;
-    end process;
-    
-    process (WRITE_TRIGGER_IN)
-    begin
+
         if rising_edge(WRITE_TRIGGER_IN) then
             case (write_index) is 
                 when "00" => NUMBER_1_OUT <= NUMBER_IN;
@@ -46,14 +43,14 @@ begin
             end case;
             
 --          Increment the write index until max then set to 0
-            if (write_index >= "10") then
+            if (write_index = "10") then
                 write_index <= "00";
             else
                 write_index <= std_logic_vector(unsigned(write_index) + 1);
             end if;
             
 --          Increment buffer size until max
-            if (buffer_size < "10") then
+            if (buffer_size < "11") then
                 buffer_size <= std_logic_vector(unsigned(buffer_size) + 1);
             end if;
         end if;
