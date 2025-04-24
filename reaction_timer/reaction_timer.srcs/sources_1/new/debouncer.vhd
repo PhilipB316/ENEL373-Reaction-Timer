@@ -31,7 +31,7 @@ begin
         if rising_edge(CLK_IN) then
             if BUTTON_IN = '1' then
                 debounce_counter := debounce_counter + 1;
-                if debounce_counter > 1000 then -- Adjust the threshold as needed
+                if debounce_counter > 100000 then -- Adjust the threshold as needed
                     DEBOUNCED_OUT <= '1';
                 end if;
             else

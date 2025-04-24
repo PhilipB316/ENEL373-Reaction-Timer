@@ -32,6 +32,8 @@ architecture Behavioral of main is
     signal clk_100_mhz_switchable : std_logic := '0';
     signal clk_1000_hz : std_logic := '0';
     signal clk_1000_hz_divider_bound : std_logic_vector (27 downto 0) := X"00186A0";
+    signal clk_10_khz : std_logic := '0';
+    signal clk_10_khz_divider_bound : std_logic_vector (27 downto 0) := X"0002710";
     signal clk_1_hz_switchable : std_logic;
     signal clk_1_hz_divider_bound : std_logic_vector (27 downto 0) := X"5F5E100";
     signal clk_var_hz : std_logic;
@@ -192,7 +194,7 @@ architecture Behavioral of main is
 begin
 
 --  Finite State Machine
-    ff0: fsm port map ( CLK_IN => CLK100MHZ,
+    ff0: fsm port map ( CLK_IN => clk_10_khz,
                         TRIGGERS_IN => fsm_state_change_triggers,
                         CLK_VAR_HZ_IN => clk_var_hz,
                         CLK_VAR_HZ_SWITCHABLE_OUT => clk_var_hz_switchable,
@@ -213,6 +215,11 @@ begin
     ff2: clk_divider port map(CLK100MHZ_IN => clk_100_mhz_switchable,
                               SLOWCLK_OUT => clk_1_hz_switchable,
                               UPPERBOUND_IN => clk_1_hz_divider_bound);
+
+--  10 KHz Clock Divider
+    ff2a: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+                              SLOWCLK_OUT => clk_10_khz,
+                              UPPERBOUND_IN => clk_10_khz_divider_bound);
                               
 --  3 bit counter for seven segment anode selection
     ff3: counter_3b port map(CLK_IN => clk_1000_hz,

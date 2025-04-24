@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1745501948" LaunchIncrCheckpoint="$PPRDIR/../../project_1/project_1.srcs/utils_1/imports/synth_1/main.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1745511655" LaunchIncrCheckpoint="$PPRDIR/../../project_1/project_1.srcs/utils_1/imports/synth_1/main.dcp">
   <File Type="PA-TCL" Name="main.tcl"/>
   <File Type="REPORTS-TCL" Name="main_reports.tcl"/>
   <File Type="RDS-RDS" Name="main.vds"/>
@@ -49,6 +49,12 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/counter_9i_plus.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/debouncer.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
