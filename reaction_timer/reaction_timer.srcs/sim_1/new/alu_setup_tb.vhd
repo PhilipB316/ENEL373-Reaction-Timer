@@ -141,7 +141,7 @@ begin
         wait for 100ns;
         binary_to_bcd_reset <= '1';
         alu_operation_select <= "01";
-        wait for 100ns;
+        wait for 1ns;
         binary_to_bcd_reset <= '0';
         wait for 100ns;
         binary_to_bcd_reset <= '1';

@@ -27,14 +27,19 @@ entity fsm is
            ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
            DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;  
            RESET_OUT: out STD_LOGIC;
-           TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0) := (others => '0'));
+           TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+           ALU_OPERATION_SELECT_OUT : out STD_LOGIC_VECTOR (1 downto 0);
+           BUFFER_WRITE_TRIGGER_OUT : out STD_LOGIC);
 end fsm;
 
 architecture Behavioral of fsm is
 
     signal current_state : std_logic_vector (3 downto 0) := "0000";
+    signal next_state : std_logic_vector (3 downto 0) := "0000";
     signal last_triggers : std_logic_vector (5 downto 0) := (others => '0');
     signal clk_cycle_count : unsigned (1 downto 0) := (others => '0');
+    signal buffer_write_trigger : std_logic := '0';
+    signal alu_operation_select : std_logic_vector (1 downto 0) := "00";
 
     signal counting_state : std_logic_vector (3 downto 0) := X"0";
     signal display_time_state : std_logic_vector (3 downto 0) := X"1";
@@ -44,6 +49,7 @@ architecture Behavioral of fsm is
     signal min_state : std_logic_vector (3 downto 0) := X"5";
     signal reset_state : std_logic_vector (3 downto 0) := X"6";
     signal error_state : std_logic_vector (3 downto 0) := X"7";
+    signal binary_to_bcd_reset_state : std_logic_vector (3 downto 0) := X"8";
 
 begin
 
@@ -65,11 +71,12 @@ begin
             REACTION_TIME_COUNT_RSET_OUT <= '0';
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
+            BUFFER_WRITE_TRIGGER_OUT <= '0';
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     current_state <= display_time_state; 
-                    
+                    BUFFER_WRITE_TRIGGER_OUT <= '1';
                 end if;
             end if;
         
@@ -80,20 +87,24 @@ begin
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
             DOUBLE_DABBLE_RESET_OUT <= '1';
+            ALU_OPERATION_SELECT_OUT <= "00";
 
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
                     current_state <= dotiey_state; 
                 elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    current_state <= avg_state; 
+                    next_state <= avg_state; 
+                    current_state <= binary_to_bcd_reset_state;
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
                     current_state <= reset_state; 
                     clk_cycle_count <= (others => '0');
                 elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    current_state <= max_state; 
+                    next_state <= max_state; 
+                    current_state <= binary_to_bcd_reset_state;
                 elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    current_state <= min_state; 
+                    next_state <= min_state; 
+                    current_state <= binary_to_bcd_reset_state;
                 else
                     NULL;
                 end if;
@@ -123,21 +134,23 @@ begin
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "011";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
             DOUBLE_DABBLE_RESET_OUT <= '0';
+            ALU_OPERATION_SELECT_OUT <= "11";
 
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    current_state <= display_time_state;
+                    next_state <= display_time_state;
                 elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    current_state <= avg_state;
+                    next_state <= avg_state;
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    current_state <= reset_state; 
+                    next_state <= reset_state; 
                     clk_cycle_count <= (others => '0');
                 elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    current_state <= max_state;
+                    next_state <= max_state;
                 elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    current_state <= min_state;
+                    next_state <= min_state;
                 end if;
+                current_state <= binary_to_bcd_reset_state;
             end if;
  
 --      Max time
@@ -147,21 +160,23 @@ begin
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "001";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
             DOUBLE_DABBLE_RESET_OUT <= '0';
+            ALU_OPERATION_SELECT_OUT <= "01";
         
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    current_state <= display_time_state;
+                    next_state <= display_time_state;
                 elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    current_state <= avg_state;
+                    next_state <= avg_state;
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    current_state <= reset_state; 
+                    next_state <= reset_state; 
                     clk_cycle_count <= (others => '0');
                 elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    current_state <= max_state;
+                    next_state <= max_state;
                 elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    current_state <= min_state;
+                    next_state <= min_state;
                 end if;
+                current_state <= binary_to_bcd_reset_state;
             end if;
             
 --      Min time
@@ -171,21 +186,23 @@ begin
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "010";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
             DOUBLE_DABBLE_RESET_OUT <= '0';
+            ALU_OPERATION_SELECT_OUT <= "10";
 
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    current_state <= display_time_state;
+                    next_state <= display_time_state;
                 elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    current_state <= avg_state;
+                    next_state <= avg_state;
                 elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    current_state <= reset_state; 
+                    next_state <= reset_state; 
                     clk_cycle_count <= (others => '0');
                 elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    current_state <= max_state;
+                    next_state <= max_state;
                 elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    current_state <= min_state;
+                    next_state <= min_state;
                 end if;
+                current_state <= binary_to_bcd_reset_state;
             end if;
  
 --      Reset
@@ -195,8 +212,10 @@ begin
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
             clk_cycle_count <= clk_cycle_count + 1;
+            RESET_OUT <= '1';
             if (clk_cycle_count = 3) then
                 clk_cycle_count <= "00";
+                RESET_OUT <= '0';
                 current_state <= display_time_state;
             end if;
 
@@ -213,7 +232,13 @@ begin
                     current_state <= dotiey_state;
                 end if;
             end if;
-
+        
+        elsif (current_state = binary_to_bcd_reset_state) then
+            REACTION_TIME_COUNT_EN_OUT <= '0';
+            REACTION_TIME_COUNT_RSET_OUT <= '0';
+            DOTIEY_COUNTDOWN_EN_OUT <= '0';
+            DOUBLE_DABBLE_RESET_OUT <= '1';
+            current_state <= next_state;
         end if;
     end if;
     end process;

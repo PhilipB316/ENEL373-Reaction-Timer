@@ -70,7 +70,6 @@ architecture Behavioral of main is
     signal circ_buff_size : std_logic_vector (1 downto 0) := "00";
     signal circ_buff_rset : std_logic := '0';
     signal circ_buff_write : std_logic := '0';
-    signal reset_data : std_logic := '0';
     signal max_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
     signal min_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
     signal avg_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
@@ -97,7 +96,9 @@ architecture Behavioral of main is
                ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
                DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;
                RESET_OUT: out STD_LOGIC;
-               TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0));
+               TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0);
+               ALU_OPERATION_SELECT_OUT : out STD_LOGIC_VECTOR (1 downto 0);
+               BUFFER_WRITE_TRIGGER_OUT : out STD_LOGIC);
     end component;
 
     component clk_divider is
@@ -203,8 +204,10 @@ begin
                         DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
                         ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
                         DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
-                        RESET_OUT => reset_data,
-                        TEMP_OUT => LED(11 downto 7));
+                        RESET_OUT => circ_buff_rset,
+                        TEMP_OUT => LED(11 downto 7),
+                        ALU_OPERATION_SELECT_OUT => alu_operation_select,
+                        BUFFER_WRITE_TRIGGER_OUT => circ_buff_write);
 
 --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
