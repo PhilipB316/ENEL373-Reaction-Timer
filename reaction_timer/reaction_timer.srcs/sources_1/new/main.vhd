@@ -185,7 +185,7 @@ architecture Behavioral of main is
 begin
 
 --  Finite State Machine
-    ff0: fsm port map ( CLK_IN => clk_1000_hz,
+    ff0: fsm port map ( CLK_IN => CLK100MHZ,
                         TRIGGERS_IN => fsm_state_change_triggers,
                         CLK_VAR_HZ_IN => clk_var_hz,
                         CLK_VAR_HZ_SWITCHABLE_OUT => clk_var_hz_switchable,
@@ -310,10 +310,10 @@ begin
 
     fsm_state_change_triggers(0) <= BTNC;
     fsm_state_change_triggers(1) <= fsm_state_dot_complete;
-    fsm_state_change_triggers(2) <= '0'; --BTNR;
-    fsm_state_change_triggers(3) <= '0'; --BTNL;
-    fsm_state_change_triggers(4) <= '0'; --BTNU;
-    fsm_state_change_triggers(5) <= '0'; --BTND;
+    fsm_state_change_triggers(2) <= BTNR; --BTNR;
+    fsm_state_change_triggers(3) <= BTNL; --BTNL;
+    fsm_state_change_triggers(4) <= BTNU; --BTNU;
+    fsm_state_change_triggers(5) <= BTND; --BTND;
 
     LED(5 downto 0) <= fsm_state_change_triggers;
 
