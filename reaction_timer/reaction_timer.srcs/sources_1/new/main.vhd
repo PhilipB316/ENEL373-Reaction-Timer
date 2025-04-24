@@ -205,7 +205,6 @@ begin
                         ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
                         DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
                         RESET_OUT => circ_buff_rset,
-                        TEMP_OUT => LED(11 downto 7),
                         ALU_OPERATION_SELECT_OUT => alu_operation_select,
                         BUFFER_WRITE_TRIGGER_OUT => circ_buff_write);
 
@@ -345,7 +344,5 @@ begin
     fsm_state_change_triggers(3) <= BTNL_debounced;
     fsm_state_change_triggers(4) <= BTNU_debounced;
     fsm_state_change_triggers(5) <= BTND_debounced;
-
-    LED(5 downto 0) <= fsm_state_change_triggers;
 
 end Behavioral;
