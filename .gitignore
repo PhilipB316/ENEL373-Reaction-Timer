@@ -1,6 +1,8 @@
 /reaction_timer/reaction_timer.hw
 /reaction_timer/reaction_timer.sim
 /reaction_timer/reaction_timer.cache
+/reaction_timer/reaction_timer.runs/*
+!/reaction_timer/reaction_timer.runs/synth_1/main.dcp
 /reaction_timer/*.jou
 /reaction_timer/*.log
 /reaction_timer/*.str
