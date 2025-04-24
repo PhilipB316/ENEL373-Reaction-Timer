@@ -213,7 +213,7 @@ begin
             DOTIEY_COUNTDOWN_EN_OUT <= '0';
             clk_cycle_count <= clk_cycle_count + 1;
             RESET_OUT <= '1';
-            if (clk_cycle_count = 3) then
+            if (clk_cycle_count = "11") then
                 clk_cycle_count <= "00";
                 RESET_OUT <= '0';
                 current_state <= display_time_state;

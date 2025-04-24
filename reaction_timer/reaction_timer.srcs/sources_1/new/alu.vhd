@@ -54,18 +54,22 @@ begin
     process (OPERATION_SELECT_IN) is
         variable output_min : std_logic_vector (27 downto 0) := X"0000000";
     begin
-        case (BUFFER_SIZE_IN) is
-            when "01" => output_min := NUM_1_IN;
-            when "10" => output_min := temp_first_min; 
-            when "11" => output_min := temp_second_min;
-            when others => NULL;
-        end case;
-        case OPERATION_SELECT_IN is 
-            when "01" => OUTPUT_OUT(27 downto 0) <= output_max;
-            when "10" => OUTPUT_OUT(27 downto 0) <= output_min;
-            when "11" => OUTPUT_OUT(27 downto 0) <= output_avg;
-            when others => OUTPUT_OUT(27 downto 0) <= X"0000000"; -- Handle unexpected cases
-        end case;
+        if (BUFFER_SIZE_IN = "00") then
+            OUTPUT_OUT <= (others => '0');
+        else
+            case (BUFFER_SIZE_IN) is
+                when "01" => output_min := NUM_1_IN;
+                when "10" => output_min := temp_first_min; 
+                when "11" => output_min := temp_second_min;
+                when others => NULL;
+            end case;
+            case OPERATION_SELECT_IN is 
+                when "01" => OUTPUT_OUT(27 downto 0) <= output_max;
+                when "10" => OUTPUT_OUT(27 downto 0) <= output_min;
+                when "11" => OUTPUT_OUT(27 downto 0) <= output_avg;
+                when others => OUTPUT_OUT(27 downto 0) <= X"0000000"; -- Handle unexpected cases
+            end case;
+        end if;
     end process;
 
 end Behavioral;

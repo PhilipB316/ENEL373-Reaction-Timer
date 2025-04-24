@@ -289,10 +289,7 @@ begin
              
 --  Generate next "random" number from the LFSR in lfsr
     ff13: lfsr port map (CLK_IN => clk_var_hz,
-                                           RAND_OUT => rand_num);
-    
--- Set the upperbound for the variable clk based on the random number  
-    clk_var_hz_divider_bound(27 downto 20) <= rand_num;
+                                           RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
 
 -- Generate another clk square wave to trigger a new random number
     ff14: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
@@ -337,12 +334,11 @@ begin
                               DEBOUNCED_OUT => BTND_debounced);
 
 --  Map FSM fsm_state_change_triggers
-
     fsm_state_change_triggers(0) <= BTNC_debounced;
     fsm_state_change_triggers(1) <= fsm_state_dot_complete;
     fsm_state_change_triggers(2) <= BTNR_debounced;
     fsm_state_change_triggers(3) <= BTNL_debounced;
     fsm_state_change_triggers(4) <= BTNU_debounced;
     fsm_state_change_triggers(5) <= BTND_debounced;
-
+    
 end Behavioral;

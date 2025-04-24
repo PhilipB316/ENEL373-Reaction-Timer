@@ -32,9 +32,7 @@ begin
             NUMBER_1_OUT <= X"0000000";
             NUMBER_2_OUT <= X"0000000";
             NUMBER_3_OUT <= X"0000000";
-        end if;
-
-        if rising_edge(WRITE_TRIGGER_IN) then
+        elsif rising_edge(WRITE_TRIGGER_IN) then
             case (write_index) is 
                 when "00" => NUMBER_1_OUT <= NUMBER_IN;
                 when "01" => NUMBER_2_OUT <= NUMBER_IN;
