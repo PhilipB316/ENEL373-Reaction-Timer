@@ -74,6 +74,13 @@ architecture Behavioral of main is
     signal avg_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
     signal selected_alu_bcd_digit : std_logic_vector (4 downto 0) := "00000";
     signal double_dabble_reset : std_logic;
+
+--  BUTTONS
+    signal BTNC_debounced : std_logic := '0';
+    signal BTNR_debounced : std_logic := '0';
+    signal BTNL_debounced : std_logic := '0';
+    signal BTNU_debounced : std_logic := '0';
+    signal BTND_debounced : std_logic := '0';
     
 
 --  COMPONENT INSTANTIATION
@@ -182,6 +189,13 @@ architecture Behavioral of main is
                BCD6_OUT : OUT  std_logic_vector(3 downto 0);
                BCD7_OUT : OUT  std_logic_vector(3 downto 0));
     end component binary_to_bcd_8;
+
+    component debouncer is
+        Port ( BUTTON_IN : in STD_LOGIC;
+               CLK_IN : in STD_LOGIC;
+               DEBOUNCED_OUT : out STD_LOGIC);
+    end component debouncer;
+
 begin
 
 --  Finite State Machine
@@ -306,16 +320,36 @@ begin
                                        SELECT_IN => output_segment_select,
                                        MUX_OUT => selected_alu_bcd_digit);
 
+--  Map the buttons to the debouncer component
+    ff17: debouncer port map (BUTTON_IN => BTNC,
+                              CLK_IN => CLK100MHZ,
+                              DEBOUNCED_OUT => BTNC_debounced);
+                              
+    ff18: debouncer port map (BUTTON_IN => BTNR,
+                              CLK_IN => CLK100MHZ,
+                              DEBOUNCED_OUT => BTNR_debounced);
+                              
+    ff19: debouncer port map (BUTTON_IN => BTNL,
+                              CLK_IN => CLK100MHZ,
+                              DEBOUNCED_OUT => BTNL_debounced);
+                              
+    ff20: debouncer port map (BUTTON_IN => BTNU,
+                              CLK_IN => CLK100MHZ,
+                              DEBOUNCED_OUT => BTNU_debounced);
+                              
+    ff21: debouncer port map (BUTTON_IN => BTND,
+                              CLK_IN => CLK100MHZ,
+                              DEBOUNCED_OUT => BTND_debounced);
+
 --  Map FSM fsm_state_change_triggers
 
-    fsm_state_change_triggers(0) <= BTNC;
+    fsm_state_change_triggers(0) <= BTNC_debounced;
     fsm_state_change_triggers(1) <= fsm_state_dot_complete;
-    fsm_state_change_triggers(2) <= BTNR; --BTNR;
-    fsm_state_change_triggers(3) <= BTNL; --BTNL;
-    fsm_state_change_triggers(4) <= BTNU; --BTNU;
-    fsm_state_change_triggers(5) <= BTND; --BTND;
+    fsm_state_change_triggers(2) <= BTNR_debounced;
+    fsm_state_change_triggers(3) <= BTNL_debounced;
+    fsm_state_change_triggers(4) <= BTNU_debounced;
+    fsm_state_change_triggers(5) <= BTND_debounced;
 
     LED(5 downto 0) <= fsm_state_change_triggers;
-
 
 end Behavioral;
