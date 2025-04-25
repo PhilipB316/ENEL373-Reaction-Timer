@@ -38,6 +38,7 @@ begin
             when "101" => MUX_OUT <= MUX_IN_5;
             when "110" => MUX_OUT <= MUX_IN_6;
             when "111" => MUX_OUT <= MUX_IN_7;
+            when others => NULL;
         end case;
     end process;
 end Behavioral;

@@ -22,7 +22,9 @@ entity main is
             BTNR : in STD_LOGIC;
             BTNL : in STD_LOGIC;
             BTNU : in STD_LOGIC;
-            BTND : in STD_LOGIC);  
+            BTND : in STD_LOGIC;
+            TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0) := (others => '0');
+            ANOYYING_DOOTY_VARIABLE : in std_logic);  
 end main;
 
 architecture Behavioral of main is
@@ -74,7 +76,6 @@ architecture Behavioral of main is
     signal avg_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
     signal selected_alu_bcd_digit : std_logic_vector (4 downto 0) := "00000";
     signal double_dabble_reset : std_logic;
-    
 
 --  COMPONENT INSTANTIATION
     component fsm is
@@ -195,7 +196,7 @@ begin
                         ENCODED_DISPLAY_INPUT_SELECT_OUT => encoded_display_input_select,
                         DOUBLE_DABBLE_RESET_OUT => double_dabble_reset,
                         RESET_OUT => reset_data,
-                        TEMP_OUT => LED(11 downto 7));
+                        TEMP_OUT => TEMP_OUT);
 
 --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
@@ -309,7 +310,7 @@ begin
 --  Map FSM fsm_state_change_triggers
 
     fsm_state_change_triggers(0) <= BTNC;
-    fsm_state_change_triggers(1) <= fsm_state_dot_complete;
+    fsm_state_change_triggers(1) <= ANOYYING_DOOTY_VARIABLE;
     fsm_state_change_triggers(2) <= '0'; --BTNR;
     fsm_state_change_triggers(3) <= '0'; --BTNL;
     fsm_state_change_triggers(4) <= '0'; --BTNU;
