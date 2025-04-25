@@ -108,7 +108,7 @@ begin
             ENCODED_DISPLAY_INPUT_SELECT_OUT <= "111";
             DOTIEY_COUNTDOWN_EN_OUT <= '1';
             
-            -- TEMP_OUT(4) <= '1';
+            TEMP_OUT(4) <= '1';
             if (TRIGGERS_IN /= last_triggers) then
                 last_triggers <= TRIGGERS_IN;
                 if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
