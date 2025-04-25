@@ -2,12 +2,12 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Apr 25 01:39:15 2025
-# Process ID: 19028
-# Current directory: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1
+# Start of session at: Fri Apr 25 15:35:12 2025
+# Process ID: 3236
+# Current directory: C:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1
 # Command line: vivado.exe -log main.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
-# Log file: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/main.vds
-# Journal file: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1\vivado.jou
-# Running On: clucktop, OS: Windows, CPU Frequency: 3294 MHz, CPU Physical cores: 12, Host memory: 33657 MB
+# Log file: C:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/main.vds
+# Journal file: C:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1\vivado.jou
+# Running On: Laptoptycles, OS: Windows, CPU Frequency: 2419 MHz, CPU Physical cores: 4, Host memory: 16805 MB
 #-----------------------------------------------------------
 source main.tcl -notrace

@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Fri Apr 25 01:41:28 2025
-| Host         : clucktop running 64-bit major release  (build 9200)
+| Date         : Fri Apr 25 15:36:33 2025
+| Host         : Laptoptycles running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
 | Device       : xc7a100t
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    27 |
-|    Minimum number of control sets                        |    27 |
+| Total control sets                                       |    31 |
+|    Minimum number of control sets                        |    31 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   123 |
+| Unused register locations in slices containing registers |   111 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    27 |
-| >= 0 to < 4        |    12 |
-| >= 4 to < 6        |    10 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     3 |
+| Total control sets |    31 |
+| >= 0 to < 4        |    10 |
+| >= 4 to < 6        |     9 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     2 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     2 |
+| >= 16              |     7 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              39 |           23 |
+| No           | No                    | No                     |              43 |           28 |
 | No           | No                    | Yes                    |               1 |            1 |
-| No           | Yes                   | No                     |              56 |           14 |
-| Yes          | No                    | No                     |               6 |            3 |
-| Yes          | No                    | Yes                    |              34 |            8 |
-| Yes          | Yes                   | No                     |               5 |            4 |
+| No           | Yes                   | No                     |             216 |           54 |
+| Yes          | No                    | No                     |               6 |            2 |
+| Yes          | No                    | Yes                    |              34 |           12 |
+| Yes          | Yes                   | No                     |               5 |            2 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,33 +73,37 @@ Table of Contents
 +----------------------------+------------------------------------------+------------------------------------------+------------------+----------------+--------------+
 |        Clock Signal        |               Enable Signal              |             Set/Reset Signal             | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------------+------------------------------------------+------------------------------------------+------------------+----------------+--------------+
-| ~ff1/CLK                   |                                          |                                          |                1 |              1 |         1.00 |
 |  ff0/clk_var_hz_switchable |                                          | ff9/TIMER_FINISHED_i_2_n_0               |                1 |              1 |         1.00 |
-|  ff4/ff1/tick_1            |                                          |                                          |                1 |              1 |         1.00 |
-| ~ff4/ff1/tick_1            |                                          |                                          |                1 |              1 |         1.00 |
 |  ff4/ff0/tick_0            |                                          |                                          |                1 |              1 |         1.00 |
 | ~ff4/ff0/tick_0            |                                          |                                          |                1 |              1 |         1.00 |
+|  ff4/ff1/tick_1            |                                          |                                          |                1 |              1 |         1.00 |
+| ~ff4/ff1/tick_1            |                                          |                                          |                1 |              1 |         1.00 |
 |  ff4/ff2/tick_2            |                                          |                                          |                1 |              1 |         1.00 |
 | ~ff4/ff2/tick_2            |                                          |                                          |                1 |              1 |         1.00 |
 |  ff4/ff3/tick_3            |                                          |                                          |                1 |              1 |         1.00 |
 | ~ff4/ff3/tick_3            |                                          |                                          |                1 |              1 |         1.00 |
-| ~CLK100MHZ_IBUF_BUFG       | ff0/TEMP_OUT[4]_i_1_n_0                  |                                          |                1 |              1 |         1.00 |
-|  CLK100MHZ_IBUF_BUFG       |                                          |                                          |                2 |              2 |         1.00 |
-|  ff1/CLK                   |                                          |                                          |                2 |              4 |         2.00 |
-|  ff0/clk_var_hz_switchable | ff9/count                                | ff9/TIMER_FINISHED_i_2_n_0               |                1 |              4 |         4.00 |
-|  ff1/CLK                   | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/REACTION_TIME_COUNT_RSET_OUT         |                1 |              5 |         5.00 |
-|  ff4/ff1/tick_1            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/REACTION_TIME_COUNT_RSET_OUT         |                1 |              5 |         5.00 |
-|  ff4/ff0/tick_0            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/REACTION_TIME_COUNT_RSET_OUT         |                1 |              5 |         5.00 |
-|  ff4/ff2/tick_2            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/REACTION_TIME_COUNT_RSET_OUT         |                2 |              5 |         2.50 |
-|  ff4/ff3/tick_3            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/REACTION_TIME_COUNT_RSET_OUT         |                1 |              5 |         5.00 |
-|  ff4/ff4/CLK               | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/REACTION_TIME_COUNT_RSET_OUT         |                1 |              5 |         5.00 |
-| ~CLK100MHZ_IBUF_BUFG       | ff0/REACTION_TIME_COUNT_RSET_OUT_i_2_n_0 | ff0/REACTION_TIME_COUNT_RSET_OUT_i_1_n_0 |                4 |              5 |         1.25 |
-| ~CLK100MHZ_IBUF_BUFG       | ff0/last_triggers                        |                                          |                2 |              5 |         2.50 |
-|  ff14/CLK                  |                                          |                                          |                3 |              8 |         2.67 |
+| ~ff1/CLK                   |                                          |                                          |                1 |              1 |         1.00 |
+|  ff0/clk_var_hz_switchable | ff9/count                                | ff9/TIMER_FINISHED_i_2_n_0               |                2 |              4 |         2.00 |
+|  ff1/CLK                   |                                          |                                          |                3 |              4 |         1.33 |
+|  ff4/ff0/tick_0            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
+|  ff4/ff1/tick_1            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
+|  ff4/ff2/tick_2            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                1 |              5 |         5.00 |
+|  ff4/ff3/tick_3            | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                1 |              5 |         5.00 |
+|  ff4/ff4/CLK               | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
+| ~CLK100MHZ_IBUF_BUFG       | ff0/REACTION_TIME_COUNT_RSET_OUT_i_2_n_0 | ff0/REACTION_TIME_COUNT_RSET_OUT_i_1_n_0 |                2 |              5 |         2.50 |
+|  ff1/CLK                   | ff0/REACTION_TIME_COUNT_EN_OUT           | ff0/AR[0]                                |                2 |              5 |         2.50 |
+| ~CLK100MHZ_IBUF_BUFG       | ff0/last_triggers                        |                                          |                2 |              6 |         3.00 |
+|  CLK100MHZ_IBUF_BUFG       |                                          |                                          |                6 |              7 |         1.17 |
+| ~CLK100MHZ_IBUF_BUFG       |                                          |                                          |                4 |              7 |         1.75 |
 |  ff0/E[0]                  |                                          |                                          |                2 |              8 |         4.00 |
-| ~CLK100MHZ_IBUF_BUFG       |                                          |                                          |                5 |              8 |         1.60 |
+|  ff14/CLK                  |                                          |                                          |                4 |              8 |         2.00 |
 |  CLK100MHZ_IBUF_BUFG       |                                          | ff1/clear                                |                7 |             28 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG       |                                          | ff14/clear                               |                7 |             28 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG       |                                          | ff21/debounce_counter[0]_i_1__3_n_0      |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG       |                                          | ff20/debounce_counter[0]_i_1__2_n_0      |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG       |                                          | ff18/debounce_counter[0]_i_1__0_n_0      |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG       |                                          | ff19/debounce_counter[0]_i_1__1_n_0      |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG       |                                          | ff17/debounce_counter[0]_i_1_n_0         |                8 |             32 |         4.00 |
 +----------------------------+------------------------------------------+------------------------------------------+------------------+----------------+--------------+
 
 
