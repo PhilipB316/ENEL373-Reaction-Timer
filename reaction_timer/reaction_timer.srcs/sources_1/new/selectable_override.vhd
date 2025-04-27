@@ -29,7 +29,6 @@ architecture Behavioral of selectable_override is
     signal max_text : std_logic_vector (9 downto 0) := "1000010001"; -- HI
     signal min_text : std_logic_vector (9 downto 0) := "0110010010"; -- LO
     signal avg_text : std_logic_vector (9 downto 0) := "0111101101"; -- Ag
-    signal error_text : std_logic_vector (9 downto 0) := "0111100001"; -- Er
 
 begin
     process (TEXT_SELECT_IN, delay_text, blank_text)
@@ -39,7 +38,6 @@ begin
             when "001" => override_text <= max_text;
             when "010" => override_text <= min_text;
             when "011" => override_text <= avg_text; 
-            when "100" => override_text <= error_text;
             when others => override_text <= blank_text;
         end case;
     end process;

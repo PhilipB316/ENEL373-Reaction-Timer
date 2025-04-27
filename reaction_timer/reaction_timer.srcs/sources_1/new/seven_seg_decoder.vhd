@@ -44,6 +44,9 @@ begin
             when "10000" => SEGMENT_LIGHT_OUT(0 to 7) <= "10001001"; -- "H"
             when "10001" => SEGMENT_LIGHT_OUT(0 to 7) <= "01111001"; -- "I."
             when "10010" => SEGMENT_LIGHT_OUT(0 to 7) <= "01000000"; -- "O."
+            when "10011" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000110"; -- "o"
+            when "10101" => SEGMENT_LIGHT_OUT(0 to 7) <= "10000110"; -- "E"
+            when "10111" => SEGMENT_LIGHT_OUT(0 to 7) <= "10101111"; -- "r"
             when others => NULL;
         end case;
     end process;

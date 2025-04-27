@@ -54,9 +54,10 @@ architecture Behavioral of main is
     signal encoded_reaction_time_digit : std_logic_vector (4 downto 0) := "00000";
     signal encoded_segment_data : std_logic_vector (4 downto 0) := "00000";
     signal encoded_segment_data_overridden : std_logic_vector (4 downto 0) := "00000";
-    signal encoded_display_placeholder : std_logic_vector (4 downto 0) := "00000";
+    signal encoded_display_placeholder : std_logic_vector (4 downto 0) := "01010";
     signal encoded_dots : std_logic_vector (4 downto 0) := "00000";
     signal encoded_display_dly_text_override : std_logic_vector (4 downto 0) := "00000";
+    signal encoded_error_text : std_logic_vector (4 downto 0) := "00000";
 
     signal rand_num : std_logic_vector (7 downto 0);
     
@@ -262,46 +263,58 @@ begin
                          EN_IN => dotiey_countdown_en,
                          DOT_OUT => encoded_dots,
                          TIMER_FINISHED => fsm_state_dot_complete);
+         
+--  Error text mux                
+    ff10: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_display_placeholder, --
+                                       MUX_IN_1 => encoded_display_placeholder, --
+                                       MUX_IN_2 => encoded_display_placeholder, --
+                                       MUX_IN_3 => "10101", -- E
+                                       MUX_IN_4 => "10111", -- R
+                                       MUX_IN_5 => "10111", -- R
+                                       MUX_IN_6 => "10011", -- O
+                                       MUX_IN_7 => "10111", -- R
+                                       SELECT_IN => output_segment_select,
+                                       MUX_OUT => encoded_error_text); 
                          
 --  8x4 to 4 encoded display data mux
-    ff10: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
-                                      MUX_IN_1 => selected_alu_bcd_digit,
-                                      MUX_IN_2 => selected_alu_bcd_digit,
-                                      MUX_IN_3 => selected_alu_bcd_digit,
-                                      MUX_IN_4 => encoded_display_placeholder,
-                                      MUX_IN_5 => encoded_display_placeholder,
-                                      MUX_IN_6 => encoded_display_placeholder,
-                                      MUX_IN_7 => encoded_dots,
-                                      SELECT_IN => encoded_display_input_select,
-                                      MUX_OUT => encoded_segment_data);
+    ff11: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,     -- Counter
+                                       MUX_IN_1 => selected_alu_bcd_digit,           -- ALU ?
+                                       MUX_IN_2 => selected_alu_bcd_digit,           -- ALU ?
+                                       MUX_IN_3 => selected_alu_bcd_digit,           -- ALU ?
+                                       MUX_IN_4 => encoded_error_text,               -- Error
+                                       MUX_IN_5 => encoded_display_placeholder,
+                                       MUX_IN_6 => encoded_display_placeholder,
+                                       MUX_IN_7 => encoded_dots,
+                                       SELECT_IN => encoded_display_input_select,
+                                       MUX_OUT => encoded_segment_data);
                                       
 --  Display text override
-    ff11: selectable_override port map (SEG_SELECT_IN => output_segment_select,
+    ff12: selectable_override port map (SEG_SELECT_IN => output_segment_select,
                                        TEXT_SELECT_IN => encoded_display_input_select,
                                        SEG_IN => encoded_segment_data,
                                        SEG_OUT => encoded_segment_data_overridden);
 
 --  Seven segment display decoder
-    ff12: segment_display port map(NUMBER_IN => encoded_segment_data_overridden,
+    ff13: segment_display port map(NUMBER_IN => encoded_segment_data_overridden,
                                   MUX_IN => output_segment_select,
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
              
 --  Generate next "random" number from the LFSR in lfsr
-    ff13: lfsr port map (CLK_IN => clk_var_hz,
+    ff14: lfsr port map (CLK_IN => clk_var_hz,
                                            RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
 
 -- Generate another clk square wave to trigger a new random number
-    ff14: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
+    ff15: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                                 SLOWCLK_OUT => clk_var_hz,
                                 UPPERBOUND_IN => clk_var_hz_divider_bound);
                                         
-    ff15: binary_to_bcd_8 port map ( CLK_IN => CLK100MHZ,
+    ff16: binary_to_bcd_8 port map ( CLK_IN => CLK100MHZ,
                                     RESET_IN => double_dabble_reset,
                                     BINARY_IN => alu_binary,
                                     BCD_8_DIGIT_OUT => alu_bcd_bus);
 
-    ff16: multiplexer_8_1_4b port map (MUX_IN_0 => alu_bcd_bus(4 downto 0),
+    ff17: multiplexer_8_1_4b port map (MUX_IN_0 => alu_bcd_bus(4 downto 0),
                                        MUX_IN_1 => alu_bcd_bus(9 downto 5),
                                        MUX_IN_2 => alu_bcd_bus(14 downto 10),
                                        MUX_IN_3 => alu_bcd_bus(19 downto 15),
@@ -313,23 +326,23 @@ begin
                                        MUX_OUT => selected_alu_bcd_digit);
 
 --  Map the buttons to the debouncer component
-    ff17: debouncer port map (BUTTON_IN => BTNC,
+    ff18: debouncer port map (BUTTON_IN => BTNC,
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTNC_debounced);
                               
-    ff18: debouncer port map (BUTTON_IN => BTNR,
+    ff19: debouncer port map (BUTTON_IN => BTNR,
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTNR_debounced);
                               
-    ff19: debouncer port map (BUTTON_IN => BTNL,
+    ff20: debouncer port map (BUTTON_IN => BTNL,
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTNL_debounced);
                               
-    ff20: debouncer port map (BUTTON_IN => BTNU,
+    ff21: debouncer port map (BUTTON_IN => BTNU,
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTNU_debounced);
                               
-    ff21: debouncer port map (BUTTON_IN => BTND,
+    ff22: debouncer port map (BUTTON_IN => BTND,
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTND_debounced);
 
