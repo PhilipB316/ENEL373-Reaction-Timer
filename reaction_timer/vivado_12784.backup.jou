@@ -1,0 +1,72 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Tue Apr 22 13:25:52 2025
+# Process ID: 12784
+# Current directory: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24432 D:\UC Files\2025\ENEL373\ThuGroup13\reaction_timer\reaction_timer.xpr
+# Log file: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/vivado.log
+# Journal file: D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer\vivado.jou
+# Running On: clucktop, OS: Windows, CPU Frequency: 3294 MHz, CPU Physical cores: 12, Host memory: 33657 MB
+#-----------------------------------------------------------
+start_gui
+open_project {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.xpr}
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open {D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/binary_to_bcd_tb.vhd} w ]
+add_files -fileset sim_1 {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/binary_to_bcd_tb.vhd}}
+update_compile_order -fileset sim_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+wait_on_run impl_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/binary_to_bcd_tb.vhd}}
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/binary_to_bcd_tb.vhd}}
+export_ip_user_files -of_objects  [get_files {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/binary_to_bcd_tb.vhd}}] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/binary_to_bcd_tb.vhd}}
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse {{D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/binary_to_bcd_8_tb.vhd}}
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top binary_to_bcd_8_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+close_sim
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+close_sim
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+close_sim
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+close_sim
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+close_sim
+launch_simulation
+reset_run synth_1
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+close_sim
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+close_sim
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source binary_to_bcd_8_tb.tcl
+close_sim
+update_compile_order -fileset sources_1

@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../reaction_timer.srcs/sources_1/new/bcd_to_bin.vhd" \
+"../../../../reaction_timer.srcs/sim_1/new/bcd_to_bin_tb.vhd" \
+
+# Do not sort compile order
+nosort

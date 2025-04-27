@@ -1,0 +1,9 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.sim/sim_1/synth/func/xsim/alu_setup_tb_func_synth.vhd,1745512385,vhdl,,,,clk_divider;clk_divider_0;counter_3b;counter_decade;counter_decade_1;counter_decade_2;counter_decade_3;counter_decade_4;counter_decade_5;dotiey;fsm;lfsr;main;segment_display;seven_seg_decoder;timer_8_num_selectable,,,,,,,,
+D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sim_1/new/alu_setup_tb.vhd,1745512221,vhdl,,,,alu_setup_tb,,,,,,,,
+D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd,1745511657,vhdl,,,,alu,,,,,,,,
+D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/binary_to_bcd_8.vhd,1745506470,vhdl,,,,binary_to_bcd_8,,,,,,,,
+D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/circular_buffer.vhd,1745512134,vhdl,,,,circular_buffer,,,,,,,,
