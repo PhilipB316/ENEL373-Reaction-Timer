@@ -8,7 +8,8 @@
 -- Description: 
 -- ALU for reaction timer.
 -- Takes 3 data inputs and finds max, min, and average of those inputs.
--- Outputs the result based on the operation selected.
+-- Outputs the result based on the operation selected,
+-- and the number of elements in the buffer
 ----------------------------------------------------------------------------------
 
 library IEEE;
@@ -27,7 +28,6 @@ architecture Behavioral of alu is
     signal temp_max : std_logic_vector (27 downto 0) := X"0000000";
     signal temp_first_min : std_logic_vector (27 downto 0) := X"0000000";
     signal temp_second_min : std_logic_vector (27 downto 0) := X"0000000";
-    signal temp_avg : std_logic_vector (27 downto 0) := X"0000000";
     signal sum : std_logic_vector (27 downto 0) := X"0000000";
     signal divisor : std_logic_vector (1 downto 0) := "01";
 begin
@@ -40,17 +40,13 @@ begin
     temp_first_min <= NUM_1_IN when NUM_1_IN < NUM_2_IN else NUM_2_IN;
     temp_second_min <= temp_first_min when temp_first_min < NUM_3_IN else NUM_3_IN;
     
-    
 --  Calculate average
     sum <= std_logic_vector(unsigned(NUM_1_IN) + unsigned(NUM_2_IN) + unsigned(NUM_3_IN));   
     divisor <= "01" when BUFFER_SIZE_IN = "01" else 
                "10" when BUFFER_SIZE_IN = "10" else
                "11" when BUFFER_SIZE_IN = "11";
-               
     output_avg <= std_logic_vector(unsigned(sum) / unsigned(divisor));
 
-
-    
     process (OPERATION_SELECT_IN) is
         variable output_min : std_logic_vector (27 downto 0) := X"0000000";
     begin
@@ -58,18 +54,21 @@ begin
             OUTPUT_OUT <= (others => '0');
         else
             case (BUFFER_SIZE_IN) is
+                -- Select appropriate value
                 when "01" => output_min := NUM_1_IN;
                 when "10" => output_min := temp_first_min; 
                 when "11" => output_min := temp_second_min;
                 when others => NULL;
             end case;
             case OPERATION_SELECT_IN is 
+                -- Select appropriate output
                 when "01" => OUTPUT_OUT(27 downto 0) <= output_max;
                 when "10" => OUTPUT_OUT(27 downto 0) <= output_min;
                 when "11" => OUTPUT_OUT(27 downto 0) <= output_avg;
-                when others => OUTPUT_OUT(27 downto 0) <= X"0000000"; -- Handle unexpected cases
+                when others => OUTPUT_OUT(27 downto 0) <= X"0000000";
             end case;
         end if;
     end process;
 
 end Behavioral;
+

@@ -9,16 +9,17 @@
     - can the new text override be disabled
 - remove old text override
 - finite state machine useful names
+
+
 - no magic numbers
 - testbench labels
     - mark old ones as redundant from previous versions, do not delete. proof of previous testing
     - new testbench needs 100ns before applying input, refer to mark rubric
-- check min delays for ran num generation (dotiey)
-    - if too low, consider updating
 - write useful readme (excuse me this todo list is very useful)
 - update constraints file with unused things?
 - shift dataflow from main into something else
 - map fsm inputs directly into fsm, not dataflowed
+
 - check repo for binaries (bad bad binaries)
 - header comments in files consistent and kind of nicely written
 - remove useless whitespace please and thank you that drives me up the wall

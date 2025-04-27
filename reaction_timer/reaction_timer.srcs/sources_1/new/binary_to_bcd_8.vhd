@@ -6,13 +6,16 @@
 
 -- Description: 
 -- Binary to BCD converter
+
+-- Acknowledgements:
+-- Majority of module code came from Invent Logics - All About FPGA
+-- Written by Support Team
+-- Can be found here: https://allaboutfpga.com/vhdl-code-for-binary-to-bcd-converter/
 ----------------------------------------------------------------------------------
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
-
---https://allaboutfpga.com/vhdl-code-for-binary-to-bcd-converter/
  
 entity binary_to_bcd_8 is
     generic(N: positive := 28);
@@ -25,7 +28,6 @@ end binary_to_bcd_8 ;
 architecture behaviour of binary_to_bcd_8 is
     type states is (start, shift, done);
     signal state, state_next: states;
- 
     signal binary, binary_next: std_logic_vector(N-1 downto 0);
     signal bcds, bcds_reg, bcds_next: std_logic_vector(31 downto 0);
     -- output register keep output constant during conversion
@@ -107,3 +109,4 @@ begin
     BCD_8_DIGIT_OUT(3 downto 0) <= bcds_out_reg(3 downto 0);
  
 end behaviour;
+
