@@ -87,20 +87,27 @@ architecture Behavioral of main is
 
 --  COMPONENT INSTANTIATION
     component fsm is
-        Port ( CLK_IN : in STD_LOGIC;
-               TRIGGERS_IN : in STD_LOGIC_VECTOR (5 downto 0);
+        Port (
+            -- INPUTS
+               CLK_IN : in STD_LOGIC;
+               BTNC_IN : in STD_LOGIC;
+               BTNR_IN : in STD_LOGIC;
+               BTNL_IN : in STD_LOGIC;
+               BTNU_IN : in STD_LOGIC;
+               BTND_IN : in STD_LOGIC;
+               DOTIEY_COMPLETE_IN : in STD_LOGIC;
                CLK_VAR_HZ_IN: in STD_LOGIC;
+            --  OUTPUTS
                CLK_VAR_HZ_SWITCHABLE_OUT: out STD_LOGIC;
                REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
                REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
                DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
                ENCODED_DISPLAY_INPUT_SELECT_OUT: out STD_LOGIC_VECTOR (2 downto 0);
-               DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;
+               DOUBLE_DABBLE_RESET_OUT: out STD_LOGIC;  
                RESET_OUT: out STD_LOGIC;
-               TEMP_OUT : out STD_LOGIC_VECTOR (4 downto 0);
                ALU_OPERATION_SELECT_OUT : out STD_LOGIC_VECTOR (1 downto 0);
                BUFFER_WRITE_TRIGGER_OUT : out STD_LOGIC);
-    end component;
+    end component fsm;
 
     component clk_divider is
         Port ( CLK100MHZ_IN : in STD_LOGIC;
@@ -197,7 +204,12 @@ begin
 
 --  Finite State Machine
     ff0: fsm port map ( CLK_IN => clk_10_khz,
-                        TRIGGERS_IN => fsm_state_change_triggers,
+                        BTNC_IN => BTNC_debounced,
+                        BTNR_IN => BTNR_debounced,
+                        BTNL_IN => BTNL_debounced,
+                        BTNU_IN => BTNU_debounced,
+                        BTND_IN => BTND_debounced,
+                        DOTIEY_COMPLETE_IN => fsm_state_dot_complete,
                         CLK_VAR_HZ_IN => clk_var_hz,
                         CLK_VAR_HZ_SWITCHABLE_OUT => clk_var_hz_switchable,
                         REACTION_TIME_COUNT_EN_OUT => reaction_time_count_en,
@@ -345,13 +357,5 @@ begin
     ff22: debouncer port map (BUTTON_IN => BTND,
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTND_debounced);
-
---  Map FSM fsm_state_change_triggers
-    fsm_state_change_triggers(0) <= BTNC_debounced;
-    fsm_state_change_triggers(1) <= fsm_state_dot_complete;
-    fsm_state_change_triggers(2) <= BTNR_debounced;
-    fsm_state_change_triggers(3) <= BTNL_debounced;
-    fsm_state_change_triggers(4) <= BTNU_debounced;
-    fsm_state_change_triggers(5) <= BTND_debounced;
     
 end Behavioral;
