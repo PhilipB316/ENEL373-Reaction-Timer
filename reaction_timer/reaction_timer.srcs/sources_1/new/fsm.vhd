@@ -15,7 +15,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity fsm is
-    Port ( -- INPUTS
+    Port (
+        -- INPUTS
            CLK_IN : in STD_LOGIC;
            TRIGGERS_IN : in STD_LOGIC_VECTOR (5 downto 0);
            CLK_VAR_HZ_IN: in STD_LOGIC;
@@ -51,20 +52,12 @@ architecture Behavioral of fsm is
 
 begin
 
---  Triggers
---  TRIGGERS_IN(0) <= BTNC
---  TRIGGERS_IN(1) <= Dotty Completion
---  TRIGGERS_IN(2) <= BTNR - avg
---  TRIGGERS_IN(3) <= BTNL - clr
---  TRIGGERS_IN(4) <= BTNU - max
---  TRIGGERS_IN(5) <= BTND - min
-
-    --  Finite state machine state outputs
+--  Finite state machine state outputs
     process(CLK_IN, CLK_VAR_HZ_IN) is
     begin
     if (falling_edge(CLK_IN)) then
         case current_state is
---      Counting
+
         when counting_state =>
             REACTION_TIME_COUNT_EN_OUT <= '1';
             REACTION_TIME_COUNT_RSET_OUT <= '0';
@@ -79,7 +72,6 @@ begin
                 end if;
             end if;
         
-    --      Display time
             when display_time_state =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '0';
@@ -109,7 +101,6 @@ begin
                     end if;
                 end if;
     
-    --      Dots
             when dotiey_state =>
                 CLK_VAR_HZ_SWITCHABLE_OUT <= CLK_VAR_HZ_IN;
                 REACTION_TIME_COUNT_EN_OUT <= '0';
@@ -118,15 +109,14 @@ begin
                 DOTIEY_COUNTDOWN_EN_OUT <= '1';
                 
                 if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    current_state <= error_state;
-                elsif (TRIGGERS_IN(1) = '1') then -- if dotiey completion
-                    current_state <= counting_state;
-                end if;
+                    last_triggers <= TRIGGERS_IN;
+                    if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+                        current_state <= error_state;
+                    elsif (TRIGGERS_IN(1) = '1') then -- if dotiey completion
+                        current_state <= counting_state;
+                    end if;
                 end if;
     
-    --      Average time
             when avg_state =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '0';
@@ -136,23 +126,22 @@ begin
                 ALU_OPERATION_SELECT_OUT <= "11";
     
                 if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    next_state <= display_time_state;
-                elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    next_state <= avg_state;
-                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    next_state <= reset_state; 
-                    clk_cycle_count <= (others => '0');
-                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    next_state <= max_state;
-                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    next_state <= min_state;
-                end if;
+                    last_triggers <= TRIGGERS_IN;
+                    if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+                        next_state <= display_time_state;
+                    elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
+                        next_state <= avg_state;
+                    elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
+                        next_state <= reset_state; 
+                        clk_cycle_count <= (others => '0');
+                    elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
+                        next_state <= max_state;
+                    elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
+                        next_state <= min_state;
+                    end if;
                 current_state <= binary_to_bcd_reset_state;
                 end if;
         
-    --      Max time
             when max_state =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '0';
@@ -162,23 +151,22 @@ begin
                 ALU_OPERATION_SELECT_OUT <= "01";
             
                 if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    next_state <= display_time_state;
-                elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    next_state <= avg_state;
-                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    next_state <= reset_state; 
-                    clk_cycle_count <= (others => '0');
-                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    next_state <= max_state;
-                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    next_state <= min_state;
-                end if;
-                current_state <= binary_to_bcd_reset_state;
+                    last_triggers <= TRIGGERS_IN;
+                    if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+                        next_state <= display_time_state;
+                    elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
+                        next_state <= avg_state;
+                    elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
+                        next_state <= reset_state; 
+                        clk_cycle_count <= (others => '0');
+                    elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
+                        next_state <= max_state;
+                    elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
+                        next_state <= min_state;
+                    end if;
+                    current_state <= binary_to_bcd_reset_state;
                 end if;
                 
-    --      Min time
             when min_state =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '0';
@@ -188,23 +176,22 @@ begin
                 ALU_OPERATION_SELECT_OUT <= "10";
     
                 if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    next_state <= display_time_state;
-                elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
-                    next_state <= avg_state;
-                elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
-                    next_state <= reset_state; 
-                    clk_cycle_count <= (others => '0');
-                elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
-                    next_state <= max_state;
-                elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
-                    next_state <= min_state;
-                end if;
-                current_state <= binary_to_bcd_reset_state;
+                    last_triggers <= TRIGGERS_IN;
+                    if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+                        next_state <= display_time_state;
+                    elsif (TRIGGERS_IN(2) = '1') then -- if BTNR pressed
+                        next_state <= avg_state;
+                    elsif (TRIGGERS_IN(3) = '1') then -- if BTNL pressed
+                        next_state <= reset_state; 
+                        clk_cycle_count <= (others => '0');
+                    elsif (TRIGGERS_IN(4) = '1') then -- if BTNU pressed
+                        next_state <= max_state;
+                    elsif (TRIGGERS_IN(5) = '1') then -- if BTND pressed
+                        next_state <= min_state;
+                    end if;
+                    current_state <= binary_to_bcd_reset_state;
                 end if;
         
-    --      Reset
             when reset_state =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '1';
@@ -218,7 +205,6 @@ begin
                 current_state <= display_time_state;
                 end if;
     
-    --      Error
             when error_state =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '0';
@@ -226,10 +212,10 @@ begin
                 DOTIEY_COUNTDOWN_EN_OUT <= '0';
     
                 if (TRIGGERS_IN /= last_triggers) then
-                last_triggers <= TRIGGERS_IN;
-                if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
-                    current_state <= dotiey_state;
-                end if;
+                    last_triggers <= TRIGGERS_IN;
+                    if (TRIGGERS_IN(0) = '1') then -- if BTNC pressed
+                        current_state <= dotiey_state;
+                    end if;
                 end if;
             
             when binary_to_bcd_reset_state =>
@@ -241,6 +227,6 @@ begin
              end case;
         end if;
     end process;
---    TEMP_OUT(3 downto 0) <= current_state;
 
 end Behavioral;
+

@@ -1,0 +1,122 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Sun Apr 27 23:08:02 2025
+| Host         : Laptoptycles running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
+| Design       : main
+| Device       : xc7a100t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    44 |
+|    Minimum number of control sets                        |    44 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   189 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    44 |
+| >= 0 to < 4        |    15 |
+| >= 4 to < 6        |    11 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    14 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              58 |           34 |
+| No           | No                    | Yes                    |               5 |            2 |
+| No           | Yes                   | No                     |             244 |           61 |
+| Yes          | No                    | No                     |              10 |            4 |
+| Yes          | No                    | Yes                    |             198 |           70 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++--------------------------------+----------------------------------+--------------------------------------+------------------+----------------+--------------+
+|          Clock Signal          |           Enable Signal          |           Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++--------------------------------+----------------------------------+--------------------------------------+------------------+----------------+--------------+
+|  ff7/divisor_reg[1]/G0         |                                  |                                      |                1 |              1 |         1.00 |
+|  ff7/divisor_reg[0]/G0         |                                  |                                      |                1 |              1 |         1.00 |
+|  ff4/ff1/tick_1                |                                  |                                      |                1 |              1 |         1.00 |
+| ~ff1/CLK                       |                                  |                                      |                1 |              1 |         1.00 |
+| ~ff4/ff1/tick_1                |                                  |                                      |                1 |              1 |         1.00 |
+|  ff4/ff2/tick_2                |                                  |                                      |                1 |              1 |         1.00 |
+| ~ff4/ff2/tick_2                |                                  |                                      |                1 |              1 |         1.00 |
+|  ff4/ff3/tick_3                |                                  |                                      |                1 |              1 |         1.00 |
+| ~ff4/ff3/tick_3                |                                  |                                      |                1 |              1 |         1.00 |
+|  ff4/ff4/tick_4                |                                  |                                      |                1 |              1 |         1.00 |
+| ~ff4/ff4/tick_4                |                                  |                                      |                1 |              1 |         1.00 |
+|  ff4/ff0/tick_0                |                                  |                                      |                1 |              1 |         1.00 |
+|  ff0/clk_var_hz_switchable     |                                  | ff9/TIMER_FINISHED_i_2_n_0           |                1 |              1 |         1.00 |
+| ~ff4/ff0/tick_0                |                                  |                                      |                1 |              1 |         1.00 |
+| ~CLK100MHZ_IBUF_BUFG           | ff16/FSM_onehot_state[2]_i_1_n_0 | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |                1 |              3 |         3.00 |
+|  ff1/CLK                       |                                  |                                      |                2 |              4 |         2.00 |
+|  BUFFER_WRITE_TRIGGER_OUT_BUFG |                                  | ff0/RESET_OUT                        |                1 |              4 |         4.00 |
+| ~ff2a/clk_10_khz               | ff0/current_state                |                                      |                2 |              4 |         2.00 |
+|  ff0/clk_var_hz_switchable     | ff9/count                        | ff9/TIMER_FINISHED_i_2_n_0           |                1 |              4 |         4.00 |
+|  ff4/ff2/tick_2                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
+|  ff4/ff3/tick_3                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                3 |              5 |         1.67 |
+|  ff4/ff4/tick_4                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
+|  ff4/ff5/CLK                   | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
+|  ff1/CLK                       | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
+|  ff4/ff0/tick_0                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
+|  ff4/ff1/tick_1                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                3 |              5 |         1.67 |
+| ~ff2a/clk_10_khz               | ff0/last_triggers[5]_i_1_n_0     |                                      |                2 |              6 |         3.00 |
+|  ff0/E[0]                      |                                  |                                      |                3 |              8 |         2.67 |
+|  CLK100MHZ_IBUF_BUFG           |                                  |                                      |                7 |              8 |         1.14 |
+|  ff15/CLK                      |                                  |                                      |                2 |              8 |         4.00 |
+| ~ff2a/clk_10_khz               |                                  |                                      |                7 |             17 |         2.43 |
+| ~CLK100MHZ_IBUF_BUFG           | ff16/bcds_out_reg_next           | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |                7 |             24 |         3.43 |
+|  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/NUMBER_2_OUT[24]_i_1_n_0     | ff0/RESET_OUT                        |                9 |             25 |         2.78 |
+|  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/NUMBER_3_OUT[24]_i_1_n_0     | ff0/RESET_OUT                        |               11 |             25 |         2.27 |
+|  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/p_0_in                       | ff0/RESET_OUT                        |               11 |             25 |         2.27 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff15/clear                           |                7 |             28 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff1/clear                            |                7 |             28 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff2a/clear                           |                7 |             28 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff20/debounce_counter[0]_i_1__1_n_0  |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff22/debounce_counter[0]_i_1__3_n_0  |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff19/debounce_counter[0]_i_1__0_n_0  |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff18/debounce_counter[0]_i_1_n_0     |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff21/debounce_counter[0]_i_1__2_n_0  |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG           | ff16/shift_counter[4]_i_1_n_0    | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |               18 |             57 |         3.17 |
++--------------------------------+----------------------------------+--------------------------------------+------------------+----------------+--------------+
+
+
