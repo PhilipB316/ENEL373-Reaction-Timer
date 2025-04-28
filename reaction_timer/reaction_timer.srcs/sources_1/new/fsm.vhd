@@ -41,7 +41,7 @@ architecture Behavioral of fsm is
     type states is (delay_countup,
                     delay_display,
                     dots_countdown,
-                    display_max,
+                    display_avg,
                     display_max,
                     display_min,
                     data_reset,
@@ -97,7 +97,7 @@ begin
                     if (current_triggers(0) = '1') then -- if BTNC pressed
                         current_state <= dots_countdown; 
                     elsif (current_triggers(2) = '1') then -- if BTNR pressed
-                        next_state <= display_max; 
+                        next_state <= display_avg; 
                         current_state <= converter_reset;
                     elsif (current_triggers(3) = '1') then -- if BTNL pressed
                         current_state <= data_reset; 
@@ -129,7 +129,7 @@ begin
                     end if;
                 end if;
     
-            when display_max =>
+            when display_avg =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '0';
                 ENCODED_DISPLAY_INPUT_SELECT_OUT <= "011";
@@ -142,7 +142,7 @@ begin
                     if (current_triggers(0) = '1') then -- if BTNC pressed
                         next_state <= delay_display;
                     elsif (current_triggers(2) = '1') then -- if BTNR pressed
-                        next_state <= display_max;
+                        next_state <= display_avg;
                     elsif (current_triggers(3) = '1') then -- if BTNL pressed
                         next_state <= data_reset; 
                         clk_cycle_count <= (others => '0');
@@ -167,7 +167,7 @@ begin
                     if (current_triggers(0) = '1') then -- if BTNC pressed
                         next_state <= delay_display;
                     elsif (current_triggers(2) = '1') then -- if BTNR pressed
-                        next_state <= display_max;
+                        next_state <= display_avg;
                     elsif (current_triggers(3) = '1') then -- if BTNL pressed
                         next_state <= data_reset; 
                         clk_cycle_count <= (others => '0');
@@ -192,7 +192,7 @@ begin
                     if (current_triggers(0) = '1') then -- if BTNC pressed
                         next_state <= delay_display;
                     elsif (current_triggers(2) = '1') then -- if BTNR pressed
-                        next_state <= display_max;
+                        next_state <= display_avg;
                     elsif (current_triggers(3) = '1') then -- if BTNL pressed
                         next_state <= data_reset; 
                         clk_cycle_count <= (others => '0');

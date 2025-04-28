@@ -32,15 +32,15 @@ architecture Behavioral of alu is
     signal divisor : std_logic_vector (1 downto 0) := "01";
 begin
 
---  Calculate maximum
+    --  Calculate maximum
     temp_max <= NUM_1_IN when NUM_1_IN > NUM_2_IN else NUM_2_IN;
     output_max <= temp_max when temp_max > NUM_3_IN else NUM_3_IN;
-   
---  Calculate minimum 
+
+    --  Calculate minimum 
     temp_first_min <= NUM_1_IN when NUM_1_IN < NUM_2_IN else NUM_2_IN;
     temp_second_min <= temp_first_min when temp_first_min < NUM_3_IN else NUM_3_IN;
-    
---  Calculate average
+ 
+    --  Calculate average
     sum <= std_logic_vector(unsigned(NUM_1_IN) + unsigned(NUM_2_IN) + unsigned(NUM_3_IN));   
     divisor <= "01" when BUFFER_SIZE_IN = "01" else 
                "10" when BUFFER_SIZE_IN = "10" else
@@ -54,14 +54,14 @@ begin
             OUTPUT_OUT <= (others => '0');
         else
             case (BUFFER_SIZE_IN) is
-                -- Select appropriate value
+                -- Select appropriate min value depending on buffer size
                 when "01" => output_min := NUM_1_IN;
                 when "10" => output_min := temp_first_min; 
                 when "11" => output_min := temp_second_min;
                 when others => NULL;
             end case;
             case OPERATION_SELECT_IN is 
-                -- Select appropriate output
+                -- Select appropriate output depending on operation
                 when "01" => OUTPUT_OUT(27 downto 0) <= output_max;
                 when "10" => OUTPUT_OUT(27 downto 0) <= output_min;
                 when "11" => OUTPUT_OUT(27 downto 0) <= output_avg;
