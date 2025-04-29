@@ -41,7 +41,6 @@ architecture Behavioral of main is
 
 --  FINITE STATE MACHINE
     signal fsm_state : std_logic_vector (3 downto 0) := X"2";
-    signal fsm_state_change_triggers : std_logic_vector (5 downto 0);
     signal fsm_state_dot_complete : std_logic := '0';
     signal dotiey_countdown_en : std_logic := '0';
     signal reaction_time_count_en : std_logic := '0';
@@ -55,10 +54,7 @@ architecture Behavioral of main is
     signal encoded_segment_data_overridden : std_logic_vector (4 downto 0) := "00000";
     signal encoded_display_placeholder : std_logic_vector (4 downto 0) := "01010";
     signal encoded_dots : std_logic_vector (4 downto 0) := "00000";
-    signal encoded_display_dly_text_override : std_logic_vector (4 downto 0) := "00000";
     signal encoded_error_text : std_logic_vector (4 downto 0) := "00000";
-
-    signal rand_num : std_logic_vector (7 downto 0);
     
 --  ALU & CIRCULAR BUFFER
     signal timer_bcd_bus : std_logic_vector (39 downto 0) := X"0000000000";
@@ -70,9 +66,6 @@ architecture Behavioral of main is
     signal circ_buff_size : std_logic_vector (1 downto 0) := "00";
     signal circ_buff_rset : std_logic := '0';
     signal circ_buff_write : std_logic := '0';
-    signal max_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
-    signal min_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
-    signal avg_alu_bcd_result : std_logic_vector (27 downto 0) := X"0000000";
     signal selected_alu_bcd_digit : std_logic_vector (4 downto 0) := "00000";
     signal double_dabble_reset : std_logic;
 
@@ -313,7 +306,7 @@ begin
              
 --  Generate next "random" number from the LFSR in lfsr
     ff14: lfsr port map (CLK_IN => clk_var_hz,
-                                           RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
+                         RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
 
 -- Generate another clk square wave to trigger a new random number
     ff15: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
