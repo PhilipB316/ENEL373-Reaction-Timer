@@ -15,7 +15,6 @@ use IEEE.NUMERIC_STD.ALL;
 -- Define module IO
 entity main is
     Port (  CLK100MHZ : in STD_LOGIC;
-            LED : out STD_LOGIC_VECTOR (15 downto 0) := X"0000";
             AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
             SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
             BTNC : in STD_LOGIC;
