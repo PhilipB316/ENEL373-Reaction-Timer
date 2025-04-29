@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="61" Path="C:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/reaction_timer/reaction_timer.xpr">
+<Project Version="7" Minor="61" Path="D:/UC Files/2025/ENEL373/ThuGroup13/reaction_timer/reaction_timer.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="1cf57ddb121f4a44abec733679a83970"/>
@@ -198,13 +198,6 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/main.vhd">
         <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/text_segment_override.vhd">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
