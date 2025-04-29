@@ -320,12 +320,14 @@ begin
     ff15: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
                                 SLOWCLK_OUT => clk_var_hz,
                                 UPPERBOUND_IN => clk_var_hz_divider_bound);
-                                        
+    
+--  Converts binary ALU result to BCD for display
     ff16: binary_to_bcd_8 port map ( CLK_IN => CLK100MHZ,
                                     RESET_IN => double_dabble_reset,
                                     BINARY_IN => alu_binary,
                                     BCD_8_DIGIT_OUT => alu_bcd_bus);
 
+--  Selects BCD digit from the ALU to display on current anode
     ff17: multiplexer_8_1_4b port map (MUX_IN_0 => alu_bcd_bus(4 downto 0),
                                        MUX_IN_1 => alu_bcd_bus(9 downto 5),
                                        MUX_IN_2 => alu_bcd_bus(14 downto 10),

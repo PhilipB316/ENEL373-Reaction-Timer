@@ -22,8 +22,7 @@ end selectable_override;
 
 architecture Behavioral of selectable_override is
     signal override_text : std_logic_vector (9 downto 0);
---  Override text signals
---  These are only signals for the sake of code readability
+--  Override text signals in encoded 5-bit format for each character
     signal blank_text : std_logic_vector (9 downto 0) := "0101001010";
     signal delay_text : std_logic_vector (9 downto 0) := "0101101100"; -- dL
     signal max_text : std_logic_vector (9 downto 0) := "1000010001"; -- HI

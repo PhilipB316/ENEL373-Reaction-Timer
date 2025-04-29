@@ -103,7 +103,8 @@ begin
                                   INCREMENT_IN => tick(6),
                                   COUNT_OUT => mux_7,
                                   TICK_OUT => tick(7));
---  Digit multiplexer
+
+--  Digit multiplexer linked to active anode
     ff8: multiplexer_8_1_4b port map (MUX_IN_0 => mux_0,
                                       MUX_IN_1 => mux_1,
                                       MUX_IN_2 => mux_2,
@@ -114,7 +115,8 @@ begin
                                       MUX_IN_7 => mux_7,
                                       SELECT_IN => SELECT_IN,
                                       MUX_OUT => INT_OUT);
-                                      
+    
+--  Output all BCD digits for use with the ALU
     BCD_BUS_OUT <= mux_7 & mux_6 & mux_5 & mux_4 & mux_3 & mux_2 & mux_1 & mux_0;
 
 end Behavioral;

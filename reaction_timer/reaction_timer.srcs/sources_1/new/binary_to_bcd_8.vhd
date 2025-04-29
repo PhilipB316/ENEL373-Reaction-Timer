@@ -5,10 +5,11 @@
 -- Project Name: Reaction Timer
 
 -- Description: 
--- Binary to BCD converter
+-- Binary to BCD converter using the Double Dabble algorithm
 
 -- Acknowledgements:
 -- Majority of module code came from Invent Logics - All About FPGA
+-- Adapted to support 8 BCD digits instead of 5
 -- Written by Support Team
 -- Can be found here: https://allaboutfpga.com/vhdl-code-for-binary-to-bcd-converter/
 ----------------------------------------------------------------------------------

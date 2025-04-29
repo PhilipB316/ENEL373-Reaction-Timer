@@ -67,23 +67,25 @@ begin
 --  Finite state machine state outputs
     process(CLK_IN, CLK_VAR_HZ_IN) is
     begin
+    
+--  Sync FSM to CLK to prevent erroneous and unpredictable state changes
     if (falling_edge(CLK_IN)) then
         case current_state is
 
-        when delay_countup =>
-            REACTION_TIME_COUNT_EN_OUT <= '1';
-            REACTION_TIME_COUNT_RSET_OUT <= '0';
-            ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
-            DOTIEY_COUNTDOWN_EN_OUT <= '0';
-            BUFFER_WRITE_TRIGGER_OUT <= '0';
-            if (current_triggers /= last_triggers) then
-                last_triggers <= current_triggers;
-                if (current_triggers(0) = '1') then -- if BTNC pressed
-                    current_state <= delay_display; 
-                    BUFFER_WRITE_TRIGGER_OUT <= '1';
+            when delay_countup =>
+                REACTION_TIME_COUNT_EN_OUT <= '1';
+                REACTION_TIME_COUNT_RSET_OUT <= '0';
+                ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
+                DOTIEY_COUNTDOWN_EN_OUT <= '0';
+                BUFFER_WRITE_TRIGGER_OUT <= '0';
+                if (current_triggers /= last_triggers) then
+                    last_triggers <= current_triggers;
+                    if (current_triggers(0) = '1') then -- if BTNC pressed
+                        current_state <= delay_display; 
+                        BUFFER_WRITE_TRIGGER_OUT <= '1';
+                    end if;
                 end if;
-            end if;
-        
+            
             when delay_display =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '0';
@@ -203,7 +205,7 @@ begin
                     end if;
                     current_state <= converter_reset;
                 end if;
-        
+            
             when data_reset =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '1';
@@ -236,8 +238,8 @@ begin
                 DOTIEY_COUNTDOWN_EN_OUT <= '0';
                 DOUBLE_DABBLE_RESET_OUT <= '1';
                 current_state <= next_state;
-             end case;
-        end if;
+        end case;
+    end if;
     end process;
 
 end Behavioral;

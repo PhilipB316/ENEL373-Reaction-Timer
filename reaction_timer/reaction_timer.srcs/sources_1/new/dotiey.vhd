@@ -29,7 +29,7 @@ architecture Behavioral of dotiey is
 begin
     process (CLK_IN, EN_IN, count)
     begin
---      On rising clock edge decrement count, if zero, set TIMER_FINISHED to true
+--      On rising clock edge decrement count, if zero, set TIMER_FINISHED to true for FSM
         if rising_edge(CLK_IN) then
             if EN_IN = '1' then
                 if count /= "0000" then

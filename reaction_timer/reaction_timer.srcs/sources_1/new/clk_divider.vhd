@@ -21,11 +21,10 @@ end clk_divider;
 
 architecture Behavioral of clk_divider is
     signal count: std_logic_vector (27 downto 0) := (others => '0');
-    signal temp: std_logic := '1';
+    signal temp_clk: std_logic := '1';
     signal upperbound_half : STD_LOGIC_VECTOR (27 downto 0);
 begin
---  Move the temporary clock to the SLOWCLK output
-    SLOWCLK_OUT <= temp;
+    SLOWCLK_OUT <= temp_clk;
     upperbound_half <= std_logic_vector(unsigned(UPPERBOUND_IN) / 2);
 
     process (CLK100MHZ_IN)
@@ -34,9 +33,8 @@ begin
 --          If UPPERBOUND is reached, reset count and toggle temporary clock
             if count = upperbound_half then
                 count <= (others => '0');
-                temp <= not temp;
+                temp_clk <= not temp_clk;
             else
---             Else increase the counter
                count <= std_logic_vector(unsigned(count) + 1);
             end if;
         end if;
