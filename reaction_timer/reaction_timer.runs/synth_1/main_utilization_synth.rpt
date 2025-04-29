@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Mon Apr 28 21:22:59 2025
-| Host         : Laptoptycles running 64-bit major release  (build 9200)
+| Date         : Wed Apr 30 10:19:26 2025
+| Host         : clucktop running 64-bit major release  (build 9200)
 | Command      : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
 | Design       : main
 | Device       : xc7a100tcsg324-1
@@ -149,14 +149,14 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |  328 |                 LUT |
+| LUT6     |  332 |                 LUT |
 | FDRE     |  304 |        Flop & Latch |
 | LUT2     |  218 |                 LUT |
 | FDCE     |  215 |        Flop & Latch |
 | CARRY4   |  153 |          CarryLogic |
-| LUT5     |  145 |                 LUT |
-| LUT3     |  103 |                 LUT |
-| LUT4     |   97 |                 LUT |
+| LUT5     |  143 |                 LUT |
+| LUT3     |  102 |                 LUT |
+| LUT4     |   94 |                 LUT |
 | OBUF     |   32 |                  IO |
 | MUXF7    |   27 |               MuxFx |
 | LUT1     |   27 |                 LUT |

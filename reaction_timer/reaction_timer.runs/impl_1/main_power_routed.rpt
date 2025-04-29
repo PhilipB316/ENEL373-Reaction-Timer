@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Mon Apr 28 21:24:51 2025
-| Host             : Laptoptycles running 64-bit major release  (build 9200)
+| Date             : Wed Apr 30 10:21:42 2025
+| Host             : clucktop running 64-bit major release  (build 9200)
 | Command          : report_power -file main_power_routed.rpt -pb main_power_summary_routed.pb -rpx main_power_routed.rpx
 | Design           : main
 | Device           : xc7a100tcsg324-1
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.003 |        3 |       --- |             --- |
-| Slice Logic    |     0.004 |     1679 |       --- |             --- |
+| Slice Logic    |     0.003 |     1677 |       --- |             --- |
 |   LUT as Logic |     0.003 |      692 |     63400 |            1.09 |
 |   CARRY4       |    <0.001 |      153 |     15850 |            0.97 |
 |   Register     |    <0.001 |      531 |    126800 |            0.42 |
 |   F7/F8 Muxes  |    <0.001 |       27 |     63400 |            0.04 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |       49 |       --- |             --- |
-| Signals        |     0.004 |     1439 |       --- |             --- |
+| Signals        |     0.004 |     1436 |       --- |             --- |
 | DSPs           |     0.000 |        7 |       240 |            2.92 |
 | I/O            |     0.015 |       38 |       210 |           18.10 |
 | Static Power   |     0.097 |          |           |                 |
@@ -144,8 +144,8 @@ Table of Contents
 | Name   | Power (W) |
 +--------+-----------+
 | main   |     0.025 |
+|   ff0  |     0.001 |
 |   ff16 |     0.001 |
-|   ff3  |     0.001 |
 |   ff6  |     0.001 |
 |   ff7  |     0.001 |
 +--------+-----------+

@@ -277,14 +277,14 @@ begin
                          TIMER_FINISHED => fsm_state_dot_complete);
          
 --  Error text mux                
-    ff10: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_display_placeholder, --
-                                       MUX_IN_1 => encoded_display_placeholder, --
-                                       MUX_IN_2 => encoded_display_placeholder, --
-                                       MUX_IN_3 => "10101", -- E
-                                       MUX_IN_4 => "10111", -- R
-                                       MUX_IN_5 => "10111", -- R
-                                       MUX_IN_6 => "10011", -- O
-                                       MUX_IN_7 => "10111", -- R
+    ff10: multiplexer_8_1_4b port map (MUX_IN_0 => "10111", -- R
+                                       MUX_IN_1 => "10011", -- O
+                                       MUX_IN_2 => "10111", -- R
+                                       MUX_IN_3 => "10111", -- R
+                                       MUX_IN_4 => "10101", -- E
+                                       MUX_IN_5 => encoded_display_placeholder, --
+                                       MUX_IN_6 => encoded_display_placeholder, --
+                                       MUX_IN_7 => encoded_display_placeholder, --
                                        SELECT_IN => output_segment_select,
                                        MUX_OUT => encoded_error_text); 
                          
