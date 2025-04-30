@@ -214,9 +214,9 @@ begin
                 clk_cycle_count <= clk_cycle_count + 1;
                 RESET_OUT <= '1';
                 if (clk_cycle_count = "11") then
-                clk_cycle_count <= "00";
-                RESET_OUT <= '0';
-                current_state <= delay_display;
+                    clk_cycle_count <= "00";
+                    RESET_OUT <= '0';
+                    current_state <= delay_display;
                 end if;
     
             when error =>

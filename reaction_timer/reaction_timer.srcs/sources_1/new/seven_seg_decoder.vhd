@@ -6,7 +6,7 @@
 
 -- Description:
 -- maps BCD input to 7-segment display output
--- 0-9, blank, d, L, g., dot, A, H, I., O.
+-- 0-9, blank, d, L, g., dot, A, H, I., O., o, E, r
 ----------------------------------------------------------------------------------
 
 library IEEE;

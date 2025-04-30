@@ -8,6 +8,30 @@
 -- 
 ----------------------------------------------------------------------------------
 
+
+
+-- THIS MODULES NEEDS TO HAVE A GOOD HEADER BLOCK BEFORE SUBMISSION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- DO NOT REMOVE THIS WHITE SPACE UNTIL THE BLOCK IS PROPERLY FILLED
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -131,7 +155,7 @@ architecture Behavioral of main is
 
     component segment_display is
         Port ( NUMBER_IN : in STD_LOGIC_VECTOR (4 downto 0);
-               MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
+               MUX_IN : in STD_LOGIC_VECTOR (2 downto 0);
                SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
                ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
@@ -288,7 +312,7 @@ begin
                                        MUX_IN_4 => encoded_error_text,               -- Error
                                        MUX_IN_5 => encoded_display_placeholder,
                                        MUX_IN_6 => encoded_display_placeholder,
-                                       MUX_IN_7 => encoded_dots,
+                                       MUX_IN_7 => encoded_dots,                     -- Dots
                                        SELECT_IN => encoded_display_input_select,
                                        MUX_OUT => encoded_segment_data);
                                       
@@ -304,7 +328,7 @@ begin
                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
                                   ANODE_OUT => AN);
              
---  Generate next "random" number from the LFSR in lfsr
+--  Generate next "random" number from the LFSR
     ff14: lfsr port map (CLK_IN => clk_var_hz,
                          RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
 
@@ -353,3 +377,4 @@ begin
                               DEBOUNCED_OUT => BTND_debounced);
     
 end Behavioral;
+
