@@ -111,7 +111,9 @@ The primary focus for the reaction timer project project was to develop VHDL cod
 
 \subsubsection{Diagramming}
 
-The primary program development method used in this project was to draw program or component flow diagrams before VHDL was written. These digrams detailed the communication between between individual modules, and outlined the overall program structure. Figure \ref{fig:diagram_example} shows one such digram outlining the \dots
+The primary program development method used in this project was to draw program or component flow diagrams before VHDL was written. These digrams detailed the communication between between individual modules, and outlined the overall program structure. Figure \ref{project_structure} shows one such digram outlining each major component in the design and how they're grouped into larger modules. 
+
+Clear communication between group members of the expected inputs and outputs from each component played a significant role in keeping the final assembly simple. Examples include the consistent transfer of characters to be displayed 8x5-to-5 muxes to transmit one character at a time unless otherwise required, such as for the ALU.
 
 \hl{Philip - Michael, do you want to cover some of this?}
 
@@ -173,7 +175,9 @@ Since the project the significantly modularised, it was important that individua
 
 One issue that arose during the development of the seven segment display module which mapped a BCD input to a combination of segments on a display to represent that BCD number was that the provided mappings did not represent the numbers correctly. The solution approach was to first determine whether the BCD input or mapping was incorrect. This was done by tying the BCD input to the green LEDs on the FPGA. This asserted BCD input was correct. To rectify the incorrect mappings, individual segments on a board were tied to the FPGA user switches. Combinations of switches were tested, and when the segments represented a number, the combination of switches was recorded as a mapping.
 
-However, once all the mappings were implemented, some numbers still failed to display correctly. \hl{@Michael - what appraches did we use to solve this issue?}
+However, once all the mappings were implemented, we found that our countdown timer failed to display the dots. Alteration of the countdown timer to display temporary digits instead of dots revealed the countdown to be functional. Stepping through the code by hand revealed that, due to the use of the unfamiliar provided seven segment decoder, a line of code was overlooked that overwrote the decimal place value. Disabling this line of code allowed the countdown timer to show dots.
+
+A significantly unexpected issue that appeared during the testing of the finite state machine...
 
 \newpage
 
