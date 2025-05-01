@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Thu May  1 15:30:25 2025
-| Host             : Boston_Laptop running 64-bit major release  (build 9200)
+| Date             : Thu May  1 15:31:06 2025
+| Host             : ECE-ELECTRO-10 running 64-bit major release  (build 9200)
 | Command          : report_power -file main_power_routed.rpt -pb main_power_summary_routed.pb -rpx main_power_routed.rpx
 | Design           : main
 | Device           : xc7a100tcsg324-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.121        |
+| Total On-Chip Power (W)  | 0.122        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.024        |
+| Dynamic (W)              | 0.025        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.4         |
@@ -52,19 +52,19 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.004 |     1674 |       --- |             --- |
-|   LUT as Logic |     0.003 |      693 |     63400 |            1.09 |
+| Clocks         |     0.003 |        3 |       --- |             --- |
+| Slice Logic    |     0.004 |     1676 |       --- |             --- |
+|   LUT as Logic |     0.003 |      692 |     63400 |            1.09 |
 |   CARRY4       |    <0.001 |      153 |     15850 |            0.97 |
-|   Register     |    <0.001 |      530 |    126800 |            0.42 |
+|   Register     |    <0.001 |      531 |    126800 |            0.42 |
 |   F7/F8 Muxes  |    <0.001 |       27 |     63400 |            0.04 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |       48 |       --- |             --- |
-| Signals        |     0.003 |     1429 |       --- |             --- |
+| Signals        |     0.003 |     1432 |       --- |             --- |
 | DSPs           |     0.000 |        7 |       240 |            2.92 |
 | I/O            |     0.015 |       22 |       210 |           10.48 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.121 |          |           |                 |
+| Total          |     0.122 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.024 |       0.009 |      0.015 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.025 |       0.010 |      0.015 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.019 |       0.001 |      0.018 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.008 |       0.004 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -143,7 +143,7 @@ Table of Contents
 +--------+-----------+
 | Name   | Power (W) |
 +--------+-----------+
-| main   |     0.024 |
+| main   |     0.025 |
 |   ff16 |     0.001 |
 |   ff6  |     0.001 |
 |   ff7  |     0.001 |

@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1'
+HD_PWD='C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

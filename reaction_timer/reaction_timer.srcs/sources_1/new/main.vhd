@@ -325,7 +325,7 @@ begin
              
 --  Generate next "random" number from the LFSR
     ff14: lfsr port map (CLK_IN => clk_var_hz,
-                         RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
+                         RAND_OUT => clk_var_hz_divider_bound(26 downto 19));
 
 -- Generate another clk square wave to trigger a new random number
     ff15: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,

@@ -2,18 +2,18 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Thu May  1 15:27:38 2025
-# Process ID: 13808
-# Current directory: C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1
+# Start of session at: Thu May  1 15:28:39 2025
+# Process ID: 5672
+# Current directory: C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1
 # Command line: vivado.exe -log main.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
-# Log file: C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/main.vds
-# Journal file: C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1\vivado.jou
-# Running On: Boston_Laptop, OS: Windows, CPU Frequency: 2611 MHz, CPU Physical cores: 10, Host memory: 16876 MB
+# Log file: C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/main.vds
+# Journal file: C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1\vivado.jou
+# Running On: ECE-ELECTRO-10, OS: Windows, CPU Frequency: 3600 MHz, CPU Physical cores: 4, Host memory: 17049 MB
 #-----------------------------------------------------------
 source main.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 374.266 ; gain = 47.750
-Command: read_checkpoint -auto_incremental -incremental C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/project_1/project_1.srcs/utils_1/imports/synth_1/main.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/project_1/project_1.srcs/utils_1/imports/synth_1/main.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 416.848 ; gain = 80.309
+Command: read_checkpoint -auto_incremental -incremental C:/ENEL373/project_1/project_1.srcs/utils_1/imports/synth_1/main.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/ENEL373/project_1/project_1.srcs/utils_1/imports/synth_1/main.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top main -part xc7a100tcsg324-1
 Starting synth_design
@@ -24,90 +24,90 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 19660
+INFO: [Synth 8-7075] Helper process launched with PID 6720
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1203.422 ; gain = 409.434
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1246.004 ; gain = 411.438
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'main' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:51]
-INFO: [Synth 8-3491] module 'fsm' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:17' bound to instance 'ff0' of component 'fsm' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:219]
-INFO: [Synth 8-638] synthesizing module 'fsm' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:38]
-INFO: [Synth 8-256] done synthesizing module 'fsm' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:38]
-INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff1' of component 'clk_divider' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:236]
-INFO: [Synth 8-638] synthesizing module 'clk_divider' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'clk_divider' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:22]
-INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff2' of component 'clk_divider' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:241]
-INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff2a' of component 'clk_divider' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:246]
-INFO: [Synth 8-3491] module 'counter_3b' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:16' bound to instance 'ff3' of component 'counter_3b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:251]
-INFO: [Synth 8-638] synthesizing module 'counter_3b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:21]
-INFO: [Synth 8-256] done synthesizing module 'counter_3b' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:21]
-INFO: [Synth 8-3491] module 'timer_8_num_selectable' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:15' bound to instance 'ff4' of component 'timer_8_num_selectable' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:255]
-INFO: [Synth 8-638] synthesizing module 'timer_8_num_selectable' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:24]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff0' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:59]
-INFO: [Synth 8-638] synthesizing module 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:24]
-INFO: [Synth 8-256] done synthesizing module 'counter_decade' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:24]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff1' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:65]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff2' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:71]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff3' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:77]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff4' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:83]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff5' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:89]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff6' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:95]
-INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff7' of component 'counter_decade' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:101]
-INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff8' of component 'multiplexer_8_1_4b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:108]
-INFO: [Synth 8-638] synthesizing module 'multiplexer_8_1_4b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:28]
-INFO: [Synth 8-256] done synthesizing module 'multiplexer_8_1_4b' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:28]
-INFO: [Synth 8-256] done synthesizing module 'timer_8_num_selectable' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:24]
-INFO: [Synth 8-3491] module 'bcd_8_to_binary' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/bcd_8_to_binary.vhd:17' bound to instance 'ff5' of component 'bcd_8_to_binary' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:263]
-INFO: [Synth 8-638] synthesizing module 'bcd_8_to_binary' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/bcd_8_to_binary.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'bcd_8_to_binary' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/bcd_8_to_binary.vhd:22]
-INFO: [Synth 8-3491] module 'circular_buffer' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/circular_buffer.vhd:16' bound to instance 'ff6' of component 'circular_buffer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:267]
-INFO: [Synth 8-638] synthesizing module 'circular_buffer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/circular_buffer.vhd:23]
-INFO: [Synth 8-256] done synthesizing module 'circular_buffer' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/circular_buffer.vhd:23]
-INFO: [Synth 8-3491] module 'alu' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:19' bound to instance 'ff7' of component 'alu' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:276]
-INFO: [Synth 8-638] synthesizing module 'alu' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:25]
-WARNING: [Synth 8-614] signal 'BUFFER_SIZE_IN' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
-WARNING: [Synth 8-614] signal 'NUM_1_IN' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
-WARNING: [Synth 8-614] signal 'temp_first_min' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
-WARNING: [Synth 8-614] signal 'temp_second_min' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
-WARNING: [Synth 8-614] signal 'output_max' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
-WARNING: [Synth 8-614] signal 'output_avg' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
-INFO: [Synth 8-256] done synthesizing module 'alu' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:25]
-INFO: [Synth 8-3491] module 'dotiey' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:17' bound to instance 'ff9' of component 'dotiey' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:284]
-INFO: [Synth 8-638] synthesizing module 'dotiey' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:25]
-INFO: [Synth 8-256] done synthesizing module 'dotiey' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:25]
-INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff10' of component 'multiplexer_8_1_4b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:291]
-INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff11' of component 'multiplexer_8_1_4b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:303]
-INFO: [Synth 8-3491] module 'selectable_override' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:16' bound to instance 'ff12' of component 'selectable_override' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:315]
-INFO: [Synth 8-638] synthesizing module 'selectable_override' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:23]
-WARNING: [Synth 8-614] signal 'max_text' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:33]
-WARNING: [Synth 8-614] signal 'min_text' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:33]
-WARNING: [Synth 8-614] signal 'avg_text' is read in the process but is not in the sensitivity list [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:33]
-INFO: [Synth 8-256] done synthesizing module 'selectable_override' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:23]
-INFO: [Synth 8-3491] module 'segment_display' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:15' bound to instance 'ff13' of component 'segment_display' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:321]
-INFO: [Synth 8-638] synthesizing module 'segment_display' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:23]
-INFO: [Synth 8-3491] module 'decoder_3b' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:16' bound to instance 'ff0' of component 'decoder_3b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:40]
-INFO: [Synth 8-638] synthesizing module 'decoder_3b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:21]
-INFO: [Synth 8-256] done synthesizing module 'decoder_3b' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:21]
-INFO: [Synth 8-3491] module 'seven_seg_decoder' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:15' bound to instance 'ff1' of component 'seven_seg_decoder' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:43]
-INFO: [Synth 8-638] synthesizing module 'seven_seg_decoder' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:21]
-INFO: [Synth 8-256] done synthesizing module 'seven_seg_decoder' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:21]
-INFO: [Synth 8-256] done synthesizing module 'segment_display' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:23]
-INFO: [Synth 8-3491] module 'lfsr' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd:15' bound to instance 'ff14' of component 'lfsr' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:327]
-INFO: [Synth 8-638] synthesizing module 'lfsr' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd:20]
-INFO: [Synth 8-256] done synthesizing module 'lfsr' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd:20]
-INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff15' of component 'clk_divider' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:331]
-INFO: [Synth 8-3491] module 'binary_to_bcd_8' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/binary_to_bcd_8.vhd:21' bound to instance 'ff16' of component 'binary_to_bcd_8' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:336]
-INFO: [Synth 8-638] synthesizing module 'binary_to_bcd_8' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/binary_to_bcd_8.vhd:29]
-INFO: [Synth 8-256] done synthesizing module 'binary_to_bcd_8' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/binary_to_bcd_8.vhd:29]
-INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff17' of component 'multiplexer_8_1_4b' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:342]
-INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff18' of component 'debouncer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:354]
-INFO: [Synth 8-638] synthesizing module 'debouncer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:25]
-INFO: [Synth 8-256] done synthesizing module 'debouncer' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:25]
-INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff19' of component 'debouncer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:358]
-INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff20' of component 'debouncer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:362]
-INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff21' of component 'debouncer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:366]
-INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff22' of component 'debouncer' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:370]
-INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'main' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:51]
+INFO: [Synth 8-3491] module 'fsm' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:17' bound to instance 'ff0' of component 'fsm' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:222]
+INFO: [Synth 8-638] synthesizing module 'fsm' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'fsm' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/fsm.vhd:40]
+INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff1' of component 'clk_divider' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:241]
+INFO: [Synth 8-638] synthesizing module 'clk_divider' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'clk_divider' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:22]
+INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff2' of component 'clk_divider' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:246]
+INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff2a' of component 'clk_divider' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:251]
+INFO: [Synth 8-3491] module 'counter_3b' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:16' bound to instance 'ff3' of component 'counter_3b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:256]
+INFO: [Synth 8-638] synthesizing module 'counter_3b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'counter_3b' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_3b.vhd:21]
+INFO: [Synth 8-3491] module 'timer_8_num_selectable' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:15' bound to instance 'ff4' of component 'timer_8_num_selectable' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:260]
+INFO: [Synth 8-638] synthesizing module 'timer_8_num_selectable' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:24]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff0' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:59]
+INFO: [Synth 8-638] synthesizing module 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:24]
+INFO: [Synth 8-256] done synthesizing module 'counter_decade' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:24]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff1' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:65]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff2' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:71]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff3' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:77]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff4' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:83]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff5' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:89]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff6' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:95]
+INFO: [Synth 8-3491] module 'counter_decade' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/counter_9i_plus.vhd:16' bound to instance 'ff7' of component 'counter_decade' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:101]
+INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff8' of component 'multiplexer_8_1_4b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:108]
+INFO: [Synth 8-638] synthesizing module 'multiplexer_8_1_4b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'multiplexer_8_1_4b' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'timer_8_num_selectable' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/timer_8_num_selectable.vhd:24]
+INFO: [Synth 8-3491] module 'bcd_8_to_binary' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/bcd_8_to_binary.vhd:17' bound to instance 'ff5' of component 'bcd_8_to_binary' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:268]
+INFO: [Synth 8-638] synthesizing module 'bcd_8_to_binary' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/bcd_8_to_binary.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'bcd_8_to_binary' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/bcd_8_to_binary.vhd:22]
+INFO: [Synth 8-3491] module 'circular_buffer' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/circular_buffer.vhd:16' bound to instance 'ff6' of component 'circular_buffer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:272]
+INFO: [Synth 8-638] synthesizing module 'circular_buffer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/circular_buffer.vhd:23]
+INFO: [Synth 8-256] done synthesizing module 'circular_buffer' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/circular_buffer.vhd:23]
+INFO: [Synth 8-3491] module 'alu' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:19' bound to instance 'ff7' of component 'alu' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:281]
+INFO: [Synth 8-638] synthesizing module 'alu' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:25]
+WARNING: [Synth 8-614] signal 'BUFFER_SIZE_IN' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
+WARNING: [Synth 8-614] signal 'NUM_1_IN' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
+WARNING: [Synth 8-614] signal 'temp_first_min' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
+WARNING: [Synth 8-614] signal 'temp_second_min' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
+WARNING: [Synth 8-614] signal 'output_max' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
+WARNING: [Synth 8-614] signal 'output_avg' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'alu' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:25]
+INFO: [Synth 8-3491] module 'dotiey' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:17' bound to instance 'ff9' of component 'dotiey' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:289]
+INFO: [Synth 8-638] synthesizing module 'dotiey' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'dotiey' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/dotiey.vhd:25]
+INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff10' of component 'multiplexer_8_1_4b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:296]
+INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff11' of component 'multiplexer_8_1_4b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:308]
+INFO: [Synth 8-3491] module 'selectable_override' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:16' bound to instance 'ff12' of component 'selectable_override' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:320]
+INFO: [Synth 8-638] synthesizing module 'selectable_override' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:23]
+WARNING: [Synth 8-614] signal 'max_text' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:33]
+WARNING: [Synth 8-614] signal 'min_text' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:33]
+WARNING: [Synth 8-614] signal 'avg_text' is read in the process but is not in the sensitivity list [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'selectable_override' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/selectable_override.vhd:23]
+INFO: [Synth 8-3491] module 'segment_display' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:15' bound to instance 'ff13' of component 'segment_display' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:326]
+INFO: [Synth 8-638] synthesizing module 'segment_display' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:23]
+INFO: [Synth 8-3491] module 'decoder_3b' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:16' bound to instance 'ff0' of component 'decoder_3b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:40]
+INFO: [Synth 8-638] synthesizing module 'decoder_3b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'decoder_3b' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/decoder_3b.vhd:21]
+INFO: [Synth 8-3491] module 'seven_seg_decoder' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:15' bound to instance 'ff1' of component 'seven_seg_decoder' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'seven_seg_decoder' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'seven_seg_decoder' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'segment_display' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/segment_display.vhd:23]
+INFO: [Synth 8-3491] module 'lfsr' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd:15' bound to instance 'ff14' of component 'lfsr' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:332]
+INFO: [Synth 8-638] synthesizing module 'lfsr' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'lfsr' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/random_number_generator.vhd:20]
+INFO: [Synth 8-3491] module 'clk_divider' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/clk_divider.vhd:16' bound to instance 'ff15' of component 'clk_divider' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:336]
+INFO: [Synth 8-3491] module 'binary_to_bcd_8' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/binary_to_bcd_8.vhd:21' bound to instance 'ff16' of component 'binary_to_bcd_8' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:341]
+INFO: [Synth 8-638] synthesizing module 'binary_to_bcd_8' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/binary_to_bcd_8.vhd:29]
+INFO: [Synth 8-256] done synthesizing module 'binary_to_bcd_8' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/binary_to_bcd_8.vhd:29]
+INFO: [Synth 8-3491] module 'multiplexer_8_1_4b' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/multiplexer_8_1b.vhd:15' bound to instance 'ff17' of component 'multiplexer_8_1_4b' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:347]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff18' of component 'debouncer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:359]
+INFO: [Synth 8-638] synthesizing module 'debouncer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'debouncer' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:25]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff19' of component 'debouncer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:363]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff20' of component 'debouncer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:367]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff21' of component 'debouncer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:371]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/debouncer.vhd:19' bound to instance 'ff22' of component 'debouncer' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:375]
+INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/main.vhd:51]
 WARNING: [Synth 8-7129] Port BCD_8_DIGIT_OUT[39] in module binary_to_bcd_8 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port BCD_8_DIGIT_OUT[34] in module binary_to_bcd_8 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port BCD_8_DIGIT_OUT[29] in module binary_to_bcd_8 is either unconnected or has no load
@@ -118,56 +118,56 @@ WARNING: [Synth 8-7129] Port BCD_8_DIGIT_OUT[9] in module binary_to_bcd_8 is eit
 WARNING: [Synth 8-7129] Port BCD_8_DIGIT_OUT[4] in module binary_to_bcd_8 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DECIMAL_POINT_IN in module seven_seg_decoder is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1298.488 ; gain = 504.500
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1340.281 ; gain = 505.715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1298.488 ; gain = 504.500
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1340.281 ; gain = 505.715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1298.488 ; gain = 504.500
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1340.281 ; gain = 505.715
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1298.488 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1340.281 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
-Finished Parsing XDC File [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
+Parsing XDC File [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
+Finished Parsing XDC File [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/constrs_1/imports/reaction_timer/Nexys-4-DDR-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1362.352 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1395.812 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1362.352 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1395.812 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1362.352 ; gain = 568.363
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1395.812 ; gain = 561.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1362.352 ; gain = 568.363
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1395.812 ; gain = 561.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1362.352 ; gain = 568.363
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1395.812 ; gain = 561.246
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'binary_to_bcd_8'
-WARNING: [Synth 8-327] inferring latch for variable 'divisor_reg' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:45]
-WARNING: [Synth 8-327] inferring latch for variable 'output_min_reg' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:58]
-WARNING: [Synth 8-327] inferring latch for variable 'SEGMENT_LIGHT_OUT_reg' [C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:28]
+WARNING: [Synth 8-327] inferring latch for variable 'divisor_reg' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:45]
+WARNING: [Synth 8-327] inferring latch for variable 'output_min_reg' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/alu.vhd:58]
+WARNING: [Synth 8-327] inferring latch for variable 'SEGMENT_LIGHT_OUT_reg' [C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd:28]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -177,7 +177,7 @@ WARNING: [Synth 8-327] inferring latch for variable 'SEGMENT_LIGHT_OUT_reg' [C:/
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'binary_to_bcd_8'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1362.352 ; gain = 568.363
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 1395.812 ; gain = 561.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -201,7 +201,7 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 3     
 	                3 Bit    Registers := 2     
 	                2 Bit    Registers := 4     
-	                1 Bit    Registers := 32    
+	                1 Bit    Registers := 33    
 +---Muxes : 
 	   3 Input   32 Bit        Muxes := 1     
 	   2 Input   28 Bit        Muxes := 5     
@@ -290,19 +290,18 @@ WARNING: [Synth 8-3332] Sequential element (ff7/output_min_reg[2]) is unused and
 WARNING: [Synth 8-3332] Sequential element (ff7/output_min_reg[1]) is unused and will be removed from module main.
 WARNING: [Synth 8-3332] Sequential element (ff7/output_min_reg[0]) is unused and will be removed from module main.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 1362.352 ; gain = 568.363
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1395.812 ; gain = 561.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 ROM: Preliminary Mapping Report
-+------------------+-----------------------+---------------+----------------+
-|Module Name       | RTL Object            | Depth x Width | Implemented As | 
-+------------------+-----------------------+---------------+----------------+
-|seven_seg_decoder | SEGMENT_LIGHT_OUT     | 32x8          | LUT            | 
-|segment_display   | ff1/SEGMENT_LIGHT_OUT | 32x8          | LUT            | 
-+------------------+-----------------------+---------------+----------------+
++------------------+-------------------+---------------+----------------+
+|Module Name       | RTL Object        | Depth x Width | Implemented As | 
++------------------+-------------------+---------------+----------------+
+|seven_seg_decoder | SEGMENT_LIGHT_OUT | 32x8          | LUT            | 
++------------------+-------------------+---------------+----------------+
 
 
 DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
@@ -326,19 +325,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1362.352 ; gain = 568.363
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 1395.812 ; gain = 561.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1362.352 ; gain = 568.363
+Finished Timing Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 1395.812 ; gain = 561.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1372.387 ; gain = 578.398
+Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:38 . Memory (MB): peak = 1408.355 ; gain = 573.789
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -356,37 +355,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -423,40 +422,40 @@ Report Cell Usage:
 |5     |LUT2    |   218|
 |6     |LUT3    |    98|
 |7     |LUT4    |    94|
-|8     |LUT5    |   142|
+|8     |LUT5    |   143|
 |9     |LUT6    |   332|
 |10    |MUXF7   |    27|
 |11    |FDCE    |   215|
 |12    |FDPE    |     2|
-|13    |FDRE    |   303|
+|13    |FDRE    |   304|
 |14    |LD      |     8|
 |15    |LDCP    |     2|
 |16    |IBUF    |     6|
 |17    |OBUF    |    16|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 33 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:47 . Memory (MB): peak = 1376.430 ; gain = 518.578
-Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:50 . Memory (MB): peak = 1376.430 ; gain = 582.441
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:41 . Memory (MB): peak = 1412.426 ; gain = 522.328
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1412.426 ; gain = 577.859
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 1388.461 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1419.840 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 197 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1392.156 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1420.305 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 10 instances were transformed.
   LD => LDCE: 8 instances
   LDCP => LDCP (GND, LDCE, LUT3(x2), VCC): 2 instances
 
-Synth Design complete, checksum: a1a034ba
+Synth Design complete, checksum: 7f59cf3e
 INFO: [Common 17-83] Releasing license: Synthesis
 95 Infos, 51 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1392.156 ; gain = 993.043
-INFO: [Common 17-1381] The checkpoint 'C:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/main.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:49 . Memory (MB): peak = 1420.305 ; gain = 978.629
+INFO: [Common 17-1381] The checkpoint 'C:/ENEL373/ThuGroup13/reaction_timer/reaction_timer.runs/synth_1/main.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu May  1 15:28:47 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu May  1 15:29:38 2025...

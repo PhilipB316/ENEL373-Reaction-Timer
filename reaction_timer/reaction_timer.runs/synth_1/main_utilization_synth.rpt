@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Thu May  1 15:28:47 2025
-| Host         : Boston_Laptop running 64-bit major release  (build 9200)
+| Date         : Thu May  1 15:29:38 2025
+| Host         : ECE-ELECTRO-10 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
 | Design       : main
 | Device       : xc7a100tcsg324-1
@@ -31,11 +31,11 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |  720 |     0 |          0 |     63400 |  1.14 |
-|   LUT as Logic          |  720 |     0 |          0 |     63400 |  1.14 |
+| Slice LUTs*             |  721 |     0 |          0 |     63400 |  1.14 |
+|   LUT as Logic          |  721 |     0 |          0 |     63400 |  1.14 |
 |   LUT as Memory         |    0 |     0 |          0 |     19000 |  0.00 |
-| Slice Registers         |  530 |     0 |          0 |    126800 |  0.42 |
-|   Register as Flip Flop |  520 |     0 |          0 |    126800 |  0.41 |
+| Slice Registers         |  531 |     0 |          0 |    126800 |  0.42 |
+|   Register as Flip Flop |  521 |     0 |          0 |    126800 |  0.41 |
 |   Register as Latch     |   10 |     0 |          0 |    126800 | <0.01 |
 | F7 Muxes                |   27 |     0 |          0 |     31700 |  0.09 |
 | F8 Muxes                |    0 |     0 |          0 |     15850 |  0.00 |
@@ -59,7 +59,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 2     |          Yes |           - |          Set |
 | 223   |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 303   |          Yes |       Reset |            - |
+| 304   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -150,11 +150,11 @@ Warning! LUT value is adjusted to account for LUT combining.
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | LUT6     |  332 |                 LUT |
-| FDRE     |  303 |        Flop & Latch |
+| FDRE     |  304 |        Flop & Latch |
 | LUT2     |  218 |                 LUT |
 | FDCE     |  215 |        Flop & Latch |
 | CARRY4   |  153 |          CarryLogic |
-| LUT5     |  142 |                 LUT |
+| LUT5     |  143 |                 LUT |
 | LUT3     |  102 |                 LUT |
 | LUT4     |   94 |                 LUT |
 | MUXF7    |   27 |               MuxFx |
