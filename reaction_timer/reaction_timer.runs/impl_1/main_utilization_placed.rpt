@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Wed Apr 30 10:20:45 2025
-| Host         : clucktop running 64-bit major release  (build 9200)
+| Date         : Thu May  1 15:30:24 2025
+| Host         : ECE-ELECTRO-10 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file main_utilization_placed.rpt -pb main_utilization_placed.pb
 | Design       : main
 | Device       : xc7a100tcsg324-1
@@ -69,9 +69,9 @@ Table of Contents
 +--------------------------------------------+------+-------+------------+-----------+-------+
 |                  Site Type                 | Used | Fixed | Prohibited | Available | Util% |
 +--------------------------------------------+------+-------+------------+-----------+-------+
-| Slice                                      |  322 |     0 |          0 |     15850 |  2.03 |
-|   SLICEL                                   |  196 |     0 |            |           |       |
-|   SLICEM                                   |  126 |     0 |            |           |       |
+| Slice                                      |  316 |     0 |          0 |     15850 |  1.99 |
+|   SLICEL                                   |  222 |     0 |            |           |       |
+|   SLICEM                                   |   94 |     0 |            |           |       |
 | LUT as Logic                               |  692 |     0 |          0 |     63400 |  1.09 |
 |   using O5 output only                     |    0 |       |            |           |       |
 |   using O6 output only                     |  468 |       |            |           |       |
@@ -80,10 +80,10 @@ Table of Contents
 |   LUT as Distributed RAM                   |    0 |     0 |            |           |       |
 |   LUT as Shift Register                    |    0 |     0 |            |           |       |
 | Slice Registers                            |  531 |     0 |          0 |    126800 |  0.42 |
-|   Register driven from within the Slice    |  399 |       |            |           |       |
-|   Register driven from outside the Slice   |  132 |       |            |           |       |
-|     LUT in front of the register is unused |   51 |       |            |           |       |
-|     LUT in front of the register is used   |   81 |       |            |           |       |
+|   Register driven from within the Slice    |  400 |       |            |           |       |
+|   Register driven from outside the Slice   |  131 |       |            |           |       |
+|     LUT in front of the register is unused |   26 |       |            |           |       |
+|     LUT in front of the register is used   |  105 |       |            |           |       |
 | Unique Control Sets                        |   47 |       |          0 |     15850 |  0.30 |
 +--------------------------------------------+------+-------+------------+-----------+-------+
 * * Note: Available Control Sets calculated as Slice * 1, Review the Control Sets Report for more information regarding control sets.
@@ -119,9 +119,9 @@ Table of Contents
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   38 |    38 |          0 |       210 | 18.10 |
-|   IOB Master Pads           |   20 |       |            |           |       |
-|   IOB Slave Pads            |   16 |       |            |           |       |
+| Bonded IOB                  |   22 |    22 |          0 |       210 | 10.48 |
+|   IOB Master Pads           |   12 |       |            |           |       |
+|   IOB Slave Pads            |    8 |       |            |           |       |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         6 |  0.00 |
 | PHASER_REF                  |    0 |     0 |          0 |         6 |  0.00 |
@@ -185,9 +185,9 @@ Table of Contents
 | LUT5     |  143 |                 LUT |
 | LUT3     |  102 |                 LUT |
 | LUT4     |   94 |                 LUT |
-| OBUF     |   32 |                  IO |
 | MUXF7    |   27 |               MuxFx |
 | LUT1     |   27 |                 LUT |
+| OBUF     |   16 |                  IO |
 | LDCE     |   10 |        Flop & Latch |
 | DSP48E1  |    7 |    Block Arithmetic |
 | IBUF     |    6 |                  IO |
