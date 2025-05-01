@@ -24,6 +24,7 @@ architecture Behavioral of bcd_8_to_binary is
 begin
     process (BCD_BUS_IN)
     begin
+        -- Each binary number represents another multiple of 10
         binary_temp(28 downto 0) <= (BCD_BUS_IN(4 downto 0) * "1") +
                                     (BCD_BUS_IN(9 downto 5) * "1010") + 
                                     (BCD_BUS_IN(14 downto 10) * "1100100") +

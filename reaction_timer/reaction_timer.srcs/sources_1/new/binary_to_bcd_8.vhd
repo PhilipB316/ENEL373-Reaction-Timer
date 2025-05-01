@@ -26,7 +26,7 @@ entity binary_to_bcd_8 is
            BCD_8_DIGIT_OUT : OUT std_logic_vector (39 downto 0) := (others => '0'));
 end binary_to_bcd_8 ;
  
-architecture behaviour of binary_to_bcd_8 is
+architecture Behavioral of binary_to_bcd_8 is
     type states is (start, shift, done);
     signal state, state_next: states;
     signal binary, binary_next: std_logic_vector(N-1 downto 0);
@@ -109,5 +109,5 @@ begin
     BCD_8_DIGIT_OUT(8 downto 5) <= bcds_out_reg(7 downto 4);
     BCD_8_DIGIT_OUT(3 downto 0) <= bcds_out_reg(3 downto 0);
  
-end behaviour;
+end Behavioral;
 

@@ -15,16 +15,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity fsm is
-    Port (
-        -- INPUTS
-           CLK_IN : in STD_LOGIC;
+    Port ( CLK_IN : in STD_LOGIC;
            BTNC_IN : in STD_LOGIC;
            BTNR_IN : in STD_LOGIC;
            BTNL_IN : in STD_LOGIC;
            BTNU_IN : in STD_LOGIC;
            BTND_IN : in STD_LOGIC;
            DOTIEY_COMPLETE_IN : in STD_LOGIC;
-        --  OUTPUTS
            REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
            REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
            DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
@@ -45,7 +42,8 @@ architecture Behavioral of fsm is
                     data_reset,
                     error,
                     converter_reset);
-    signal current_state, next_state: states;
+    signal current_state : states := dots_countdown; 
+    signal next_state: states;
 
     signal current_triggers : std_logic_vector (5 downto 0) := (others => '0');
     signal last_triggers : std_logic_vector (5 downto 0) := (others => '0');

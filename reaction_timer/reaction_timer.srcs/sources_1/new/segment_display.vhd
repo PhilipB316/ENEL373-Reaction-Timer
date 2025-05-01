@@ -20,7 +20,7 @@ entity segment_display is
 
 end segment_display;
 
-architecture Behavioral of segment_display is
+architecture Structural of segment_display is
     signal anode : STD_LOGIC_VECTOR (0 to 7);
 
     component decoder_3b is
@@ -44,4 +44,4 @@ begin
                                     DECIMAL_POINT_IN => '1',
                                     SEGMENT_LIGHT_OUT => SEGMENT_LIGHT_OUT);
     ANODE_OUT <= not anode;
-end Behavioral;
+end Structural;

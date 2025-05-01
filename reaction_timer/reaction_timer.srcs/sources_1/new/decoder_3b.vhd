@@ -18,7 +18,7 @@ entity decoder_3b is
            DEC_OUT : out STD_LOGIC_VECTOR (7 downto 0));
 end decoder_3b;
 
-architecture Behavioral of decoder_3b is
+architecture Dataflow of decoder_3b is
 begin
 --  Mapping Inputs to Outputs
     DEC_OUT(0) <= not DEC_IN(0) and not DEC_IN(1) and not DEC_IN(2);
@@ -29,4 +29,4 @@ begin
     DEC_OUT(5) <=  DEC_IN(0) and not DEC_IN(1) and DEC_IN(2);
     DEC_OUT(6) <= not DEC_IN(0) and DEC_IN(1) and DEC_IN(2);
     DEC_OUT(7) <= DEC_IN(0) and DEC_IN(1) and DEC_IN(2);
-end Behavioral;
+end Dataflow;

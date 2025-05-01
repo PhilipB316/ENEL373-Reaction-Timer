@@ -21,7 +21,7 @@ entity timer_8_num_selectable is
            INT_OUT : out STD_LOGIC_VECTOR (4 downto 0));
 end timer_8_num_selectable;
 
-architecture Behavioral of timer_8_num_selectable is
+architecture Structual of timer_8_num_selectable is
     signal tick : std_logic_vector(7 downto 0) := X"00";
     signal mux_0 : STD_LOGIC_VECTOR (4 downto 0);
     signal mux_1 : STD_LOGIC_VECTOR (4 downto 0);
@@ -119,4 +119,4 @@ begin
 --  Output all BCD digits for use with the ALU
     BCD_BUS_OUT <= mux_7 & mux_6 & mux_5 & mux_4 & mux_3 & mux_2 & mux_1 & mux_0;
 
-end Behavioral;
+end Structual;

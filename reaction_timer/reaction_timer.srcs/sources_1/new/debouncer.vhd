@@ -7,14 +7,11 @@
 
 -- Description: 
 -- Debouncing for button input
+-- This module was made with the assistance of generative AI
 ----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
 
 entity debouncer is
     Port ( BUTTON_IN : in STD_LOGIC;
@@ -31,7 +28,7 @@ begin
         if rising_edge(CLK_IN) then
             if BUTTON_IN = '1' then
                 debounce_counter := debounce_counter + 1;
-                if debounce_counter > 100000 then -- Adjust the threshold as needed
+                if debounce_counter > 100000 then
                     DEBOUNCED_OUT <= '1';
                 end if;
             else

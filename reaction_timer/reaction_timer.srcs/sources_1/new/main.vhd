@@ -48,7 +48,7 @@ entity main is
             BTND : in STD_LOGIC);  
 end main;
 
-architecture Behavioral of main is
+architecture Structural of main is
 --  Define local values
 
 --  CLOCK SIGNALS AND DIVIDERS
@@ -60,6 +60,7 @@ architecture Behavioral of main is
     signal clk_1_hz_switchable : std_logic;
     signal clk_1_hz_divider_bound : std_logic_vector (27 downto 0) := X"5F5E100";
     signal clk_var_hz : std_logic;
+    signal clk_var_hz_switchable : std_logic;
     signal clk_var_hz_divider_bound : std_logic_vector ( 27 downto 0) := X"5F5E100";
 
 --  FINITE STATE MACHINE
@@ -99,19 +100,19 @@ architecture Behavioral of main is
     signal BTNU_debounced : std_logic := '0';
     signal BTND_debounced : std_logic := '0';
     
+    signal letter_cap_e : std_logic_vector (4 downto 0) := "10101";
+    signal letter_r : std_logic_vector (4 downto 0) := "10111";
+    signal letter_o : std_logic_vector (4 downto 0) := "10011";
 
 --  COMPONENT INSTANTIATION
     component fsm is
-        Port (
-            -- INPUTS
-               CLK_IN : in STD_LOGIC;
+        Port ( CLK_IN : in STD_LOGIC;
                BTNC_IN : in STD_LOGIC;
                BTNR_IN : in STD_LOGIC;
                BTNL_IN : in STD_LOGIC;
                BTNU_IN : in STD_LOGIC;
                BTND_IN : in STD_LOGIC;
                DOTIEY_COMPLETE_IN : in STD_LOGIC;
-            --  OUTPUTS
                REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
                REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
                DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
@@ -288,11 +289,11 @@ begin
                          TIMER_FINISHED => fsm_state_dot_complete);
          
 --  Error text mux                
-    ff10: multiplexer_8_1_4b port map (MUX_IN_0 => "10111", -- R
-                                       MUX_IN_1 => "10011", -- O
-                                       MUX_IN_2 => "10111", -- R
-                                       MUX_IN_3 => "10111", -- R
-                                       MUX_IN_4 => "10101", -- E
+    ff10: multiplexer_8_1_4b port map (MUX_IN_0 => letter_r,
+                                       MUX_IN_1 => letter_o,
+                                       MUX_IN_2 => letter_r,
+                                       MUX_IN_3 => letter_r,
+                                       MUX_IN_4 => letter_cap_e,
                                        MUX_IN_5 => encoded_display_placeholder, --
                                        MUX_IN_6 => encoded_display_placeholder, --
                                        MUX_IN_7 => encoded_display_placeholder, --
@@ -325,7 +326,7 @@ begin
              
 --  Generate next "random" number from the LFSR
     ff14: lfsr port map (CLK_IN => clk_var_hz,
-                         RAND_OUT => clk_var_hz_divider_bound(26 downto 19));
+                         RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
 
 -- Generate another clk square wave to trigger a new random number
     ff15: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
@@ -371,5 +372,5 @@ begin
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTND_debounced);
     
-end Behavioral;
+end Structural;
 
