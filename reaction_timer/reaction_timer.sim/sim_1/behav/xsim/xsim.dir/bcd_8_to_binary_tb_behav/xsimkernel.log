@@ -1,7 +1,7 @@
-Running: xsim.dir/bcd_8_to_binary_tb_behav/xsimk.exe -simmode gui -wdb bcd_8_to_binary_tb_behav.wdb -simrunnum 0 -socket 57002
+Running: xsim.dir/bcd_8_to_binary_tb_behav/xsimk.exe -simmode gui -wdb bcd_8_to_binary_tb_behav.wdb -simrunnum 0 -socket 56044
 Design successfully loaded
-Design Loading Memory Usage: 9208 KB (Peak: 9208 KB)
+Design Loading Memory Usage: 10040 KB (Peak: 10040 KB)
 Design Loading CPU Usage: 46 ms
 Simulation completed
-Simulation Memory Usage: 9716 KB (Peak: 9716 KB)
-Simulation CPU Usage: 62 ms
+Simulation Memory Usage: 10612 KB (Peak: 10612 KB)
+Simulation CPU Usage: 61 ms

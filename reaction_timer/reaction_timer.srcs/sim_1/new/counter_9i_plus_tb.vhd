@@ -1,32 +1,16 @@
 ----------------------------------------------------------------------------------
--- Company: 
 -- Engineer: 
--- 
 -- Create Date: 03.03.2025 16:21:10
--- Design Name: 
 -- Module Name: counter_9i_plus_tb - Behavioral
 -- Project Name: 
--- Target Devices: 
--- Tool Versions: 
 -- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
+-- Additional Comments: Out of date, Non-functional
 ----------------------------------------------------------------------------------
 
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity counter_decade_tb is
 --  Port ( );

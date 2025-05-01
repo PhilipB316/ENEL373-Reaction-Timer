@@ -1,6 +1,6 @@
 
 { 
-    crc :  8629890394157357680  , 
+    crc :  4157617620698837640  , 
     ccp_crc :  0  , 
     cmdline : " --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot bcd_8_to_binary_tb_behav xil_defaultlib.bcd_8_to_binary_tb" , 
     buildDate : "Oct 14 2022" , 

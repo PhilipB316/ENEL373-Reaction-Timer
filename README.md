@@ -1,32 +1,15 @@
 # Reaction Timer
 
 ### TODO:
-- fix workaround for bcd to binary
 - tidy comments
     - please no generic comments
-- fix error message display (WHY DOES IT SHOW AI)
-    - use separate state thing
-    - can the new text override be disabled
-- remove old text override
-- finite state machine useful names
-
-
 - no magic numbers
 - testbench labels
     - mark old ones as redundant from previous versions, do not delete. proof of previous testing
     - new testbench needs 100ns before applying input, refer to mark rubric
 - write useful readme (excuse me this todo list is very useful)
-- update constraints file with unused things?
-- shift dataflow from main into something else
-- map fsm inputs directly into fsm, not dataflowed
-
 - check repo for binaries (bad bad binaries)
 - header comments in files consistent and kind of nicely written
-- remove useless whitespace please and thank you that drives me up the wall
 - consistent. formatting. in. files. enough said.
-- excuse me i lost my snarky edits im bringing them back.
 - remove useless signals
     - just make the code nice in general
-    - maybe ask ai to do it
-    - see how badly it messes up and laugh
-        - if UC markers see that: i was making a bad joke
