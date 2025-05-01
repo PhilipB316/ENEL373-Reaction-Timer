@@ -24,9 +24,7 @@ entity fsm is
            BTNU_IN : in STD_LOGIC;
            BTND_IN : in STD_LOGIC;
            DOTIEY_COMPLETE_IN : in STD_LOGIC;
-           CLK_VAR_HZ_IN: in STD_LOGIC;
         --  OUTPUTS
-           CLK_VAR_HZ_SWITCHABLE_OUT: out STD_LOGIC;
            REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
            REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
            DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
@@ -65,7 +63,7 @@ begin
     current_triggers(5) <= BTND_IN;
 
 --  Finite state machine state outputs
-    process(CLK_IN, CLK_VAR_HZ_IN) is
+    process(CLK_IN) is
     begin
     
 --  Sync FSM to CLK to prevent erroneous and unpredictable state changes
@@ -78,6 +76,7 @@ begin
                 ENCODED_DISPLAY_INPUT_SELECT_OUT <= "000";
                 DOTIEY_COUNTDOWN_EN_OUT <= '0';
                 BUFFER_WRITE_TRIGGER_OUT <= '0';
+                
                 if (current_triggers /= last_triggers) then
                     last_triggers <= current_triggers;
                     if (current_triggers(0) = '1') then -- if BTNC pressed
@@ -116,7 +115,6 @@ begin
                 end if;
     
             when dots_countdown =>
-                CLK_VAR_HZ_SWITCHABLE_OUT <= CLK_VAR_HZ_IN;
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '1';
                 ENCODED_DISPLAY_INPUT_SELECT_OUT <= "111";
@@ -213,6 +211,7 @@ begin
                 DOTIEY_COUNTDOWN_EN_OUT <= '0';
                 clk_cycle_count <= clk_cycle_count + 1;
                 RESET_OUT <= '1';
+                
                 if (clk_cycle_count = "11") then
                     clk_cycle_count <= "00";
                     RESET_OUT <= '0';
