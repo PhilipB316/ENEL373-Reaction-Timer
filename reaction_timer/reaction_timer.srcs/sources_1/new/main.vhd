@@ -60,7 +60,6 @@ architecture Behavioral of main is
     signal clk_1_hz_switchable : std_logic;
     signal clk_1_hz_divider_bound : std_logic_vector (27 downto 0) := X"5F5E100";
     signal clk_var_hz : std_logic;
-    signal clk_var_hz_switchable : std_logic;
     signal clk_var_hz_divider_bound : std_logic_vector ( 27 downto 0) := X"5F5E100";
 
 --  FINITE STATE MACHINE
@@ -112,9 +111,7 @@ architecture Behavioral of main is
                BTNU_IN : in STD_LOGIC;
                BTND_IN : in STD_LOGIC;
                DOTIEY_COMPLETE_IN : in STD_LOGIC;
-               CLK_VAR_HZ_IN: in STD_LOGIC;
             --  OUTPUTS
-               CLK_VAR_HZ_SWITCHABLE_OUT: out STD_LOGIC;
                REACTION_TIME_COUNT_EN_OUT: out STD_LOGIC;
                REACTION_TIME_COUNT_RSET_OUT: out STD_LOGIC;
                DOTIEY_COUNTDOWN_EN_OUT: out STD_LOGIC;
@@ -226,8 +223,6 @@ begin
                         BTNU_IN => BTNU_debounced,
                         BTND_IN => BTND_debounced,
                         DOTIEY_COMPLETE_IN => fsm_state_dot_complete,
-                        CLK_VAR_HZ_IN => clk_var_hz,
-                        CLK_VAR_HZ_SWITCHABLE_OUT => clk_var_hz_switchable,
                         REACTION_TIME_COUNT_EN_OUT => reaction_time_count_en,
                         REACTION_TIME_COUNT_RSET_OUT => reaction_time_count_rset,
                         DOTIEY_COUNTDOWN_EN_OUT => dotiey_countdown_en,
@@ -287,7 +282,7 @@ begin
                       
 --  Dot countdown generator
     ff9: dotiey port map(SELECT_IN => output_segment_select,
-                         CLK_IN => clk_var_hz_switchable,
+                         CLK_IN => clk_var_hz,
                          EN_IN => dotiey_countdown_en,
                          DOT_OUT => encoded_dots,
                          TIMER_FINISHED => fsm_state_dot_complete);

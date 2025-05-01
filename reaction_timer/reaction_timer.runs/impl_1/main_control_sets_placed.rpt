@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Wed Apr 30 10:20:45 2025
-| Host         : clucktop running 64-bit major release  (build 9200)
+| Date         : Thu May  1 15:29:40 2025
+| Host         : Boston_Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
 | Device       : xc7a100t
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    47 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   197 |
+| Unused register locations in slices containing registers |   190 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              60 |           38 |
+| No           | No                    | No                     |              59 |           37 |
 | No           | No                    | Yes                    |               5 |            4 |
 | No           | Yes                   | No                     |             244 |           61 |
 | Yes          | No                    | No                     |              10 |            4 |
-| Yes          | No                    | Yes                    |             212 |           77 |
+| Yes          | No                    | Yes                    |             212 |           69 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,53 +73,53 @@ Table of Contents
 +--------------------------------+----------------------------------+--------------------------------------+------------------+----------------+--------------+
 |          Clock Signal          |           Enable Signal          |           Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
 +--------------------------------+----------------------------------+--------------------------------------+------------------+----------------+--------------+
-|  ff7/divisor_reg[0]/G0         |                                  |                                      |                1 |              1 |         1.00 |
 |  ff7/divisor_reg[1]/G0         |                                  |                                      |                1 |              1 |         1.00 |
-|  ff0/clk_var_hz_switchable     |                                  | ff9/TIMER_FINISHED_i_2_n_0           |                1 |              1 |         1.00 |
+|  ff7/divisor_reg[0]/G0         |                                  |                                      |                1 |              1 |         1.00 |
 | ~ff1/CLK                       |                                  |                                      |                1 |              1 |         1.00 |
+|  ff15/clk_var_hz               |                                  | ff9/TIMER_FINISHED_i_2_n_0           |                1 |              1 |         1.00 |
+|  ff4/ff3/tick_3                |                                  |                                      |                1 |              1 |         1.00 |
 | ~ff4/ff2/tick_2                |                                  |                                      |                1 |              1 |         1.00 |
 |  ff4/ff0/tick_0                |                                  |                                      |                1 |              1 |         1.00 |
-|  ff4/ff3/tick_3                |                                  |                                      |                1 |              1 |         1.00 |
 | ~ff4/ff0/tick_0                |                                  |                                      |                1 |              1 |         1.00 |
 |  ff4/ff5/tick_5                |                                  |                                      |                1 |              1 |         1.00 |
-| ~ff4/ff4/tick_4                |                                  |                                      |                1 |              1 |         1.00 |
 | ~ff4/ff5/tick_5                |                                  |                                      |                1 |              1 |         1.00 |
-| ~ff4/ff3/tick_3                |                                  |                                      |                1 |              1 |         1.00 |
-|  ff4/ff1/tick_1                |                                  |                                      |                1 |              1 |         1.00 |
 |  ff4/ff4/tick_4                |                                  |                                      |                1 |              1 |         1.00 |
+|  ff4/ff1/tick_1                |                                  |                                      |                1 |              1 |         1.00 |
 | ~ff4/ff1/tick_1                |                                  |                                      |                1 |              1 |         1.00 |
 |  ff4/ff2/tick_2                |                                  |                                      |                1 |              1 |         1.00 |
-| ~CLK100MHZ_IBUF_BUFG           | ff16/FSM_onehot_state[2]_i_1_n_0 | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |                2 |              3 |         1.50 |
-|  ff0/clk_var_hz_switchable     | ff9/count                        | ff9/TIMER_FINISHED_i_2_n_0           |                2 |              4 |         2.00 |
+| ~ff4/ff3/tick_3                |                                  |                                      |                1 |              1 |         1.00 |
+| ~ff4/ff4/tick_4                |                                  |                                      |                1 |              1 |         1.00 |
+| ~CLK100MHZ_IBUF_BUFG           | ff16/FSM_onehot_state[2]_i_1_n_0 | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |                1 |              3 |         3.00 |
 |  ff1/CLK                       |                                  |                                      |                2 |              4 |         2.00 |
-|  BUFFER_WRITE_TRIGGER_OUT_BUFG |                                  | ff0/RESET_OUT                        |                3 |              4 |         1.33 |
+|  ff15/clk_var_hz               | ff9/count                        | ff9/TIMER_FINISHED_i_2_n_0           |                2 |              4 |         2.00 |
 | ~ff2a/clk_10_khz               | ff0/current_state                |                                      |                2 |              4 |         2.00 |
-|  ff4/ff0/tick_0                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
-|  ff4/ff5/tick_5                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
-|  ff4/ff6/CLK                   | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
-|  ff4/ff1/tick_1                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
-|  ff4/ff2/tick_2                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
-|  ff4/ff3/tick_3                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
-|  ff4/ff4/tick_4                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
+|  BUFFER_WRITE_TRIGGER_OUT_BUFG |                                  | ff0/RESET_OUT                        |                3 |              4 |         1.33 |
 |  ff1/CLK                       | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
+|  ff4/ff6/CLK                   | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
+|  ff4/ff3/tick_3                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
+|  ff4/ff0/tick_0                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
+|  ff4/ff5/tick_5                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
+|  ff4/ff1/tick_1                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
+|  ff4/ff2/tick_2                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                2 |              5 |         2.50 |
+|  ff4/ff4/tick_4                | ff0/REACTION_TIME_COUNT_EN_OUT   | ff0/AR[0]                            |                1 |              5 |         5.00 |
 | ~ff2a/clk_10_khz               | ff0/last_triggers[5]_i_1_n_0     |                                      |                2 |              6 |         3.00 |
-|  ff0/E[0]                      |                                  |                                      |                3 |              8 |         2.67 |
-|  CLK100MHZ_IBUF_BUFG           |                                  |                                      |                7 |              8 |         1.14 |
-|  ff15/CLK                      |                                  |                                      |                3 |              8 |         2.67 |
-| ~ff2a/clk_10_khz               |                                  |                                      |                8 |             17 |         2.12 |
+|  ff0/E[0]                      |                                  |                                      |                2 |              8 |         4.00 |
+|  ff15/clk_var_hz               |                                  |                                      |                2 |              8 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  |                                      |                8 |              8 |         1.00 |
+| ~ff2a/clk_10_khz               |                                  |                                      |                8 |             16 |         2.00 |
 | ~CLK100MHZ_IBUF_BUFG           | ff16/bcds_out_reg_next           | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |                6 |             24 |         4.00 |
 |  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/NUMBER_2_OUT[27]_i_1_n_0     | ff0/RESET_OUT                        |               11 |             28 |         2.55 |
-|  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/NUMBER_3_OUT[27]_i_1_n_0     | ff0/RESET_OUT                        |               11 |             28 |         2.55 |
-|  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/p_0_in                       | ff0/RESET_OUT                        |                9 |             28 |         3.11 |
+|  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/NUMBER_3_OUT[27]_i_1_n_0     | ff0/RESET_OUT                        |               12 |             28 |         2.33 |
+|  BUFFER_WRITE_TRIGGER_OUT_BUFG | ff6/p_0_in                       | ff0/RESET_OUT                        |               11 |             28 |         2.55 |
 |  CLK100MHZ_IBUF_BUFG           |                                  | ff1/clear                            |                7 |             28 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG           |                                  | ff15/clear                           |                7 |             28 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG           |                                  | ff2a/clear                           |                7 |             28 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG           |                                  | ff18/debounce_counter[0]_i_1_n_0     |                8 |             32 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG           |                                  | ff19/debounce_counter[0]_i_1__0_n_0  |                8 |             32 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG           |                                  | ff20/debounce_counter[0]_i_1__1_n_0  |                8 |             32 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG           |                                  | ff21/debounce_counter[0]_i_1__2_n_0  |                8 |             32 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG           |                                  | ff22/debounce_counter[0]_i_1__3_n_0  |                8 |             32 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG           |                                  | ff18/debounce_counter[0]_i_1_n_0     |                8 |             32 |         4.00 |
-| ~CLK100MHZ_IBUF_BUFG           | ff16/shift_counter[4]_i_1_n_0    | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |               22 |             57 |         2.59 |
+| ~CLK100MHZ_IBUF_BUFG           | ff16/shift_counter[4]_i_1_n_0    | ff0/DOUBLE_DABBLE_RESET_OUT_reg_0[0] |               14 |             57 |         4.07 |
 +--------------------------------+----------------------------------+--------------------------------------+------------------+----------------+--------------+
 
 
