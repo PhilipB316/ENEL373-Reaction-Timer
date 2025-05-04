@@ -50,6 +50,7 @@
       \vspace*{2cm}
       {\Huge Philip Brand \textit{\Large(15776928)}\\\par}
       {\Huge Michael Brown \textit{\Large(48571923)}\\\par}
+      {\Huge Boston Black \textit{\Large(********)}\\\par}
       % ADD YOUR NAME AND STUDENT ID HERE
       \vspace*{3cm}
       {\LARGE \today}
@@ -177,7 +178,9 @@ One issue that arose during the development of the seven segment display module 
 
 However, once all the mappings were implemented, we found that our countdown timer failed to display the dots. Alteration of the countdown timer to display temporary digits instead of dots revealed the countdown to be functional. Stepping through the code by hand revealed that, due to the use of the unfamiliar provided seven segment decoder, a line of code was overlooked that overwrote the decimal place value. Disabling this line of code allowed the countdown timer to show dots.
 
-A significantly unexpected issue that appeared during the testing of the finite state machine...
+A significantly unexpected issue that appeared during the testing of the finite state machine was deemed as the "Schrodinger's States" problem. This originated from the FSM running lines of code designed to change states even while they were commented out. In addition, an unwanted state change wouldn't necessarily complete, instead running half of a state's instructions before reverting back to the original state. This was fixed by removing the FSM inputs from the sensitivity list of the FSM process, instead tying it to a 10KHz clock instead. \textcolor{red}{CONFIRM THE CLOCK SPEED}.
+
+There were issues with the simulation software built into the Vivado toolchain. During the design of the BCD-to-Binary numeric convertor, the Vivado simulator would stop the simulation at the beginning of the numeric conversion, but would not give an error message to indicate an issue. However, generating a bitstream and running it on hardware led to no such issues with the BCD-to-Binary module, and the numeric conversion operated as intended.
 
 \newpage
 
