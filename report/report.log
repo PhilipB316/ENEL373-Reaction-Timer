@@ -1,41 +1,41 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.9)  27 APR 2025 22:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.3)  5 MAY 2025 15:15
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/report/report.tex
-(c:/Users/phili/UniversityOfCanterbury/UC_25S1/ENEL373/reaction-timer-project/ThuGroup13/report/report.tex
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-01-18>
-(C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
-Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
-(C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
-File: size11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+**c:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/report/report
+(c:/Users/bosto/OneDrive/Documents/A_Uni/Third_Year/ENEL373/Vivado/ThuGroup13/report/report.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-09-10>
+(c:/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(c:/texlive/2024/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count196
-\c@section=\count197
-\c@subsection=\count198
-\c@subsubsection=\count199
-\c@paragraph=\count266
-\c@subparagraph=\count267
-\c@figure=\count268
-\c@table=\count269
+\c@part=\count194
+\c@section=\count195
+\c@subsection=\count196
+\c@subsubsection=\count197
+\c@paragraph=\count198
+\c@subparagraph=\count199
+\c@figure=\count266
+\c@table=\count267
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+) (c:/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
+ (c:/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count270
-\Gm@cntv=\count271
-\c@Gm@tempcnt=\count272
+\Gm@cnth=\count268
+\Gm@cntv=\count269
+\c@Gm@tempcnt=\count270
 \Gm@bindingoffset=\dimen142
 \Gm@wd@mp=\dimen143
 \Gm@odd@mp=\dimen144
@@ -45,35 +45,35 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen148
 \Gm@layoutvoffset=\dimen149
 \Gm@dimlist=\toks18
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
-Package: pdfpages 2025/03/12 v0.6f Insert pages of external PDF documents (AM)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2024/08/20 v0.6b Insert pages of external PDF documents (AM)
+ (c:/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count273
-\calc@Bcount=\count274
+\calc@Acount=\count271
+\calc@Bcount=\count272
 \calc@Adimen=\dimen150
 \calc@Bdimen=\dimen151
 \calc@Askip=\skip51
 \calc@Bskip=\skip52
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count275
+\calc@Ccount=\count273
 \calc@Cskip=\skip53
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
 \ESO@tempdima=\dimen152
 \ESO@tempdimb=\dimen153
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+ (c:/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+ (c:/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (c:/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -83,16 +83,13 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
-Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count276
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (c:/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
@@ -103,93 +100,90 @@ Package graphics Info: Driver file: pdftex.def on input line 106.
 \AM@pagewidth=\dimen156
 \AM@pageheight=\dimen157
 \AM@fboxrule=\dimen158
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
-File: pppdftex.def 2025/03/12 v0.6f Pdfpages driver for pdfTeX (AM)
+ (c:/texlive/2024/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2024/08/20 v0.6b Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count277
+\pdfpages@includegraphics@status=\count274
 \AM@pagebox=\box52
 \AM@global@opts=\toks19
-\AM@pagecnt=\count278
+\AM@pagecnt=\count275
 \AM@toc@title=\toks20
 \AM@lof@heading=\toks21
-\c@AM@survey=\count279
+\c@AM@survey=\count276
 \AM@templatesizebox=\box53
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
-Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+) (c:/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and footers
 \f@nch@headwidth=\skip54
-\f@nch@offset@elh=\skip55
-\f@nch@offset@erh=\skip56
-\f@nch@offset@olh=\skip57
-\f@nch@offset@orh=\skip58
-\f@nch@offset@elf=\skip59
-\f@nch@offset@erf=\skip60
-\f@nch@offset@olf=\skip61
-\f@nch@offset@orf=\skip62
-\f@nch@height=\skip63
-\f@nch@footalignment=\skip64
-\f@nch@widthL=\skip65
-\f@nch@widthC=\skip66
-\f@nch@widthR=\skip67
-\@temptokenb=\toks22
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
+\f@nch@O@elh=\skip55
+\f@nch@O@erh=\skip56
+\f@nch@O@olh=\skip57
+\f@nch@O@orh=\skip58
+\f@nch@O@elf=\skip59
+\f@nch@O@erf=\skip60
+\f@nch@O@olf=\skip61
+\f@nch@O@orf=\skip62
+) (c:/texlive/2024/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 51.
-\cftparskip=\skip68
-\cftbeforetoctitleskip=\skip69
-\cftaftertoctitleskip=\skip70
-\cftbeforepartskip=\skip71
-\cftpartnumwidth=\skip72
-\cftpartindent=\skip73
-\cftbeforesecskip=\skip74
-\cftsecindent=\skip75
-\cftsecnumwidth=\skip76
-\cftbeforesubsecskip=\skip77
-\cftsubsecindent=\skip78
-\cftsubsecnumwidth=\skip79
-\cftbeforesubsubsecskip=\skip80
-\cftsubsubsecindent=\skip81
-\cftsubsubsecnumwidth=\skip82
-\cftbeforeparaskip=\skip83
-\cftparaindent=\skip84
-\cftparanumwidth=\skip85
-\cftbeforesubparaskip=\skip86
-\cftsubparaindent=\skip87
-\cftsubparanumwidth=\skip88
-\cftbeforeloftitleskip=\skip89
-\cftafterloftitleskip=\skip90
-\cftbeforefigskip=\skip91
-\cftfigindent=\skip92
-\cftfignumwidth=\skip93
-\c@lofdepth=\count280
-\c@lotdepth=\count281
-\cftbeforelottitleskip=\skip94
-\cftafterlottitleskip=\skip95
-\cftbeforetabskip=\skip96
-\cfttabindent=\skip97
-\cfttabnumwidth=\skip98
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
+\cftparskip=\skip63
+\cftbeforetoctitleskip=\skip64
+\cftaftertoctitleskip=\skip65
+\cftbeforepartskip=\skip66
+\cftpartnumwidth=\skip67
+\cftpartindent=\skip68
+\cftbeforesecskip=\skip69
+\cftsecindent=\skip70
+\cftsecnumwidth=\skip71
+\cftbeforesubsecskip=\skip72
+\cftsubsecindent=\skip73
+\cftsubsecnumwidth=\skip74
+\cftbeforesubsubsecskip=\skip75
+\cftsubsubsecindent=\skip76
+\cftsubsubsecnumwidth=\skip77
+\cftbeforeparaskip=\skip78
+\cftparaindent=\skip79
+\cftparanumwidth=\skip80
+\cftbeforesubparaskip=\skip81
+\cftsubparaindent=\skip82
+\cftsubparanumwidth=\skip83
+\cftbeforeloftitleskip=\skip84
+\cftafterloftitleskip=\skip85
+\cftbeforefigskip=\skip86
+\cftfigindent=\skip87
+\cftfignumwidth=\skip88
+\c@lofdepth=\count277
+\c@lotdepth=\count278
+\cftbeforelottitleskip=\skip89
+\cftafterlottitleskip=\skip90
+\cftbeforetabskip=\skip91
+\cfttabindent=\skip92
+\cfttabnumwidth=\skip93
+) (c:/texlive/2024/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+ (c:/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
-Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count279
+)) (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
+ (c:/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
-\XKV@toks=\toks23
-\XKV@tempa@toks=\toks24
+ (c:/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks22
+\XKV@tempa@toks=\toks23
 )
-\XKV@depth=\count282
+\XKV@depth=\count280
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.sty
-Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+ (c:/texlive/2024/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \collectedbox=\box54
 )
@@ -198,8 +192,8 @@ Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \tc@urx=\dimen161
 \tc@ury=\dimen162
 Package trimclip Info: Using driver 'tc-pdftex.def'.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
-File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
+ (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
 \adjbox@Width=\dimen163
 \adjbox@Height=\dimen164
@@ -209,27 +203,27 @@ File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
 \adjbox@pheight=\dimen168
 \adjbox@pdepth=\dimen169
 \adjbox@ptotalheight=\dimen170
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count283
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
+\c@checkoddpage=\count281
+) (c:/texlive/2024/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box55
-\sift@deathcycles=\count284
+\sift@deathcycles=\count282
 \@vwid@loff=\dimen171
 \@vwid@roff=\dimen172
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count285
-\float@exts=\toks25
+\c@float@type=\count283
+\float@exts=\toks24
 \float@box=\box56
-\@float@everytoks=\toks26
+\@float@everytoks=\toks25
 \@floatcapt=\box57
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen173
 \captionmargin=\dimen174
@@ -241,46 +235,46 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen180
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count286
-\c@continuedfloat=\count287
+\c@caption@flags=\count284
+\c@continuedfloat=\count285
 Package caption Info: float package is loaded.
 )
-\c@KVtest=\count288
-\sf@farskip=\skip99
+\c@KVtest=\count286
+\sf@farskip=\skip94
 \sf@captopadj=\dimen181
-\sf@capskip=\skip100
-\sf@nearskip=\skip101
-\c@subfigure=\count289
-\c@subfigure@save=\count290
-\c@subtable=\count291
-\c@subtable@save=\count292
-\sf@top=\skip102
-\sf@bottom=\skip103
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
-Package: amsmath 2024/11/05 v2.17t AMS math features
-\@mathmargin=\skip104
+\sf@capskip=\skip95
+\sf@nearskip=\skip96
+\c@subfigure=\count287
+\c@subfigure@save=\count288
+\c@subtable=\count289
+\c@subtable@save=\count290
+\sf@top=\skip97
+\sf@bottom=\skip98
+) (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2024/05/23 v2.17q AMS math features
+\@mathmargin=\skip99
 
 For additional information on amsmath, use the `?' option.
-(C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(c:/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks27
+\@emptytoks=\toks26
 \ex@=\dimen182
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen183
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count293
+\inf@bad=\count291
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count294
-\leftroot@=\count295
+\uproot@=\count292
+\leftroot@=\count293
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count296
-\DOTSCASE@=\count297
+\classnum@=\count294
+\DOTSCASE@=\count295
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -293,42 +287,42 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen184
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count298
+\macc@depth=\count296
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count299
+\c@MaxMatrixCols=\count297
 \dotsspace@=\muskip17
-\c@parentequation=\count300
-\dspbrk@lvl=\count301
-\tag@help=\toks28
-\row@=\count302
-\column@=\count303
-\maxfields@=\count304
-\andhelp@=\toks29
+\c@parentequation=\count298
+\dspbrk@lvl=\count299
+\tag@help=\toks27
+\row@=\count300
+\column@=\count301
+\maxfields@=\count302
+\andhelp@=\toks28
 \eqnshift@=\dimen185
 \alignsep@=\dimen186
 \tagshift@=\dimen187
 \tagwidth@=\dimen188
 \totwidth@=\dimen189
 \lineht@=\dimen190
-\@envbody=\toks30
-\multlinegap=\skip105
-\multlinetaggap=\skip106
-\mathdisplay@stack=\toks31
+\@envbody=\toks29
+\multlinegap=\skip100
+\multlinetaggap=\skip101
+\mathdisplay@stack=\toks30
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/blkarray\blkarray.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/blkarray/blkarray.sty
 Package: blkarray 2015/02/27 v0.07 Block array (dpc)
-\c@BAenumi=\count305
-\BA@col=\count306
-\BA@block@cnt=\count307
+\c@BAenumi=\count303
+\BA@col=\count304
+\BA@block@cnt=\count305
 \BA@final@box=\box60
 \BA@first@box=\box61
 \BA@colsep=\dimen191
-\BA@ftn=\toks32
+\BA@ftn=\toks31
 \BAextrarowheight=\dimen192
 \BAextraheightafterhline=\dimen193
 \BAarrayrulewidth=\dimen194
@@ -336,7 +330,7 @@ Package: blkarray 2015/02/27 v0.07 Block array (dpc)
 \BAfootskip=\dimen196
 \BA@dashbox=\box62
 \BA@ddashbox=\box63
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen197
 \lightrulewidth=\dimen198
@@ -348,124 +342,124 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen260
 \cmidrulekern=\dimen261
 \defaultaddspace=\dimen262
-\@cmidla=\count308
-\@cmidlb=\count309
+\@cmidla=\count306
+\@cmidlb=\count307
 \@aboverulesep=\dimen263
 \@belowrulesep=\dimen264
-\@thisruleclass=\count310
-\@lastruleclass=\count311
+\@thisruleclass=\count308
+\@lastruleclass=\count309
 \@thisrulewidth=\dimen265
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/multirow\bigstrut.sty
-Package: bigstrut 2024/11/12 v2.9 Provide larger struts in tabulars
+) (c:/texlive/2024/texmf-dist/tex/latex/multirow/bigstrut.sty
+Package: bigstrut 2021/03/15 v2.8 Provide larger struts in tabulars
 \bigstrutjot=\dimen266
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/pythonhighlight\pythonhighlight.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/pythonhighlight/pythonhighlight.sty
 Package: pythonhighlight 2024/03/18 python code highlighting; provided by Olivier Verdier <olivier.verdier@gmail.com>
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count312
+ (c:/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count310
 \lst@gtempboxa=\box64
-\lst@token=\toks33
-\lst@length=\count313
+\lst@token=\toks32
+\lst@length=\count311
 \lst@currlwidth=\dimen267
-\lst@column=\count314
-\lst@pos=\count315
+\lst@column=\count312
+\lst@pos=\count313
 \lst@lostspace=\dimen268
 \lst@width=\dimen269
-\lst@newlines=\count316
-\lst@lineno=\count317
+\lst@newlines=\count314
+\lst@lineno=\count315
 \lst@maxwidth=\dimen270
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count318
-\lst@skipnumbers=\count319
+\c@lstnumber=\count316
+\lst@skipnumbers=\count317
 \lst@framebox=\box65
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+) (c:/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.sty (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2025-01-18 L3 programming layer (loader) 
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+ (c:/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (c:/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-09-10 L3 programming layer (loader) 
+ (c:/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count320
+\l__color_backend_stack_int=\count318
 \l__pdf_internal_box=\box66
 ))
 Package: xparse 2024-08-16 L3 Experimental document command parser
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/outlines\outlines.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/outlines/outlines.sty
 Package: outlines 2012/1/23 1.1 Ch. Pecheur
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul.sty
+) (c:/texlive/2024/texmf-dist/tex/generic/soul/soul.sty
 Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul-ori.sty
+ (c:/texlive/2024/texmf-dist/tex/generic/soul/soul-ori.sty
 Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
-\SOUL@word=\toks34
-\SOUL@lasttoken=\toks35
-\SOUL@syllable=\toks36
-\SOUL@cmds=\toks37
-\SOUL@buffer=\toks38
-\SOUL@token=\toks39
+\SOUL@word=\toks33
+\SOUL@lasttoken=\toks34
+\SOUL@syllable=\toks35
+\SOUL@cmds=\toks36
+\SOUL@buffer=\toks37
+\SOUL@token=\toks38
 \SOUL@syllgoal=\dimen271
 \SOUL@syllwidth=\dimen272
 \SOUL@charkern=\dimen273
 \SOUL@hyphkern=\dimen274
 \SOUL@dimen=\dimen275
 \SOUL@dimeni=\dimen276
-\SOUL@minus=\count321
-\SOUL@comma=\count322
-\SOUL@apo=\count323
-\SOUL@grave=\count324
-\SOUL@spaceskip=\skip107
+\SOUL@minus=\count319
+\SOUL@comma=\count320
+\SOUL@apo=\count321
+\SOUL@grave=\count322
+\SOUL@spaceskip=\skip102
 \SOUL@ttwidth=\dimen277
 \SOUL@uldp=\dimen278
 \SOUL@ulht=\dimen279
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+) (c:/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+) (c:/texlive/2024/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-07-10 v7.01j Hypertext links for LaTeX
+ (c:/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+) (c:/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+ (c:/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+) (c:/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count325
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+\c@section@level=\count323
+) (c:/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen280
-\Hy@linkcounter=\count326
-\Hy@pagecounter=\count327
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+\Hy@linkcounter=\count324
+\Hy@pagecounter=\count325
+ (c:/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
+) (c:/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count328
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+\Hy@SavedSpaceFactor=\count326
+ (c:/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Hyper figures OFF on input line 4157.
 Package hyperref Info: Link nesting OFF on input line 4162.
@@ -474,19 +468,19 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count329
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\c@Hy@tempcnt=\count327
+ (c:/texlive/2024/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
 \XeTeXLinkMargin=\dimen281
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+ (c:/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+ (c:/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count330
+\Fld@menulength=\count328
 \Field@Width=\dimen282
 \Fld@charsize=\dimen283
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -496,340 +490,348 @@ Package hyperref Info: backreferencing OFF on input line 6057.
 Package hyperref Info: Link coloring OFF on input line 6062.
 Package hyperref Info: Link coloring with OCG OFF on input line 6067.
 Package hyperref Info: PDF/A mode OFF on input line 6072.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count331
-\c@Item=\count332
-\c@Hfootnote=\count333
+\Hy@abspage=\count329
+\c@Item=\count330
+\c@Hfootnote=\count331
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-07-10 v7.01j Hyperref driver for pdfTeX
+ (c:/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count334
-\c@bookmark@seq@number=\count335
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+\Fld@listcount=\count332
+\c@bookmark@seq@number=\count333
+ (c:/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+ (c:/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip108
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
+\Hy@SectionHShift=\skip103
+) (c:/texlive/2024/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count336
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
+\lrq@indent=\count334
+ (c:/texlive/2024/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@tabx@nest=\count337
-\c@listtotal=\count338
-\c@listcount=\count339
-\c@liststart=\count340
-\c@liststop=\count341
-\c@citecount=\count342
-\c@citetotal=\count343
-\c@multicitecount=\count344
-\c@multicitetotal=\count345
-\c@instcount=\count346
-\c@maxnames=\count347
-\c@minnames=\count348
-\c@maxitems=\count349
-\c@minitems=\count350
-\c@citecounter=\count351
-\c@maxcitecounter=\count352
-\c@savedcitecounter=\count353
-\c@uniquelist=\count354
-\c@uniquename=\count355
-\c@refsection=\count356
-\c@refsegment=\count357
-\c@maxextratitle=\count358
-\c@maxextratitleyear=\count359
-\c@maxextraname=\count360
-\c@maxextradate=\count361
-\c@maxextraalpha=\count362
-\c@abbrvpenalty=\count363
-\c@highnamepenalty=\count364
-\c@lownamepenalty=\count365
-\c@maxparens=\count366
-\c@parenlevel=\count367
-\blx@tempcnta=\count368
-\blx@tempcntb=\count369
-\blx@tempcntc=\count370
-\c@blx@maxsection=\count371
-\blx@maxsegment@0=\count372
-\blx@notetype=\count373
-\blx@parenlevel@text=\count374
-\blx@parenlevel@foot=\count375
-\blx@sectionciteorder@0=\count376
-\blx@sectionciteorderinternal@0=\count377
-\blx@entrysetcounter=\count378
-\blx@biblioinstance=\count379
-\labelnumberwidth=\skip109
-\labelalphawidth=\skip110
-\biblabelsep=\skip111
-\bibitemsep=\skip112
-\bibnamesep=\skip113
-\bibinitsep=\skip114
-\bibparsep=\skip115
-\bibhang=\skip116
+\c@tabx@nest=\count335
+\c@listtotal=\count336
+\c@listcount=\count337
+\c@liststart=\count338
+\c@liststop=\count339
+\c@citecount=\count340
+\c@citetotal=\count341
+\c@multicitecount=\count342
+\c@multicitetotal=\count343
+\c@instcount=\count344
+\c@maxnames=\count345
+\c@minnames=\count346
+\c@maxitems=\count347
+\c@minitems=\count348
+\c@citecounter=\count349
+\c@maxcitecounter=\count350
+\c@savedcitecounter=\count351
+\c@uniquelist=\count352
+\c@uniquename=\count353
+\c@refsection=\count354
+\c@refsegment=\count355
+\c@maxextratitle=\count356
+\c@maxextratitleyear=\count357
+\c@maxextraname=\count358
+\c@maxextradate=\count359
+\c@maxextraalpha=\count360
+\c@abbrvpenalty=\count361
+\c@highnamepenalty=\count362
+\c@lownamepenalty=\count363
+\c@maxparens=\count364
+\c@parenlevel=\count365
+\blx@tempcnta=\count366
+\blx@tempcntb=\count367
+\blx@tempcntc=\count368
+\c@blx@maxsection=\count369
+\blx@maxsegment@0=\count370
+\blx@notetype=\count371
+\blx@parenlevel@text=\count372
+\blx@parenlevel@foot=\count373
+\blx@sectionciteorder@0=\count374
+\blx@sectionciteorderinternal@0=\count375
+\blx@entrysetcounter=\count376
+\blx@biblioinstance=\count377
+\labelnumberwidth=\skip104
+\labelalphawidth=\skip105
+\biblabelsep=\skip106
+\bibitemsep=\skip107
+\bibnamesep=\skip108
+\bibinitsep=\skip109
+\bibparsep=\skip110
+\bibhang=\skip111
 \blx@bcfin=\read2
 \blx@bcfout=\write3
-\blx@langwohyphens=\language79
-\c@mincomprange=\count380
-\c@maxcomprange=\count381
-\c@mincompwidth=\count382
+\blx@langwohyphens=\language89
+\c@mincomprange=\count378
+\c@maxcomprange=\count379
+\c@mincompwidth=\count380
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/blx-dm.def
 File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'ieee.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count383
-\c@savedafterword=\count384
-\c@annotator=\count385
-\c@savedannotator=\count386
-\c@author=\count387
-\c@savedauthor=\count388
-\c@bookauthor=\count389
-\c@savedbookauthor=\count390
-\c@commentator=\count391
-\c@savedcommentator=\count392
-\c@editor=\count393
-\c@savededitor=\count394
-\c@editora=\count395
-\c@savededitora=\count396
-\c@editorb=\count397
-\c@savededitorb=\count398
-\c@editorc=\count399
-\c@savededitorc=\count400
-\c@foreword=\count401
-\c@savedforeword=\count402
-\c@holder=\count403
-\c@savedholder=\count404
-\c@introduction=\count405
-\c@savedintroduction=\count406
-\c@namea=\count407
-\c@savednamea=\count408
-\c@nameb=\count409
-\c@savednameb=\count410
-\c@namec=\count411
-\c@savednamec=\count412
-\c@translator=\count413
-\c@savedtranslator=\count414
-\c@shortauthor=\count415
-\c@savedshortauthor=\count416
-\c@shorteditor=\count417
-\c@savedshorteditor=\count418
-\c@labelname=\count419
-\c@savedlabelname=\count420
-\c@institution=\count421
-\c@savedinstitution=\count422
-\c@lista=\count423
-\c@savedlista=\count424
-\c@listb=\count425
-\c@savedlistb=\count426
-\c@listc=\count427
-\c@savedlistc=\count428
-\c@listd=\count429
-\c@savedlistd=\count430
-\c@liste=\count431
-\c@savedliste=\count432
-\c@listf=\count433
-\c@savedlistf=\count434
-\c@location=\count435
-\c@savedlocation=\count436
-\c@organization=\count437
-\c@savedorganization=\count438
-\c@origlocation=\count439
-\c@savedoriglocation=\count440
-\c@origpublisher=\count441
-\c@savedorigpublisher=\count442
-\c@publisher=\count443
-\c@savedpublisher=\count444
-\c@language=\count445
-\c@savedlanguage=\count446
-\c@origlanguage=\count447
-\c@savedoriglanguage=\count448
-\c@pageref=\count449
-\c@savedpageref=\count450
-\shorthandwidth=\skip117
-\shortjournalwidth=\skip118
-\shortserieswidth=\skip119
-\shorttitlewidth=\skip120
-\shortauthorwidth=\skip121
-\shorteditorwidth=\skip122
-\locallabelnumberwidth=\skip123
-\locallabelalphawidth=\skip124
-\localshorthandwidth=\skip125
-\localshortjournalwidth=\skip126
-\localshortserieswidth=\skip127
-\localshorttitlewidth=\skip128
-\localshortauthorwidth=\skip129
-\localshorteditorwidth=\skip130
+\c@afterword=\count381
+\c@savedafterword=\count382
+\c@annotator=\count383
+\c@savedannotator=\count384
+\c@author=\count385
+\c@savedauthor=\count386
+\c@bookauthor=\count387
+\c@savedbookauthor=\count388
+\c@commentator=\count389
+\c@savedcommentator=\count390
+\c@editor=\count391
+\c@savededitor=\count392
+\c@editora=\count393
+\c@savededitora=\count394
+\c@editorb=\count395
+\c@savededitorb=\count396
+\c@editorc=\count397
+\c@savededitorc=\count398
+\c@foreword=\count399
+\c@savedforeword=\count400
+\c@holder=\count401
+\c@savedholder=\count402
+\c@introduction=\count403
+\c@savedintroduction=\count404
+\c@namea=\count405
+\c@savednamea=\count406
+\c@nameb=\count407
+\c@savednameb=\count408
+\c@namec=\count409
+\c@savednamec=\count410
+\c@translator=\count411
+\c@savedtranslator=\count412
+\c@shortauthor=\count413
+\c@savedshortauthor=\count414
+\c@shorteditor=\count415
+\c@savedshorteditor=\count416
+\c@labelname=\count417
+\c@savedlabelname=\count418
+\c@institution=\count419
+\c@savedinstitution=\count420
+\c@lista=\count421
+\c@savedlista=\count422
+\c@listb=\count423
+\c@savedlistb=\count424
+\c@listc=\count425
+\c@savedlistc=\count426
+\c@listd=\count427
+\c@savedlistd=\count428
+\c@liste=\count429
+\c@savedliste=\count430
+\c@listf=\count431
+\c@savedlistf=\count432
+\c@location=\count433
+\c@savedlocation=\count434
+\c@organization=\count435
+\c@savedorganization=\count436
+\c@origlocation=\count437
+\c@savedoriglocation=\count438
+\c@origpublisher=\count439
+\c@savedorigpublisher=\count440
+\c@publisher=\count441
+\c@savedpublisher=\count442
+\c@language=\count443
+\c@savedlanguage=\count444
+\c@origlanguage=\count445
+\c@savedoriglanguage=\count446
+\c@pageref=\count447
+\c@savedpageref=\count448
+\shorthandwidth=\skip112
+\shortjournalwidth=\skip113
+\shortserieswidth=\skip114
+\shorttitlewidth=\skip115
+\shortauthorwidth=\skip116
+\shorteditorwidth=\skip117
+\locallabelnumberwidth=\skip118
+\locallabelalphawidth=\skip119
+\localshorthandwidth=\skip120
+\localshortjournalwidth=\skip121
+\localshortserieswidth=\skip122
+\localshorttitlewidth=\skip123
+\localshortauthorwidth=\skip124
+\localshorteditorwidth=\skip125
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/blx-compat.def
 File: blx-compat.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-\c@textcitecount=\count451
-\c@textcitetotal=\count452
-\c@textcitemaxnames=\count453
-\c@biburlbigbreakpenalty=\count454
-\c@biburlbreakpenalty=\count455
-\c@biburlnumpenalty=\count456
-\c@biburlucpenalty=\count457
-\c@biburllcpenalty=\count458
+\c@textcitecount=\count449
+\c@textcitetotal=\count450
+\c@textcitemaxnames=\count451
+\c@biburlbigbreakpenalty=\count452
+\c@biburlbreakpenalty=\count453
+\c@biburlnumpenalty=\count454
+\c@biburlucpenalty=\count455
+\c@biburllcpenalty=\count456
 \biburlbigskip=\muskip19
 \biburlnumskip=\muskip20
 \biburlucskip=\muskip21
 \biburllcskip=\muskip22
-\c@smartand=\count459
+\c@smartand=\count457
 )
 Package biblatex Info: Trying to load bibliography style 'ieee'...
 Package biblatex Info: ... file 'ieee.bbx' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
-File: ieee.bbx 2025-03-14 v1.4e biblatex bibliography style
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex-ieee/ieee.bbx
+File: ieee.bbx 2024/08/14 v1.3g biblatex bibliography style
 Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
 Package biblatex Info: ... file 'numeric-comp.bbx' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/bbx/numeric-comp.bbx
 File: numeric-comp.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
 File: numeric.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count460
-\c@bbx:relatedtotal=\count461
-)))
-
-Package biblatex Warning: Macro 'volume+number' undefined.
-(biblatex)                Using \newbibmacro.
-
-)
+\c@bbx:relatedcount=\count458
+\c@bbx:relatedtotal=\count459
+))))
 Package biblatex Info: Trying to load citation style 'ieee'...
 Package biblatex Info: ... file 'ieee.cbx' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
-File: ieee.cbx 2025-03-14 v1.4e biblatex citation style
-Package biblatex Info: Trying to load citation style 'numeric-verb'...
-Package biblatex Info: ... file 'numeric-verb.cbx' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-verb.cbx
-File: numeric-verb.cbx 2024/03/21 v3.20 biblatex citation style (PK/MW)
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex-ieee/ieee.cbx
+File: ieee.cbx 2024/08/14 v1.3g biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.cbx' found.
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/cbx/numeric-comp.cbx
+File: numeric-comp.cbx 2024/03/21 v3.20 biblatex citation style (PK/MW)
+\c@cbx@tempcnta=\count460
+\c@cbx@tempcntb=\count461
+\c@cbx@tempcntc=\count462
+\c@cbx@tempcntd=\count463
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
 Package biblatex Info: Redefining '\footcitetext'.
 Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\textcite'.
 Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
 Package biblatex Info: Redefining '\parencites'.
 Package biblatex Info: Redefining '\smartcites'.
-Package biblatex Info: Redefining '\textcites'.
-))
+)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\cites'.
+)
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/biblatex.cfg
 File: biblatex.cfg 
 )
 Package biblatex Info: No input encoding detected.
 (biblatex)             Assuming 'ascii'.
 Package biblatex Info: Document encoding not detected as UTF8.
 (biblatex)             Setting 'casechanger=latex2e'.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-latex2e.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/blx-case-latex2e.sty
 Package: blx-case-latex2e 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/minted\minted.sty
-Package: minted 2025/03/06 v3.6.0 Yet another Pygments shim for LaTeX
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/catchfile\catchfile.sty
+)) (c:/texlive/2024/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2024/09/22 v3.0.0 Yet another Pygments shim for LaTeX
+ (c:/texlive/2024/texmf-dist/tex/generic/catchfile/catchfile.sty
 Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/fvextra\fvextra.sty
-Package: fvextra 2025/03/04 v1.12.0 fvextra - extensions and patches for fancyvrb
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2024/09/14 v1.8.0 fvextra - extensions and patches for fancyvrb
+ (c:/texlive/2024/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
-\FV@CodeLineNo=\count462
+\FV@CodeLineNo=\count464
 \FV@InFile=\read3
 \FV@TabBox=\box67
-\c@FancyVerbLine=\count463
-\FV@StepNumber=\count464
+\c@FancyVerbLine=\count465
+\FV@StepNumber=\count466
 \FV@OutFile=\write4
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.sty
-Package: lineno 2025/01/29 line numbers on paragraphs v5.4
-\linenopenalty=\count465
-\output=\toks40
-\linenoprevgraf=\count466
+) (c:/texlive/2024/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2023/05/20 line numbers on paragraphs v5.3
+\linenopenalty=\count467
+\output=\toks39
+\linenoprevgraf=\count468
 \linenumbersep=\dimen284
 \linenumberwidth=\dimen285
-\c@linenumber=\count467
-\c@pagewiselinenumber=\count468
-\c@LN@truepage=\count469
-\c@internallinenumber=\count470
-\c@internallinenumbers=\count471
+\c@linenumber=\count469
+\c@pagewiselinenumber=\count470
+\c@LN@truepage=\count471
+\c@internallinenumber=\count472
+\c@internallinenumbers=\count473
 \quotelinenumbersep=\dimen286
 \bframerule=\dimen287
 \bframesep=\dimen288
 \bframebox=\box68
-\@LN@amsmath@ams@eqpen=\count472
-LaTeX Info: Redefining \\ on input line 3187.
+\linenoamsmath@ams@eqpen=\count474
+LaTeX Info: Redefining \\ on input line 3180.
 )
-\c@FancyVerbWriteLine=\count473
-\c@FancyVerbBufferLine=\count474
-\c@FV@TrueTabGroupLevel=\count475
-\c@FV@TrueTabCounter=\count476
+\c@FancyVerbWriteLine=\count475
+\c@FancyVerbBufferIndex=\count476
+\c@FancyVerbBufferLength=\count477
+\c@FancyVerbBufferLine=\count478
+\c@FV@oldbufferlength=\count479
+\c@FV@TrueTabGroupLevel=\count480
+\c@FV@TrueTabCounter=\count481
 \FV@TabBox@Group=\box69
-\FV@bgcolorstructbox=\box70
-\FV@TmpLength=\skip131
-\c@FV@HighlightLinesStart=\count477
-\c@FV@HighlightLinesStop=\count478
-\FV@LoopCount=\count479
-\FV@NCharsBox=\box71
+\FV@TmpLength=\skip126
+\c@FV@HighlightLinesStart=\count482
+\c@FV@HighlightLinesStop=\count483
+\FV@LoopCount=\count484
+\FV@NCharsBox=\box70
 \FV@BreakIndent=\dimen289
-\FV@BreakIndentNChars=\count480
+\FV@BreakIndentNChars=\count485
 \FV@BreakSymbolSepLeft=\dimen290
-\FV@BreakSymbolSepLeftNChars=\count481
+\FV@BreakSymbolSepLeftNChars=\count486
 \FV@BreakSymbolSepRight=\dimen291
-\FV@BreakSymbolSepRightNChars=\count482
+\FV@BreakSymbolSepRightNChars=\count487
 \FV@BreakSymbolIndentLeft=\dimen292
-\FV@BreakSymbolIndentLeftNChars=\count483
+\FV@BreakSymbolIndentLeftNChars=\count488
 \FV@BreakSymbolIndentRight=\dimen293
-\FV@BreakSymbolIndentRightNChars=\count484
-\c@FancyVerbLineBreakLast=\count485
-\FV@LineBox=\box72
-\FV@LineIndentBox=\box73
-\c@FV@BreakBufferDepth=\count486
+\FV@BreakSymbolIndentRightNChars=\count489
+\c@FancyVerbLineBreakLast=\count490
+\FV@LineBox=\box71
+\FV@LineIndentBox=\box72
+\c@FV@BreakBufferDepth=\count491
 \FV@LineWidth=\dimen294
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/latex2pydata\latex2pydata.sty
-Package: latex2pydata 2025/03/26 v0.6.0 latex2pydata - write data to file in Python literal format
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks41
-\pgfkeys@temptoks=\toks42
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks43
-))) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/pgfopts\pgfopts.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/latex2pydata/latex2pydata.sty
+Package: latex2pydata 2024/05/16 v0.2.0 latex2pydata - write data to file in Python literal format
+\c@pydata@bufferindex=\count492
+\c@pydata@defaultbufferlength=\count493
+) (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks40
+\pgfkeys@temptoks=\toks41
+ (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks42
+))) (c:/texlive/2024/texmf-dist/tex/latex/pgfopts/pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks44
-\pgfopts@list@add@b@toks=\toks45
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/tools\shellesc.sty
+\pgfopts@list@add@a@toks=\toks43
+\pgfopts@list@add@b@toks=\toks44
+) (c:/texlive/2024/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Unrestricted shell escape enabled on input line 75.
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/newfloat\newfloat.sty
+) (c:/texlive/2024/texmf-dist/tex/latex/newfloat/newfloat.sty
 Package: newfloat 2023/10/01 v1.2 Defining new floating environments (AR)
 Package newfloat Info: Unsupported document class, or \@chapter 
 (newfloat)             was already redefined by another package.
@@ -837,15 +839,18 @@ Package newfloat Info: \@chapter = macro:->\def \Hy@next {\Hy@MakeCurrentHrefAut
 Package newfloat Info: \Hy@org@chapter = macro:[#1]#2->\NR@gettitle {#1}\NR@chapter [{#1}]{#2}.
 Package newfloat Info: \algocf@original@chapter = undefined.
 )
-\c@minted@FancyVerbLineTemp=\count487
-Package newfloat Info: New float `listing' with options `fileext=lol,placement=tbp' on input line 1939.
-\c@listing=\count488
-Package newfloat Info: float type `listing'=4 on input line 1939.
-\c@loldepth=\count489
+\c@minted@tmpcnt=\count494
+\c@minted@tmpcodebufferlength=\count495
+\c@minted@numcachefiles=\count496
+\c@minted@FancyVerbLineTemp=\count497
+Package newfloat Info: New float `listing' with options `fileext=lol,placement=tbp' on input line 1709.
+\c@listing=\count498
+Package newfloat Info: float type `listing'=4 on input line 1709.
+\c@loldepth=\count499
 )
-\@quotelevel=\count490
-\@quotereset=\count491
- (report.aux)
+\@quotelevel=\count500
+\@quotereset=\count501
+ (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -901,29 +906,29 @@ LaTeX Font Info:    ... okay on input line 37.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+(c:/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count492
+\scratchcounter=\count502
 \scratchdimen=\dimen295
-\scratchbox=\box74
-\nofMPsegments=\count493
-\nofMParguments=\count494
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count495
+\scratchbox=\box73
+\nofMPsegments=\count503
+\nofMParguments=\count504
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count505
 \MPscratchDim=\dimen296
-\MPnumerator=\count496
-\makeMPintoPDFobject=\count497
-\everyMPtoPDFconversion=\toks47
-) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+\MPnumerator=\count506
+\makeMPintoPDFobject=\count507
+\everyMPtoPDFconversion=\toks46
+) (c:/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-)) (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+)) (c:/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
@@ -933,18 +938,18 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )
-\c@lstlisting=\count498
+\c@lstlisting=\count508
 Package hyperref Info: Link coloring OFF on input line 37.
- (report.out) (report.out)
+ (./report.out) (./report.out)
 \@outlinefile=\write5
 \openout5 = `report.out'.
 
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\english.lbx
+ (c:/texlive/2024/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
 )
 Package biblatex Info: No input encoding detected.
@@ -955,7 +960,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
- (report.bbl)
+ (./report.bbl)
 Package biblatex Info: Reference section=0 on input line 37.
 Package biblatex Info: Reference segment=0 on input line 37.
 Package newfloat Info: Trying Plan B...
@@ -992,7 +997,7 @@ Package newfloat Info: `float' package detected.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<../figures/logo.png, id=59, 111.7776pt x 86.2422pt>
+<../figures/logo.png, id=60, 111.7776pt x 86.2422pt>
 File: ../figures/logo.png Graphic file (type png)
 <use ../figures/logo.png>
 Package pdftex.def Info: ../figures/logo.png  used on input line 43.
@@ -1002,13 +1007,13 @@ Package pdftex.def Info: ../figures/logo.png  used on input line 43.
 [1
 
 
-{C:/Users/phili/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <../figures/logo.png>] (report.toc
+{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../figures/logo.png>] (./report.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 1.
- (C:\Users\phili\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write6
@@ -1019,10 +1024,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 ]
-<../figures/project_overall_structure.png, id=92, 472.76625pt x 460.72125pt>
+<../figures/project_overall_structure.png, id=93, 472.76625pt x 460.72125pt>
 File: ../figures/project_overall_structure.png Graphic file (type png)
 <use ../figures/project_overall_structure.png>
-Package pdftex.def Info: ../figures/project_overall_structure.png  used on input line 90.
+Package pdftex.def Info: ../figures/project_overall_structure.png  used on input line 91.
 (pdftex.def)             Requested size: 358.50317pt x 349.37848pt.
 
 
@@ -1030,12 +1035,8 @@ Package pdftex.def Info: ../figures/project_overall_structure.png  used on input
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.97 A
+l.98 A
       ll the BCD digits from the 8-digit counter are passed directly to ALU ... [1 <../figures/project_overall_structure.png>]
-
-LaTeX Warning: Reference `fig:diagram_example' on page 2 undefined on input line 114.
-
-
 
 [2]
 
@@ -1047,50 +1048,53 @@ LaTeX Warning: Reference `fig:diagram_example' on page 2 undefined on input line
 
 [6]
 
-LaTeX Warning: Empty bibliography on input line 188.
+LaTeX Warning: Empty bibliography on input line 206.
 
-\pydata@fh@0=\write7
+\pydata@fh@_E98D2F001DA5678B39482EFBDF5770DC.data.minted=\write7
 \openout7 = `_E98D2F001DA5678B39482EFBDF5770DC.data.minted'.
 
-runsystem(latexminted config  --timestamp 20250427220850 E98D2F001DA5678B39482EFBDF5770DC)...executed.
+runsystem(latexminted config  --timestamp 20250505151536 E98D2F001DA5678B39482EFBDF5770DC)...executed.
 
-(_E98D2F001DA5678B39482EFBDF5770DC.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20250427220850 E98D2F001DA5678B39482EFBDF5770DC)...executed.
+(./_E98D2F001DA5678B39482EFBDF5770DC.config.minted)
+runsystem(latexminted cleanfile _E98D2F001DA5678B39482EFBDF5770DC.config.minted)...executed.
 
- (_minted/default.style.minted) (_minted/D8D3A9430D71A0C846C4E27B41C0A142.highlight.minted
+ (./_minted/default.style.minted)
+\c@minted@tmpdatabufferlength=\count509
+ (./_minted/6106927BFCF59DCDC3380860243B211E.highlight.minted
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 4.
 )
-Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 209.
+Package hyperref Info: bookmark level for unknown listing defaults to 0 on input line 227.
 
 
-[7] (report.aux)
+[7] (./report.aux)
  ***********
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-01-18>
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-09-10>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 9C06BE72DC302FC113FB56EFECD07B3A;2042.
+\openout7 = `_E98D2F001DA5678B39482EFBDF5770DC.data.minted'.
+
+runsystem(latexminted clean  --timestamp 20250505151536 E98D2F001DA5678B39482EFBDF5770DC)...executed.
+
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28328 strings out of 473523
- 540039 string characters out of 5714631
- 1479375 words of memory out of 5000000
- 51129 multiletter control sequences out of 15000+600000
- 568154 words of font info for 70 fonts, out of 8000000 for 9000
+ 28005 strings out of 473579
+ 523029 string characters out of 5732263
+ 1460541 words of memory out of 5000000
+ 50480 multiletter control sequences out of 15000+600000
+ 567386 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,13n,133p,812b,858s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (9 pages, 205281 bytes).
+ 85i,13n,133p,1138b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (9 pages, 189328 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
+ 193 PDF objects out of 1000 (max. 8388607)
+ 161 compressed objects within 2 object streams
  42 named destinations out of 1000 (max. 500000)
  123 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -50,7 +50,7 @@
       \vspace*{2cm}
       {\Huge Philip Brand \textit{\Large(15776928)}\\\par}
       {\Huge Michael Brown \textit{\Large(48571923)}\\\par}
-      {\Huge Boston Black \textit{\Large(********)}\\\par}
+      {\Huge Boston Black \textit{\Large(24668421???)}\\\par}
       % ADD YOUR NAME AND STUDENT ID HERE
       \vspace*{3cm}
       {\LARGE \today}
@@ -123,10 +123,21 @@ Clear communication between group members of the expected inputs and outputs fro
 Another important aspect of the project ensuring high code quality, readability, and maintainability was strict rules around naming and syntax. This included consistent whitespace, indentation, case, and naming style. For example, all signals within the entity was postfixed with an underscore and whether that signal was an input or output. This can be seen in Listing \ref{code:entity_naming_convention} in Appendix A. This ensured when the components were used in the top-level Behavioural architecture with port mapping, it was easy to see which signals were inputs and outputs.
 
 \hl{Add more examples here \dots}
+% Could talk about how we tried to have names that described the capabilities of components. eg. 
+% timer_8_num_selectable has 8 numbers as output and we can select which one is outputting.
+% bcd_8_to_binary has 8 numbers that it converts
+% multiiplexer_8_1_4b has 8 inputs, 1 output, and each io is 5 bits (name may need to change)
+% counter_3b is a 3 bit counter
+% decoder_3b is a 3 bit decoder
+
+% note the consistent _xb at the end descripes how many bits are in the I/O
 
 \subsubsection{Component Reuse}
 
-\hl{Philip - I believe you Boston were going to write this?}
+% Unfinished
+In order to reduce the number of components that needed to be created and maintained, components were reused where possible. 
+
+The most versitile example of this was the 8 channel 5 bit mux. The mux took up to 8 5-bit BCD inputs, and selected one of those inputs to be the output. The select lines and number of channels for the mux corresponded the segment display, allowing both to be controlled with the same signal. This capability made it easy to use for displaying timer digits and error message letters. The same mux was also used to select what output to send throught to the display depending on the state. While not all the channels of the mux were used in all usecases. It stil made sense to use the same component as it was proven to work and integrated well with the rest of the system.
 
 \subsubsection{Programming Techniques}
 
