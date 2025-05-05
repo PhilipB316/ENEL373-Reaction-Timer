@@ -1,13 +1,19 @@
 ----------------------------------------------------------------------------------
--- Engineers: Boston Black, Philip Brand, Michael Brown
--- 
--- Last Modified Date: 10-03-2025
--- Design Name: p AIn_aND-SaDNeSS
--- Module Name: main - Behavioral
--- Project Name: just no
+-- Engineer: Boston Black, Philip Brand, Michael Brown
+
+-- Module Name: main - Structural
+-- Project Name: Reaction Timer
+--
+-- Project Description:
+-- Times the reaction speed of a user upon receiving an expected but unpredictable
+-- stimulus. In addition, keeps track of the last three reaction speeds and can
+-- calculate the maximum, minimum, and average time.
+--
+-- Module Description: 
+-- Instantiates all components for the Reaction Timer project and ties the inputs
+-- and outputs to the FPGA Nexys-4 DDR hardware.
 -- 
 ----------------------------------------------------------------------------------
-
 
 
 -- THIS MODULES NEEDS TO HAVE A GOOD HEADER BLOCK BEFORE SUBMISSION
@@ -16,7 +22,8 @@
 
 
 
-
+-- hi
+-- :)
 
 
 
