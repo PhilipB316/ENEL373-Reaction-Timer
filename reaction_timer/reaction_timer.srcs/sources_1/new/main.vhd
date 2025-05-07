@@ -23,14 +23,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity main is
-    Port (  CLK100MHZ : in STD_LOGIC;
-            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-            BTNC : in STD_LOGIC;
-            BTNR : in STD_LOGIC;
-            BTNL : in STD_LOGIC;
-            BTNU : in STD_LOGIC;
-            BTND : in STD_LOGIC);  
+    Port ( CLK100MHZ : in STD_LOGIC;
+           AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+           BTNC : in STD_LOGIC;
+           BTNR : in STD_LOGIC;
+           BTNL : in STD_LOGIC;
+           BTNU : in STD_LOGIC;
+           BTND : in STD_LOGIC);  
 end main;
 
 architecture Structural of main is
