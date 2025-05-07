@@ -10,13 +10,6 @@ report/report.toc
 report/_*minted*
 report/*.fdb_latexmk
 report/*.fls
-report/*.idx
-report/*.ilg
-report/*.ind
-report/*.lof
-report/*.lot
-report/*.mtc
-report/*.mtc0
 
 // /reaction_timer/reaction_timer.hw
 
