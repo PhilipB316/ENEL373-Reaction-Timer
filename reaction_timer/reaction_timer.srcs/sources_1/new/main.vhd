@@ -282,7 +282,7 @@ begin
                                        SELECT_IN => output_segment_select,
                                        MUX_OUT => encoded_error_text); 
 
---  8x4 to 4 encoded display data mux
+--  8x5 to 5 encoded display data mux
     ff11: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
                                        MUX_IN_1 => selected_alu_bcd_digit,
                                        MUX_IN_2 => selected_alu_bcd_digit,
