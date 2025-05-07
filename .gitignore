@@ -1,0 +1,20 @@
+report/report.aux
+report/report.bbl
+report/report.bcf
+report/report.blg
+report/report.log
+report/report.out
+report/report.run.xml
+report/report.synctex.gz
+report/report.toc
+
+// report/_minted/reaction_timer/reaction_timer.hw
+// /reaction_timer/reaction_timer.sim
+// /reaction_timer/reaction_timer.cache
+// /reaction_timer/reaction_timer.runs
+// !/reaction_timer/reaction_timer.runs/synth_1/main.dcp
+// /reaction_timer/*.jou
+// /reaction_timer/*.log
+// /reaction_timer/*.str
+// /reaction_timer/.Xil
+// /*.xdc
