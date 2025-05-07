@@ -1,0 +1,57 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\PYG{+w}{    }\PYG{n}{simulation\PYGZus{}clk}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k}{process}
+\PYG{+w}{    }\PYG{k}{begin}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{clk}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{clk}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}\PYG{+w}{ }\PYG{k}{process}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{simulation}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k}{process}
+\PYG{+w}{    }\PYG{k}{begin}
+\PYG{+w}{        }\PYG{n}{binary\PYGZus{}to\PYGZus{}bcd\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}input}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mh}{X\PYGZdq{}0000000\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}input}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mh}{X\PYGZdq{}0010001\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{binary\PYGZus{}to\PYGZus{}bcd\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}write\PYGZus{}trigger}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}write\PYGZus{}trigger}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}input}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mh}{X\PYGZdq{}00FF000\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}write\PYGZus{}trigger}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}operation\PYGZus{}select}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}11\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}write\PYGZus{}trigger}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}input}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mh}{X\PYGZdq{}0022222\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}write\PYGZus{}trigger}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}write\PYGZus{}trigger}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{binary\PYGZus{}to\PYGZus{}bcd\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{binary\PYGZus{}to\PYGZus{}bcd\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}operation\PYGZus{}select}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}01\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{binary\PYGZus{}to\PYGZus{}bcd\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{binary\PYGZus{}to\PYGZus{}bcd\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}operation\PYGZus{}select}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}10\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{binary\PYGZus{}to\PYGZus{}bcd\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{200}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{circular\PYGZus{}buffer\PYGZus{}reset}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{wait}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{100000}\PYG{n}{ns}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}\PYG{+w}{ }\PYG{k}{process}\PYG{p}{;}
+
+
+\end{Verbatim}

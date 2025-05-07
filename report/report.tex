@@ -125,7 +125,7 @@ Another important aspect of the project ensuring high code quality, readability,
 \hl{Add more examples here \dots}
 % Could talk about how we tried to have names that described the capabilities of components. eg. 
 % timer_8_num_selectable has 8 numbers as output and we can select which one is outputting.
-% bcd_8_to_binary has 8 numbers that it converts
+% BCD_8_to_binary has 8 numbers that it converts
 % multiiplexer_8_1_4b has 8 inputs, 1 output, and each io is 5 bits (name may need to change)
 % counter_3b is a 3 bit counter
 % decoder_3b is a 3 bit decoder
@@ -158,7 +158,24 @@ Since the project the significantly modularised, it was important that individua
 \section{Module Testing}
 % A brief section describing how you tested a significant module. Include at least one testbench and associated waveforms that demonstrate the functionality of a module in the report appendix.
 
-\hl{Philip - I believe this was going to the random number generator and then we can discuss maximal outputs? (to do on Tuesday?)}
+% TODO: rename bcd_expanded_out, possibly remove just have a standard 4-bit output
+% TODO: reorder waveform to be more logical - put alu output next to operation select and things like that, put clock at the top probably too
+% TODO: add testbench waveform for BCD to binary converter
+
+During development of the circular buffer, ALU, and associated data-type converters used to calculate the user reaction time statistics, the output numbers were too small. For example a minimum reaction time of 246 milliseconds would be displayed as 91 milliseconds. Since the delay would be displayed correctly immediate after a test, the problem lay somewhere within the \hl{blue} block in Figure \ref{project_structure}. An assumption was made that the BCD-to-binary converter would be fault-free, since the logic it required was simple. To determine in which module the problem lay, a testbench comprising of the circular buffer, ALU, and binary-to-BCD converter was created. The testbench simulated three write operations to the circular buffer, an ALU operation select, and a trigger for the binary to BCD double-dabble algorithm, followed by reset signal to the circular buffer and binary-to-BCD converter. The testbench stimulus VHDL is in Listing \ref{code:alu_testbench} in \hl{Appendix}.
+
+The major values output by the testbench are the circular buffer contents, the ALU operation select and ALU output, and the binary-to-BCD converted output. These waveforms, as well as the other waveforms such as the clock, circular buffer write, and resets can be seen in Figure \ref{fig:alu_testbench}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.99\textwidth]{WhatsApp Image 2025-05-07 at 11.33.07.jpeg}
+  \caption{Reaction statistic calculation testbench.}
+  \label{fig:alu_testbench}
+\end{figure}
+
+The first 750 ns of testbench simulation show the three write operations to the circular buffer. The three circular buffer outputs change exactly as expected, with each write operation setting a new value. The ALU operation select is 3 at 700 ns, and the ALU output is 0087000, which is the correct hexadecimal representation of the average of the three values in the circular buffer. (CHECK THAT). The ALU operation is then set to 1, and the ALU outputs the correct maximum time of 00ff000. The final ALU operation is 2, and the ALU outputs the correct minimum time of 0010001. The binary-to-BCD converter is then triggered, and the BCD output is 00065537, which the correct BCD representation of the 0010001 in hexadecimal.
+
+These waveforms indicated that the problem did not lie where expected, and must have been with the BCD-to-binary converter originally thought of as fault-free. Another testbench was created to test that converter, and, as expected, the converter did not convert correctly. This was rectified by modifying the changing the multiplication factors of 10 from hexadecimal to binary. The fixed testbench waveform can be seen in Appendix something in Figure \ref{fig:correct_converter_tb}.
 
 \newpage
 
@@ -252,6 +269,70 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
   \captionsetup{belowskip=0pt}
   \captionof{listing}{Capitalised port names to avoid errors.}
   \label{code:entity_naming_convention}
+\end{code}
+
+\vspace*{1cm}
+\begin{code}
+  \begin{minted}{vhdl}
+
+    simulation_clk : process
+    begin
+        wait for 1ns;
+        clk <= '1';
+        wait for 1ns;
+        clk <= '0';
+    end process;
+
+    simulation : process
+    begin
+        binary_to_bcd_reset <= '1';
+        wait for 10ns;
+        circular_buffer_reset <= '1';
+        circular_buffer_input <= X"0000000";
+        wait for 100ns;
+        circular_buffer_reset <= '0';
+        wait for 100ns;
+        circular_buffer_input <= X"0010001";
+        binary_to_bcd_reset <= '1';
+        wait for 100ns;
+        circular_buffer_write_trigger <= '1';
+        wait for 100ns;
+        circular_buffer_write_trigger <= '0';
+        wait for 100ns;
+        circular_buffer_input <= X"00FF000";
+        wait for 10ns;
+        circular_buffer_write_trigger <= '1';
+        wait for 10ns;
+        alu_operation_select <= "11";
+        circular_buffer_write_trigger <= '0';
+        wait for 100ns;
+        circular_buffer_input <= X"0022222";
+        wait for 10ns;
+        circular_buffer_write_trigger <= '1';
+        wait for 10ns;
+        circular_buffer_write_trigger <= '0';
+        wait for 100ns;
+        binary_to_bcd_reset <= '0';
+        wait for 100ns;
+        binary_to_bcd_reset <= '1';
+        alu_operation_select <= "01";
+        wait for 1ns;
+        binary_to_bcd_reset <= '0';
+        wait for 100ns;
+        binary_to_bcd_reset <= '1';
+        alu_operation_select <= "10";
+        wait for 100ns;
+        binary_to_bcd_reset <= '0';
+        wait for 200ns;
+        circular_buffer_reset <= '1';
+        wait for 100000ns;
+    end process;
+        
+
+  \end{minted}
+  \captionsetup{belowskip=0pt}
+  \captionof{listing}{Stimulus for reaction statistic calculation debug testbench.}
+  \label{code:alu_testbench}
 \end{code}
 
 \end{document}
