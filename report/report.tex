@@ -86,6 +86,8 @@ The reaction stimulus test starts with three LEDs that turn off sequentially, wi
 
 The FPGA reaction stimulus test depends on four major components, those being the 8-digit counter, the ALU, the reaction countdown, and the output select and override. These components are shown in Figure \ref{project_structure}. Each of these components are enabled and disabled via a finite state machine.
 
+% TODO: Add an error state module/mux to the diagram
+% TODO: Add better labels to diagram
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{project_overall_structure.png}
@@ -95,7 +97,8 @@ The FPGA reaction stimulus test depends on four major components, those being th
 
 An 8-digit 5-bit-BCD counter is the primary mechanism used to track the reaction time from each stimulus test to the nearest millisecond. Each BCD digit is passed into an 8x5-to-5 mux. The purpose of this mux is to sync the selected output digit with the currently active seven segment display anode, outputting each digit onto its associated display.
 
-All the BCD digits from the 8-digit counter are passed directly to ALU module. This module converts the BCD numbers into a 10-bit binary number, then stores the last three reaction times in a circular buffer. This buffer is read by the ALU which calculates the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD, and another 8x5-to-5 mux is used to select which digit is output.
+% TODO: Review the reference to double dabble here
+All the BCD digits from the 8-digit counter are passed directly to ALU module. This module converts the BCD numbers into a 10-bit binary number, then stores the last three reaction times in a circular buffer. This buffer is read by the ALU which calculates the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD using the double dabble algorithm \cite{double_dabble}, and another 8x5-to-5 mux is used to select which digit is output.
 
 A linear shift register is used to provide some randomisation for the countdown sequence at the start of every reaction stimulus test. This time randomisation acts as the trigger for the countdown state, Dotiey, and also has an 8x5-to-5 mux for digit selection.
 
@@ -122,6 +125,8 @@ Clear communication between group members of the expected inputs and outputs fro
 
 Another important aspect of the project ensuring high code quality, readability, and maintainability was strict rules around naming and syntax. This included consistent whitespace, indentation, case, and naming style. For example, all signals within the entity was postfixed with an underscore and whether that signal was an input or output. This can be seen in Listing \ref{code:entity_naming_convention} in Appendix A. This ensured when the components were used in the top-level Behavioural architecture with port mapping, it was easy to see which signals were inputs and outputs.
 
+% TODO: Add capatilisation of signals/input issue
+
 \hl{Add more examples here \dots}
 % Could talk about how we tried to have names that described the capabilities of components. eg. 
 % timer_8_num_selectable has 8 numbers as output and we can select which one is outputting.
@@ -146,13 +151,15 @@ Another method used to implement the FPGA design was pair programming. This had 
 Since the project the significantly modularised, it was important that individual components could be developed and tested without hindering the development of other components. The method used to achieve this was to use git branching and merging. Individual components were developed on separate branches, tested, and then merged into the main branch. This ensured that the main branch was always stable, and that broken changes could be easily rolled back.
 
 \subsection{Design Justification}
+The design of the reaction stimulus test is intended to allow ease of modification or expansion. Keeping modularisation as a high priority during component design allowed each module to view each other module as a ``black box'', interacting only through standardised interfaces. These interfaces were typically a single 5-bit encoded number or letter based on BCD, and were controlled by the generalised 8x5-to-5 mux shown in Appendix \ref{code:8x5_to_5_mux} instead of custom muxes for each output. This further reduced the number of different components required. The only exception to this was the output of all counted BCD digits to the BCD-to-binary convertor as it operated on all digits at once, as shown in Appendix \ref{code:bcd_to_binary}.
 
-\begin{enumerate}
-  \item it did what it was meant to do
-  \item it was not coded into an unchangeable spaghetti
-  \item it was incredibly modular
-\end{enumerate}
+A second benefit of each component being a ``black box'' is that as most components interacted only through standardised interfaces, how the components operated behind the scenes was irrelevant. This allowed for significant changes to how a module completed a task without disturbing inter-module communication.
 
+The usage the 8x5-to-5 mux shown in Appendix \ref{code:output_select_mux_instantiation} to select between outputs allows for addition of states as desired by utilizing more mux inputs, with output select lines controlled by the finite state machine. If more states were to be added, then additional muxes can be linked up for more input lines. This shows clear capability for design expansion.
+
+A selectively enabled text override was used to display text in the first two seven-segment displays as it centralised the control of text display. This additionally simplified the other modules as it limited their design to the numeric part of the code.
+% TODO: Add justriciation of selectable text override
+% TODO: philip sir add justification of lsfr for randon number generation
 \newpage
 
 \section{Module Testing}
