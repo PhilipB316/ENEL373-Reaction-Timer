@@ -260,20 +260,96 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
     use IEEE.NUMERIC_STD.ALL;
 
     entity main is
-        Port (  CLK100MHZ : in STD_LOGIC; -- This must be capitalised.
-                -- This, and the rest, must be too.
-                AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00"; 
-                SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-                BTNC : in STD_LOGIC;
-                BTNR : in STD_LOGIC;
-                BTNL : in STD_LOGIC;
-                BTNU : in STD_LOGIC;
-                BTND : in STD_LOGIC);  
+        Port ( CLK100MHZ : in STD_LOGIC; -- This must be capitalised.
+               -- This, and the rest, must be too.
+               AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00"; 
+               SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+               BTNC : in STD_LOGIC;
+               BTNR : in STD_LOGIC;
+               BTNL : in STD_LOGIC;
+               BTNU : in STD_LOGIC;
+               BTND : in STD_LOGIC);  
     end main;
   \end{minted}
   \captionsetup{belowskip=0pt}
   \captionof{listing}{Capitalised port names to avoid errors.}
   \label{code:case}
+\end{code}
+
+\vspace*{1cm}
+
+\begin{code}
+  \begin{minted}{vhdl}
+    library IEEE;
+    use IEEE.STD_LOGIC_1164.ALL;
+    
+    entity multiplexer_8_1_4b is
+        Port ( MUX_IN_0 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_1 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_2 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_3 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_4 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_5 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_6 : in STD_LOGIC_VECTOR (4 downto 0);
+               MUX_IN_7 : in STD_LOGIC_VECTOR (4 downto 0);
+               SELECT_IN : in STD_LOGIC_VECTOR (2 downto 0);
+               MUX_OUT : out STD_LOGIC_VECTOR (4 downto 0));
+    end multiplexer_8_1_4b;
+    
+    architecture Behavioral of multiplexer_8_1_4b is
+    begin
+        process (SELECT_IN, MUX_IN_0, MUX_IN_1, MUX_IN_2, MUX_IN_3, MUX_IN_4, MUX_IN_5, MUX_IN_6, MUX_IN_7)
+        begin
+            case(SELECT_IN) is
+                when "000" => MUX_OUT <= MUX_IN_0;
+                when "001" => MUX_OUT <= MUX_IN_1;
+                when "010" => MUX_OUT <= MUX_IN_2;
+                when "011" => MUX_OUT <= MUX_IN_3;
+                when "100" => MUX_OUT <= MUX_IN_4;
+                when "101" => MUX_OUT <= MUX_IN_5;
+                when "110" => MUX_OUT <= MUX_IN_6;
+                when "111" => MUX_OUT <= MUX_IN_7;
+            end case;
+        end process;
+    end Behavioral;
+  \end{minted}
+  \captionsetup{belowskip=0pt}
+  \captionof{listing}{Generalised 8x5-to-5 mux.}
+  \label{code:8x5_to_5_mux}
+\end{code}
+
+\vspace*{1cm}
+
+\begin{code}
+  \begin{minted}{vhdl}
+    entity bcd_8_to_binary is
+        Port ( BCD_BUS_IN : in STD_LOGIC_VECTOR (39 downto 0);
+              BINARY_OUT : out STD_LOGIC_VECTOR (27 downto 0));
+    end bcd_8_to_binary;
+  \end{minted}
+  \captionsetup{belowskip=0pt}
+  \captionof{listing}{BCD to binary converter entity defintion.}
+  \label{code:bcd_to_binary}
+\end{code}
+
+\vspace*{1cm}
+
+\begin{code}
+  \begin{minted}{vhdl}
+    ff11: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
+                                       MUX_IN_1 => selected_alu_bcd_digit,
+                                       MUX_IN_2 => selected_alu_bcd_digit,
+                                       MUX_IN_3 => selected_alu_bcd_digit,
+                                       MUX_IN_4 => encoded_error_text,
+                                       MUX_IN_5 => encoded_display_placeholder,
+                                       MUX_IN_6 => encoded_display_placeholder,
+                                       MUX_IN_7 => encoded_dots,
+                                       SELECT_IN => encoded_display_input_select,
+                                       MUX_OUT => encoded_segment_data);
+  \end{minted}
+  \captionsetup{belowskip=0pt}
+  \captionof{listing}{Component instantiation of output select 8x5-to-5 mux.}
+  \label{code:output_select_mux_instantiation}
 \end{code}
 
 \vspace*{1cm}

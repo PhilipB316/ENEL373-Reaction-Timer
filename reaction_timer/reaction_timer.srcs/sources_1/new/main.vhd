@@ -23,14 +23,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity main is
-    Port (  CLK100MHZ : in STD_LOGIC;
-            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
-            BTNC : in STD_LOGIC;
-            BTNR : in STD_LOGIC;
-            BTNL : in STD_LOGIC;
-            BTNU : in STD_LOGIC;
-            BTND : in STD_LOGIC);  
+    Port ( CLK100MHZ : in STD_LOGIC;
+           AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+           SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+           BTNC : in STD_LOGIC;
+           BTNR : in STD_LOGIC;
+           BTNL : in STD_LOGIC;
+           BTNU : in STD_LOGIC;
+           BTND : in STD_LOGIC);  
 end main;
 
 architecture Structural of main is
@@ -282,7 +282,7 @@ begin
                                        SELECT_IN => output_segment_select,
                                        MUX_OUT => encoded_error_text); 
 
---  8x4 to 4 encoded display data mux
+--  8x5 to 5 encoded display data mux
     ff11: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
                                        MUX_IN_1 => selected_alu_bcd_digit,
                                        MUX_IN_2 => selected_alu_bcd_digit,
