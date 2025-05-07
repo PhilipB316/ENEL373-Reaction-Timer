@@ -7,8 +7,19 @@ report/report.out
 report/report.run.xml
 report/report.synctex.gz
 report/report.toc
+report/_*minted*
+report/*.fdb_latexmk
+report/*.fls
+report/*.idx
+report/*.ilg
+report/*.ind
+report/*.lof
+report/*.lot
+report/*.mtc
+report/*.mtc0
 
-// report/_minted/reaction_timer/reaction_timer.hw
+// /reaction_timer/reaction_timer.hw
+
 // /reaction_timer/reaction_timer.sim
 // /reaction_timer/reaction_timer.cache
 // /reaction_timer/reaction_timer.runs
