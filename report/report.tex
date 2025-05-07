@@ -20,8 +20,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[backend=biber, style=ieee]{biblatex}
 \addbibresource{references.bib}
-% \bibliographystyle{ieee} % or another style like IEEE, APA, etc.
-% \nocite{*}
+\defbibheading{bibliography}{} % Hides the "References" title
 \usepackage{url}
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
@@ -32,8 +31,7 @@
 \usepackage{caption}
 \newenvironment{code}{\captionsetup{type=listing}}{}
 \SetupFloatingEnvironment{listing}{name=Code Listing}
-
-
+ 
 \begin{document}
 
 \newgeometry{top=20mm}
@@ -158,8 +156,10 @@ A second benefit of each component being a ``black box'' is that as most compone
 The usage the 8x5-to-5 mux shown in Appendix \ref{code:output_select_mux_instantiation} to select between outputs allows for addition of states as desired by utilizing more mux inputs, with output select lines controlled by the finite state machine. If more states were to be added, then additional muxes can be linked up for more input lines. This shows clear capability for design expansion.
 
 A selectively enabled text override was used to display text in the first two seven-segment displays as it centralised the control of text display. This additionally simplified the other modules as it limited their design to the numeric part of the code.
+
 % TODO: Add justriciation of selectable text override
 % TODO: philip sir add justification of lsfr for randon number generation
+
 \newpage
 
 \section{Module Testing}
@@ -217,9 +217,7 @@ A significantly unexpected issue that appeared during the testing of the finite 
 
 There were issues with the simulation software built into the Vivado toolchain. During the design and subsequent simulation of the BCD-to-Binary numeric converter, the Vivado simulator would stop the simulation at the beginning of the numeric conversion, but would not give an error message to indicate an issue. The issue was narrowed down to being a problem with the simulator itself when a bitstream was generated for the whole system so that the convertor could be tested as part of the whole, and no issue was found.
 
-Another issue that arose was regarding case sensitivity in VHDL. Although VHDL is not case sensitive, the constraints file the VHDL interfaces with is. Early on during the project, while developing the clock divider, an error message ``\hl{insert error message here}'' was encountered. The approach to solving this problem was to ask the TAs in the lab what the message meant. However, they were unable to explain the meaning of the message. From there, the clock divider code we wrote was thoroughly compared to the provided clock divider code, and every small difference tested to see if it repaired the error. This determined the issue to be the case of the clock input declared in entity of main module, as lowercase had been used rather than uppercase. This correct case can be seen in Listing \ref{code:entity_naming_convention}.
-
-\newpage
+Another issue that arose was regarding case sensitivity in VHDL. Although VHDL is not case sensitive, the constraints file the VHDL interfaces with is. Early on during the project, while developing the clock divider, an error message ``\hl{insert error message here}'' was encountered. The approach to solving this problem was to ask the TAs in the lab what the message meant. However, they were unable to explain the meaning of the message. From there, the clock divider code we wrote was thoroughly compared to the provided clock divider code, and every small difference tested to see if it repaired the error. This determined the issue to be the case of the clock input declared in entity of main module, as lowercase had been used rather than uppercase. This correct case can be seen in Listing \ref{code:case}.
 
 \section{Conclusions}
 % Highlight any problems you encountered and how you solved them. Also discuss what you learned and give suggestions on how the project could be improved
@@ -228,7 +226,7 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
 \newpage
 % There is no need to include a full code listing in your report as your code will be submitted via eng-git. However, reference to a code snippet in an appendix is quite appropriate. Formal citations to books, web articles, open source VHDL code and other sources should be listed in a reference section that uses the IEEE style and format.
 
-
+\section{References}
 \printbibliography
 
 \newpage
@@ -275,7 +273,7 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
   \end{minted}
   \captionsetup{belowskip=0pt}
   \captionof{listing}{Capitalised port names to avoid errors.}
-  \label{code:entity_naming_convention}
+  \label{code:case}
 \end{code}
 
 \vspace*{1cm}
