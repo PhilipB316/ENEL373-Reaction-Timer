@@ -26,7 +26,11 @@ architecture Behavioral of bcd_8_to_binary_tb is
     signal readable_input : std_logic_vector (31 downto 0) := (others => '0');
     
 begin
-    
+    ffo: component bcd_8_to_binary port map(BCD_BUS_IN => bcd_input,
+                                            BINARY_OUT => binary_result);
+    simulation: process
+    begin
+    wait for 100ns;
     readable_input(3 downto 0) <= X"2";
     readable_input(7 downto 4) <= X"5";
     readable_input(11 downto 8) <= X"9";
@@ -35,10 +39,6 @@ begin
     bcd_input(3 downto 0) <= readable_input(3 downto 0);
     bcd_input(8 downto 5) <= readable_input(7 downto 4);
     bcd_input(13 downto 10) <= readable_input(11 downto 8);
-    bcd_input(18 downto 15) <= readable_input(15 downto 12);
-
-    
-    ffo: component bcd_8_to_binary port map(BCD_BUS_IN => bcd_input,
-                                       BINARY_OUT => binary_result);
-
+    bcd_input(18 downto 15) <= readable_input(15 downto 12);    
+    end process;
 end Behavioral;
