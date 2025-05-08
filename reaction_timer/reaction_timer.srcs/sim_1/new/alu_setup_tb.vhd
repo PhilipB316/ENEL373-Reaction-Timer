@@ -17,19 +17,19 @@ entity alu_setup_tb is
 end alu_setup_tb;
 
 architecture Behavioral of alu_setup_tb is
+    signal clk : std_logic := '0';
+    signal circular_buffer_input : std_logic_vector (27 downto 0) := (others => '0');
+    signal circular_buffer_write_trigger : std_logic := '0';
+    signal circular_buffer_reset : std_logic := '0';
     signal circular_buffer_output_1 : std_logic_vector (27 downto 0) := (others => '0');
     signal circular_buffer_output_2 : std_logic_vector (27 downto 0) := (others => '0');
     signal circular_buffer_output_3 : std_logic_vector (27 downto 0) := (others => '0');
-    signal circular_buffer_input : std_logic_vector (27 downto 0) := (others => '0');
     signal circular_buffer_size : std_logic_vector (1 downto 0) := (others => '0');
     signal alu_operation_select : std_logic_vector (1 downto 0) := (others => '0');
-    signal circular_buffer_write_trigger : std_logic := '0';
-    signal circular_buffer_reset : std_logic := '0';
-    signal clk : std_logic := '0';
+    signal alu_output : std_logic_vector (27 downto 0) := (others => '0');
     signal binary_to_bcd_reset : std_logic := '0';
     signal bcd_out : std_logic_vector (39 downto 0) := (others => '0');
-    signal bcd_out_expanded : std_logic_vector (31 downto 0) := (others => '0');
-    signal alu_output : std_logic_vector (27 downto 0) := (others => '0');
+    signal readable_bcd : std_logic_vector (31 downto 0) := (others => '0');
     
     component alu is
         Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0);
@@ -72,14 +72,14 @@ begin
                                     BINARY_IN => alu_output,
                                     BCD_8_DIGIT_OUT => bcd_out);
     
-    bcd_out_expanded(31 downto 28) <= bcd_out(38 downto 35);
-    bcd_out_expanded(27 downto 24) <= bcd_out(33 downto 30);
-    bcd_out_expanded(23 downto 20) <= bcd_out(28 downto 25);
-    bcd_out_expanded(19 downto 16) <= bcd_out(23 downto 20);
-    bcd_out_expanded(15 downto 12) <= bcd_out(18 downto 15);
-    bcd_out_expanded(11 downto 8) <= bcd_out(13 downto 10);
-    bcd_out_expanded(7 downto 4) <= bcd_out(8 downto 5);
-    bcd_out_expanded(3 downto 0) <= bcd_out(3 downto 0);
+    readable_bcd(31 downto 28) <= bcd_out(38 downto 35);
+    readable_bcd(27 downto 24) <= bcd_out(33 downto 30);
+    readable_bcd(23 downto 20) <= bcd_out(28 downto 25);
+    readable_bcd(19 downto 16) <= bcd_out(23 downto 20);
+    readable_bcd(15 downto 12) <= bcd_out(18 downto 15);
+    readable_bcd(11 downto 8) <= bcd_out(13 downto 10);
+    readable_bcd(7 downto 4) <= bcd_out(8 downto 5);
+    readable_bcd(3 downto 0) <= bcd_out(3 downto 0);
 
     simulation_clk : process
     begin
@@ -133,6 +133,4 @@ begin
         circular_buffer_reset <= '1';
         wait for 100000ns;
     end process;
-        
-
 end Behavioral;
