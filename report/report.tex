@@ -48,8 +48,7 @@
       \vspace*{2cm}
       {\Huge Philip Brand \textit{\Large(15776928)}\\\par}
       {\Huge Michael Brown \textit{\Large(48571923)}\\\par}
-      {\Huge Boston Black \textit{\Large(\hl{24668421???})}\\\par}
-      % ADD YOUR NAME AND STUDENT ID HERE
+      {\Huge Boston Black \textit{\Large(24668421)}\\\par}
       \vspace*{3cm}
       {\LARGE \today}
     \end{center}
@@ -102,8 +101,6 @@ A linear shift register is used to provide some randomisation for the countdown 
 
 All three 8x5-to-5 muxes from the three components described above are piped into an 8x5-to-5 mux used for output selection. This mux selects which module to take output from depending on what state is active. The mux output is piped into a text override, which overwrites some of the digits with letters based on state. This is finally piped into a 7 segment decoder, which takes a 5-bit BCD digit and converts it to a 8-bit seven segment display light combination which is piped to hardware.
 
-
-
 \section{Expanded Design Summary}
 % (~2 pages): Describe the methods your group used to implement your FPGA design. Justify your final design. Support your descriptions and justifications with specific, explicit references to your VHDL source code in the appendix. VHDL descriptions could, for example, include an RTL description. 
 
@@ -121,15 +118,17 @@ Clear communication between group members of the expected inputs and outputs fro
 
 \subsubsection{Naming and Syntax Conventions}
 
-Another important aspect of the project ensuring high code quality, readability, and maintainability was strict rules around naming and syntax. This included consistent whitespace, indentation, case, and naming style. For example, all signals within the entity was postfixed with an underscore and whether that signal was an input or output. This can be seen in Listing \ref{code:entity_naming_convention} in Appendix A. This ensured when the components were used in the top-level Behavioural architecture with port mapping, it was easy to see which signals were inputs and outputs.
+Another important aspect of the project ensuring high code quality, readability, and maintainability was strict rules around naming and syntax. This included consistent whitespace, indentation, case, and naming style. 
 
+For example, all signals within an entity were postfixed with an underscore and whether that signal was an input or output. This can be seen in Listing \ref{code:entity_naming_convention} in Appendix A. This ensured when the components were used in the top-level Behavioural architecture with port mapping, it was easy to see which signals were inputs and outputs.
+
+When naming modules, an effort was made to name them in a way that described the capabilities of the module. For example,  timer_8_num_selectable has 8 numbers and one can be selected. we also used the postfix _xb meaning a module had a x bit input/output. This is used in modules such as counter_3b and decoder_3b.
 % TODO: Add capatilisation of signals/input issue
 
-\hl{Add more examples here \dots}
 % Could talk about how we tried to have names that described the capabilities of components. eg. 
 % timer_8_num_selectable has 8 numbers as output and we can select which one is outputting.
 % BCD_8_to_binary has 8 numbers that it converts
-% multiiplexer_8_1_4b has 8 inputs, 1 output, and each io is 5 bits (name may need to change)
+% multiiplexer_8_1_4b has 8 inputs, 1 output, and each io is 5 bits (name may need to change to 5b)
 % counter_3b is a 3 bit counter
 % decoder_3b is a 3 bit decoder
 
@@ -140,7 +139,9 @@ Another important aspect of the project ensuring high code quality, readability,
 % Unfinished
 In order to reduce the number of components that needed to be created and maintained, components were reused where possible. 
 
-The most versitile example of this was the 8 channel 5 bit mux. The mux took up to 8 5-bit BCD inputs, and selected one of those inputs to be the output. The select lines and number of channels for the mux corresponded the segment display, allowing both to be controlled with the same signal. This capability made it easy to use for displaying timer digits and error message letters. The same mux was also used to select what output to send throught to the display depending on the state. While not all the channels of the mux were used in all usecases. It stil made sense to use the same component as it was proven to work and integrated well with the rest of the system.
+The most versitile example of this was the 8 channel 5 bit mux \ref{code:8x5_to_5_mux}. The mux took up to 8 5-bit BCD inputs, and selected one of those inputs to be the output. The select lines and number of channels for the mux corresponded the segment display, allowing both to be controlled with the same signal. This capability made it easy to use for displaying timer digits and error message letters. The same mux was also used to select what output to send throught to the display depending on the state. While not all the channels of the mux were used in all usecases. It stil made sense to use the same component as it was proven to work and integrated well with the rest of the system.
+
+Another module that was reused a lot is clk_divider. Having an input to set the upperbound before toggling the slower clock signal allowed it to be reused for a wide range of output clock signals. This input allowed it to output a variable speed timer for a pseudorandom dot delay as the upperbound could be changed resulting in different times.
 
 \subsubsection{Programming Techniques}
 
@@ -157,7 +158,7 @@ The usage the 8x5-to-5 mux shown in Appendix \ref{code:output_select_mux_instant
 
 A selectively enabled text override was used to display text in the first two seven-segment displays as it centralised the control of text display. This additionally simplified the other modules as it limited their design to the numeric part of the code.
 
-% TODO: Add justriciation of selectable text override
+% TODO: Add justriciation of selectable text override <-- justification? - Boston
 % TODO: philip sir add justification of lsfr for randon number generation
 
 \newpage
