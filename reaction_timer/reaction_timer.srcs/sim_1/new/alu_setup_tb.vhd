@@ -1,10 +1,11 @@
 ----------------------------------------------------------------------------------
--- Engineer: 
+-- Engineers: Michael Brown, Philip Brand
 -- Create Date: 25.04.2025 02:04:31
 -- Module Name: alu_setup_tb - Behavioral
--- Project Name: 
--- Description: 
--- Additional Comments: 
+-- Project Name: ALU Setup Test Bench 
+-- Description: Tests the alu, circular_buffer, and binary_to_bcd_8 components.
+-- Additional Comments: Used to test the more complex parts of the 
+-- reaction statistic calculations.
 ----------------------------------------------------------------------------------
 
 

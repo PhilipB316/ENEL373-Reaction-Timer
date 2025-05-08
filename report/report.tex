@@ -44,11 +44,11 @@
       \textsc{\large ENEL373: Digital Electronics and Devices}\\[0.5cm]
       \textsc{\Large University of Canterbury}\\[3.5cm]
       \linespread{1}
-      {\Huge\bfseries \hl{This is an Awesome Title \\[0.3cm] for Our First Report}} \\
+      {\Huge\bfseries{Development of a Reaction \\[0.3cm] Timer in VHDL}} \\
       \vspace*{2cm}
       {\Huge Philip Brand \textit{\Large(15776928)}\\\par}
       {\Huge Michael Brown \textit{\Large(48571923)}\\\par}
-      {\Huge Boston Black \textit{\Large(\hl{24668421???})}\\\par}
+      {\Huge Boston Black \textit{\Large(24668421}\\\par}
       % ADD YOUR NAME AND STUDENT ID HERE
       \vspace*{3cm}
       {\LARGE \today}
@@ -197,7 +197,7 @@ However, once all the mappings were implemented, we found that our countdown tim
 
 A significantly unexpected issue that appeared during the testing of the finite state machine was deemed as the ``Schrödinger's States'' problem. This originated from the FSM running lines of code designed to change states even while they were commented out. To narrow down the source of the bug, the FSM was reduced to only what was necessary to run a simple reaction timer test without any ALU or error message. From there, states were slowly added back into the FSM and were tied to LEDs that would light up when the new states were activated. This showed additional issues in which an LED would trigger, but the state change wouldn't complete. With the suspicion that a race condition was in play,the issue was fixed by removing the FSM inputs from the sensitivity list of the FSM process, instead tying it to a 10 kHz clock instead. \textcolor{red}{CONFIRM THE CLOCK SPEED}.
 
-There were issues with the simulation software built into the Vivado toolchain. During the design and subsequent simulation of the BCD-to-Binary numeric converter, the Vivado simulator would stop the simulation at the beginning of the numeric conversion, but would not give an error message to indicate an issue. The issue was narrowed down to being a problem with the simulator itself when a bitstream was generated for the whole system so that the convertor could be tested as part of the whole, and no issue was found.
+There were issues with the simulation software built into the Vivado toolchain. During the design and subsequent simulation of the BCD-to-Binary numeric converter, the Vivado simulator would stop the simulation at the beginning of the numeric conversion, but would not give an error message to indicate an issue. The issue was narrowed down to being a problem with the simulator itself when a bitstream was generated for the whole system so that the converter could be tested as part of the whole, and no issue was found.
 
 Another issue that arose was regarding case sensitivity in VHDL. Although VHDL is not case sensitive, the constraints file the VHDL interfaces with is. Early on during the project, while developing the clock divider, an error message ``\hl{insert error message here}'' was encountered. The approach to solving this problem was to ask the TAs in the lab what the message meant. However, they were unable to explain the meaning of the message. From there, the clock divider code we wrote was thoroughly compared to the provided clock divider code, and every small difference tested to see if it repaired the error. This determined the issue to be the case of the clock input declared in entity of main module, as lowercase had been used rather than uppercase. This correct case can be seen in Listing \ref{code:case}.
 
@@ -334,9 +334,94 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
   \label{code:output_select_mux_instantiation}
 \end{code}
 
+\newpage
+
+\section{Appendix B: Testbench \& Waveforms}
+
 \vspace*{1cm}
 \begin{code}
   \begin{minted}{vhdl}
+----------------------------------------------------------------------------------
+-- Engineers: Michael Brown, Philip Brand
+-- Create Date: 25.04.2025 02:04:31
+-- Module Name: alu_setup_tb - Behavioral
+-- Project Name: ALU Setup Test Bench 
+-- Description: Tests the alu, circular_buffer, and binary_to_bcd_8 components.
+-- Additional Comments: Used to test the more complex parts of the 
+-- reaction statistic calculations.
+----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity alu_setup_tb is
+--  Port ( );
+end alu_setup_tb;
+
+architecture Behavioral of alu_setup_tb is
+    signal circular_buffer_output_1 : std_logic_vector (27 downto 0) := (others => '0');
+    signal circular_buffer_output_2 : std_logic_vector (27 downto 0) := (others => '0');
+    signal circular_buffer_output_3 : std_logic_vector (27 downto 0) := (others => '0');
+    signal circular_buffer_input : std_logic_vector (27 downto 0) := (others => '0');
+    signal circular_buffer_size : std_logic_vector (1 downto 0) := (others => '0');
+    signal alu_operation_select : std_logic_vector (1 downto 0) := (others => '0');
+    signal circular_buffer_write_trigger : std_logic := '0';
+    signal circular_buffer_reset : std_logic := '0';
+    signal clk : std_logic := '0';
+    signal binary_to_bcd_reset : std_logic := '0';
+    signal bcd_out : std_logic_vector (39 downto 0) := (others => '0');
+    signal bcd_out_expanded : std_logic_vector (31 downto 0) := (others => '0');
+    signal alu_output : std_logic_vector (27 downto 0) := (others => '0');
+    
+    component alu is
+        Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0);
+               BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
+               OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
+    end component alu;
+
+    component circular_buffer is
+        Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0);
+               NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0);
+               BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
+               RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
+    end component circular_buffer;
+
+    component binary_to_bcd_8 is
+        Port ( CLK_IN : IN  std_logic;
+               RESET_IN : IN  std_logic;
+               BINARY_IN : IN  std_logic_vector(27 downto 0);
+               BCD_8_DIGIT_OUT : OUT std_logic_vector (39 downto 0) := (others => '0'));
+    end component binary_to_bcd_8;
+
+begin
+    ff0: alu port map ( NUM_1_IN => circular_buffer_output_1,
+                        NUM_2_IN => circular_buffer_output_2,
+                        NUM_3_IN => circular_buffer_output_3,
+                        BUFFER_SIZE_IN => circular_buffer_size,
+                        OPERATION_SELECT_IN => alu_operation_select,
+                        OUTPUT_OUT => alu_output);
+    
+    ff1: circular_buffer port map ( NUMBER_IN => circular_buffer_input,
+                                    NUMBER_1_OUT => circular_buffer_output_1,
+                                    NUMBER_2_OUT => circular_buffer_output_2,
+                                    NUMBER_3_OUT => circular_buffer_output_3,
+                                    BUFFER_SIZE_OUT => circular_buffer_size,
+                                    RESET_IN => circular_buffer_reset,
+                                    WRITE_TRIGGER_IN => circular_buffer_write_trigger);
+
+    ff2: binary_to_bcd_8 port map ( CLK_IN => clk,
+                                    RESET_IN => binary_to_bcd_reset,
+                                    BINARY_IN => alu_output,
+                                    BCD_8_DIGIT_OUT => bcd_out);
+    
+    bcd_out_expanded(31 downto 28) <= bcd_out(38 downto 35);
+    bcd_out_expanded(27 downto 24) <= bcd_out(33 downto 30);
+    bcd_out_expanded(23 downto 20) <= bcd_out(28 downto 25);
+    bcd_out_expanded(19 downto 16) <= bcd_out(23 downto 20);
+    bcd_out_expanded(15 downto 12) <= bcd_out(18 downto 15);
+    bcd_out_expanded(11 downto 8) <= bcd_out(13 downto 10);
+    bcd_out_expanded(7 downto 4) <= bcd_out(8 downto 5);
+    bcd_out_expanded(3 downto 0) <= bcd_out(3 downto 0);
 
     simulation_clk : process
     begin
@@ -345,7 +430,7 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
         wait for 1ns;
         clk <= '0';
     end process;
-
+    
     simulation : process
     begin
         binary_to_bcd_reset <= '1';
@@ -390,12 +475,22 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
         circular_buffer_reset <= '1';
         wait for 100000ns;
     end process;
-        
 
   \end{minted}
   \captionsetup{belowskip=0pt}
-  \captionof{listing}{Stimulus for reaction statistic calculation debug testbench.}
+  \captionof{listing}{Testbench for ALU, circular buffer, and BCD to binary converter.}
   \label{code:alu_testbench}
 \end{code}
+
+\vspace*{1cm}
+
+The waveform associated with the testbench in Listing \ref{code:alu_testbench} can be seen in Figure \ref{fig:alu_testbench_2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.99\textwidth]{WhatsApp Image 2025-05-07 at 11.33.07.jpeg}
+  \caption{Reaction statistic calculation testbench.}
+  \label{fig:alu_testbench_2}
+\end{figure}
 
 \end{document}
