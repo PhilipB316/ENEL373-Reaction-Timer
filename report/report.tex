@@ -95,7 +95,7 @@ The FPGA reaction stimulus test depends on four major components, those being th
 An 8-digit 5-bit-BCD counter is the primary mechanism used to track the reaction time from each stimulus test to the nearest millisecond. Each BCD digit is passed into an 8x5-to-5 mux. The purpose of this mux is to sync the selected output digit with the currently active seven segment display anode, outputting each digit onto its associated display.
 
 
-All the BCD digits from the 8-digit counter are passed directly to ALU module. The bcd_8_to_binary module converts the BCD numbers into a 28-bit binary number, then the last three reaction times are stored in a circular buffer. This buffer is read by the ALU which calculates the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD using the double dabble algorithm \cite{double_dabble}, another 8x5-to-5 mux is used to select which digit is output.
+All the BCD digits from the 8-digit counter are passed directly to ALU module. The bcd\_8\_to\_binary module converts the BCD numbers into a 28-bit binary number, then the last three reaction times are stored in a circular buffer. This buffer is read by the ALU which calculates the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD using the double dabble algorithm \cite{double_dabble}, another 8x5-to-5 mux is used to select which digit is output.
 
 A linear shift register is used to provide some randomisation for the countdown sequence at the start of every reaction stimulus test. This time randomisation acts as the trigger for the countdown state, Dotiey, and also has an 8x5-to-5 mux for digit selection.
 
@@ -124,7 +124,7 @@ For example, all signals within an entity were postfixed with an underscore and 
 
 To make the difference between inputs/outputs and internal signals clear, input/output names were in all capitals while internal signals were in all lowercase. the signal types were also capatilised for inputs/outputs eg. STD\_LOGIC instead of std\_logic. This can be seen in Appendix B.
 
-When naming modules, an effort was made to name them in a way that described the capabilities of the module. For example,  timer_8_num_selectable has 8 numbers and one can be selected. we also used the postfix _xb meaning a module had a x bit input/output. This is used in modules such as counter_3b and decoder_3b.
+When naming modules, an effort was made to name them in a way that described the capabilities of the module. For example,  timer\_8\_num\_selectable has 8 numbers and one can be selected. we also used the postfix \_xb meaning a module had a x bit input/output. This is used in modules such as counter\_3b and decoder\_3b.
 
 \subsubsection{Component Reuse}
 
