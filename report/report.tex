@@ -191,24 +191,6 @@ These waveforms indicated that the problem did not lie where expected, and must 
 % NB: Marks do not depend on whether problems were solved or not, but on the process used.
 % 4 marks
 
-
-\begin{enumerate}
-  \item Steven Weddell
-  \item Vivado
-  \item Vivado
-  \item Vivado
-  \item VHDL
-  \item Steven Weddell
-  \item Steven Weddell
-  \item Vivado
-  \item Vague Error messages
-  \item Decimal point issue
-  \item Randomisation delay insufficient
-  \item Not case sensitive code
-  \item Steven Weddell
-  \item Vivado
-\end{enumerate}
-
 One issue that arose during the development of the seven segment display module which mapped a BCD input to a combination of segments on a display to represent that BCD number was that the provided mappings did not represent the numbers correctly. The solution approach was to first determine whether the BCD input or mapping was incorrect. This was done by tying the BCD input to the green LEDs on the FPGA. This asserted BCD input was correct. To rectify the incorrect mappings, individual segments on a board were tied to the FPGA user switches. Combinations of switches were tested, and when the segments represented a number, the combination of switches was recorded as a mapping.
 
 However, once all the mappings were implemented, we found that our countdown timer failed to display the dots. Alteration of the countdown timer to display temporary digits instead of dots revealed the countdown to be functional. Stepping through the code by hand revealed that, due to the use of the unfamiliar provided seven segment decoder, a line of code was overlooked that overwrote the decimal place value. Disabling this line of code allowed the countdown timer to show dots.
