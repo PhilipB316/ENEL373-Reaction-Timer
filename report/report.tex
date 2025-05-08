@@ -122,8 +122,9 @@ Another important aspect of the project ensuring high code quality, readability,
 
 For example, all signals within an entity were postfixed with an underscore and whether that signal was an input or output. This can be seen in Listing \ref{code:entity_naming_convention} in Appendix A. This ensured when the components were used in the top-level Behavioural architecture with port mapping, it was easy to see which signals were inputs and outputs.
 
+To make the difference between inputs/outputs and internal signals clear, input/output names were in all capitals while internal signals were in all lowercase. the signal types were also capatilised for inputs/outputs eg. STD_LOGIC instead of std_logic. This can be seen in appendix B.
+
 When naming modules, an effort was made to name them in a way that described the capabilities of the module. For example,  timer_8_num_selectable has 8 numbers and one can be selected. we also used the postfix _xb meaning a module had a x bit input/output. This is used in modules such as counter_3b and decoder_3b.
-% TODO: Add capatilisation of signals/input issue
 
 % Could talk about how we tried to have names that described the capabilities of components. eg. 
 % timer_8_num_selectable has 8 numbers as output and we can select which one is outputting.
