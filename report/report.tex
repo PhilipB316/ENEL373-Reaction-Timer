@@ -74,7 +74,7 @@
 \section{Introduction}
 % Outline (in your own words) the project requirements and what you achieved
 
-Human reaction time is the interval between the a stimulus and the response to that stimulus. There are two main types of reaction time; simple, and choice. Simple reaction involves reacting to a singular stimulus, while choice reaction involves choosing the correct response from multiple stimuli. This project aims to implement a simple reaction time recorder on an FPGA in VHDL.
+Human reaction time is the interval between a stimulus, and the response to that stimulus. There are two main types of reaction time; simple, and choice. Simple reaction involves reacting to a singular stimulus, while choice reaction involves choosing the correct response from multiple stimuli. This project aims to implement a simple reaction time recorder on an FPGA in VHDL.
 
 The reaction stimulus test starts with three LEDs that turn off sequentially, with a random delay between each LED turning off. Once the last LED turns off, the user must press a button, and the delay is displayed in milliseconds on 8 7-segment displays. The FPGA stores the reaction delays from the last three trials, and can display the fastest, slowest, and average reaction times. These values can be reset by the user.
 
@@ -95,9 +95,7 @@ The FPGA reaction stimulus test depends on four major components, those being th
 An 8-digit 5-bit-BCD counter is the primary mechanism used to track the reaction time from each stimulus test to the nearest millisecond. Each BCD digit is passed into an 8x5-to-5 mux. The purpose of this mux is to sync the selected output digit with the currently active seven segment display anode, outputting each digit onto its associated display.
 
 
-% TODO: Review the reference to double dabble here
-
-All the BCD digits from the 8-digit counter are passed directly to ALU module. This module converts the BCD numbers into a 10-bit binary number, then stores the last three reaction times in a circular buffer. This buffer is read by the ALU which calculates the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD using the double dabble algorithm \cite{double_dabble}, and another 8x5-to-5 mux is used to select which digit is output.
+All the BCD digits from the 8-digit counter are passed directly to ALU module. The bcd_8_to_binary module converts the BCD numbers into a 28-bit binary number, then the last three reaction times are stored in a circular buffer. This buffer is read by the ALU which calculates the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD using the double dabble algorithm \cite{double_dabble}, another 8x5-to-5 mux is used to select which digit is output.
 
 A linear shift register is used to provide some randomisation for the countdown sequence at the start of every reaction stimulus test. This time randomisation acts as the trigger for the countdown state, Dotiey, and also has an 8x5-to-5 mux for digit selection.
 
@@ -108,13 +106,13 @@ All three 8x5-to-5 muxes from the three components described above are piped int
 
 \subsection{Design Methods}
 
-The primary focus for the reaction timer project project was to develop VHDL code that is easy to maintain and develop. This led to a heavy focus on modular design and code reuse. Since the project was developed as a group, the other focus was for individual components to be developed and tested by individually, and then put together with minimal issues. 
+The primary focus for the reaction timer project project was to develop VHDL code that is easy to maintain and further develop. This led to a heavy focus on modular design and code reuse. Since the project was developed as a group, the other focus was for individual components to be developed and tested by individually, and then put together with minimal issues. 
 
 \subsubsection{Diagramming}
 
 The primary program development method used in this project was to draw program or component flow diagrams before VHDL was written. These digrams detailed the communication between between individual modules, and outlined the overall program structure. Figure \ref{project_structure} shows one such digram outlining each major component in the design and how they're grouped into larger modules. 
 
-Clear communication between group members of the expected inputs and outputs from each component played a significant role in keeping the final assembly simple. Examples include the consistent transfer of characters to be displayed 8x5-to-5 muxes to transmit one character at a time unless otherwise required, such as for the ALU.
+Clear communication between group members of the expected inputs and outputs from each component played a significant role in keeping the final assembly simple. Examples include the consistent transfer of characters to be displayed using 8x5-to-5 muxes to transmit one character at a time unless otherwise required, such as for the ALU.
 
 \hl{Philip - Michael, do you want to cover some of this?}
 
@@ -126,20 +124,10 @@ For example, all signals within an entity were postfixed with an underscore and 
 
 To make the difference between inputs/outputs and internal signals clear, input/output names were in all capitals while internal signals were in all lowercase. the signal types were also capatilised for inputs/outputs eg. STD\_LOGIC instead of std\_logic. This can be seen in Appendix B.
 
-When naming modules, an effort was made to name them in a way that described the capabilities of the module. For example, timer\_8\_num\_selectable has 8 numbers and one can be selected. we also used the postfix \_xb meaning a module had a x bit input/output. This is used in modules such as counter\_3b and decoder\_3b.
-
-% Could talk about how we tried to have names that described the capabilities of components. eg. 
-% timer_8_num_selectable has 8 numbers as output and we can select which one is outputting.
-% BCD_8_to_binary has 8 numbers that it converts
-% multiiplexer_8_1_4b has 8 inputs, 1 output, and each io is 5 bits (name may need to change to 5b)
-% counter_3b is a 3 bit counter
-% decoder_3b is a 3 bit decoder
-
-% note the consistent _xb at the end descripes how many bits are in the I/O
+When naming modules, an effort was made to name them in a way that described the capabilities of the module. For example,  timer_8_num_selectable has 8 numbers and one can be selected. we also used the postfix _xb meaning a module had a x bit input/output. This is used in modules such as counter_3b and decoder_3b.
 
 \subsubsection{Component Reuse}
 
-% Unfinished
 In order to reduce the number of components that needed to be created and maintained, components were reused where possible. 
 
 The most versitile example of this was the 8 channel 5 bit mux \ref{code:8x5_to_5_mux}. The mux took up to 8 5-bit BCD inputs, and selected one of those inputs to be the output. The select lines and number of channels for the mux corresponded the segment display, allowing both to be controlled with the same signal. This capability made it easy to use for displaying timer digits and error message letters. The same mux was also used to select what output to send throught to the display depending on the state. While not all the channels of the mux were used in all usecases. It stil made sense to use the same component as it was proven to work and integrated well with the rest of the system.
@@ -161,8 +149,9 @@ The usage the 8x5-to-5 mux shown in Appendix \ref{code:output_select_mux_instant
 
 A selectively enabled text override was used to display text in the first two seven-segment displays as it centralised the control of text display. This additionally simplified the other modules as it limited their design to the numeric part of the code.
 
-% TODO: Add justriciation of selectable text override <-- justification? - Boston
-% TODO: philip sir add justification of lsfr for randon number generation
+% TODO: philip sir add justification of lfsr for randon number generation
+
+\newpage
 
 \section{Module Testing}
 % A brief section describing how you tested a significant module. Include at least one testbench and associated waveforms that demonstrate the functionality of a module in the report appendix.
@@ -204,7 +193,7 @@ One issue that arose during the development of the seven segment display module 
 
 However, once all the mappings were implemented, we found that our countdown timer failed to display the dots. Alteration of the countdown timer to display temporary digits instead of dots revealed the countdown to be functional. Stepping through the code by hand revealed that, due to the use of the unfamiliar provided seven segment decoder, a line of code was overlooked that overwrote the decimal place value. Disabling this line of code allowed the countdown timer to show dots.
 
-A significantly unexpected issue that appeared during the testing of the finite state machine was deemed as the ``Schrödinger's States'' problem. This originated from the FSM running lines of code designed to change states even while they were commented out. To narrow down the source of the bug, the FSM was reduced to only what was necessary to run a simple reaction timer test without any ALU or error message. From there, states were slowly added back into the FSM and were tied to LEDs that would light up when the new states were activated. This showed additional issues in which an LED would trigger, but the state change wouldn't complete. With the suspicion that a race condition was in play,the issue was fixed by removing the FSM inputs from the sensitivity list of the FSM process, instead tying it to a 10 kHz clock instead. \textcolor{red}{CONFIRM THE CLOCK SPEED}.
+A significantly unexpected issue that appeared during the testing of the finite state machine was deemed as the ``Schrödinger's States'' problem. This originated from the FSM running lines of code designed to change states even while they were commented out. To narrow down the source of the bug, the FSM was reduced to only what was necessary to run a simple reaction timer test without any ALU or error message. From there, states were slowly added back into the FSM and were tied to LEDs that would light up when the new states were activated. This showed additional issues in which an LED would trigger, but the state change wouldn't complete. With the suspicion that a race condition was in play,the issue was fixed by removing the FSM inputs from the sensitivity list of the FSM process, instead tying it to a 10 kHz clock instead.
 
 There were issues with the simulation software built into the Vivado toolchain. During the design and subsequent simulation of the BCD-to-Binary numeric converter, the Vivado simulator would stop the simulation at the beginning of the numeric conversion, but would not give an error message to indicate an issue. The issue was narrowed down to being a problem with the simulator itself when a bitstream was generated for the whole system so that the converter could be tested as part of the whole, and no issue was found.
 
