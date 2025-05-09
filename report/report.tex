@@ -185,7 +185,7 @@ The waveform for the fixed BCD-to-binary converter can be seen in Figure \ref{fi
 % NB: Marks do not depend on whether problems were solved or not, but on the process used.
 % 4 marks
 
-One issue that arose during the development of the seven segment display module which mapped a BCD input to a combination of segments on a display to represent that BCD number was that the provided mappings did not represent the numbers correctly. The solution approach was to first determine whether the BCD input or mapping was incorrect. This was done by tying the BCD input to the green LEDs on the FPGA. This asserted BCD input was correct. To rectify the incorrect mappings, individual segments on a display were tied to the FPGA user switches. Combinations of switches were tested, and when the segments represented a number, the combination of switches was recorded as a binary mapping.
+One issue that arose during the development of the seven segment display module which mapped a BCD input to a combination of segments on a display to represent that BCD number was that the provided mappings did not represent the numbers correctly. The solution approach was to first determine whether the BCD input or mapping was incorrect. This was done by tying the BCD input to the green LEDs on the FPGA. This asserted BCD input was correct. To rectify the incorrect mappings, individual segments on a display were tied to the FPGA user switches. Combinations of switches were tested, and when the segments represented a number, the combination of switches was recorded as a BCD mapping.
 
 However, once all the mappings were implemented, we found that our countdown timer failed to display the dots. Alteration of the countdown timer to display temporary digits instead of dots revealed the countdown to be functional. Stepping through the code by hand revealed that, due to the use of the unfamiliar provided seven segment decoder, a line of code was overlooked that overwrote the decimal place value. Disabling this line of code allowed the countdown timer to show dots.
 
@@ -198,9 +198,18 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
 \section{Conclusions}
 % Highlight any problems you encountered and how you solved them. Also discuss what you learned and give suggestions on how the project could be improved
 
-% Issues mapping BCD input to display, made small program linking display to switches, proved useful later
-% Phantom state machine
 % Project could be improved by allowing a non-fixed number of inputs to the ALU, so a more arbitrary number of results could be calculated
+% Learnt how testbenches can be useful but have their limits as somethimes they have bugs which are not present when the code is run on hardware.
+
+When developing the reaction timer, an number of problems were encountered. One of these involved the FSM changing states unexpectedly. To find the cause of this problem, the FSM was simplified to a minimal working version, then slowly expanded. Another problem where the display module did not show the correct numbers was solved by creeating a small program mapping switches to the BCD inputs of the display module. Both of these problems were solved by reducing the scope of the program allowing the problem to be found without confusing things with extra complexity. This method, as well as the use of testbenches was an effective way of finding problems in VHDL code.
+
+Modularity was a major strength allowing new features to be integrrated easily with the rest of the project, and making it easy to make changes to a module without breaking everything else. The modularity also reduced the effort needed to make changes such as increasing the number of bits in the BCD signals as there are less seperate modules in which the change needs to be made.
+
+The project could be expanded and improved by implementing the ALU in such a way that it could take an arbitrary amount of numbers as input then calculate the average, max, and min. Currently it is harcoded to only accept three numbers and each of the input number needs its own signal going into the ALU module. this doesn't really fit with the modularity of the rest of the project as the ALU would need significant changes to work with more than three numbers.
+
+And they all lived happily ever after, and VHDL never bothered them again. 
+
+~~~ The End ~~~
 
 \newpage
 % There is no need to include a full code listing in your report as your code will be submitted via eng-git. However, reference to a code snippet in an appendix is quite appropriate. Formal citations to books, web articles, open source VHDL code and other sources should be listed in a reference section that uses the IEEE style and format.
