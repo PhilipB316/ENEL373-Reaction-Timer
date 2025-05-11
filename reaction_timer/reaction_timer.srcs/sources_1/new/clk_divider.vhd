@@ -22,7 +22,7 @@ end clk_divider;
 architecture Behavioral of clk_divider is
     signal count: std_logic_vector (27 downto 0) := (others => '0');
     signal temp_clk: std_logic := '1';
-    signal upperbound_half : STD_LOGIC_VECTOR (27 downto 0);
+    signal upperbound_half : std_logic_vector (27 downto 0);
 begin
     SLOWCLK_OUT <= temp_clk;
     upperbound_half <= std_logic_vector(unsigned(UPPERBOUND_IN) / 2);

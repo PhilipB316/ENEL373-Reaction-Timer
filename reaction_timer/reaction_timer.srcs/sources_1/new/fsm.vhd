@@ -35,14 +35,14 @@ end fsm;
 architecture Behavioral of fsm is
     type states is (delay_countup,
                     delay_display,
-                    dots_countdown,
+                    doitey,
                     display_avg,
                     display_max,
                     display_min,
                     data_reset,
                     error,
                     converter_reset);
-    signal current_state : states := dots_countdown; 
+    signal current_state : states := doitey; 
     signal next_state: states;
 
     signal current_triggers : std_logic_vector (5 downto 0) := (others => '0');
@@ -94,7 +94,7 @@ begin
                 if (current_triggers /= last_triggers) then
                     last_triggers <= current_triggers;
                     if (current_triggers(0) = '1') then -- if BTNC pressed
-                        current_state <= dots_countdown; 
+                        current_state <= doitey; 
                     elsif (current_triggers(2) = '1') then -- if BTNR pressed
                         next_state <= display_avg; 
                         current_state <= converter_reset;
@@ -112,7 +112,7 @@ begin
                     end if;
                 end if;
     
-            when dots_countdown =>
+            when doitey =>
                 REACTION_TIME_COUNT_EN_OUT <= '0';
                 REACTION_TIME_COUNT_RSET_OUT <= '1';
                 ENCODED_DISPLAY_INPUT_SELECT_OUT <= "111";
@@ -225,7 +225,7 @@ begin
                 if (current_triggers /= last_triggers) then
                     last_triggers <= current_triggers;
                     if (current_triggers(0) = '1') then -- if BTNC pressed
-                        current_state <= dots_countdown;
+                        current_state <= doitey;
                     end if;
                 end if;
             
