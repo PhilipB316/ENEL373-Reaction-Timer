@@ -76,17 +76,15 @@
 
 Human reaction time is the interval between a stimulus, and the response to that stimulus. There are two main types of reaction time; simple, and choice. Simple reaction involves reacting to a singular stimulus, while choice reaction involves choosing the correct response from multiple stimuli. This project aims to implement a simple reaction time recorder on an FPGA in VHDL.
 
-The reaction stimulus test starts with three LCD dots that turn off sequentially, with a random delay. Once the last dot turns off, the user must press a button to stop the test. The delay is then displayed on 8 7-segmant displays. The FPGA stores the reaction delays from the last three trials, and can display the fastest, slowest, and average reaction time2. The times can be cleared by the user.
+The reaction stimulus test starts with three LCD dots that turn off sequentially, with a random delay. Once the last dot turns off, the user must press a button to stop the test. The delay is then displayed on 8 7-segment displays. The FPGA stores the reaction delays from the last three trials, and can display the fastest, slowest, and average reaction time. The stored times can be cleared by the user.
 
 This report outlines the implementation of the reaction timer, along with the design methods used, testing of some of the modules, and issues encountered during the project.
 
 \section{Design Summary}
 % Summarise your design.
 
-The FPGA reaction stimulus prompt and response recording depends on four major components. The eight-digit counter, the ALU, the reaction countdown, and the output select and override. These components are shown in Figure \ref{project_structure}. Each of these components are enabled and disabled via a finite state machine.
+The FPGA reaction stimulus prompt and response recording depends on five major components. The eight-digit counter, the ALU, the reaction countdown, the error display, and the output select and override. These components are shown in Figure \ref{project_structure}. Each of these components are enabled and disabled via a finite state machine.
 
-% TODO: Add an error state module/mux to the diagram
-% TODO: Add better labels to diagram
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.66\textwidth]{project_overall_structure.png}
@@ -94,13 +92,15 @@ The FPGA reaction stimulus prompt and response recording depends on four major c
   \label{project_structure}
 \end{figure}
 
-An eight-digit five-bit-BCD counter is the primary mechanism for keeping track of the reaction time in milliseconds for each stimulus test. Each BCD digit is passed into an 8x5-to-5 multiplexer. The purpose of this multiplexer is to synchronise the selected output digit with the seven segmant display meaning each digit is displayed on its respective display.
+An eight-digit five-bit-BCD counter is the primary mechanism for keeping track of the reaction time in milliseconds for each stimulus test. Each BCD digit is passed into an 8x5-to-5 multiplexer. The purpose of this multiplexer is to synchronise the selected output digit with the seven segment display meaning each digit is displayed on its respective display.
 
 All BCD digits from the eight-digit counter are passed through the bcd\_8\_to\_binary module, which converts the BCD number into a 28-bit binary number. This is shown in Figure \ref{project_structure} as a thicker data-transfer arrow, used to represent the increased bus width as opposed a 5/8-bit bus. This binary number is then passed into a circular buffer, which stores reaction time data. The ALU reads the circular buffer to calculate the average, minimum, and maximum of the last three reaction times. These times are converted back into BCD using the double dabble algorithm \cite{double_dabble}. Finally, another 8x5-to-5 multiplexer is used to select which digit is output to the display.
 
-A linear feedback shift register is used to provide randomisation for each reaction stimulus countdown sequence. This shift register sets the upperbound for a clock divider, whose output triggers the shift register to change its pseudorandom output. The clock divider triggers each LCD dot during the countdown state, named doitey. The dots are piped onto the seven segment display using a 8x5 5-bit multiplexer.
+A linear feedback shift register is used to provide randomisation for each reaction stimulus countdown sequence. This shift register sets the upperbound for a clock divider, whose output triggers the shift register to change its pseudorandom output. The clock divider triggers each LCD dot during the countdown state, named doitey. The dots are piped into the output select using a 8x5-to-5 multiplexer.
 
-All three 8x5-to-5 multiplexers from the three components described above are piped into another 8x5-to-5 multiplexer used for seven segment output selection. This multiplexer selects which module to output depending on the active state. The multiplexer output is piped into a text override, which overwrites some of the digits with letters based on the active state. This is finally piped into the 7 segment decoder, which takes a five-bit BCD digit and converts it to a eight-bit seven segment display light combination which is piped to hardware.
+All four 8x5-to-5 multiplexers are piped into another 8x5-to-5 multiplexer used for seven segment output selection. This multiplexer selects which module to output depending on the active state. The multiplexer output is piped into a text override, which overwrites some of the digits with letters based on the active state. This is finally piped into the 7 segment decoder, which takes a five-bit BCD digit and converts it to a eight-bit seven segment display light combination which is piped to hardware.
+
+% TODO: Review whether error state needs talking about
 
 \section{Expanded Design Summary}
 % (~2 pages): Describe the methods your group used to implement your FPGA design. Justify your final design. Support your descriptions and justifications with specific, explicit references to your VHDL source code in the appendix. VHDL descriptions could, for example, include an RTL description. 
@@ -130,13 +130,14 @@ When naming modules, an effort was made to name them in a way that described the
 
 \subsubsection{Module Reuse}
 
+% TODO: Review why there is a section in italics?
 In order to reduce the number of modules needed to be created and maintained, modules were reused where possible. The most versatile example of this was the eight-channel five-bit multiplexer shown in Code Listing \ref{code:8x5_to_5_multiplexer} in Appendix A. The multiplexer took up to eight five-bit BCD inputs, and selected one of those to be output. \textit{The select lines and number of channels for the multiplexer corresponded with the segment display, allowing both to be controlled with the same signal}. This capability made the multiplexer easy to use for displaying timer digits and error message characters. The same multiplexer was also used to select what output to pipe to the segment display, depending on the state. While not all multiplexer channels were used in all instantiations, using the same module in all instances was logical as the module was known to work and integrate well with other modules.
 
 Another frequently reused module was the clock divider. The wide use of the module was aided by the ability for the upperbound to be set by an input rather than being hard-coded within the module, and the ability for upperbound to be updated during module use.  For example, the pseudorandom dot delay used the same clk\_divider module as real-time upperbound changes resulted in different clock speeds and therefore delays.
 
 \subsubsection{Programming Techniques}
 
-Another method used to implement the FPGA design was pair programming. This had to be done with care as, with three people working on the project, it would have been easy to leave one person out of the process resulting in them lacking understanding of the code. However, pair programming did help ensure that minimal time was spent debugging, as the observer frequently caught subtleties of VHDL that the programmer missed. Pair programming was used to develop the circular buffer, counters, and FSM.
+Another method used to implement the FPGA design was \hl{pair (or peer?)} programming. This had to be done with care as, with three people working on the project, it would have been easy to leave one person out of the process resulting in them lacking understanding of the code. However, pair programming did help ensure that minimal time was spent debugging, as the observer frequently caught subtleties of VHDL that the programmer missed. Pair programming was used to develop the circular buffer, counters, and FSM.
 
 Since the project was significantly modularised, it was important that individual modules could be developed and tested without hindering the development of other modules. The method used to achieve this was git branching and merging. Individual modules were developed on separate branches, tested, and then merged into the main branch. This ensured that the main branch was always stable, and that broken changes could be easily rolled back.
 
