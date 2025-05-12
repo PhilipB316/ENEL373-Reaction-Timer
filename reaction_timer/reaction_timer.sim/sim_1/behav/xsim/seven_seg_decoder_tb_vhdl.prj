@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../reaction_timer.srcs/sources_1/new/seven_seg_decoder.vhd" \
-"../../../../reaction_timer.srcs/sim_1/new/seven_seg_decoder_tb.vhd" \
-
-# Do not sort compile order
-nosort
