@@ -29,7 +29,7 @@ architecture Behavioral of dotiey is
 begin
     process (CLK_IN, EN_IN, count)
     begin
---      On rising clock edge decrement count, if zero, set TIMER_FINISHED to true for FSM
+        -- On rising clock edge decrement count, if zero, set TIMER_FINISHED to true for FSM
         if rising_edge(CLK_IN) then
             if EN_IN = '1' then
                 if count /= "0000" then
@@ -40,7 +40,7 @@ begin
             end if;
         end if;
 
---      If not enabled, reset counter and TIMER_FINISHED
+        -- If not enabled, reset counter and TIMER_FINISHED
         if EN_IN = '0' then
             count <= "0010";
             TIMER_FINISHED <= '0';
@@ -49,7 +49,7 @@ begin
 
     process (SELECT_IN, dot, blank, count)
     begin
---      Output a dot if the display number is <= the count, else output blank
+        -- Output a dot if the display number is <= the count, else output blank
         if (unsigned(SELECT_IN) <= unsigned(count)) then
             DOT_OUT <= dot;
         else

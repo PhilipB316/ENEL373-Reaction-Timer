@@ -14,7 +14,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity segment_display is
     Port ( NUMBER_IN : in STD_LOGIC_VECTOR (4 downto 0);
-           MUX_IN : in STD_LOGIC_VECTOR (2 downto 0); -- its the select pin which chooses the anode. system relies on MUX_IN and NUMBER_IN changing
+           MUX_IN : in STD_LOGIC_VECTOR (2 downto 0);
            SEGMENT_LIGHT_OUT : out STD_LOGIC_VECTOR (7 downto 0);
            ANODE_OUT : out STD_LOGIC_VECTOR (7 downto 0));
 
@@ -36,12 +36,13 @@ architecture Structural of segment_display is
 
 begin
 
---  3 bit to 8 line display anode decoder
+    --  3 bit to 8 line display anode decoder
     ff0: decoder_3b port map(DEC_IN => MUX_IN,
                              DEC_OUT => anode);
---  4 bit to 8 line segment light decoder
+    --  4 bit to 8 line segment light decoder
     ff1: seven_seg_decoder port map(BCD_IN => NUMBER_IN,
                                     DECIMAL_POINT_IN => '1',
                                     SEGMENT_LIGHT_OUT => SEGMENT_LIGHT_OUT);
     ANODE_OUT <= not anode;
 end Structural;
+

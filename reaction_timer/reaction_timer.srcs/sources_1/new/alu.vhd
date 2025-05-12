@@ -18,8 +18,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity alu is
     Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0) := (others => '0');
-           BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
-           OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
+    BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
+    OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
 end alu;
 
 architecture Behavioral of alu is
@@ -39,7 +39,7 @@ begin
     --  Calculate minimum 
     temp_first_min <= NUM_1_IN when NUM_1_IN < NUM_2_IN else NUM_2_IN;
     temp_second_min <= temp_first_min when temp_first_min < NUM_3_IN else NUM_3_IN;
- 
+
     --  Calculate average
     sum <= std_logic_vector(unsigned(NUM_1_IN) + unsigned(NUM_2_IN) + unsigned(NUM_3_IN));   
     divisor <= "01" when BUFFER_SIZE_IN = "01" else 

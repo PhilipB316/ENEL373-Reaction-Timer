@@ -15,7 +15,7 @@
 -- Module Description: 
 -- Instantiates all components for the Reaction Timer project and ties the inputs
 -- and outputs to the FPGA Nexys-4 DDR hardware.
- 
+
 ----------------------------------------------------------------------------------
 
 library IEEE;
@@ -35,7 +35,7 @@ end main;
 
 architecture Structural of main is
 
---  CLOCK SIGNALS AND DIVIDERS
+    --  CLOCK SIGNALS AND DIVIDERS
     signal clk_100_mhz_switchable : std_logic := '0';
     signal clk_1000_hz : std_logic := '0';
     signal clk_1000_hz_divider_bound : std_logic_vector (27 downto 0) := X"00186A0";
@@ -47,14 +47,14 @@ architecture Structural of main is
     signal clk_var_hz_switchable : std_logic;
     signal clk_var_hz_divider_bound : std_logic_vector ( 27 downto 0) := X"5F5E100";
 
---  FINITE STATE MACHINE
+    --  FINITE STATE MACHINE
     signal fsm_state : std_logic_vector (3 downto 0) := X"2";
     signal fsm_state_dot_complete : std_logic := '0';
     signal dotiey_countdown_en : std_logic := '0';
     signal reaction_time_count_en : std_logic := '0';
     signal reaction_time_count_rset : std_logic := '1';
 
---  DISPLAY
+    --  DISPLAY
     signal output_segment_select : std_logic_vector (2 downto 0) := "000";
     signal encoded_display_input_select : std_logic_vector (2 downto 0) := "000";
     signal encoded_reaction_time_digit : std_logic_vector (4 downto 0) := "00000";
@@ -67,7 +67,7 @@ architecture Structural of main is
     signal letter_r : std_logic_vector (4 downto 0) := "10111";
     signal letter_o : std_logic_vector (4 downto 0) := "10011";
 
---  ALU & CIRCULAR BUFFER
+    --  ALU & CIRCULAR BUFFER
     signal timer_bcd_bus : std_logic_vector (39 downto 0) := X"0000000000";
     signal timer_binary : std_logic_vector (27 downto 0) := X"0000000";
     signal alu_binary : std_logic_vector (27 downto 0) := X"0000000";
@@ -80,7 +80,7 @@ architecture Structural of main is
     signal selected_alu_bcd_digit : std_logic_vector (4 downto 0) := "00000";
     signal double_dabble_reset : std_logic;
 
---  BUTTONS
+    --  BUTTONS
     signal BTNC_debounced : std_logic := '0';
     signal BTNR_debounced : std_logic := '0';
     signal BTNL_debounced : std_logic := '0';
@@ -172,15 +172,15 @@ architecture Structural of main is
 
     component circular_buffer is
         Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0);
-               NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0);
-               BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
-               RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
+        NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0);
+        BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
+        RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
     end component circular_buffer;
 
     component alu is
         Port ( NUM_1_IN, NUM_2_IN, NUM_3_IN : in STD_LOGIC_VECTOR (27 downto 0);
-               BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
-               OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
+        BUFFER_SIZE_IN, OPERATION_SELECT_IN : in STD_LOGIC_VECTOR (1 downto 0);
+        OUTPUT_OUT : out STD_LOGIC_VECTOR (27 downto 0));
     end component alu;
 
     component binary_to_bcd_8 is
@@ -198,7 +198,7 @@ architecture Structural of main is
 
 begin
 
---  Finite State Machine
+    --  Finite State Machine
     ff0: fsm port map ( CLK_IN => clk_10_khz,
                         BTNC_IN => BTNC_debounced,
                         BTNR_IN => BTNR_debounced,
@@ -215,26 +215,26 @@ begin
                         ALU_OPERATION_SELECT_OUT => alu_operation_select,
                         BUFFER_WRITE_TRIGGER_OUT => circ_buff_write);
 
---  1000 HZ Clock Divider
+    --  1000 HZ Clock Divider
     ff1: clk_divider port map ( CLK100MHZ_IN => CLK100MHZ,
                                 SLOWCLK_OUT => clk_1000_hz,
                                 UPPERBOUND_IN => clk_1000_hz_divider_bound);
 
---  1 HZ Switchable Clock Divider
+    --  1 HZ Switchable Clock Divider
     ff2: clk_divider port map(CLK100MHZ_IN => clk_100_mhz_switchable,
                               SLOWCLK_OUT => clk_1_hz_switchable,
                               UPPERBOUND_IN => clk_1_hz_divider_bound);
 
---  10 kHz Clock Divider
+    --  10 kHz Clock Divider
     ff2a: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
-                              SLOWCLK_OUT => clk_10_khz,
-                              UPPERBOUND_IN => clk_10_khz_divider_bound);
+                               SLOWCLK_OUT => clk_10_khz,
+                               UPPERBOUND_IN => clk_10_khz_divider_bound);
 
---  3 bit counter for seven segment anode selection
+    --  3 bit counter for seven segment anode selection
     ff3: counter_3b port map(CLK_IN => clk_1000_hz,
                              COUNT_OUT => output_segment_select);
 
---  8 digit counter with output digit selection
+    --  8 digit counter with output digit selection
     ff4: timer_8_num_selectable port map(CLK1000HZ_IN => clk_1000_hz,
                                          EN_IN => reaction_time_count_en,
                                          RESET_IN => reaction_time_count_rset,
@@ -242,11 +242,11 @@ begin
                                          BCD_BUS_OUT => timer_bcd_bus,
                                          INT_OUT => encoded_reaction_time_digit);
 
---  BCD bus to binary converter
+    --  BCD bus to binary converter
     ff5: bcd_8_to_binary port map(BCD_BUS_IN => timer_bcd_bus,
                                   BINARY_OUT => timer_binary);
 
---  Circular buffer previous times
+    --  Circular buffer previous times
     ff6: circular_buffer port map(NUMBER_IN => timer_binary,
                                   NUMBER_1_OUT => alu_num_1,
                                   NUMBER_2_OUT => alu_num_2,
@@ -255,7 +255,7 @@ begin
                                   RESET_IN => circ_buff_rset,
                                   WRITE_TRIGGER_IN => circ_buff_write);
 
---  ALU
+    --  ALU
     ff7: alu port map(NUM_1_IN => alu_num_1,
                       NUM_2_in => alu_num_2,
                       NUM_3_in => alu_num_3,
@@ -263,14 +263,14 @@ begin
                       OPERATION_SELECT_IN => alu_operation_select,
                       OUTPUT_OUT => alu_binary);
 
---  Dot countdown generator
+    --  Dot countdown generator
     ff9: dotiey port map(SELECT_IN => output_segment_select,
                          CLK_IN => clk_var_hz,
                          EN_IN => dotiey_countdown_en,
                          DOT_OUT => encoded_dots,
                          TIMER_FINISHED => fsm_state_dot_complete);
 
---  Error text mux
+    --  Error text mux
     ff10: multiplexer_8_1_4b port map (MUX_IN_0 => letter_r,
                                        MUX_IN_1 => letter_o,
                                        MUX_IN_2 => letter_r,
@@ -282,7 +282,7 @@ begin
                                        SELECT_IN => output_segment_select,
                                        MUX_OUT => encoded_error_text); 
 
---  8x5 to 5 encoded display data mux
+    --  8x5 to 5 encoded display data mux
     ff11: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
                                        MUX_IN_1 => selected_alu_bcd_digit,
                                        MUX_IN_2 => selected_alu_bcd_digit,
@@ -294,34 +294,34 @@ begin
                                        SELECT_IN => encoded_display_input_select,
                                        MUX_OUT => encoded_segment_data);
 
---  Display text override
+    --  Display text override
     ff12: selectable_override port map (SEG_SELECT_IN => output_segment_select,
-                                       TEXT_SELECT_IN => encoded_display_input_select,
-                                       SEG_IN => encoded_segment_data,
-                                       SEG_OUT => encoded_segment_data_overridden);
+                                        TEXT_SELECT_IN => encoded_display_input_select,
+                                        SEG_IN => encoded_segment_data,
+                                        SEG_OUT => encoded_segment_data_overridden);
 
---  Seven segment display decoder
+    --  Seven segment display decoder
     ff13: segment_display port map(NUMBER_IN => encoded_segment_data_overridden,
-                                  MUX_IN => output_segment_select,
-                                  SEGMENT_LIGHT_OUT => SEVEN_SEG,
-                                  ANODE_OUT => AN);
+                                   MUX_IN => output_segment_select,
+                                   SEGMENT_LIGHT_OUT => SEVEN_SEG,
+                                   ANODE_OUT => AN);
 
---  Generate next "random" number from the LFSR
+    --  Generate next "random" number from the LFSR
     ff14: lfsr port map (CLK_IN => clk_var_hz,
                          RAND_OUT => clk_var_hz_divider_bound(27 downto 20));
 
--- Generate another clk square wave to trigger a new random number
+    -- Generate another clk square wave to trigger a new random number
     ff15: clk_divider port map(CLK100MHZ_IN => CLK100MHZ,
-                                SLOWCLK_OUT => clk_var_hz,
-                                UPPERBOUND_IN => clk_var_hz_divider_bound);
+                               SLOWCLK_OUT => clk_var_hz,
+                               UPPERBOUND_IN => clk_var_hz_divider_bound);
 
---  Converts binary ALU result to BCD for display
+    --  Converts binary ALU result to BCD for display
     ff16: binary_to_bcd_8 port map ( CLK_IN => CLK100MHZ,
-                                    RESET_IN => double_dabble_reset,
-                                    BINARY_IN => alu_binary,
-                                    BCD_8_DIGIT_OUT => alu_bcd_bus);
+                                     RESET_IN => double_dabble_reset,
+                                     BINARY_IN => alu_binary,
+                                     BCD_8_DIGIT_OUT => alu_bcd_bus);
 
---  Selects BCD digit from the ALU to display on current anode
+    --  Selects BCD digit from the ALU to display on current anode
     ff17: multiplexer_8_1_4b port map (MUX_IN_0 => alu_bcd_bus(4 downto 0),
                                        MUX_IN_1 => alu_bcd_bus(9 downto 5),
                                        MUX_IN_2 => alu_bcd_bus(14 downto 10),
@@ -333,7 +333,7 @@ begin
                                        SELECT_IN => output_segment_select,
                                        MUX_OUT => selected_alu_bcd_digit);
 
---  Map the buttons to the debouncer component
+    --  Map the buttons to the debouncer component
     ff18: debouncer port map (BUTTON_IN => BTNC,
                               CLK_IN => CLK100MHZ,
                               DEBOUNCED_OUT => BTNC_debounced);

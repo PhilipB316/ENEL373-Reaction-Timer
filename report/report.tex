@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{geometry}
-\geometry{a4paper, bottom=30mm, top=30mm, left=15mm, right=15mm}
+\geometry{a4paper, bottom=20mm, top=30mm, left=15mm, right=15mm}
 \usepackage{pdfpages}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -89,7 +89,7 @@ The FPGA reaction stimulus prompt and response recording depends on four major c
 % TODO: Add better labels to diagram
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{project_overall_structure.png}
+  \includegraphics[width=0.66\textwidth]{project_overall_structure.png}
   \caption{Overview of VHDL reaction timer structure}
   \label{project_structure}
 \end{figure}
@@ -196,7 +196,14 @@ A significantly unexpected issue that appeared during the testing of the finite 
 
 There were issues with the simulation software built into the Vivado toolchain. During the design and subsequent simulation of the BCD-to-Binary numeric converter, the Vivado simulator would stop the simulation at the beginning of the numeric conversion, but would not give an error message to indicate an issue. The issue was narrowed down to being a problem with the simulator itself when a bitstream was generated for the whole system so that the converter could be tested as part of the whole, and no issue was found.
 
-Another issue that arose was regarding case sensitivity in VHDL. Although VHDL is not case sensitive, the constraints file is. Early on during the project, while developing the clock divider, an error message ``\hl{insert error message here}'' was encountered. The approach to solving this problem was to ask the TAs in the lab what the message meant. However, they were unable to explain the meaning. From there, the clock divider code we wrote was thoroughly compared to the provided clock divider code, and every small difference tested to see if it repaired the error. This determined the issue to be the case of the clock input declared in entity of main module, as lowercase had been used rather than uppercase. This correct case can be seen in Listing \ref{code:case}.
+Another issue that arose was regarding case sensitivity in VHDL. Although VHDL is not case sensitive, the constraints file is. Early on during the project, while developing the clock divider, the error message seen in Figure \ref{fig:error} was encountered. The approach to solving this problem was to ask the TAs in the lab what the message meant. However, they were unable to explain the meaning. From there, the clock divider code we wrote was thoroughly compared to the provided clock divider code, and every small difference tested to see if it repaired the error. This determined the issue to be the case of the clock input declared in entity of main module, as lowercase had been used rather than uppercase. This correct case can be seen in Listing \ref{code:morecase}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.99\textwidth]{error.png}
+  \caption{Vivado error message regarding case sensitivity.}
+  \label{fig:error}
+\end{figure}
 
 \section{Conclusions}
 % Highlight any problems you encountered and how you solved them. Also discuss what you learned and give suggestions on how the project could be improved
@@ -209,10 +216,6 @@ When developing the reaction timer, an number of problems were encountered. One 
 Modularity was a major strength allowing new features to be integrrated easily with the rest of the project, and making it easy to make changes to a module without breaking everything else. The modularity also reduced the effort needed to make changes such as increasing the number of bits in the BCD signals as there are less seperate modules in which the change needs to be made.
 
 The project could be expanded and improved by implementing the ALU in such a way that it could take an arbitrary amount of numbers as input then calculate the average, max, and min. Currently it is harcoded to only accept three numbers and each of the input number needs its own signal going into the ALU module. this doesn't really fit with the modularity of the rest of the project as the ALU would need significant changes to work with more than three numbers.
-
-And they all lived happily ever after, and VHDL never bothered them again. 
-
-~~~ The End ~~~
 
 \newpage
 % There is no need to include a full code listing in your report as your code will be submitted via eng-git. However, reference to a code snippet in an appendix is quite appropriate. Formal citations to books, web articles, open source VHDL code and other sources should be listed in a reference section that uses the IEEE style and format.
@@ -356,11 +359,30 @@ And they all lived happily ever after, and VHDL never bothered them again.
                                        MUX_OUT => encoded_segment_data);
   \end{minted}
   \captionsetup{belowskip=0pt}
-  \captionof{listing}{module instantiation of output select 8x5-to-5 mux.}
+  \captionof{listing}{Module instantiation of output select 8x5-to-5 mux.}
   \label{code:output_select_mux_instantiation}
 \end{code}
 
+\vspace*{1cm}
 
+\begin{code}
+
+  \begin{minted}{vhdl}
+    entity main is
+      Port ( CLK100MHZ : in STD_LOGIC;
+            AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+            SEVEN_SEG : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
+            BTNC : in STD_LOGIC;
+            BTNR : in STD_LOGIC;
+            BTNL : in STD_LOGIC;
+            BTNU : in STD_LOGIC;
+            BTND : in STD_LOGIC);  
+    end main;
+  \end{minted}
+    \captionsetup{belowskip=0pt}
+  \captionof{listing}{Correct case of port names in entity definition.}
+  \label{code:morecase}
+\end{code}
 
 \newpage
 

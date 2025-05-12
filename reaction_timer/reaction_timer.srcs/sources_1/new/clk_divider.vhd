@@ -30,14 +30,15 @@ begin
     process (CLK100MHZ_IN)
     begin
         if rising_edge (CLK100MHZ_IN) then
---          If UPPERBOUND is reached, reset count and toggle temporary clock
+            --          If upperbound_half is reached, reset count and toggle temporary clock
             if count = upperbound_half then
                 count <= (others => '0');
                 temp_clk <= not temp_clk;
             else
-               count <= std_logic_vector(unsigned(count) + 1);
+                count <= std_logic_vector(unsigned(count) + 1);
             end if;
         end if;
     end process;
 
 end Behavioral;
+

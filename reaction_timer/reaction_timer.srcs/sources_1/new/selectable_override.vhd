@@ -22,7 +22,7 @@ end selectable_override;
 
 architecture Behavioral of selectable_override is
     signal override_text : std_logic_vector (9 downto 0);
---  Override text signals in encoded 5-bit format for each character
+    --  Override text signals in encoded 5-bit format for each character
     signal blank_text : std_logic_vector (9 downto 0) := "0101001010";
     signal delay_text : std_logic_vector (9 downto 0) := "0101101100"; -- dL
     signal max_text : std_logic_vector (9 downto 0) := "1000010001"; -- HI
@@ -40,13 +40,14 @@ begin
             when others => override_text <= blank_text;
         end case;
     end process;
-    
+
     process (SEG_SELECT_IN, SEG_IN)
     begin
         case(SEG_SELECT_IN) is 
-            when "111" => SEG_OUT <= override_text(9 downto 5); -- display 7
-            when "110" => SEG_OUT <= override_text(4 downto 0); -- display 6
+            when "111" => SEG_OUT <= override_text(9 downto 5); -- display on seg 7
+            when "110" => SEG_OUT <= override_text(4 downto 0); -- display on seg 6
             when others => SEG_OUT <= SEG_IN;
         end case;
     end process;
 end Behavioral;
+

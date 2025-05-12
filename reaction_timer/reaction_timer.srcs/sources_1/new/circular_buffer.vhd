@@ -15,9 +15,9 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity circular_buffer is
     Port ( NUMBER_IN : in STD_LOGIC_VECTOR (27 downto 0) := (others => '0');
-           NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0) := (others => '0');
-           BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
-           RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
+    NUMBER_1_OUT, NUMBER_2_OUT, NUMBER_3_OUT : out STD_LOGIC_VECTOR (27 downto 0) := (others => '0');
+    BUFFER_SIZE_OUT : out STD_LOGIC_VECTOR (1 downto 0);
+    RESET_IN, WRITE_TRIGGER_IN : in STD_LOGIC);
 end circular_buffer;
 
 architecture Behavioral of circular_buffer is
@@ -39,15 +39,15 @@ begin
                 when "10" => NUMBER_3_OUT <= NUMBER_IN;
                 when others => NULL;
             end case;
-            
---          Increment the write index until max then set to 0
+
+            --          Increment the write index until max then set to 0
             if (write_index = "10") then
                 write_index <= "00";
             else
                 write_index <= std_logic_vector(unsigned(write_index) + 1);
             end if;
-            
---          Increment buffer size until max
+
+            --          Increment buffer size until max
             if (buffer_size < "11") then
                 buffer_size <= std_logic_vector(unsigned(buffer_size) + 1);
             end if;
@@ -55,3 +55,4 @@ begin
     end process;
     BUFFER_SIZE_OUT <= buffer_size;
 end Behavioral;
+

@@ -23,12 +23,12 @@ architecture Behavioral of debouncer is
 
 begin
     process(BUTTON_IN, CLK_IN)
-    variable debounce_counter : integer := 0;
+        variable debounce_counter : integer := 0;
     begin
         if rising_edge(CLK_IN) then
             if BUTTON_IN = '1' then
                 debounce_counter := debounce_counter + 1;
-                if debounce_counter > 100000 then
+                if debounce_counter > 100000 then -- if x consistent button reads
                     DEBOUNCED_OUT <= '1';
                 end if;
             else
@@ -39,3 +39,4 @@ begin
     end process;
 
 end Behavioral;
+

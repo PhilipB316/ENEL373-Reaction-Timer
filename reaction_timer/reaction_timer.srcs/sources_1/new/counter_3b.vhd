@@ -29,3 +29,4 @@ begin
     end process;
     COUNT_OUT <= count;
 end Behavioral;
+

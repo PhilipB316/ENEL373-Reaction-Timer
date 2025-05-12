@@ -55,56 +55,56 @@ architecture Structual of timer_8_num_selectable is
 
 begin
 
---  1's digit timer
+    --  1's digit timer
     ff0: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => CLK1000HZ_IN,
                                   COUNT_OUT => mux_0,
                                   TICK_OUT => tick(0));
---  10's digit timer
+    --  10's digit timer
     ff1: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(0),
                                   COUNT_OUT => mux_1,
                                   TICK_OUT => tick(1));
---  100's digit timer
+    --  100's digit timer
     ff2: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(1),
                                   COUNT_OUT => mux_2,
                                   TICK_OUT => tick(2));
---  1,000's digit timer
+    --  1,000's digit timer
     ff3: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(2),
                                   COUNT_OUT => mux_3,
                                   TICK_OUT => tick(3));
---  10,000's digit timer
+    --  10,000's digit timer
     ff4: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(3),
                                   COUNT_OUT => mux_4,
                                   TICK_OUT => tick(4));
---  100,000's digit timer
+    --  100,000's digit timer
     ff5: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(4),
                                   COUNT_OUT => mux_5,
                                   TICK_OUT => tick(5));
---  1,000,000's digit timer
+    --  1,000,000's digit timer
     ff6: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(5),
                                   COUNT_OUT => mux_6,
                                   TICK_OUT => tick(6));
---  10,000,000's digit timer
+    --  10,000,000's digit timer
     ff7: counter_decade port map (EN_IN => EN_IN,
                                   RESET_IN => RESET_IN,
                                   INCREMENT_IN => tick(6),
                                   COUNT_OUT => mux_7,
                                   TICK_OUT => tick(7));
 
---  Digit multiplexer linked to active anode
+    --  Digit multiplexer linked to active anode
     ff8: multiplexer_8_1_4b port map (MUX_IN_0 => mux_0,
                                       MUX_IN_1 => mux_1,
                                       MUX_IN_2 => mux_2,
@@ -115,8 +115,9 @@ begin
                                       MUX_IN_7 => mux_7,
                                       SELECT_IN => SELECT_IN,
                                       MUX_OUT => INT_OUT);
-    
---  Output all BCD digits for use with the ALU
+
+    --  Output all BCD digits for use with the ALU
     BCD_BUS_OUT <= mux_7 & mux_6 & mux_5 & mux_4 & mux_3 & mux_2 & mux_1 & mux_0;
 
 end Structual;
+

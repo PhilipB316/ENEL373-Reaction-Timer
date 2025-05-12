@@ -37,7 +37,7 @@ begin
             end if;
         end if;
 
---      Put tick back to zero on the falling edge
+        --      Put tick back to zero on the falling edge
         if falling_edge (INCREMENT_IN) then
             if tick = '1' then
                 tick <= not tick;
@@ -50,3 +50,4 @@ begin
     COUNT_OUT <= count;
     TICK_OUT <= tick;
 end Behavioral;
+
