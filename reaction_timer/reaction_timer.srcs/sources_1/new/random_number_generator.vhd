@@ -25,7 +25,7 @@ begin
         if rising_edge(CLK_IN) then
             -- shift the bits
             current_rand(6 downto 0) <= current_rand(7 downto 1);
-            -- new bit it from taps at 0, 4, 5, and 6
+            -- new bit is from taps at 0, 4, 5, and 6
             current_rand(7) <= current_rand(0) XOR current_rand(4) XOR current_rand(5) XOR current_rand(6);
         end if;
     end process;
