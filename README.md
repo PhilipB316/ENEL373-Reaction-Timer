@@ -13,12 +13,12 @@
 
 # ENEL373 Reaction Time Project
 
-Ever wondered how fast you are? How long it takes you to reaction to Dr. Moore saying, "Well, that's it for today, folks?". Well, now you can find out! This project is a simple reaction time tester implemented on a .....
+Ever wondered how fast you are? How long it takes you to react to Dr. Moore saying, "Well, that's it for today, folks?". Well, now you can find out! This project is a simple reaction time tester implemented on a .....
 
 ## Authors
 
 - Philip Brand (pbr73)
-- Michael Brown (mbr204)
+- Michael Brown (mbr206)
 - Boston Black (bbl .......)
 
 ## Prerequisites
@@ -29,7 +29,7 @@ Ever wondered how fast you are? How long it takes you to reaction to Dr. Moore s
 ## Importing Project
 
 - In any directory, open a terminal and type `git clone https://eng-git.canterbury.ac.nz/enel373-2025/ThuGroup13`.
-- A new directory called Thursday will appear.
+- A new directory called ThuGroup13 will appear.
 
 ## Running Project
 
