@@ -22,3 +22,5 @@ report/*.fls
 /reaction_timer/*.str
 /reaction_timer/.Xil
 /*.xdc
+
+/project_1/*
