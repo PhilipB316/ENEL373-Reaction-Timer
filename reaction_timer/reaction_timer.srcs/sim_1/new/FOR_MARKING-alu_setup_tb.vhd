@@ -8,6 +8,39 @@
 -- reaction statistic calculations.
 ----------------------------------------------------------------------------------
 
+----------------------------------------------------------------------------------
+Testbench success criteria:
+Primary Test Purpose: To simultaneously test the functionality of the circular
+buffer, ALU, and binary-to-bcd modules
+Inputs:
+- A simulated high-frequency clock signal.
+- Three different numbers into the circular buffer at varying times.
+- Three different impulse signals into the circular buffer write trigger,
+  each after the circular buffer input changes.
+- An impulse signal to ensure the circular buffer is reset at the start of
+  the testbench.
+- An alu_operation_select bus for choosing min/max/avg.
+- A binary_to_bcd_reset trigger to reset the double dabble algorithm
+
+Expected Results:
+- The circular buffer store the input bus in one of the outputs when the
+  write trigger is set. Which output is used will depend on the current write
+  index. 
+- The circular buffer size will be incremented after every write, up until a
+  maximum of 3.
+- The ALU outputs the correct min/max/avg number in binary form depending on
+  what the currently active alu_operation_select is. The ALU output should only
+  change when the operation select does.
+- The ALU should not take into account circular buffer outputs that have yet to
+  be written to.
+- Any outputs of the double dabble algorithm will be reset when the reset
+  trigger is set.
+- When the double dabble reset pin is unset, the bcd_out will contain the 
+  converted binary numbers from the ALU in 5-bit BCD format, and the 
+  readable_bcd will contain thhe binary numbers in more readable 4-bit BCD format.
+----------------------------------------------------------------------------------
+
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
