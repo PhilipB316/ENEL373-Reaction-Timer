@@ -111,12 +111,9 @@ The primary focus for the reaction timer project project was to develop VHDL cod
 
 \subsubsection{Diagramming}
 
-\hl{Michael to scan one of his drawings and add reference in following paragraph.}
-% TODO: add paper diagram
+The primary program development method used in this project was to draw program or module flow diagrams before VHDL was written. These diagrams detailed the communication between between individual modules, and outlined the overall program structure. One such diagram is in Appendix C.
 
-The primary program development method used in this project was to draw program or module flow diagrams before VHDL was written. These digrams detailed the communication between between individual modules, and outlined the overall program structure. Figure \ref{paper} shows \dots
-
-Clear communication of the expected inputs and outputs from each module between group members played a significant role in keeping the final assembly simple. \hl{One example of standard inputs/outputs is the use of 5-bit BCD for all communication of characters or numbers. The only place 5-bit BCD was not used for numbers was the ALU.} $\leftarrow$ Is this better?
+Clear communication of the expected inputs and outputs from each module between group members played a significant role in keeping the final assembly simple. One example of standard inputs/outputs is the use of 5-bit BCD for all communication of characters or numbers. The only place 5-bit BCD was not used for numbers was the ALU.
 
 \subsubsection{Naming and Syntax Conventions}
 
@@ -137,7 +134,7 @@ Another frequently reused module was the clock divider. The wide use of the modu
 
 \subsubsection{Programming Techniques}
 
-Another method used to implement the FPGA design was \hl{pair (or peer?)} programming. This had to be done with care as, with three people working on the project, it would have been easy to leave one person out of the process resulting in them lacking understanding of the code. However, pair programming did help ensure that minimal time was spent debugging, as the observer frequently caught subtleties of VHDL that the programmer missed. Pair programming was used to develop the circular buffer, counters, and FSM.
+Another method used to implement the FPGA design was pair programming. This had to be done with care as, with three people working on the project, it would have been easy to leave one person out of the process resulting in them lacking understanding of the code. However, pair programming did help ensure that minimal time was spent debugging, as the observer frequently caught subtleties of VHDL that the programmer missed. Pair programming was used to develop the circular buffer, counters, and FSM.
 
 Since the project was significantly modularised, it was important that individual modules could be developed and tested without hindering the development of other modules. The method used to achieve this was git branching and merging. Individual modules were developed on separate branches, tested, and then merged into the main branch. This ensured that the main branch was always stable, and that broken changes could be easily rolled back.
 
@@ -160,7 +157,7 @@ A selectively enabled text override module was used to display text on the first
 % TODO: reorder waveform to be more logical - put alu output next to operation select and things like that, put clock at the top probably too
 % TODO: add testbench waveform for BCD to binary converter
 
-During development of the circular buffer, ALU, and associated data-type converters, the output numbers were too small. For example a minimum reaction time of 246 milliseconds would be displayed as 91 milliseconds. Since the delay would be displayed correctly immediate after a test, the problem lay somewhere within the \hl{blue} block in Figure \ref{project_structure}. An assumption was made that the BCD-to-binary converter would be fault-free, since the logic it required was simple. To determine in which module the problem lay, a testbench comprising of the circular buffer, ALU, and binary-to-BCD converter was created. The testbench simulated three write operations to the circular buffer, an ALU operation select, and a trigger for the binary to BCD double-dabble algorithm, followed by reset signal to the circular buffer and binary-to-BCD converter. The testbench stimulus VHDL is in Listing \ref{code:alu_testbench} in Appendix B.
+During development of the circular buffer, ALU, and associated data-type converters, the output numbers were too small. For example a minimum reaction time of 246 milliseconds would be displayed as 91 milliseconds. Since the delay would be displayed correctly immediate after a test, the problem lay somewhere within the purple block in Figure \ref{project_structure}. An assumption was made that the BCD-to-binary converter would be fault-free, since the logic it required was simple. To determine in which module the problem lay, a testbench comprising of the circular buffer, ALU, and binary-to-BCD converter was created. The testbench simulated three write operations to the circular buffer, an ALU operation select, and a trigger for the binary to BCD double-dabble algorithm, followed by reset signal to the circular buffer and binary-to-BCD converter. The testbench stimulus VHDL is in Listing \ref{code:alu_testbench} in Appendix B.
 
 The major values output by the testbench are the circular buffer contents, the ALU operation select, and the binary-to-BCD converted output. These waveforms, as well as the input waveforms such as the clock, circular buffer write, and resets can be seen in Figure \ref{fig:alu_testbench}. The bcd\_out signal in the figure is the output of the custom five-bit BCD, while the readable\_bcd is the four-bit equivalent used display the number for simple analysis.
 
@@ -544,5 +541,8 @@ The waveform associated with the testbench in Listing \ref{code:alu_testbench} c
   \label{fig:alu_testbench_2}
 \end{figure}
 
+\newpage
+
+\includepdf[pages=-, pagecommand={\section{Appendix C: Program Structure Brainstorm Diagram}}, rotate=-90, width=0.85\textwidth]{../figures/diagram.pdf}
 \end{document}
 
