@@ -48,10 +48,9 @@ When there is no test running:
 - Thanks to Mum and Dad for hosting Michael and Philip during project development.
 - Thanks to Miriam Brand for extended testing of the reaction timer during development.
 - Thanks to the University of Canterbury for providing the Nexys A7 boards and Vivado toolchain.
-- Thanks to tea and coffee for keeping the group somewhat sane.
 
 ### Authors
 
 - Philip Brand (pbr73)
 - Michael Brown (mbr206)
-- Boston Black (bbl .......)
+- Boston Black (bbl37)
