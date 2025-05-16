@@ -36,23 +36,23 @@
 
 \newgeometry{top=20mm}
 \begin{titlepage}
-    \begin{center}
-      \begin{figure}
-        \includegraphics[right]{logo.png}
-      \end{figure}
-      \vspace*{1cm}
-      \textsc{\large ENEL373: Digital Electronics and Devices}\\[0.5cm]
-      \textsc{\Large University of Canterbury}\\[3.5cm]
-      \linespread{1}
-      {\Huge\bfseries{Development of a Reaction \\[0.3cm] Timer in VHDL}} \\
-      \vspace*{2cm}
-      {\Huge Philip Brand \textit{\Large(15776928)}\\\par}
-      {\Huge Michael Brown \textit{\Large(48571923)}\\\par}
-      {\Huge Boston Black \textit{\Large(24668421)}\\\par}
-      \vspace*{3cm}
-      {\LARGE \today}
-    \end{center}
-  \end{titlepage}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[right]{logo.png}
+		\end{figure}
+		\vspace*{1cm}
+		\textsc{\large ENEL373: Digital Electronics and Devices}\\[0.5cm]
+		\textsc{\Large University of Canterbury}\\[3.5cm]
+		\linespread{1}
+		{\Huge\bfseries{Development of a Reaction \\[0.3cm] Timer in VHDL}} \\
+		\vspace*{2cm}
+		{\Huge Philip Brand \textit{\Large(15776928)}\\\par}
+		{\Huge Michael Brown \textit{\Large(48571923)}\\\par}
+		{\Huge Boston Black \textit{\Large(24668421)}\\\par}
+		\vspace*{3cm}
+		{\LARGE \today}
+	\end{center}
+\end{titlepage}
 \restoregeometry
 
 \fancyhead{}
@@ -74,22 +74,22 @@
 \section{Introduction}
 % Outline (in your own words) the project requirements and what you achieved
 
-Human reaction time is the interval between a stimulus, and the response to that stimulus. There are two main types of reaction time; simple, and choice. Simple reaction involves reacting to a singular stimulus, while choice reaction involves choosing the correct response from multiple stimuli. This project aims to implement a simple reaction time recorder on an FPGA in VHDL.
+Human reaction time is the interval between a stimulus and the response to that stimulus. There are two main types of reaction time; simple and choice. Simple reaction involves reacting to a singular stimulus, while choice reaction involves choosing the correct response from multiple stimuli. This project aims to implement a simple reaction time recorder on an FPGA in VHDL.
 
-The reaction stimulus test starts with three LCD dots that turn off sequentially, with a random delay. Once the last dot turns off, the user must press a button to stop the test. The delay is then displayed on 8 7-segment displays. The FPGA stores the reaction delays from the last three trials, and can display the fastest, slowest, and average reaction time. The stored times can be cleared by the user.
+The reaction stimulus test starts with three LCD dots that turn off sequentially with a random delay. Once the last dot turns off, the user must press a button to stop the timer. The delay is then displayed on 8 7-segment displays. The FPGA stores the reaction delays from the last three tests, and can display the fastest, slowest, and average reaction time. The stored times can be cleared by the user.
 
-This report outlines the implementation of the reaction timer, along with the design methods used, testing of some of the modules, and issues encountered during the project.
+This report outlines the implementation of the reaction timer, along with the design methods used, testing of some of the modules, and dicsusses issues encountered during the project.
 
 \section{Design Summary}
 % Summarise your design.
 
-The FPGA reaction stimulus prompt and response recording depends on five major components. The eight-digit counter, the ALU, the reaction countdown, the error display, and the output select and override. These components are shown in Figure \ref{project_structure}. Each of these components are enabled and disabled via a finite state machine.
+The FPGA reaction stimulus and response recording depends on five major components; the eight-digit counter, the ALU, the reaction stimulus countdown, the error display, and the output select and override. These components are shown in Figure \ref{project_structure}. Each of these components are enabled and disabled via a finite state machine.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.66\textwidth]{project_overall_structure.png}
-  \caption{Overview of VHDL reaction timer structure}
-  \label{project_structure}
+	\centering
+	\includegraphics[width=0.66\textwidth]{project_overall_structure.png}
+	\caption{Overview of VHDL reaction timer structure}
+	\label{project_structure}
 \end{figure}
 
 An eight-digit five-bit-BCD counter is the primary mechanism for keeping track of the reaction time in milliseconds for each stimulus test. Each BCD digit is passed into an 8x5-to-5 multiplexer. The purpose of this multiplexer is to synchronise the selected output digit with the seven segment display meaning each digit is displayed on its respective display.
@@ -117,7 +117,7 @@ Clear communication of the expected inputs and outputs from each module between 
 
 \subsubsection{Naming and Syntax Conventions}
 
-Another important aspect of the project ensuring high code quality, readability, and maintainability was strict rules around naming and syntax. This included consistent whitespace, indentation, case, and naming style. 
+Another important aspect of the project ensuring high code quality, readability, and maintainability was strict rules around naming and syntax. This included consistent whitespace, indentation, case, and naming style.
 
 For example, all signals within an entity were postfixed with an underscore, and whether that signal was an input or output. This can be seen in Code Listing \ref{code:entity_naming_convention} in Appendix A. This ensured when the modules were used in the top-level Behavioural architecture with port mapping, it was easy to see which signals were inputs and outputs.
 
@@ -146,7 +146,7 @@ A second benefit of each module being a ``black box'' was that since most module
 
 The usage of the 8x5-to-5 multiplexer shown in Code Listing \ref{code:output_select_mux_instantiation} in Appendix A to select between outputs allows for addition of states as desired by utilizing more multiplexer inputs, with output select lines controlled by the finite state machine. If more states were to be added, then additional multiplexers can be linked up for more input lines. This shows clear capability for design expansion.
 
-A selectively enabled text override module was used to display text on the first two seven-segment displays,  as this module centralised control of the text display. This further simplified other modules by limiting their design to numeric manipulation, rather than alphabetic or alphanumeric manipulation. 
+A selectively enabled text override module was used to display text on the first two seven-segment displays,  as this module centralised control of the text display. This further simplified other modules by limiting their design to numeric manipulation, rather than alphabetic or alphanumeric manipulation.
 
 % TODO: philip sir add justification of lfsr for randon number generation
 
@@ -162,10 +162,10 @@ During development of the circular buffer, ALU, and associated data-type convert
 The major values output by the testbench are the circular buffer contents, the ALU operation select, and the binary-to-BCD converted output. These waveforms, as well as the input waveforms such as the clock, circular buffer write, and resets can be seen in Figure \ref{fig:alu_testbench}. The bcd\_out signal in the figure is the output of the custom five-bit BCD, while the readable\_bcd is the four-bit equivalent used display the number for simple analysis.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.99\textwidth]{thing.jpeg}
-  \caption{Reaction statistic calculation testbench.}
-  \label{fig:alu_testbench}
+	\centering
+	\includegraphics[width=0.99\textwidth]{thing.jpeg}
+	\caption{Reaction statistic calculation testbench.}
+	\label{fig:alu_testbench}
 \end{figure}
 
 The first 750 ns of testbench simulation show the three write operations to the circular buffer. The three circular buffer outputs change exactly as expected, with each write operation setting a new value. The ALU operation select is 3 at 700 ns, and the ALU output is 00878000, which is the correct hexadecimal representation of the average of the two values in the circular buffer when the operation was selected. The ALU operation is then set to 1 at approximately 850 ns, and the ALU outputs the correct maximum time of 00ff000. The final ALU operation is 2 at approximately 950 ns, and the ALU outputs the correct minimum time of 0010001. The binary-to-BCD converter is also triggered at 950 ns, and once the algorithm has completed, the BCD output is 00065537, which the correct BCD representation of 0010001 in hexadecimal.
@@ -173,10 +173,10 @@ The first 750 ns of testbench simulation show the three write operations to the 
 These waveforms indicated that the problem did not lie where expected, and that the problem must have been with the BCD-to-binary converter originally thought of as fault-free. Another testbench was created to test that converter, and, as expected, the converter did not convert correctly. This was rectified by modifying the multiplication factors of 10 from hexadecimal to binary. The fixed testbench waveform can be seen in Figure \ref{fig:correct_converter_tb}.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.99\textwidth]{WhatsApp Image 2025-05-08 at 16.13.24}
-  \caption{Corrected BCD to binary converter testbench.}
-  \label{fig:correct_converter_tb}
+	\centering
+	\includegraphics[width=0.99\textwidth]{WhatsApp Image 2025-05-08 at 16.13.24}
+	\caption{Corrected BCD to binary converter testbench.}
+	\label{fig:correct_converter_tb}
 \end{figure}
 
 These waveforms show the five-bit BCD and equivalent readable four-bit BCD inputs from the counter being correctly converted to binary. The readable BCD input is 00001952, which is equivalent to 00007a0, the hexadecimal representation of 1952.
@@ -197,10 +197,10 @@ There were issues with the simulation software built into the Vivado toolchain. 
 Another issue that arose was regarding case sensitivity in VHDL. Although VHDL is not case sensitive, the constraints file is. Early on during the project, while developing the clock divider, the error message seen in Figure \ref{fig:error} was encountered. The approach to solving this problem was to ask the TAs in the lab what the message meant. However, they were unable to explain the meaning. From there, the clock divider code we wrote was thoroughly compared to the provided clock divider code, and every small difference tested to see if it repaired the error. This determined the issue to be the case of the clock input declared in entity of main module, as lowercase had been used rather than uppercase. This correct case can be seen in Listing \ref{code:morecase}.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.99\textwidth]{error.png}
-  \caption{Vivado error message regarding case sensitivity.}
-  \label{fig:error}
+	\centering
+	\includegraphics[width=0.99\textwidth]{error.png}
+	\caption{Vivado error message regarding case sensitivity.}
+	\label{fig:error}
 \end{figure}
 
 \section{Conclusions}
@@ -226,7 +226,7 @@ The project could be expanded and improved by implementing the ALU in such a way
 \section{Appendix A: Code Listings}
 
 \begin{code}
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
   
     -- Define module IO
     entity counter_decade is
@@ -238,15 +238,15 @@ The project could be expanded and improved by implementing the ALU in such a way
     end counter_decade;
 
   \end{minted}
-  \captionsetup{belowskip=0pt}
-  \captionof{listing}{Entity naming example showing name post-fixes indicating data direction.}
-  \label{code:entity_naming_convention}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{Entity naming example showing name post-fixes indicating data direction.}
+	\label{code:entity_naming_convention}
 \end{code}
 
 \vspace*{1cm}
 
 \begin{code}
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
   entity clk_divider is
       Port ( CLK100MHZ_IN : in STD_LOGIC;
              UPPERBOUND_IN : in STD_LOGIC_VECTOR (27 downto 0);
@@ -260,15 +260,15 @@ The project could be expanded and improved by implementing the ALU in such a way
   begin
 
   \end{minted}
-  \captionsetup{belowskip=0pt}
-  \captionof{listing}{Difference in case between port and internal signal type declarations.}
-  \label{code:case_io}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{Difference in case between port and internal signal type declarations.}
+	\label{code:case_io}
 \end{code}
 
 \vspace*{1cm}
 
 \begin{code}
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
       entity counter_3b is
           Port ( CLK_IN : in STD_LOGIC;
                  COUNT_OUT : out STD_LOGIC_VECTOR (2 downto 0));
@@ -279,16 +279,16 @@ The project could be expanded and improved by implementing the ALU in such a way
       begin
 
   \end{minted}
-  \captionsetup{belowskip=0pt}
-  \captionof{listing}{Difference in case between port and internal signal names.}
-  \label{code:case}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{Difference in case between port and internal signal names.}
+	\label{code:case}
 
 \end{code}
 
 \vspace*{1cm}
 
 \begin{code}
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
     library IEEE;
     use IEEE.STD_LOGIC_1164.ALL;
     
@@ -322,29 +322,29 @@ The project could be expanded and improved by implementing the ALU in such a way
         end process;
     end Behavioral;
   \end{minted}
-  \captionsetup{belowskip=0pt}
-  \captionof{listing}{Generalised 8x5-to-5 mux.}
-  \label{code:8x5_to_5_multiplexer}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{Generalised 8x5-to-5 mux.}
+	\label{code:8x5_to_5_multiplexer}
 \end{code}
 
 \vspace*{1cm}
 
 \begin{code}
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
     entity bcd_8_to_binary is
         Port ( BCD_BUS_IN : in STD_LOGIC_VECTOR (39 downto 0);
               BINARY_OUT : out STD_LOGIC_VECTOR (27 downto 0));
     end bcd_8_to_binary;
   \end{minted}
-  \captionsetup{belowskip=0pt}
-  \captionof{listing}{BCD to binary converter entity definition.}
-  \label{code:bcd_to_binary}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{BCD to binary converter entity definition.}
+	\label{code:bcd_to_binary}
 \end{code}
 
 \vspace*{1cm}
 
 \begin{code}
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
     ff11: multiplexer_8_1_4b port map (MUX_IN_0 => encoded_reaction_time_digit,
                                        MUX_IN_1 => selected_alu_bcd_digit,
                                        MUX_IN_2 => selected_alu_bcd_digit,
@@ -356,16 +356,16 @@ The project could be expanded and improved by implementing the ALU in such a way
                                        SELECT_IN => encoded_display_input_select,
                                        MUX_OUT => encoded_segment_data);
   \end{minted}
-  \captionsetup{belowskip=0pt}
-  \captionof{listing}{Module instantiation of output select 8x5-to-5 mux.}
-  \label{code:output_select_mux_instantiation}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{Module instantiation of output select 8x5-to-5 mux.}
+	\label{code:output_select_mux_instantiation}
 \end{code}
 
 \vspace*{1cm}
 
 \begin{code}
 
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
     entity main is
       Port ( CLK100MHZ : in STD_LOGIC;
             AN : out STD_LOGIC_VECTOR (7 downto 0) := X"00";
@@ -377,9 +377,9 @@ The project could be expanded and improved by implementing the ALU in such a way
             BTND : in STD_LOGIC);  
     end main;
   \end{minted}
-    \captionsetup{belowskip=0pt}
-  \captionof{listing}{Correct case of port names in entity definition.}
-  \label{code:morecase}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{Correct case of port names in entity definition.}
+	\label{code:morecase}
 \end{code}
 
 \newpage
@@ -388,7 +388,7 @@ The project could be expanded and improved by implementing the ALU in such a way
 
 \vspace*{1cm}
 \begin{code}
-  \begin{minted}{vhdl}
+	\begin{minted}{vhdl}
 ----------------------------------------------------------------------------------
 -- Engineers: Michael Brown, Philip Brand
 -- Create Date: 25.04.2025 02:04:31
@@ -525,9 +525,9 @@ begin
     end process;
 
   \end{minted}
-  \captionsetup{belowskip=0pt}
-  \captionof{listing}{Testbench for ALU, circular buffer, and BCD to binary converter.}
-  \label{code:alu_testbench}
+	\captionsetup{belowskip=0pt}
+	\captionof{listing}{Testbench for ALU, circular buffer, and BCD to binary converter.}
+	\label{code:alu_testbench}
 \end{code}
 
 \vspace*{1cm}
@@ -535,10 +535,10 @@ begin
 The waveform associated with the testbench in Listing \ref{code:alu_testbench} can be seen in Figure \ref{fig:alu_testbench_2}.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.99\textwidth]{thing.jpeg}
-  \caption{Reaction statistic calculation testbench.}
-  \label{fig:alu_testbench_2}
+	\centering
+	\includegraphics[width=0.99\textwidth]{thing.jpeg}
+	\caption{Reaction statistic calculation testbench.}
+	\label{fig:alu_testbench_2}
 \end{figure}
 
 \newpage
