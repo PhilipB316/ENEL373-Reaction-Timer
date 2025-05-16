@@ -9,9 +9,13 @@
 ----------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------
--- Testbench success criteria:
+-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-- TESTBENCH SUCCESS CRITERIA
+-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 -- Primary Test Purpose: To simultaneously test the functionality of the circular
 -- buffer, ALU, and binary-to-bcd modules
+
 -- Inputs:
 -- - A simulated high-frequency clock signal.
 -- - Three different numbers into the circular buffer at varying times.
@@ -21,7 +25,7 @@
 --   the testbench.
 -- - An alu_operation_select bus for choosing min/max/avg.
 -- - A binary_to_bcd_reset trigger to reset the double dabble algorithm
---
+
 -- Expected Results:
 -- - The circular buffer stores the input bus in one of the outputs when the
 --   write trigger is set. Which output is used will depend on the current write
@@ -29,17 +33,18 @@
 -- - The circular buffer size will be incremented after every write, up until a
 --   maximum of 3.
 -- - The ALU outputs the correct min/max/avg number in binary form depending on
---   what the currently active alu_operation_select is. The ALU output should only
+--   what the current alu_operation_select is. The ALU output should only
 --   change when the operation select does.
 -- - The ALU should not take into account circular buffer outputs that have yet to
 --   be written to.
 -- - Any outputs of the double dabble algorithm will be reset when the reset
---   trigger is set.
--- - When the double dabble reset pin is unset, the bcd_out will contain the 
+--   trigger is high.
+-- - When the double dabble reset is high, the bcd_out will show the 
 --   converted binary numbers from the ALU in 5-bit BCD format, and the 
---   readable_bcd will contain thhe binary numbers in more readable 4-bit BCD format.
-----------------------------------------------------------------------------------
+--   readable_bcd will show the binary numbers in more readable 4-bit BCD format.
 
+-- The testbench is deemed successful if the expected results outlined above are met.
+----------------------------------------------------------------------------------
 
 
 library IEEE;
@@ -124,8 +129,8 @@ begin
     
     simulation : process
     begin
+        wait for 100ns; -- 100ns delay before apply input
         binary_to_bcd_reset <= '1';
-        wait for 10ns;
         circular_buffer_reset <= '1';
         circular_buffer_input <= X"0000000";
         wait for 100ns;
@@ -142,7 +147,7 @@ begin
         wait for 10ns;
         circular_buffer_write_trigger <= '1';
         wait for 10ns;
-        alu_operation_select <= "11";
+        alu_operation_select <= "11"; -- average
         circular_buffer_write_trigger <= '0';
         wait for 100ns;
         circular_buffer_input <= X"0022222";
@@ -154,12 +159,12 @@ begin
         binary_to_bcd_reset <= '0';
         wait for 100ns;
         binary_to_bcd_reset <= '1';
-        alu_operation_select <= "01";
+        alu_operation_select <= "01"; -- max
         wait for 1ns;
         binary_to_bcd_reset <= '0';
         wait for 100ns;
         binary_to_bcd_reset <= '1';
-        alu_operation_select <= "10";
+        alu_operation_select <= "10"; -- min
         wait for 100ns;
         binary_to_bcd_reset <= '0';
         wait for 200ns;
@@ -167,3 +172,4 @@ begin
         wait for 100000ns;
     end process;
 end Behavioral;
+
