@@ -201,18 +201,24 @@ Another issue that arose was regarding case sensitivity in VHDL. Although VHDL i
 	\label{fig:error}
 \end{figure}
 
-\section{Conclusions}
+\section{Conclusion}
 % Highlight any problems you encountered and how you solved them. Also discuss what you learned and give suggestions on how the project could be improved
 
 % Project could be improved by allowing a non-fixed number of inputs to the ALU, so a more arbitrary number of results could be calculated
 % Learnt how testbenches can be useful but have their limits as somethimes they have bugs which are not present when the code is run on hardware.
 
-When developing the reaction timer, a number of problems were encountered. One of these involved the FSM changing states unexpectedly. To determine the cause of this problem, the FSM was simplified to a minimal working version, then slowly expanded. Another problem where the display module did not show the correct numbers was solved by creating a small program mapping switches to the BCD inputs of the display module. Both of these problems were solved by reducing the scope of the program, allowing the problem to be found without confusing things with extra complexity. This method, as well as the use of testbenches, was an effective way of finding problems in VHDL code.
+This project involved the development of a reaction stimulus test on an FPGA, utilizing VHDL and the Vivado toolchain to program the FPGA. The developed program enabled users to test their reaction speed to a stimulus that would occur at a random time, additionally being able to view the minimum, maximum, and average times of the last three tests.
 
-Modularity was a major strength, allowing new features to be integrated easily with the rest of the project, and simplifying module changes without other consequences. The modularity also reduced the effort needed to make changes such as increasing the number of bits in the BCD signals as there are less separate components in which the change needs to be made.
+The development process of the reaction stimulus test included a heavy focus on modularisation and code reuse. This is shown in the multiple uses of the 8x5-to-5 mux, and the self-contained ALU, timer, countdown, and error mdules. The use of modularisation significantly simplified the component assembly and debugging process.
 
-The project could be expanded and improved by implementing the ALU in such a way that it could take an arbitrary number of inputs then calculate the average, maximum, and minimum of the inputs. Currently, the ALU is hardcoded to only accept three numbers and each of the input numbers needs its own signal going into the ALU module. This doesn't really fit with the modularity of the rest of the project as the ALU would need significant changes to work with more than three numbers.
+Numerous problems were encountered during the development process, both with the code and the Vivado development toolchain. Examples of code issues include the race condition found in the FSM, or the unusally small numbers returned by the BCD-to-binary numeric converter. Both issues were solved by narrowing down the range of operational code by either commenting out code, such as for the FSM, or by testing sections off the code in a testbench, as was done for the ALU module. The issue with the Vivado development toolchain was the code simulator refusing to run the BCD-to-binary converter without raising an exception that included an error message. This problem was solved by attempting to run the software on the FPGA, after which it was found to work without issue.
 
+% When developing the reaction timer, a number of problems were encountered. One of these involved the FSM changing states unexpectedly. To determine the cause of this problem, the FSM was simplified to a minimal working version, then slowly expanded. Another problem where the display module did not show the correct numbers was solved by creating a small program mapping switches to the BCD inputs of the display module. Both of these problems were solved by reducing the scope of the program, allowing the problem to be found without confusing things with extra complexity. This method, as well as the use of testbenches, was an effective way of finding problems in VHDL code.
+%
+% Modularity was a major strength, allowing new features to be integrated easily with the rest of the project, and simplifying module changes without other consequences. The modularity also reduced the effort needed to make changes such as increasing the number of bits in the BCD signals as there are less separate components in which the change needs to be made.
+%
+% The project could be expanded and improved by implementing the ALU in such a way that it could take an arbitrary number of inputs then calculate the average, maximum, and minimum of the inputs. Currently, the ALU is hardcoded to only accept three numbers and each of the input numbers needs its own signal going into the ALU module. This doesn't really fit with the modularity of the rest of the project as the ALU would need significant changes to work with more than three numbers.
+%
 \newpage
 % There is no need to include a full code listing in your report as your code will be submitted via eng-git. However, reference to a code snippet in an appendix is quite appropriate. Formal citations to books, web articles, open source VHDL code and other sources should be listed in a reference section that uses the IEEE style and format.
 
