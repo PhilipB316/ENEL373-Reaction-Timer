@@ -24,3 +24,5 @@ report/*.fls
 /*.xdc
 
 /project_1/*
+
+.vscode/*
